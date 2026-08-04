@@ -188,19 +188,39 @@
   /* ============ Hero ============ */
   .hero {
     position: relative;
-    padding: 64px 0 80px;
+    padding: 88px 0 96px;
     overflow: hidden;
-    background: var(--bg);
+    background: #0a1f17;
+    background-image: url('/assets/images/hero.jpg?v=3');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(100deg, rgba(5, 42, 32, 0.92) 0%, rgba(5, 42, 32, 0.78) 38%, rgba(5, 42, 32, 0.35) 70%, rgba(5, 42, 32, 0.15) 100%);
+    z-index: 1;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(5, 42, 32, 0.25) 0%, transparent 30%, transparent 70%, rgba(5, 42, 32, 0.55) 100%);
+    z-index: 1;
+  }
+  .hero > .container { position: relative; z-index: 2; }
   .hero-grid {
     display: grid;
     grid-template-columns: 1.05fr 1fr;
     gap: 56px;
     align-items: center;
+    min-height: 480px;
   }
   .hero-eyebrow {
     display: inline-flex; align-items: center; gap: 8px;
-    background: var(--green-50); color: var(--green-800);
+    background: rgba(255, 255, 255, 0.14); color: #d1fae5;
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     padding: 6px 14px; border-radius: 999px;
     font-size: 13px; font-weight: 600; margin-bottom: 20px;
   }
@@ -208,12 +228,13 @@
   .hero h1 {
     font-size: clamp(40px, 5vw, 56px);
     line-height: 1.08; letter-spacing: -0.025em;
-    color: var(--ink); font-weight: 800;
+    color: #fff; font-weight: 800;
     margin-bottom: 20px;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.25);
   }
-  .hero h1 .accent { color: var(--green-700); }
+  .hero h1 .accent { color: #6ee7b7; }
   .hero-sub {
-    font-size: 18px; line-height: 1.6; color: var(--ink-3);
+    font-size: 18px; line-height: 1.6; color: rgba(255, 255, 255, 0.86);
     max-width: 520px; margin-bottom: 32px;
   }
   .hero-cta-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 28px; }
@@ -230,52 +251,40 @@
   }
   .btn-primary:hover { background: var(--green-800); transform: translateY(-1px); box-shadow: 0 12px 28px -8px rgba(12, 133, 81, 0.45); }
   .btn-secondary {
-    background: #fff; color: var(--ink);
+    background: rgba(255, 255, 255, 0.95); color: var(--ink);
     box-shadow: var(--shadow-sm);
-    border: 1px solid var(--line);
+    border: 1px solid rgba(255, 255, 255, 0.4);
   }
-  .btn-secondary:hover { background: var(--bg-2); }
+  .btn-secondary:hover { background: #fff; }
   .btn-ghost {
-    background: transparent; color: var(--green-700);
+    background: transparent; color: #fff;
     padding: 14px 8px;
   }
-  .btn-ghost:hover { color: var(--green-800); }
+  .btn-ghost:hover { color: #d1fae5; }
   .btn-lg { padding: 16px 26px; font-size: 16px; }
 
   .hero-trust { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
   .hero-stars { display: flex; align-items: center; gap: 8px; }
   .stars { display: inline-flex; gap: 2px; color: var(--yellow); }
   .stars svg { width: 16px; height: 16px; }
-  .hero-trust-text { font-size: 13px; color: var(--ink-3); }
-  .hero-trust-text strong { color: var(--ink); font-weight: 700; }
-  .hero-trust-sep { width: 1px; height: 16px; background: var(--line); }
-  .hero-trust-item { font-size: 13px; color: var(--ink-3); }
-  .hero-trust-item strong { color: var(--ink); font-weight: 700; }
+  .hero-trust-text { font-size: 13px; color: rgba(255, 255, 255, 0.82); }
+  .hero-trust-text strong { color: #fff; font-weight: 700; }
+  .hero-trust-sep { width: 1px; height: 16px; background: rgba(255, 255, 255, 0.25); }
+  .hero-trust-item { font-size: 13px; color: rgba(255, 255, 255, 0.82); }
+  .hero-trust-item strong { color: #fff; font-weight: 700; }
 
-  /* Hero 右侧：照片 + 浮卡 */
-  .hero-art { position: relative; }
-  .hero-photo {
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    aspect-ratio: 4 / 4.2;
-    box-shadow: var(--shadow-lg);
-    position: relative;
-    background: var(--bg-3);
-  }
-  .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
-  .hero-photo::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(180deg, transparent 50%, rgba(5, 61, 44, 0.35));
-  }
+  /* Hero 右侧浮卡（保留数据展示） */
+  .hero-art { position: relative; height: 100%; min-height: 480px; }
   .hero-float {
-    position: absolute; bottom: -24px; left: -24px;
-    background: #fff;
+    position: absolute; bottom: 0; right: 0;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
     border-radius: var(--radius);
-    box-shadow: var(--shadow-lg);
-    padding: 18px 20px;
+    box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 20px 22px;
     display: flex; align-items: center; gap: 14px;
-    max-width: 280px;
+    max-width: 300px;
   }
   .hero-float-ico {
     width: 46px; height: 46px; border-radius: 11px;
@@ -776,8 +785,9 @@
   }
 
   @media (max-width: 980px) {
-    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-    .hero-art { max-width: 460px; margin: 0 auto; }
+    .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+    .hero-art { min-height: auto; }
+    .hero-float { position: relative; bottom: auto; right: auto; max-width: 320px; margin-top: 8px; }
     .calc-layout { grid-template-columns: 1fr; }
     .tools-grid { grid-template-columns: repeat(2, 1fr); }
     .res-card, .res-card.large { flex: 0 0 80vw; }
@@ -792,8 +802,8 @@
   @media (max-width: 600px) {
     section { padding: 60px 0; }
     .container { padding: 0 18px; }
-    .hero { padding: 40px 0 60px; }
-    .hero-float { left: 0; right: 0; bottom: -16px; max-width: none; }
+    .hero { padding: 40px 0 56px; }
+    .hero-float { left: 0; right: 0; max-width: none; }
     .calc-row { grid-template-columns: 1fr; }
     .result-grid { grid-template-columns: 1fr; }
     .tools-grid { grid-template-columns: 1fr; }
@@ -955,9 +965,6 @@
         </div>
       </div>
       <div class="hero-art">
-        <div class="hero-photo">
-          <img src="/assets/images/hero.jpg?v=2" alt="夫妻在陽光明媚的公寓裡一起規劃退休" width="800" height="600" fetchpriority="high" />
-        </div>
         <div class="hero-float">
           <div class="hero-float-ico">
             <svg viewBox="0 0 24 24" fill="none">
