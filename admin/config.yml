@@ -104,6 +104,6 @@ collections:
         hint: "正文內容（未來做文章詳情頁用，目前卡片只顯示摘要）"
 
 # ====== 站點設置 ======
-site_url: https://pensionwise.example.com   # ← 部署後改為你的正式域名
-display_url: https://pensionwise.example.com  # ← 同上，改為你的正式域名
+site_url: https://pensionwisetool.com
+display_url: https://pensionwisetool.com
 logo_url: /assets/images/admin-logo.svg
