@@ -83,12 +83,27 @@
   .nav-cta { background: var(--green-700); color: #fff; padding: 9px 16px; border-radius: 8px; font-size: 14px; font-weight: 600; border: none; transition: background .15s; }
   .nav-cta:hover { background: var(--green-800); }
 
-  .page-hero { background: var(--bg); padding: 48px 0 40px; }
-  .page-hero .section-eyebrow { font-size: 13px; font-weight: 700; color: var(--green-700); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 12px; display: inline-flex; align-items: center; gap: 8px; }
-  .page-hero .section-eyebrow::before { content: ''; width: 24px; height: 2px; background: var(--green-600); }
-  .page-hero h1 { font-size: clamp(32px, 4vw, 44px); line-height: 1.12; letter-spacing: -0.025em; color: var(--ink); font-weight: 800; margin-bottom: 12px; }
-  .page-hero h1 .accent { color: var(--green-700); }
-  .page-hero p { font-size: 17px; color: var(--ink-3); max-width: 640px; line-height: 1.6; }
+  .page-hero {
+    position: relative;
+    padding: 72px 0 64px;
+    overflow: hidden;
+    background: #0a1f17;
+    background-image: url('/assets/images/hero-mpf.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(105deg, rgba(5, 42, 32, 0.92) 0%, rgba(5, 42, 32, 0.75) 45%, rgba(5, 42, 32, 0.35) 100%);
+    z-index: 1;
+  }
+  .page-hero > .container { position: relative; z-index: 2; }
+  .page-hero .section-eyebrow { font-size: 13px; font-weight: 700; color: #6ee7b7; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 12px; display: inline-flex; align-items: center; gap: 8px; }
+  .page-hero .section-eyebrow::before { content: ''; width: 24px; height: 2px; background: #6ee7b7; }
+  .page-hero h1 { font-size: clamp(32px, 4vw, 44px); line-height: 1.12; letter-spacing: -0.025em; color: #fff; font-weight: 800; margin-bottom: 12px; text-shadow: 0 2px 16px rgba(0, 0, 0, 0.25); }
+  .page-hero h1 .accent { color: #6ee7b7; }
+  .page-hero p { font-size: 17px; color: rgba(255, 255, 255, 0.88); max-width: 640px; line-height: 1.6; }
 
   .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; font-size: 15px; padding: 14px 22px; border-radius: var(--radius); border: none; cursor: pointer; transition: all .15s ease; white-space: nowrap; }
   .btn-primary { background: var(--green-700); color: #fff; box-shadow: var(--shadow-green); }
