@@ -229,6 +229,7 @@
   @media (max-width: 600px) {
     .container { padding: 0 18px; }
     .calc-row { grid-template-columns: 1fr; }
+    .result-grid { grid-template-columns: 1fr; }
     .foot-grid { grid-template-columns: 1fr; }
     .calc-card, .calc-result { padding: 24px; }
   }
@@ -343,11 +344,6 @@
 
 <section id="calc" class="calc-section">
   <div class="container">
-    <div class="section-head">
-      <div class="section-eyebrow">即時試算</div>
-      <h2 class="section-title">退休缺口計算器</h2>
-      <p class="section-sub">填寫下方欄位，即時計算你退休時需要的總本金、現有儲蓄終值、缺口與每月需儲蓄金額。所有數據僅在你的瀏覽器內計算。</p>
-    </div>
     <div class="calc-layout">
       <!-- 表单卡 -->
       <div class="calc-card reveal">
@@ -690,39 +686,42 @@
     }
   });
 
-  const overlay = document.getElementById('shareOverlay');
-  document.getElementById('shareBtn').addEventListener('click', () => {
-    overlay.classList.add('show');
-  });
-  document.getElementById('shareClose').addEventListener('click', () => overlay.classList.remove('show'));
-  overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('show'); });
+  // 分享面板事件（等待 DOM 加载完成，因面板 HTML 在 script 之后）
+  document.addEventListener('DOMContentLoaded', () => {
+    const overlay = document.getElementById('shareOverlay');
+    document.getElementById('shareBtn').addEventListener('click', () => {
+      overlay.classList.add('show');
+    });
+    document.getElementById('shareClose').addEventListener('click', () => overlay.classList.remove('show'));
+    overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('show'); });
 
-  document.getElementById('shareFacebook').addEventListener('click', () => {
-    window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(SHARE_URL), '_blank', 'width=600,height=500');
-  });
-  document.getElementById('shareTwitter').addEventListener('click', () => {
-    window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(SHARE_TEXT) + '&url=' + encodeURIComponent(SHARE_URL), '_blank', 'width=600,height=500');
-  });
-  document.getElementById('shareLine').addEventListener('click', () => {
-    window.open('https://social-plugins.line.me/lineit/share?url=' + encodeURIComponent(SHARE_URL) + '&text=' + encodeURIComponent(SHARE_TEXT), '_blank', 'width=600,height=500');
-  });
-  document.getElementById('shareWechat').addEventListener('click', () => {
-    const qr = document.getElementById('shareQr');
-    const img = document.getElementById('shareQrImg');
-    img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=' + encodeURIComponent(SHARE_URL);
-    qr.classList.add('show');
-  });
-  document.getElementById('shareCopyBtn').addEventListener('click', async () => {
-    try {
-      await navigator.clipboard.writeText(SHARE_URL);
-      const btn = document.getElementById('shareCopyBtn');
-      const orig = btn.textContent;
-      btn.textContent = '已複製';
-      setTimeout(() => btn.textContent = orig, 2000);
-    } catch (e) {
-      document.getElementById('shareCopyInput').select();
-      document.execCommand('copy');
-    }
+    document.getElementById('shareFacebook').addEventListener('click', () => {
+      window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(SHARE_URL), '_blank', 'width=600,height=500');
+    });
+    document.getElementById('shareTwitter').addEventListener('click', () => {
+      window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(SHARE_TEXT) + '&url=' + encodeURIComponent(SHARE_URL), '_blank', 'width=600,height=500');
+    });
+    document.getElementById('shareLine').addEventListener('click', () => {
+      window.open('https://social-plugins.line.me/lineit/share?url=' + encodeURIComponent(SHARE_URL) + '&text=' + encodeURIComponent(SHARE_TEXT), '_blank', 'width=600,height=500');
+    });
+    document.getElementById('shareWechat').addEventListener('click', () => {
+      const qr = document.getElementById('shareQr');
+      const img = document.getElementById('shareQrImg');
+      img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=' + encodeURIComponent(SHARE_URL);
+      qr.classList.add('show');
+    });
+    document.getElementById('shareCopyBtn').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(SHARE_URL);
+        const btn = document.getElementById('shareCopyBtn');
+        const orig = btn.textContent;
+        btn.textContent = '已複製';
+        setTimeout(() => btn.textContent = orig, 2000);
+      } catch (e) {
+        document.getElementById('shareCopyInput').select();
+        document.execCommand('copy');
+      }
+    });
   });
 
   // 滾動出現

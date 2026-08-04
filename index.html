@@ -827,7 +827,7 @@
 <!-- 导航 -->
 <div class="nav-wrap">
   <nav class="nav">
-    <a href="#" class="brand">
+    <a href="/" class="brand">
       <div class="brand-logo">
         <svg viewBox="0 0 32 32" fill="none">
           <path d="M4 14 C4 9, 9 5, 16 5 C23 5, 28 9, 28 14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
@@ -857,7 +857,7 @@
           <a href="#resources"><span class="d-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span><div><div class="d-name">通用退休資訊</div><div class="d-desc">投資、心理、全球趨勢</div></div></a>
         </div>
       </li>
-      <li><a href="#about">關於我們</a></li>
+      <li><a href="/about.html">關於我們</a></li>
       <li>
         <button class="nav-region" id="navRegionBtn">
           <svg class="globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
@@ -875,7 +875,7 @@
           </div>
         </button>
       </li>
-      <li><button class="nav-cta">開始規劃</button></li>
+      <li><a href="#tools" class="nav-cta">開始規劃</a></li>
     </ul>
     <button class="nav-toggle" id="navToggle" aria-label="開啟選單">
       <span></span><span></span><span></span>
@@ -914,7 +914,7 @@
 
   <div class="nav-drawer-section">
     <div class="nav-drawer-label">其他</div>
-    <a href="#about" class="nav-drawer-simple" data-close>關於我們</a>
+    <a href="/about.html" class="nav-drawer-simple" data-close>關於我們</a>
     <div style="margin: 14px 0 8px; display: flex; gap: 8px;">
       <button class="nav-drawer-region" data-region="hk" id="drawerRegionHk" style="flex: 1; margin-bottom: 0;">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
@@ -1002,7 +1002,7 @@
       </div>
       <div class="stat">
         <div class="stat-num">0<span class="unit">個</span></div>
-        <div class="stat-label">追蹤 Cookie</div>
+        <div class="stat-label">廣告干擾</div>
       </div>
     </div>
   </div>
@@ -1224,7 +1224,7 @@
       </div>
     </div>
     <div class="resources-grid" id="resourcesGrid">
-      <a href="#" class="res-card large reveal">
+      <a href="/article.html?slug=2026-mpf-complete-guide" class="res-card large reveal">
         <div class="res-cover">
           <span class="res-cat">HK · MPF</span>
           <img src="/assets/images/article-mpf-guide.jpg?v=2" alt="MPF 完全指南" width="600" height="375" loading="lazy" />
@@ -1239,7 +1239,7 @@
           </div>
         </div>
       </a>
-      <a href="#" class="res-card reveal">
+      <a href="/article.html?slug=labor-pension-guide" class="res-card reveal">
         <div class="res-cover">
           <span class="res-cat">TW · 勞退</span>
           <img src="/assets/images/article-labor-pension.jpg?v=2" alt="勞退教學" width="600" height="375" loading="lazy" />
@@ -1254,7 +1254,7 @@
           </div>
         </div>
       </a>
-      <a href="#" class="res-card reveal">
+      <a href="/article.html?slug=start-at-40" class="res-card reveal">
         <div class="res-cover">
           <span class="res-cat">通用</span>
           <img src="/assets/images/article-40-start.jpg?v=2" alt="40 歲退休規劃" width="600" height="375" loading="lazy" />
@@ -1269,7 +1269,7 @@
           </div>
         </div>
       </a>
-      <a href="#" class="res-card reveal">
+      <a href="/article.html?slug=inflation-impact" class="res-card reveal">
         <div class="res-cover">
           <span class="res-cat">通用 · 通脹</span>
           <img src="/assets/images/article-inflation.jpg?v=2" alt="通脹影響" width="600" height="375" loading="lazy" />
@@ -1284,7 +1284,7 @@
           </div>
         </div>
       </a>
-      <a href="#" class="res-card reveal">
+      <a href="/article.html?slug=hk-living-cost-2026" class="res-card reveal">
         <div class="res-cover">
           <span class="res-cat">HK · 生活費</span>
           <img src="/assets/images/article-hk-living-cost.jpg?v=2" alt="香港退休生活費" width="600" height="375" loading="lazy" />
@@ -1556,7 +1556,7 @@
     // 更新 hero 浮卡数字
     document.getElementById('floatNum').textContent = fmtShort(fvNeeded);
 
-    document.getElementById('result').classList.add('show', 'reveal-in');
+    document.getElementById('result').classList.add('show');
   }
 
   document.getElementById('calcBtn').addEventListener('click', calculate);
@@ -1715,7 +1715,7 @@
       }).join('');
 
       // 重新觸發 reveal 動畫 + 重置箭頭按鈕狀態
-      grid.querySelectorAll('.reveal').forEach(el => el.classList.add('reveal-in'));
+      grid.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
       const prev = document.getElementById('resPrev');
       const next = document.getElementById('resNext');
       if (prev) prev.disabled = true;
