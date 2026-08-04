@@ -1324,7 +1324,7 @@
   <div class="container">
     <div class="foot-grid">
       <div class="foot-brand">
-        <div class="brand-logo" style="color: #fff;">
+        <div class="brand-logo">
           <svg viewBox="0 0 32 32" fill="none">
             <path d="M4 14 C4 9, 9 5, 16 5 C23 5, 28 9, 28 14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
             <path d="M3 19 C3 14, 8 11, 16 11 C24 11, 29 14, 29 19" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
@@ -1342,44 +1342,43 @@
       <div class="foot-col">
         <h4>計算工具</h4>
         <ul>
-          <li><a href="living-cost.html">生活費規劃</a></li>
-          <li><a href="#calc">退休缺口</a></li>
-          <li><a href="mpf.html">MPF 強積金</a></li>
-          <li><a href="labor-pension.html">勞退勞保</a></li>
+          <li><a href="/living-cost.html">生活費規劃</a></li>
+          <li><a href="/index.html#calc">退休缺口</a></li>
+          <li><a href="/mpf.html">MPF 強積金</a></li>
+          <li><a href="/labor-pension.html">勞退勞保</a></li>
         </ul>
       </div>
       <div class="foot-col">
         <h4>退休資訊</h4>
         <ul>
-          <li><a href="#resources">香港退休</a></li>
-          <li><a href="#resources">台灣退休</a></li>
-          <li><a href="#resources">通用資訊</a></li>
-          <li><a href="#resources">編輯選讀</a></li>
+          <li><a href="/index.html#resources">香港退休</a></li>
+          <li><a href="/index.html#resources">台灣退休</a></li>
+          <li><a href="/index.html#resources">通用資訊</a></li>
         </ul>
       </div>
       <div class="foot-col">
         <h4>關於</h4>
         <ul>
-          <li><a href="#about">關於我們</a></li>
-          <li><a href="#">聯絡我們</a></li>
+          <li><a href="/about.html">關於我們</a></li>
+          <li><a href="/contact.html">聯絡我們</a></li>
         </ul>
       </div>
       <div class="foot-col">
         <h4>法務</h4>
         <ul>
-          <li><a href="#">隱私政策</a></li>
-          <li><a href="#">免責聲明</a></li>
-          <li><a href="#">Cookie 政策</a></li>
-          <li><a href="#">使用條款</a></li>
+          <li><a href="/privacy.html">隱私政策</a></li>
+          <li><a href="/disclaimer.html">免責聲明</a></li>
+          <li><a href="/cookie-policy.html">Cookie 政策</a></li>
+          <li><a href="/terms.html">使用條款</a></li>
         </ul>
       </div>
     </div>
     <div class="foot-bot">
       <span>© 2026 Pensionwise 養老智 · All rights reserved.</span>
       <div class="legal">
-        <a href="#">隱私</a>
-        <a href="#">條款</a>
-        <a href="#">免責聲明</a>
+        <a href="/privacy.html">隱私</a>
+        <a href="/terms.html">條款</a>
+        <a href="/disclaimer.html">免責聲明</a>
       </div>
     </div>
   </div>
@@ -1693,7 +1692,7 @@
         const isFeatured = !!a.featured;
         const dateStr = fmtDate(a.publishDate);
         return `
-        <a href="#" class="res-card reveal${isFeatured ? ' large' : ''}">
+        <a href="/article.html?slug=${a.slug}" class="res-card reveal${isFeatured ? ' large' : ''}">
           <div class="res-cover">
             ${badge ? `<span class="res-cat">${badge}</span>` : ''}
             <img src="${cover}" alt="${coverAlt}" width="600" height="375" loading="lazy" />
