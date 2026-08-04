@@ -87,7 +87,16 @@
     position: relative;
     padding: 72px 0 64px;
     overflow: hidden;
-    background: linear-gradient(135deg, #053d2c 0%, #074d36 100%);
+    background: #0a1f17;
+    background-image: url('/assets/images/hero-retirement-gap.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(105deg, rgba(5, 42, 32, 0.92) 0%, rgba(5, 42, 32, 0.75) 45%, rgba(5, 42, 32, 0.35) 100%);
+    z-index: 1;
   }
   .page-hero > .container { position: relative; z-index: 2; }
   .page-hero .section-eyebrow { font-size: 13px; font-weight: 700; color: #6ee7b7; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 12px; display: inline-flex; align-items: center; gap: 8px; }
