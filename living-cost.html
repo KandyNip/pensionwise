@@ -461,6 +461,10 @@
     border-radius: var(--radius-sm);
     font-size: 12px; color: var(--ink-3); line-height: 1.6;
   }
+  .result-actions { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+  .btn-action { display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; border-radius: var(--radius); font-size: 14px; font-weight: 600; cursor: pointer; transition: all .15s; border: 1px solid var(--line); background: #fff; color: var(--ink-2); font-family: inherit; }
+  .btn-action:hover { background: var(--bg-2); border-color: var(--ink-4); }
+  .btn-action svg { width: 16px; height: 16px; }
 
   /* ============ Footer ============ */
   footer {
@@ -790,6 +794,16 @@
           </div>
         </div>
 
+        <div class="result-actions">
+          <button class="btn-action" id="downloadBtn" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            下載結果
+          </button>
+          <button class="btn-action" id="shareBtn" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            分享
+          </button>
+        </div>
         <div class="disclaimer-inline">
           以上計算結果僅為估算，基於你輸入的參數與預設假設。實際開銷取決於個人生活方式、居住地區及市場變化。此工具不構成任何投資建議。
         </div>
@@ -1077,6 +1091,71 @@
   }
 
   document.getElementById('calcBtn').addEventListener('click', calculate);
+
+  // ===== 下載與分享 =====
+  function generateSummary() {
+    const cur = region === 'hk' ? 'HK$' : 'NT$';
+    const lines = [
+      'Pensionwise 養老智 — 生活費規劃器計算結果',
+      '================================',
+      '計算日期：' + new Date().toLocaleDateString('zh-TW'),
+      '地區：' + (region === 'hk' ? '香港 HKD' : '台灣 TWD'),
+      '',
+      '【輸入參數】',
+      '當前每月支出：' + cur + ' ' + document.getElementById('currentExpense').value,
+      '距退休年數：' + document.getElementById('yearsToRetire').value + ' 年',
+      '預期通脹率：' + document.getElementById('inflation').value + '%',
+      '生活方式調整：' + document.getElementById('lifestyle').value + '%',
+    ];
+    // 六大開支類別占比
+    document.querySelectorAll('#ratioGrid input').forEach(inp => {
+      const cat = EXPENSE_CATEGORIES.find(c => c.key === inp.dataset.key);
+      if (cat) lines.push(cat.label + '占比：' + inp.value + '%');
+    });
+    lines.push('', '【計算結果】');
+    lines.push('退休後每月需要：' + cur + ' ' + document.getElementById('rMonthly').textContent);
+    // 類別拆分（退休時月額）
+    document.querySelectorAll('#pieLegend .pie-legend-item').forEach(item => {
+      const name = item.querySelector('.pie-legend-name').textContent;
+      const val = item.querySelector('.pie-legend-val').textContent;
+      lines.push(name + '：' + val);
+    });
+    lines.push('', '免責聲明：以上計算結果僅為估算，不構成任何投資建議。', '了解更多：https://pensionwisetool.com');
+    return lines.join('\n');
+  }
+
+  document.getElementById('downloadBtn').addEventListener('click', () => {
+    const text = generateSummary();
+    const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = '生活費規劃結果_' + new Date().toISOString().slice(0, 10) + '.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  });
+
+  document.getElementById('shareBtn').addEventListener('click', async () => {
+    const text = generateSummary();
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: '生活費規劃器計算結果 — Pensionwise 養老智',
+          text: text,
+          url: 'https://pensionwisetool.com/living-cost.html'
+        });
+      } catch (e) {}
+    } else {
+      try {
+        await navigator.clipboard.writeText(text);
+        alert('計算結果已複製到剪貼簿');
+      } catch (e) {
+        alert('分享功能不支援此瀏覽器，請手動截圖分享');
+      }
+    }
+  });
 
   // 滚动出现
   const io = new IntersectionObserver(entries => {

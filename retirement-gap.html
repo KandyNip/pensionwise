@@ -178,6 +178,10 @@
   .progress-legend { display: flex; justify-content: space-between; margin-top: 8px; font-size: 12px; color: var(--ink-4); }
 
   .disclaimer-inline { margin-top: 20px; padding: 12px 14px; background: #fffbeb; border-left: 3px solid var(--yellow); border-radius: var(--radius-sm); font-size: 12px; color: var(--ink-3); line-height: 1.6; }
+  .result-actions { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+  .btn-action { display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; border-radius: var(--radius); font-size: 14px; font-weight: 600; cursor: pointer; transition: all .15s; border: 1px solid var(--line); background: #fff; color: var(--ink-2); font-family: inherit; }
+  .btn-action:hover { background: var(--bg-2); border-color: var(--ink-4); }
+  .btn-action svg { width: 16px; height: 16px; }
 
   footer { background: #0a1f17; color: rgba(255, 255, 255, 0.75); padding: 64px 0 24px; }
   .foot-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr; gap: 32px; padding-bottom: 40px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
@@ -422,6 +426,16 @@
             <span id="rNeed">缺口 100%</span>
           </div>
         </div>
+        <div class="result-actions">
+          <button class="btn-action" id="downloadBtn" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            下載結果
+          </button>
+          <button class="btn-action" id="shareBtn" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            分享
+          </button>
+        </div>
         <div class="disclaimer-inline">
           以上計算結果僅為估算，基於你輸入的參數與預設假設。實際退休金金額取決於市場表現、政策變動及個人情況。此工具不構成任何投資建議。
         </div>
@@ -623,6 +637,70 @@
   }
 
   document.getElementById('calcBtn').addEventListener('click', calculate);
+
+  // ===== 下載與分享 =====
+  function generateSummary() {
+    const cur = region === 'hk' ? 'HK$' : 'NT$';
+    const lines = [
+      'Pensionwise 養老智 — 退休缺口計算結果',
+      '================================',
+      '計算日期：' + new Date().toLocaleDateString('zh-TW'),
+      '地區：' + (region === 'hk' ? '香港 HKD' : '台灣 TWD'),
+      '',
+      '【輸入參數】',
+      '當前年齡：' + document.getElementById('currentAge').value + ' 歲',
+      '目標退休年齡：' + document.getElementById('retireAge').value + ' 歲',
+      '期望退休後月收入：' + cur + ' ' + document.getElementById('targetIncome').value,
+      '預期年回報率：' + document.getElementById('returnRate').value + '%',
+      '預期通脹率：' + document.getElementById('inflation').value + '%',
+      '退休後年數：' + document.getElementById('retireYears').value + ' 年',
+      '現有儲蓄：' + cur + ' ' + document.getElementById('currentSavings').value,
+      '',
+      '【計算結果】',
+      '退休時需要的總本金：' + cur + ' ' + document.getElementById('rNeeded').textContent,
+      '現有儲蓄終值：' + document.getElementById('rFv').textContent,
+      '退休金缺口：' + document.getElementById('rGap').textContent,
+      '每月需儲蓄：' + document.getElementById('rPmt').textContent,
+      '儲蓄覆蓋率：' + document.getElementById('rPct').textContent,
+      '',
+      '免責聲明：以上計算結果僅為估算，不構成任何投資建議。',
+      '了解更多：https://pensionwisetool.com',
+    ];
+    return lines.join('\n');
+  }
+
+  document.getElementById('downloadBtn').addEventListener('click', () => {
+    const text = generateSummary();
+    const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = '退休缺口計算結果_' + new Date().toISOString().slice(0, 10) + '.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  });
+
+  document.getElementById('shareBtn').addEventListener('click', async () => {
+    const text = generateSummary();
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: '退休缺口計算結果 — Pensionwise 養老智',
+          text: text,
+          url: 'https://pensionwisetool.com/retirement-gap.html'
+        });
+      } catch (e) {}
+    } else {
+      try {
+        await navigator.clipboard.writeText(text);
+        alert('計算結果已複製到剪貼簿');
+      } catch (e) {
+        alert('分享功能不支援此瀏覽器，請手動截圖分享');
+      }
+    }
+  });
 
   // 滾動出現
   const io = new IntersectionObserver(entries => {

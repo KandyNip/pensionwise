@@ -174,6 +174,10 @@
   .info-box { margin-top: 16px; padding: 12px 14px; background: var(--green-50); border-left: 3px solid var(--green-600); border-radius: var(--radius-sm); font-size: 13px; color: var(--green-800); line-height: 1.6; font-weight: 600; }
 
   .disclaimer-inline { margin-top: 20px; padding: 12px 14px; background: #fffbeb; border-left: 3px solid var(--yellow); border-radius: var(--radius-sm); font-size: 12px; color: var(--ink-3); line-height: 1.6; }
+  .result-actions { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+  .btn-action { display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; border-radius: var(--radius); font-size: 14px; font-weight: 600; cursor: pointer; transition: all .15s; border: 1px solid var(--line); background: #fff; color: var(--ink-2); font-family: inherit; }
+  .btn-action:hover { background: var(--bg-2); border-color: var(--ink-4); }
+  .btn-action svg { width: 16px; height: 16px; }
 
   footer { background: #0a1f17; color: rgba(255, 255, 255, 0.75); padding: 64px 0 24px; }
   .foot-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr; gap: 32px; padding-bottom: 40px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
@@ -418,6 +422,16 @@
 
         <div id="warningArea"></div>
 
+        <div class="result-actions">
+          <button class="btn-action" id="downloadBtn" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            下載結果
+          </button>
+          <button class="btn-action" id="shareBtn" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            分享
+          </button>
+        </div>
         <div class="disclaimer-inline">
           本計算器依據勞工退休金條例及勞工保險條例之現行規定進行試算。勞保年金給付金額受投保薪資調整、法令變更等因素影響，實際金額以勞工保險局核定為準。計算結果僅為估算，不構成任何投資建議。
         </div>
@@ -688,6 +702,68 @@
   }
 
   document.getElementById('calcBtn').addEventListener('click', calculate);
+
+  // ===== 下載與分享 =====
+  function generateSummary() {
+    const lines = [
+      'Pensionwise 養老智 — 勞退勞保試算結果',
+      '================================',
+      '計算日期：' + new Date().toLocaleDateString('zh-TW'),
+      '',
+      '【輸入參數】',
+      '當前月投保薪資：NT$ ' + document.getElementById('insuranceSalary').value,
+      '當前年齡：' + document.getElementById('currentAge').value + ' 歲',
+      '預計退休年齡：' + document.getElementById('retireAge').value + ' 歲',
+      '勞退現有專戶金額：NT$ ' + document.getElementById('laborPensionBalance').value,
+      '勞保年資（已有）：' + document.getElementById('existingYears').value + ' 年',
+      '勞工自提比例：' + document.getElementById('voluntaryRate').value + '%',
+      '勞退專戶預期年收益率：' + document.getElementById('fundReturn').value + '%',
+      '勞保平均月投保薪資：NT$ ' + document.getElementById('avgSalary').value,
+      '',
+      '【計算結果】',
+      '退休後每月預估收入：NT$ ' + document.getElementById('rTotal').textContent + '/月',
+      '勞退新制月領：NT$ ' + document.getElementById('rPension').textContent + '/月',
+      '勞保年金月領：NT$ ' + document.getElementById('rInsurance').textContent + '/月',
+      '所得替代率：' + document.getElementById('rReplacePct').textContent,
+      '',
+      '免責聲明：以上計算結果僅為估算，不構成任何投資建議。',
+      '了解更多：https://pensionwisetool.com',
+    ];
+    return lines.join('\n');
+  }
+
+  document.getElementById('downloadBtn').addEventListener('click', () => {
+    const text = generateSummary();
+    const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = '勞退勞保試算結果_' + new Date().toISOString().slice(0, 10) + '.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  });
+
+  document.getElementById('shareBtn').addEventListener('click', async () => {
+    const text = generateSummary();
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: '勞退勞保試算結果 — Pensionwise 養老智',
+          text: text,
+          url: 'https://pensionwisetool.com/labor-pension.html'
+        });
+      } catch (e) {}
+    } else {
+      try {
+        await navigator.clipboard.writeText(text);
+        alert('計算結果已複製到剪貼簿');
+      } catch (e) {
+        alert('分享功能不支援此瀏覽器，請手動截圖分享');
+      }
+    }
+  });
 
   // 滚动出现
   const io = new IntersectionObserver(entries => {
