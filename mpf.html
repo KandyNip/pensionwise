@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="MPF 強積金計算器 — 香港僱員專屬，估算退休時強積金累積金額。僱主僱員各 5% 供款、自僱、自願性供款，含保守/平衡/增長基金預設回報。" />
+<meta name="theme-color" content="#047857" />
+<meta name="robots" content="index, follow" />
+<meta property="og:title" content="MPF 強積金計算器 — Pensionwise 養老智" />
+<meta property="og:description" content="香港僱員專屬強積金計算器，估算 65 歲提取時的累積金額。" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="zh_Hant" />
+<title>MPF 強積金計算器 — 香港退休強積金估算 | Pensionwise 養老智</title>
+<link rel="canonical" href="https://pensionwise.example.com/mpf.html" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" /></noscript>
+<style>
+  :root {
+    --green-900: #053d2c;
+    --green-800: #074d36;
+    --green-700: #047857;
+    --green-600: #0c8551;
+    --green-500: #10b981;
+    --green-100: #d1fae5;
+    --green-50: #ecfdf5;
+    --ink: #0a0a0a;
+    --ink-2: #1f2937;
+    --ink-3: #4b5563;
+    --ink-4: #6b7280;
+    --ink-5: #9ca3af;
+    --line: #e5e7eb;
+    --line-soft: #f1f1ee;
+    --bg: #ffffff;
+    --bg-2: #fafaf7;
+    --bg-3: #f4f4ef;
+    --yellow: #fbbf24;
+    --shadow-xs: 0 1px 2px rgba(10, 10, 10, 0.04);
+    --shadow-sm: 0 1px 2px rgba(10, 10, 10, 0.04), 0 2px 4px rgba(10, 10, 10, 0.04);
+    --shadow-md: 0 2px 4px rgba(10, 10, 10, 0.04), 0 8px 16px -4px rgba(10, 10, 10, 0.08);
+    --shadow-lg: 0 4px 8px -2px rgba(10, 10, 10, 0.05), 0 16px 32px -8px rgba(10, 10, 10, 0.12);
+    --shadow-green: 0 8px 24px -8px rgba(12, 133, 81, 0.35);
+    --sans: 'Manrope', 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+    --radius: 10px;
+    --radius-sm: 6px;
+    --radius-lg: 16px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; }
+  img { display: block; max-width: 100%; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  .announce { background: var(--green-900); color: #fff; font-size: 13px; text-align: center; padding: 10px 16px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+  .announce-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-500); }
+  .announce a { color: #fff; text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
+
+  .nav-wrap { position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, 0.92); backdrop-filter: saturate(180%) blur(12px); -webkit-backdrop-filter: saturate(180%) blur(12px); border-bottom: 1px solid var(--line-soft); }
+  .nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; max-width: 1200px; margin: 0 auto; }
+  .brand { display: flex; align-items: center; gap: 9px; }
+  .brand-logo { width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; color: var(--green-700); }
+  .brand-logo svg { width: 30px; height: 30px; }
+  .brand-name { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); font-family: 'Manrope', sans-serif; }
+  .brand-zh { font-size: 11px; color: var(--ink-4); font-weight: 500; letter-spacing: 0.2em; margin-left: 2px; padding-left: 9px; border-left: 1px solid var(--line); }
+  .nav-menu { display: flex; align-items: center; gap: 4px; }
+  .nav-menu > li { list-style: none; position: relative; }
+  .nav-menu > li > a, .nav-menu > li > button { padding: 10px 14px; font-size: 15px; font-weight: 600; color: var(--ink-2); background: none; border: none; border-radius: var(--radius-sm); display: inline-flex; align-items: center; gap: 4px; transition: background .15s, color .15s; }
+  .nav-menu > li > a:hover, .nav-menu > li > button:hover { background: var(--bg-3); color: var(--ink); }
+  .nav-menu .chev { width: 14px; height: 14px; opacity: 0.6; }
+  .dropdown { position: absolute; top: calc(100% + 8px); left: 0; background: #fff; border-radius: var(--radius); box-shadow: var(--shadow-lg); padding: 8px; min-width: 260px; opacity: 0; visibility: hidden; transform: translateY(-4px); transition: all .18s ease; z-index: 100; }
+  .nav-menu > li:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+  .nav-menu > li:focus-within .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+  .dropdown a { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; border-radius: var(--radius-sm); transition: background .12s; }
+  .dropdown a:hover { background: var(--bg-2); }
+  .dropdown .d-ico { width: 36px; height: 36px; border-radius: 9px; background: linear-gradient(135deg, var(--green-600), var(--green-800)); color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 10px -3px rgba(12, 133, 81, 0.35); }
+  .dropdown .d-ico svg { width: 18px; height: 18px; }
+  .dropdown .d-name { font-size: 14px; font-weight: 700; color: var(--ink); }
+  .dropdown .d-desc { font-size: 12px; color: var(--ink-4); margin-top: 2px; }
+  .nav-cta { background: var(--green-700); color: #fff; padding: 9px 16px; border-radius: 8px; font-size: 14px; font-weight: 600; border: none; transition: background .15s; }
+  .nav-cta:hover { background: var(--green-800); }
+
+  .page-hero { background: var(--bg); padding: 48px 0 40px; }
+  .page-hero .section-eyebrow { font-size: 13px; font-weight: 700; color: var(--green-700); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 12px; display: inline-flex; align-items: center; gap: 8px; }
+  .page-hero .section-eyebrow::before { content: ''; width: 24px; height: 2px; background: var(--green-600); }
+  .page-hero h1 { font-size: clamp(32px, 4vw, 44px); line-height: 1.12; letter-spacing: -0.025em; color: var(--ink); font-weight: 800; margin-bottom: 12px; }
+  .page-hero h1 .accent { color: var(--green-700); }
+  .page-hero p { font-size: 17px; color: var(--ink-3); max-width: 640px; line-height: 1.6; }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; font-size: 15px; padding: 14px 22px; border-radius: var(--radius); border: none; cursor: pointer; transition: all .15s ease; white-space: nowrap; }
+  .btn-primary { background: var(--green-700); color: #fff; box-shadow: var(--shadow-green); }
+  .btn-primary:hover { background: var(--green-800); transform: translateY(-1px); box-shadow: 0 12px 28px -8px rgba(12, 133, 81, 0.45); }
+  .btn-lg { padding: 16px 26px; font-size: 16px; }
+
+  .calc-section { background: var(--bg-2); padding: 48px 0 80px; }
+  .calc-layout { display: grid; grid-template-columns: 1.05fr 1fr; gap: 32px; align-items: start; }
+  .calc-card { background: #fff; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); padding: 32px; }
+  .calc-card-head { display: flex; align-items: flex-start; gap: 16px; padding-bottom: 24px; border-bottom: 1px solid var(--line-soft); margin-bottom: 24px; }
+  .calc-card-ico { width: 56px; height: 56px; border-radius: 14px; background: linear-gradient(135deg, var(--green-600), var(--green-800)); color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 8px 18px -6px rgba(12, 133, 81, 0.45); }
+  .calc-card-ico svg { width: 30px; height: 30px; }
+  .calc-card-title { font-size: 22px; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
+  .calc-card-desc { font-size: 14px; color: var(--ink-3); margin-top: 4px; }
+  .calc-form { display: grid; gap: 18px; }
+  .calc-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .calc-field label { display: block; font-size: 13px; font-weight: 600; color: var(--ink-2); margin-bottom: 6px; }
+  .calc-field label .hint { font-weight: 500; color: var(--ink-4); }
+  .calc-input, .calc-select { width: 100%; padding: 11px 14px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); font-family: inherit; font-size: 15px; font-weight: 500; color: var(--ink); transition: border-color .15s, box-shadow .15s; -moz-appearance: textfield; }
+  .calc-input::-webkit-outer-spin-button, .calc-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  .calc-input:focus, .calc-select:focus { outline: none; border-color: var(--green-600); box-shadow: 0 0 0 3px rgba(12, 133, 81, 0.15); }
+  .calc-slider-row { display: flex; align-items: center; gap: 14px; }
+  .calc-slider { -webkit-appearance: none; appearance: none; flex: 1; height: 4px; background: var(--line); border-radius: 2px; outline: none; cursor: pointer; }
+  .calc-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--green-700); border: 3px solid #fff; box-shadow: 0 2px 6px rgba(12, 133, 81, 0.4); cursor: pointer; transition: transform .12s; }
+  .calc-slider::-webkit-slider-thumb:hover { transform: scale(1.15); }
+  .calc-slider::-moz-range-thumb { width: 20px; height: 20px; border-radius: 50%; background: var(--green-700); border: 3px solid #fff; box-shadow: 0 2px 6px rgba(12, 133, 81, 0.4); cursor: pointer; }
+  .calc-slider-val { min-width: 56px; text-align: right; font-size: 15px; font-weight: 700; color: var(--green-700); font-variant-numeric: tabular-nums; }
+
+  /* checkbox 样式 */
+  .calc-check-row { display: flex; align-items: center; gap: 10px; }
+  .calc-check { width: 20px; height: 20px; accent-color: var(--green-700); cursor: pointer; }
+  .calc-check-label { font-size: 15px; font-weight: 600; color: var(--ink-2); cursor: pointer; }
+
+  .calc-result { background: #fff; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); padding: 32px; display: none; }
+  .calc-result.show { display: block; animation: fade .4s ease both; }
+  @keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .result-hero { background: linear-gradient(135deg, var(--green-50), #fff); border-radius: var(--radius); padding: 24px; margin-bottom: 20px; }
+  .result-hero-label { font-size: 13px; font-weight: 600; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 8px; }
+  .result-hero-amount { font-size: 40px; font-weight: 800; color: var(--ink); letter-spacing: -0.025em; line-height: 1; margin-bottom: 6px; font-variant-numeric: tabular-nums; }
+  .result-hero-amount .cur { font-size: 0.5em; color: var(--ink-3); font-weight: 700; margin-right: 4px; vertical-align: 0.2em; }
+  .result-hero-note { font-size: 14px; color: var(--ink-3); }
+
+  .breakdown-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+  .breakdown-cell { background: var(--bg-2); border-radius: var(--radius); padding: 14px; }
+  .breakdown-cell-label { font-size: 11px; font-weight: 700; color: var(--ink-4); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px; }
+  .breakdown-cell-val { font-size: 18px; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+  .breakdown-cell-val .cur { font-size: 0.65em; color: var(--ink-3); font-weight: 700; margin-right: 2px; }
+  .breakdown-cell-sub { font-size: 12px; color: var(--ink-4); margin-top: 2px; }
+
+  /* 时间线表格 */
+  .timeline-section { margin-bottom: 20px; }
+  .timeline-title { font-size: 14px; font-weight: 700; color: var(--ink-2); margin-bottom: 12px; }
+  .timeline-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .timeline-table th { text-align: left; padding: 8px 10px; background: var(--bg-3); color: var(--ink-3); font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; border-radius: var(--radius-sm); }
+  .timeline-table th:first-child { border-radius: var(--radius-sm) 0 0 var(--radius-sm); }
+  .timeline-table th:last-child { border-radius: 0 var(--radius-sm) var(--radius-sm) 0; text-align: right; }
+  .timeline-table td { padding: 10px; border-bottom: 1px solid var(--line-soft); color: var(--ink-2); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .timeline-table td:last-child { text-align: right; color: var(--ink); font-weight: 700; }
+  .timeline-table tr:last-child td { border-bottom: none; }
+
+  .warning-box { margin-top: 16px; padding: 12px 14px; background: #fef3c7; border-left: 3px solid #f59e0b; border-radius: var(--radius-sm); font-size: 13px; color: #92400e; line-height: 1.6; font-weight: 600; }
+  .info-box { margin-top: 16px; padding: 12px 14px; background: var(--green-50); border-left: 3px solid var(--green-600); border-radius: var(--radius-sm); font-size: 13px; color: var(--green-800); line-height: 1.6; font-weight: 600; }
+
+  .disclaimer-inline { margin-top: 20px; padding: 12px 14px; background: #fffbeb; border-left: 3px solid var(--yellow); border-radius: var(--radius-sm); font-size: 12px; color: var(--ink-3); line-height: 1.6; }
+
+  footer { background: #0a1f17; color: rgba(255, 255, 255, 0.75); padding: 64px 0 24px; }
+  .foot-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr; gap: 32px; padding-bottom: 40px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+  .foot-brand .brand-logo { margin-bottom: 16px; color: #fff; }
+  .foot-brand p { font-size: 14px; line-height: 1.65; max-width: 280px; margin-bottom: 20px; }
+  .foot-social { display: flex; gap: 10px; }
+  .foot-social a { width: 36px; height: 36px; border-radius: 8px; background: rgba(255, 255, 255, 0.08); display: flex; align-items: center; justify-content: center; color: #fff; transition: background .15s; }
+  .foot-social a:hover { background: var(--green-700); }
+  .foot-col h4 { font-size: 13px; font-weight: 700; color: #fff; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 16px; }
+  .foot-col ul { list-style: none; }
+  .foot-col li { margin-bottom: 10px; }
+  .foot-col a { font-size: 14px; color: rgba(255, 255, 255, 0.7); transition: color .15s; }
+  .foot-col a:hover { color: var(--green-500); }
+  .foot-bot { padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 13px; }
+  .foot-bot .legal { display: flex; gap: 20px; flex-wrap: wrap; }
+  .foot-bot .legal a { color: rgba(255, 255, 255, 0.6); }
+  .foot-bot .legal a:hover { color: #fff; }
+
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  .nav-toggle { display: none; width: 40px; height: 40px; background: none; border: none; cursor: pointer; flex-direction: column; justify-content: center; align-items: center; gap: 5px; padding: 0; }
+  .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 1px; transition: transform .25s, opacity .25s; }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .nav-drawer { display: none; position: fixed; top: 65px; left: 0; right: 0; bottom: 0; background: #fff; z-index: 90; overflow-y: auto; padding: 24px 24px 40px; transform: translateX(100%); transition: transform .28s ease; }
+  .nav-drawer.open { transform: translateX(0); }
+  .nav-drawer-section { margin-bottom: 28px; }
+  .nav-drawer-label { font-size: 11px; font-weight: 700; color: var(--ink-4); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; padding: 0 4px; }
+  .nav-drawer-item { display: flex; align-items: center; gap: 14px; padding: 14px 4px; border-bottom: 1px solid var(--line-soft); text-decoration: none; color: var(--ink); font-size: 16px; font-weight: 600; }
+  .nav-drawer-item:last-child { border-bottom: none; }
+  .nav-drawer-item .d-ico { width: 36px; height: 36px; border-radius: 9px; background: linear-gradient(135deg, var(--green-600), var(--green-800)); color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .nav-drawer-item .d-ico svg { width: 18px; height: 18px; }
+  .nav-drawer-item .d-desc { font-size: 13px; font-weight: 500; color: var(--ink-4); margin-top: 2px; }
+  .nav-drawer-simple { display: block; padding: 14px 4px; border-bottom: 1px solid var(--line-soft); text-decoration: none; color: var(--ink); font-size: 16px; font-weight: 600; }
+
+  @media (max-width: 980px) {
+    .calc-layout { grid-template-columns: 1fr; }
+    .foot-grid { grid-template-columns: 1fr 1fr; }
+    .nav-menu { display: none; }
+    .nav-toggle { display: flex; }
+    .nav-drawer { display: block; }
+  }
+  @media (max-width: 600px) {
+    .container { padding: 0 18px; }
+    .calc-row { grid-template-columns: 1fr; }
+    .breakdown-grid { grid-template-columns: 1fr; }
+    .foot-grid { grid-template-columns: 1fr; }
+    .calc-card, .calc-result { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="announce">
+  <span class="announce-dot"></span>
+  MPF 強積金計算器上線 — 估算你的退休累積金額
+  <a href="#calc">立即試用 →</a>
+</div>
+
+<div class="nav-wrap">
+  <nav class="nav">
+    <a href="index.html" class="brand">
+      <div class="brand-logo">
+        <svg viewBox="0 0 32 32" fill="none">
+          <path d="M4 14 C4 9, 9 5, 16 5 C23 5, 28 9, 28 14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M3 19 C3 14, 8 11, 16 11 C24 11, 29 14, 29 19" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+          <path d="M5 24 C5 19, 10 17, 16 17 C22 17, 27 19, 27 24" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" opacity="0.45"/>
+          <circle cx="16" cy="22" r="3.2" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="brand-name">Pensionwise</div>
+      <div class="brand-zh">養老智</div>
+    </a>
+    <ul class="nav-menu">
+      <li>
+        <a href="#calc">計算工具 <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="dropdown">
+          <a href="living-cost.html"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 11l9-7 9 7v9a2 2 0 0 1-2 2h-3v-7H10v7H5a2 2 0 0 1-2-2v-9z" fill="#fff"/><path d="M3 11l9-7 9 7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/><rect x="14.5" y="13" width="3" height="3" rx="0.4" fill="#047857"/><rect x="6.5" y="13" width="3" height="3" rx="0.4" fill="#047857"/></svg></span><div><div class="d-name">生活費規劃器</div><div class="d-desc">通脹下的真實退休開銷</div></div></a>
+          <a href="index.html#calc"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 1 0 10 10h-6a4 4 0 1 1-4-4V2z" fill="#fff" opacity="0.95"/><path d="M12 2a10 10 0 0 1 10 10h-6a4 4 0 0 0-4-4V2z" fill="#a7f3d0"/><circle cx="12" cy="12" r="3" fill="#fff"/></svg></span><div><div class="d-name">退休缺口計算器</div><div class="d-desc">算出退休那天還差多少</div></div></a>
+          <a href="mpf.html"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" fill="#fff"/><text x="12" y="16" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" font-weight="800" fill="#047857">HK$</text></svg></span><div><div class="d-name">MPF 強積金計算器</div><div class="d-desc">香港僱員專屬</div></div></a>
+          <a href="labor-pension.html"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M9 4 C9 4, 12 2, 15 4 L16 7 C18 8, 19 11, 19 14 C19 18, 16 21, 12 21 C8 21, 5 18, 5 14 C5 11, 6 8, 8 7 L9 4 Z" fill="#fff"/><path d="M9 4 C9 4, 12 2, 15 4" stroke="#fff" stroke-width="1.6" stroke-linecap="round" fill="none" opacity="0.6"/><rect x="11.5" y="12" width="1" height="2.2" rx="0.4" fill="#047857"/><rect x="11.5" y="15" width="1" height="1.6" rx="0.4" fill="#047857"/><circle cx="12" cy="14" r="4" stroke="#047857" stroke-width="1.2" fill="none" opacity="0.35"/></svg></span><div><div class="d-name">勞退勞保試算器</div><div class="d-desc">台灣勞工專屬</div></div></a>
+        </div>
+      </li>
+      <li><a href="index.html#resources">退休資訊</a></li>
+      <li><a href="index.html#about">關於我們</a></li>
+      <li><a href="#calc" class="nav-cta">開始規劃</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="開啟選單">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</div>
+
+<div class="nav-drawer" id="navDrawer">
+  <div class="nav-drawer-section">
+    <div class="nav-drawer-label">計算工具</div>
+    <a href="living-cost.html" class="nav-drawer-item" data-close>
+      <span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 11l9-7 9 7v9a2 2 0 0 1-2 2h-3v-7H10v7H5a2 2 0 0 1-2-2v-9z" fill="#fff"/><path d="M3 11l9-7 9 7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/><rect x="14.5" y="13" width="3" height="3" rx="0.4" fill="#047857"/><rect x="6.5" y="13" width="3" height="3" rx="0.4" fill="#047857"/></svg></span>
+      <div><div>生活費規劃器</div><div class="d-desc">通脹下的真實退休開銷</div></div>
+    </a>
+    <a href="index.html#calc" class="nav-drawer-item" data-close>
+      <span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 1 0 10 10h-6a4 4 0 1 1-4-4V2z" fill="#fff" opacity="0.95"/><path d="M12 2a10 10 0 0 1 10 10h-6a4 4 0 0 0-4-4V2z" fill="#a7f3d0"/><circle cx="12" cy="12" r="3" fill="#fff"/></svg></span>
+      <div><div>退休缺口計算器</div><div class="d-desc">算出退休那天還差多少</div></div>
+    </a>
+    <a href="mpf.html" class="nav-drawer-item" data-close>
+      <span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" fill="#fff"/><text x="12" y="16" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" font-weight="800" fill="#047857">HK$</text></svg></span>
+      <div><div>MPF 強積金計算器</div><div class="d-desc">香港僱員專屬</div></div>
+    </a>
+    <a href="labor-pension.html" class="nav-drawer-item" data-close>
+      <span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M9 4 C9 4, 12 2, 15 4 L16 7 C18 8, 19 11, 19 14 C19 18, 16 21, 12 21 C8 21, 5 18, 5 14 C5 11, 6 8, 8 7 L9 4 Z" fill="#fff"/><path d="M9 4 C9 4, 12 2, 15 4" stroke="#fff" stroke-width="1.6" stroke-linecap="round" fill="none" opacity="0.6"/><rect x="11.5" y="12" width="1" height="2.2" rx="0.4" fill="#047857"/><rect x="11.5" y="15" width="1" height="1.6" rx="0.4" fill="#047857"/><circle cx="12" cy="14" r="4" stroke="#047857" stroke-width="1.2" fill="none" opacity="0.35"/></svg></span>
+      <div><div>勞退勞保試算器</div><div class="d-desc">台灣勞工專屬</div></div>
+    </a>
+  </div>
+  <div class="nav-drawer-section">
+    <div class="nav-drawer-label">其他</div>
+    <a href="index.html#resources" class="nav-drawer-simple" data-close>退休資訊</a>
+    <a href="index.html#about" class="nav-drawer-simple" data-close>關於我們</a>
+  </div>
+</div>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-eyebrow">香港專屬 · MPF</div>
+      <h1>你的強積金，<br/>退休時能<span class="accent">累積多少</span>？</h1>
+      <p>按香港強積金制度規則，輸入月入息、年齡、現有結餘與基金類型，估算退休提取時的 MPF 累積金額。僱主僱員各 5% 供款、自僱人士、自願性供款全部支援。</p>
+    </div>
+  </div>
+</section>
+
+<section id="calc" class="calc-section">
+  <div class="container">
+    <div class="calc-layout">
+      <div class="calc-card reveal">
+        <div class="calc-card-head">
+          <div class="calc-card-ico">
+            <svg viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="9.5" fill="#fff"/>
+              <circle cx="12" cy="12" r="9.5" stroke="#fff" stroke-width="1.2" fill="none" opacity="0.3"/>
+              <text x="12" y="16" text-anchor="middle" font-family="Manrope, sans-serif" font-size="12" font-weight="800" fill="#047857">HK$</text>
+            </svg>
+          </div>
+          <div>
+            <div class="calc-card-title">MPF 強積金計算器</div>
+            <div class="calc-card-desc">香港專屬 · 貨幣固定為 HKD</div>
+          </div>
+        </div>
+        <form class="calc-form" id="mpfForm" onsubmit="return false;">
+          <div class="calc-field">
+            <label for="monthlyIncome">每月有關入息 <span class="hint">（HKD / 月）</span></label>
+            <input class="calc-input" type="number" id="monthlyIncome" value="25000" min="0" max="999999" step="500" />
+          </div>
+          <div class="calc-row">
+            <div class="calc-field">
+              <label for="currentAge">當前年齡 <span class="hint">（歲）</span></label>
+              <input class="calc-input" type="number" id="currentAge" value="30" min="18" max="64" />
+            </div>
+            <div class="calc-field">
+              <label for="withdrawAge">目標提取年齡 <span class="hint">（歲）</span></label>
+              <input class="calc-input" type="number" id="withdrawAge" value="65" min="60" max="75" />
+            </div>
+          </div>
+          <div class="calc-field">
+            <label for="currentBalance">現有 MPF 結餘 <span class="hint">（HKD）</span></label>
+            <input class="calc-input" type="number" id="currentBalance" value="100000" min="0" max="5000000" step="10000" />
+          </div>
+          <div class="calc-field">
+            <label for="fundType">基金類型 <span class="hint">（選擇後自動套用預設回報率）</span></label>
+            <select class="calc-select" id="fundType">
+              <option value="conservative">保守基金（債券/貨幣）· 3.0%</option>
+              <option value="balanced" selected>平衡基金（股債混合）· 5.0%</option>
+              <option value="growth">增長基金（股票為主）· 7.0%</option>
+            </select>
+          </div>
+          <div class="calc-field">
+            <label for="fundReturn">自選投資策略年回報率</label>
+            <div class="calc-slider-row">
+              <input class="calc-slider" type="range" id="fundReturn" min="-5" max="15" step="0.1" value="5" />
+              <span class="calc-slider-val" id="returnVal">5.0%</span>
+            </div>
+          </div>
+          <div class="calc-field">
+            <label for="voluntaryContribution">額外自願性供款 <span class="hint">（HKD / 月）</span></label>
+            <input class="calc-input" type="number" id="voluntaryContribution" value="0" min="0" max="50000" step="500" />
+          </div>
+          <div class="calc-field">
+            <div class="calc-check-row">
+              <input class="calc-check" type="checkbox" id="isSelfEmployed" />
+              <label class="calc-check-label" for="isSelfEmployed">我是自僱人士（沒有僱主供款）</label>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-lg" id="calcBtn" type="button" style="margin-top: 6px;">
+            立即計算
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </form>
+      </div>
+
+      <div class="calc-result reveal" id="result">
+        <div class="result-hero">
+          <div class="result-hero-label">退休時 MPF 預計總額</div>
+          <div class="result-hero-amount"><span class="cur">HK$</span><span id="rTotal">0</span></div>
+          <div class="result-hero-note" id="rNote">把這個數字對照你的退休目標。</div>
+        </div>
+
+        <div class="breakdown-grid">
+          <div class="breakdown-cell">
+            <div class="breakdown-cell-label">僱員供款累積</div>
+            <div class="breakdown-cell-val"><span class="cur">HK$</span><span id="rEmployee">0</span></div>
+            <div class="breakdown-cell-sub" id="rEmployeeSub">每月 HK$0</div>
+          </div>
+          <div class="breakdown-cell">
+            <div class="breakdown-cell-label">僱主供款累積</div>
+            <div class="breakdown-cell-val"><span class="cur">HK$</span><span id="rEmployer">0</span></div>
+            <div class="breakdown-cell-sub" id="rEmployerSub">每月 HK$0</div>
+          </div>
+          <div class="breakdown-cell">
+            <div class="breakdown-cell-label">自願性供款累積</div>
+            <div class="breakdown-cell-val"><span class="cur">HK$</span><span id="rVoluntary">0</span></div>
+            <div class="breakdown-cell-sub" id="rVoluntarySub">每月 HK$0</div>
+          </div>
+          <div class="breakdown-cell">
+            <div class="breakdown-cell-label">投資回報累積</div>
+            <div class="breakdown-cell-val"><span class="cur">HK$</span><span id="rReturn">0</span></div>
+            <div class="breakdown-cell-sub">複利增長部分</div>
+          </div>
+        </div>
+
+        <div class="timeline-section">
+          <div class="timeline-title">累積金額時間線（每 5 年）</div>
+          <table class="timeline-table">
+            <thead>
+              <tr><th>年齡</th><th>累積金額</th></tr>
+            </thead>
+            <tbody id="timelineBody"></tbody>
+          </table>
+        </div>
+
+        <div id="warningArea"></div>
+
+        <div class="disclaimer-inline">
+          本計算器基於强制性公積金計劃條例的現行規定進行估算。強積金管理局可能會調整供款上限及相關規定，請以積金局官方公佈的最新數據為準。計算結果僅為估算，不構成任何投資建議。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="about">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brand-logo">
+          <svg viewBox="0 0 32 32" fill="none">
+            <path d="M4 14 C4 9, 9 5, 16 5 C23 5, 28 9, 28 14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M3 19 C3 14, 8 11, 16 11 C24 11, 29 14, 29 19" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+            <path d="M5 24 C5 19, 10 17, 16 17 C22 17, 27 19, 27 24" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" opacity="0.45"/>
+            <circle cx="16" cy="22" r="3.2" fill="currentColor"/>
+          </svg>
+        </div>
+        <p>Pensionwise 養老智 — 為香港與台灣打工族而做的退休規劃平台。慢慢算，慢慢存，慢慢過好日子。</p>
+        <div class="foot-social">
+          <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.378 14.192 5 15.115 5H18V0h-3.808C10.596 0 9 1.583 9 4.615V8z"/></svg></a>
+          <a href="#" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>計算工具</h4>
+        <ul>
+          <li><a href="living-cost.html">生活費規劃</a></li>
+          <li><a href="index.html#calc">退休缺口</a></li>
+          <li><a href="mpf.html">MPF 強積金</a></li>
+          <li><a href="labor-pension.html">勞退勞保</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>退休資訊</h4>
+        <ul>
+          <li><a href="index.html#resources">香港退休</a></li>
+          <li><a href="index.html#resources">台灣退休</a></li>
+          <li><a href="index.html#resources">通用資訊</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>關於</h4>
+        <ul>
+          <li><a href="index.html#about">關於我們</a></li>
+          <li><a href="#">聯絡我們</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>法務</h4>
+        <ul>
+          <li><a href="#">隱私政策</a></li>
+          <li><a href="#">免責聲明</a></li>
+          <li><a href="#">使用條款</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 Pensionwise 養老智 · All rights reserved.</span>
+      <div class="legal">
+        <a href="#">隱私</a>
+        <a href="#">條款</a>
+        <a href="#">免責聲明</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ============ MPF 制度常量（PRD 4.3.2）============
+  // 数据来源：积金局 | 更新日期：2024-06
+  const MPF_CONSTANTS = {
+    MIN_INCOME_FOR_MPF: 7100,             // 最低有关入息水平（港币/月）
+    MAX_RELEVANT_INCOME: 30000,           // 最高有关入息水平（港币/月）—— 自 2019 年起
+    EMPLOYEE_CONTRIBUTION_RATE: 0.05,     // 雇员供款比例 5%
+    EMPLOYER_CONTRIBUTION_RATE: 0.05,     // 雇主供款比例 5%
+    MAX_MONTHLY_EMPLOYEE_CONTRIBUTION: 1500,   // 雇员月供上限 = 30000 × 5%
+    MAX_MONTHLY_EMPLOYER_CONTRIBUTION: 1500,   // 雇主月供上限
+    SELF_EMPLOYED_RATE: 0.05,             // 自雇人士供款比例
+    NORMAL_RETIREMENT_AGE: 65,            // 正常退休年龄
+    EARLY_RETIREMENT_AGE: 60,             // 提早退休年龄（可提取）
+  };
+
+  // 基金预设回报率（PRD 4.3.3）
+  const FUND_PRESETS = {
+    conservative: { rate: 3.0, label: '保守基金（債券/貨幣）' },
+    balanced:     { rate: 5.0, label: '平衡基金（股債混合）' },
+    growth:       { rate: 7.0, label: '增長基金（股票為主）' },
+  };
+
+  // 基金类型切换 → 自动更新回报率滑块
+  document.getElementById('fundType').addEventListener('change', e => {
+    const preset = FUND_PRESETS[e.target.value];
+    if (preset) {
+      document.getElementById('fundReturn').value = preset.rate;
+      document.getElementById('returnVal').textContent = preset.rate.toFixed(1) + '%';
+    }
+  });
+
+  // 回报率滑块联动
+  document.getElementById('fundReturn').addEventListener('input', e => {
+    document.getElementById('returnVal').textContent = parseFloat(e.target.value).toFixed(1) + '%';
+  });
+
+  // 货币格式化（固定 HK$）
+  function fmt(n) {
+    return 'HK$' + Math.round(Math.max(0, n)).toLocaleString('en-US');
+  }
+
+  // 计算
+  function calculate() {
+    const monthlyIncome = Math.max(0, parseFloat(document.getElementById('monthlyIncome').value) || 0);
+    const currentAge = parseInt(document.getElementById('currentAge').value) || 18;
+    const withdrawAge = parseInt(document.getElementById('withdrawAge').value) || 65;
+    const currentBalance = Math.max(0, parseFloat(document.getElementById('currentBalance').value) || 0);
+    const fundReturnRate = parseFloat(document.getElementById('fundReturn').value) / 100;
+    const isSelfEmployed = document.getElementById('isSelfEmployed').checked;
+    const voluntaryContribution = Math.max(0, parseFloat(document.getElementById('voluntaryContribution').value) || 0);
+
+    // 輸入校驗
+    if (!Number.isFinite(currentAge) || !Number.isFinite(withdrawAge) || !Number.isFinite(fundReturnRate)) {
+      alert('請輸入有效的數字');
+      return;
+    }
+    if (withdrawAge <= currentAge) {
+      alert('提取年齡需大於當前年齡');
+      return;
+    }
+
+    // 第一步：计算每月供款额（PRD 4.3.4）
+    let employeeMonthly = 0;
+    let employerMonthly = 0;
+    let selfEmployedMonthly = 0;
+
+    if (isSelfEmployed) {
+      // 自雇人士：没有雇主供款
+      if (monthlyIncome >= MPF_CONSTANTS.MIN_INCOME_FOR_MPF) {
+        const relevantIncome = Math.min(monthlyIncome, MPF_CONSTANTS.MAX_RELEVANT_INCOME);
+        selfEmployedMonthly = Math.min(relevantIncome * MPF_CONSTANTS.SELF_EMPLOYED_RATE, MPF_CONSTANTS.MAX_MONTHLY_EMPLOYEE_CONTRIBUTION);
+      }
+    } else {
+      // 受雇人士
+      if (monthlyIncome >= MPF_CONSTANTS.MIN_INCOME_FOR_MPF) {
+        const relevantIncome = Math.min(monthlyIncome, MPF_CONSTANTS.MAX_RELEVANT_INCOME);
+        employeeMonthly = Math.min(relevantIncome * MPF_CONSTANTS.EMPLOYEE_CONTRIBUTION_RATE, MPF_CONSTANTS.MAX_MONTHLY_EMPLOYEE_CONTRIBUTION);
+        employerMonthly = Math.min(relevantIncome * MPF_CONSTANTS.EMPLOYER_CONTRIBUTION_RATE, MPF_CONSTANTS.MAX_MONTHLY_EMPLOYER_CONTRIBUTION);
+      }
+    }
+
+    // 总月供款
+    const mandatoryMonthly = isSelfEmployed ? selfEmployedMonthly : (employeeMonthly + employerMonthly);
+    const totalMonthlyContribution = mandatoryMonthly + voluntaryContribution;
+
+    // 第二步：计算退休时累积金额（逐月复利）
+    const M = (withdrawAge - currentAge) * 12;
+    const monthlyR = fundReturnRate / 12;
+
+    // 现有余额的终值
+    const fvBalance = currentBalance * Math.pow(1 + monthlyR, M);
+
+    // 每月供款的年金终值
+    let fvContributions;
+    if (Math.abs(monthlyR) < 1e-9) {
+      fvContributions = totalMonthlyContribution * M;
+    } else {
+      fvContributions = totalMonthlyContribution * (Math.pow(1 + monthlyR, M) - 1) / monthlyR;
+    }
+
+    // 分别计算各部分累积（用于明细）
+    let fvEmployee = 0, fvEmployer = 0, fvVoluntary = 0;
+    const calcFV = (monthly) => {
+      if (monthly === 0) return 0;
+      if (Math.abs(monthlyR) < 1e-9) return monthly * M;
+      return monthly * (Math.pow(1 + monthlyR, M) - 1) / monthlyR;
+    };
+    if (isSelfEmployed) {
+      fvEmployee = calcFV(selfEmployedMonthly); // 自雇部分显示在雇员栏
+      fvEmployer = 0;
+    } else {
+      fvEmployee = calcFV(employeeMonthly);
+      fvEmployer = calcFV(employerMonthly);
+    }
+    fvVoluntary = calcFV(voluntaryContribution);
+
+    // 总累积金额
+    const totalAccumulated = fvBalance + fvContributions;
+    const totalContributed = currentBalance + fvEmployee + fvEmployer + fvVoluntary;
+    const investmentReturn = totalAccumulated - totalContributed;
+
+    // 显示主结果
+    document.getElementById('rTotal').textContent = Math.round(totalAccumulated).toLocaleString('en-US');
+
+    // 明细拆分
+    document.getElementById('rEmployee').textContent = Math.round(fvEmployee).toLocaleString('en-US');
+    document.getElementById('rEmployeeSub').textContent = isSelfEmployed ? `自僱每月 ${fmt(selfEmployedMonthly)}` : `每月 ${fmt(employeeMonthly)}`;
+    document.getElementById('rEmployer').textContent = Math.round(fvEmployer).toLocaleString('en-US');
+    document.getElementById('rEmployerSub').textContent = isSelfEmployed ? '自僱人士無僱主供款' : `每月 ${fmt(employerMonthly)}`;
+    document.getElementById('rVoluntary').textContent = Math.round(fvVoluntary).toLocaleString('en-US');
+    document.getElementById('rVoluntarySub').textContent = `每月 ${fmt(voluntaryContribution)}`;
+    document.getElementById('rReturn').textContent = Math.round(investmentReturn).toLocaleString('en-US');
+
+    // 时间线（每 5 年一个节点，最后一个节点为 withdrawAge）
+    const timelineBody = document.getElementById('timelineBody');
+    const calcAtAge = (age) => {
+      const monthsAtAge = (age - currentAge) * 12;
+      const fvBalAtAge = currentBalance * Math.pow(1 + monthlyR, monthsAtAge);
+      let fvConAtAge;
+      if (Math.abs(monthlyR) < 1e-9) {
+        fvConAtAge = totalMonthlyContribution * monthsAtAge;
+      } else {
+        fvConAtAge = totalMonthlyContribution * (Math.pow(1 + monthlyR, monthsAtAge) - 1) / monthlyR;
+      }
+      return fvBalAtAge + fvConAtAge;
+    };
+    let timelineHtml = '';
+    for (let age = currentAge; age <= withdrawAge; age += 5) {
+      timelineHtml += `<tr><td>${age} 歲</td><td>${fmt(calcAtAge(age))}</td></tr>`;
+    }
+    // 确保最后一个节点是 withdrawAge
+    if ((withdrawAge - currentAge) % 5 !== 0) {
+      timelineHtml += `<tr><td>${withdrawAge} 歲</td><td>${fmt(calcAtAge(withdrawAge))}</td></tr>`;
+    }
+    timelineBody.innerHTML = timelineHtml;
+
+    // 边界条件提示
+    let warnings = '';
+    let note = '把這個數字對照你的退休目標。';
+
+    if (monthlyIncome < MPF_CONSTANTS.MIN_INCOME_FOR_MPF) {
+      warnings += `<div class="warning-box">⚠️ 你的入息低於最低有關入息水平（HKD 7,100），無需供款強積金。月供顯示 0，但仍計算現有結餘的增長。${currentBalance === 0 ? '你目前無需供款，建議考慮其他退休儲蓄方式。' : ''}</div>`;
+    }
+    if (fundReturnRate < 0) {
+      warnings += `<div class="warning-box">⚠️ 負回報率將導致本金縮水，實際累積金額可能低於總供款額。</div>`;
+    }
+    if (withdrawAge < 65) {
+      warnings += `<div class="info-box">ℹ️ 提早退休提取（${withdrawAge} 歲）：年滿 60 歲且提早退休的人士，可選擇一筆過或分期提取強積金。65 歲後可自由選擇一次性、分期提取或繼續保留在計劃內投資。</div>`;
+    }
+    if (currentBalance === 0 && monthlyIncome < MPF_CONSTANTS.MIN_INCOME_FOR_MPF) {
+      note = '你目前無需供款強積金，建議考慮其他退休儲蓄方式（如自願性供款或個人投資）。';
+    }
+    document.getElementById('rNote').textContent = note;
+    document.getElementById('warningArea').innerHTML = warnings;
+
+    document.getElementById('result').classList.add('show', 'reveal-in');
+  }
+
+  document.getElementById('calcBtn').addEventListener('click', calculate);
+
+  // 滚动出现
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // 移动端汉堡菜单
+  (function() {
+    const toggle = document.getElementById('navToggle');
+    const drawer = document.getElementById('navDrawer');
+    if (!toggle || !drawer) return;
+    const setOpen = (open) => {
+      toggle.classList.toggle('open', open);
+      drawer.classList.toggle('open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+      toggle.setAttribute('aria-label', open ? '關閉選單' : '開啟選單');
+    };
+    toggle.addEventListener('click', () => setOpen(!drawer.classList.contains('open')));
+    drawer.querySelectorAll('[data-close]').forEach(el => { el.addEventListener('click', () => setOpen(false)); });
+    const mq = window.matchMedia('(min-width: 981px)');
+    mq.addEventListener('change', e => { if (e.matches) setOpen(false); });
+  })();
+</script>
+
+</body>
+</html>

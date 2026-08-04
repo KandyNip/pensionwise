@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="退休生活費規劃器 — 按通脹推算退休時每月真實開銷，含住屋、飲食、交通、醫療、休閒、其他六大類別細項。免費即用，純網頁計算。" />
+<meta name="theme-color" content="#047857" />
+<meta name="robots" content="index, follow" />
+<meta property="og:title" content="退休生活費規劃器 — Pensionwise 養老智" />
+<meta property="og:description" content="按通脹推算退休時的真實月開銷，含六大類別細項與增長曲線。" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="zh_Hant" />
+<title>退休生活費規劃器 — 通脹下的真實退休開銷 | Pensionwise 養老智</title>
+<link rel="canonical" href="https://pensionwise.example.com/living-cost.html" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" /></noscript>
+<style>
+  :root {
+    --green-900: #053d2c;
+    --green-800: #074d36;
+    --green-700: #047857;
+    --green-600: #0c8551;
+    --green-500: #10b981;
+    --green-100: #d1fae5;
+    --green-50: #ecfdf5;
+
+    --ink: #0a0a0a;
+    --ink-2: #1f2937;
+    --ink-3: #4b5563;
+    --ink-4: #6b7280;
+    --ink-5: #9ca3af;
+    --line: #e5e7eb;
+    --line-soft: #f1f1ee;
+    --bg: #ffffff;
+    --bg-2: #fafaf7;
+    --bg-3: #f4f4ef;
+    --yellow: #fbbf24;
+
+    --shadow-xs: 0 1px 2px rgba(10, 10, 10, 0.04);
+    --shadow-sm: 0 1px 2px rgba(10, 10, 10, 0.04), 0 2px 4px rgba(10, 10, 10, 0.04);
+    --shadow-md: 0 2px 4px rgba(10, 10, 10, 0.04), 0 8px 16px -4px rgba(10, 10, 10, 0.08);
+    --shadow-lg: 0 4px 8px -2px rgba(10, 10, 10, 0.05), 0 16px 32px -8px rgba(10, 10, 10, 0.12);
+    --shadow-green: 0 8px 24px -8px rgba(12, 133, 81, 0.35);
+
+    --sans: 'Manrope', 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+    --radius: 10px;
+    --radius-sm: 6px;
+    --radius-lg: 16px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; }
+  img { display: block; max-width: 100%; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  /* ============ 顶部公告栏 ============ */
+  .announce {
+    background: var(--green-900);
+    color: #fff;
+    font-size: 13px;
+    text-align: center;
+    padding: 10px 16px;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+  }
+  .announce-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-500); }
+  .announce a { color: #fff; text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
+
+  /* ============ 主导航 ============ */
+  .nav-wrap {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: saturate(180%) blur(12px);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 24px; max-width: 1200px; margin: 0 auto;
+  }
+  .brand { display: flex; align-items: center; gap: 9px; }
+  .brand-logo {
+    width: 30px; height: 30px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--green-700);
+  }
+  .brand-logo svg { width: 30px; height: 30px; }
+  .brand-name {
+    font-size: 22px; font-weight: 700; letter-spacing: -0.02em; color: var(--ink);
+    font-family: 'Manrope', sans-serif;
+  }
+  .brand-zh {
+    font-size: 11px; color: var(--ink-4); font-weight: 500;
+    letter-spacing: 0.2em; margin-left: 2px;
+    padding-left: 9px; border-left: 1px solid var(--line);
+  }
+  .nav-menu { display: flex; align-items: center; gap: 4px; }
+  .nav-menu > li { list-style: none; position: relative; }
+  .nav-menu > li > a, .nav-menu > li > button {
+    padding: 10px 14px; font-size: 15px; font-weight: 600; color: var(--ink-2);
+    background: none; border: none; border-radius: var(--radius-sm);
+    display: inline-flex; align-items: center; gap: 4px;
+    transition: background .15s, color .15s;
+  }
+  .nav-menu > li > a:hover, .nav-menu > li > button:hover {
+    background: var(--bg-3); color: var(--ink);
+  }
+  .nav-menu .chev { width: 14px; height: 14px; opacity: 0.6; }
+  .dropdown {
+    position: absolute; top: calc(100% + 8px); left: 0;
+    background: #fff; border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    padding: 8px; min-width: 260px;
+    opacity: 0; visibility: hidden; transform: translateY(-4px);
+    transition: all .18s ease;
+    z-index: 100;
+  }
+  .nav-menu > li:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+  .nav-menu > li:focus-within .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+  .dropdown a {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 10px 12px; border-radius: var(--radius-sm);
+    transition: background .12s;
+  }
+  .dropdown a:hover { background: var(--bg-2); }
+  .dropdown .d-ico { width: 36px; height: 36px; border-radius: 9px; background: linear-gradient(135deg, var(--green-600), var(--green-800)); color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 10px -3px rgba(12, 133, 81, 0.35); }
+  .dropdown .d-ico svg { width: 18px; height: 18px; }
+  .dropdown .d-name { font-size: 14px; font-weight: 700; color: var(--ink); }
+  .dropdown .d-desc { font-size: 12px; color: var(--ink-4); margin-top: 2px; }
+  .nav-region {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 6px 12px; border-radius: 999px;
+    background: var(--bg-3); font-size: 13px; font-weight: 600; color: var(--ink-2);
+    border: none; cursor: pointer;
+    position: relative;
+    transition: background .15s;
+  }
+  .nav-region:hover { background: var(--line-soft); }
+  .nav-region .globe { width: 14px; height: 14px; }
+  .nav-region .chev { width: 12px; height: 12px; margin-left: 2px; transition: transform .2s; }
+  .nav-region.open .chev { transform: rotate(180deg); }
+  .nav-region-menu {
+    position: absolute; top: calc(100% + 8px); right: 0;
+    background: #fff; border-radius: 12px;
+    box-shadow: 0 12px 32px -8px rgba(0,0,0,0.18), 0 2px 6px rgba(0,0,0,0.06);
+    border: 1px solid var(--line-soft);
+    padding: 6px; min-width: 200px;
+    opacity: 0; visibility: hidden; transform: translateY(-6px);
+    transition: opacity .18s, transform .18s, visibility .18s;
+    z-index: 100;
+  }
+  .nav-region.open .nav-region-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+  .nav-region-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 12px; border-radius: 8px;
+    cursor: pointer; font-size: 14px; font-weight: 600; color: var(--ink-2);
+    transition: background .12s;
+  }
+  .nav-region-item:hover { background: var(--bg-3); }
+  .nav-region-item.active { background: var(--green-50); color: var(--green-700); }
+  .nav-region-item .check { margin-left: auto; opacity: 0; }
+  .nav-region-item.active .check { opacity: 1; }
+  .nav-region-item .code { font-size: 11px; color: var(--ink-4); font-weight: 500; }
+  .nav-cta {
+    background: var(--green-700); color: #fff;
+    padding: 9px 16px; border-radius: 8px;
+    font-size: 14px; font-weight: 600;
+    border: none;
+    transition: background .15s;
+  }
+  .nav-cta:hover { background: var(--green-800); }
+
+  /* ============ 页面小 Hero ============ */
+  .page-hero {
+    background: var(--bg);
+    padding: 48px 0 40px;
+  }
+  .page-hero .section-eyebrow {
+    font-size: 13px; font-weight: 700; color: var(--green-700);
+    letter-spacing: 0.04em; text-transform: uppercase;
+    margin-bottom: 12px;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .page-hero .section-eyebrow::before {
+    content: ''; width: 24px; height: 2px; background: var(--green-600);
+  }
+  .page-hero h1 {
+    font-size: clamp(32px, 4vw, 44px);
+    line-height: 1.12; letter-spacing: -0.025em;
+    color: var(--ink); font-weight: 800;
+    margin-bottom: 12px;
+  }
+  .page-hero h1 .accent { color: var(--green-700); }
+  .page-hero p {
+    font-size: 17px; color: var(--ink-3); max-width: 640px; line-height: 1.6;
+  }
+
+  /* ============ 按钮 ============ */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    font-weight: 700; font-size: 15px;
+    padding: 14px 22px; border-radius: var(--radius);
+    border: none; cursor: pointer; transition: all .15s ease;
+    white-space: nowrap;
+  }
+  .btn-primary {
+    background: var(--green-700); color: #fff;
+    box-shadow: var(--shadow-green);
+  }
+  .btn-primary:hover { background: var(--green-800); transform: translateY(-1px); box-shadow: 0 12px 28px -8px rgba(12, 133, 81, 0.45); }
+  .btn-lg { padding: 16px 26px; font-size: 16px; }
+
+  /* ============ 计算器主区 ============ */
+  .calc-section { background: var(--bg-2); padding: 48px 0 80px; }
+  .calc-layout {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  .calc-card {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: 32px;
+  }
+  .calc-card-head {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--line-soft);
+    margin-bottom: 24px;
+  }
+  .calc-card-ico {
+    width: 56px; height: 56px; border-radius: 14px;
+    background: linear-gradient(135deg, var(--green-600), var(--green-800));
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 8px 18px -6px rgba(12, 133, 81, 0.45);
+  }
+  .calc-card-ico svg { width: 30px; height: 30px; }
+  .calc-card-title { font-size: 22px; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
+  .calc-card-desc { font-size: 14px; color: var(--ink-3); margin-top: 4px; }
+  .calc-form { display: grid; gap: 18px; }
+  .calc-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .calc-field label {
+    display: block;
+    font-size: 13px; font-weight: 600; color: var(--ink-2);
+    margin-bottom: 6px;
+  }
+  .calc-field label .hint { font-weight: 500; color: var(--ink-4); }
+  .calc-input, .calc-select {
+    width: 100%; padding: 11px 14px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    font-family: inherit; font-size: 15px; font-weight: 500;
+    color: var(--ink);
+    transition: border-color .15s, box-shadow .15s;
+    -moz-appearance: textfield;
+  }
+  .calc-input::-webkit-outer-spin-button,
+  .calc-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  .calc-input:focus, .calc-select:focus {
+    outline: none; border-color: var(--green-600);
+    box-shadow: 0 0 0 3px rgba(12, 133, 81, 0.15);
+  }
+  .calc-slider-row { display: flex; align-items: center; gap: 14px; }
+  .calc-slider {
+    -webkit-appearance: none; appearance: none;
+    flex: 1; height: 4px;
+    background: var(--line); border-radius: 2px;
+    outline: none; cursor: pointer;
+  }
+  .calc-slider::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--green-700); border: 3px solid #fff;
+    box-shadow: 0 2px 6px rgba(12, 133, 81, 0.4);
+    cursor: pointer; transition: transform .12s;
+  }
+  .calc-slider::-webkit-slider-thumb:hover { transform: scale(1.15); }
+  .calc-slider::-moz-range-thumb {
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--green-700); border: 3px solid #fff;
+    box-shadow: 0 2px 6px rgba(12, 133, 81, 0.4); cursor: pointer;
+  }
+  .calc-slider-val {
+    min-width: 56px; text-align: right;
+    font-size: 15px; font-weight: 700; color: var(--green-700);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* 结果卡 */
+  .calc-result {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: 32px;
+    display: none;
+  }
+  .calc-result.show { display: block; animation: fade .4s ease both; }
+  @keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .result-hero {
+    background: linear-gradient(135deg, var(--green-50), #fff);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+  .result-hero-label {
+    font-size: 13px; font-weight: 600; color: var(--ink-3);
+    text-transform: uppercase; letter-spacing: 0.04em;
+    margin-bottom: 8px;
+  }
+  .result-hero-amount {
+    font-size: 40px; font-weight: 800; color: var(--ink);
+    letter-spacing: -0.025em; line-height: 1; margin-bottom: 6px;
+    font-variant-numeric: tabular-nums;
+  }
+  .result-hero-amount .cur { font-size: 0.5em; color: var(--ink-3); font-weight: 700; margin-right: 4px; vertical-align: 0.2em; }
+  .result-hero-note { font-size: 14px; color: var(--ink-3); }
+
+  /* 对比块 */
+  .compare-box {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+    margin-bottom: 20px;
+  }
+  .compare-cell {
+    background: var(--bg-2); border-radius: var(--radius); padding: 16px;
+  }
+  .compare-cell.now { background: var(--bg-3); }
+  .compare-cell.retire { background: var(--green-50); }
+  .compare-cell-label { font-size: 12px; font-weight: 700; color: var(--ink-4); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px; }
+  .compare-cell-val { font-size: 22px; font-weight: 800; color: var(--ink); letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+  .compare-cell-val .cur { font-size: 0.6em; color: var(--ink-3); font-weight: 700; margin-right: 2px; }
+  .compare-cell-sub { font-size: 12px; color: var(--ink-4); margin-top: 4px; }
+  .compare-diff {
+    text-align: center; margin-top: -8px; margin-bottom: 20px;
+    font-size: 13px; color: var(--ink-3);
+  }
+  .compare-diff .num { font-weight: 800; color: #dc2626; font-size: 16px; }
+
+  /* 饼图 */
+  .pie-section { margin-bottom: 20px; }
+  .pie-title { font-size: 14px; font-weight: 700; color: var(--ink-2); margin-bottom: 16px; }
+  .pie-wrap { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .pie-chart {
+    width: 140px; height: 140px; border-radius: 50%;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .pie-chart::after {
+    content: ''; position: absolute; inset: 28px;
+    background: #fff; border-radius: 50%;
+  }
+  .pie-legend { flex: 1; min-width: 180px; }
+  .pie-legend-item {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 13px; color: var(--ink-3); margin-bottom: 8px;
+  }
+  .pie-legend-dot { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
+  .pie-legend-name { flex: 1; font-weight: 600; color: var(--ink-2); }
+  .pie-legend-val { font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+
+  /* 增长曲线 */
+  .growth-section { margin-bottom: 20px; }
+  .growth-title { font-size: 14px; font-weight: 700; color: var(--ink-2); margin-bottom: 12px; }
+  .growth-chart {
+    display: flex; align-items: flex-end; gap: 3px;
+    height: 100px; padding: 0 4px;
+    border-bottom: 1px solid var(--line);
+  }
+  .growth-bar {
+    flex: 1; min-width: 0;
+    background: linear-gradient(180deg, var(--green-500), var(--green-700));
+    border-radius: 2px 2px 0 0;
+    position: relative;
+    transition: height .5s ease;
+  }
+  .growth-bar:last-child { background: linear-gradient(180deg, #fbbf24, #d97706); }
+  .growth-axis { display: flex; justify-content: space-between; margin-top: 6px; font-size: 11px; color: var(--ink-4); font-weight: 600; }
+
+  /* 开支类别占比输入 */
+  .ratio-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    margin-top: 4px;
+  }
+  .ratio-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 12px;
+    background: var(--bg-2);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-sm);
+    transition: border-color .15s, background .15s;
+  }
+  .ratio-item:focus-within { border-color: var(--green-600); background: #fff; box-shadow: 0 0 0 3px rgba(12, 133, 81, 0.12); }
+  .ratio-item .dot { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
+  .ratio-item .name { flex: 1; font-size: 13px; font-weight: 600; color: var(--ink-2); }
+  .ratio-item input {
+    width: 54px; padding: 5px 6px; text-align: right;
+    border: 1px solid var(--line); border-radius: 5px;
+    font-family: inherit; font-size: 14px; font-weight: 700; color: var(--ink);
+    font-variant-numeric: tabular-nums; -moz-appearance: textfield;
+    transition: border-color .15s;
+  }
+  .ratio-item input:focus { outline: none; border-color: var(--green-600); }
+  .ratio-item input::-webkit-outer-spin-button,
+  .ratio-item input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  .ratio-item .pct { font-size: 12px; color: var(--ink-4); font-weight: 600; }
+  .ratio-foot {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 10px; font-size: 13px;
+  }
+  .ratio-sum-wrap { color: var(--ink-3); font-weight: 600; }
+  .ratio-sum { font-weight: 800; color: var(--green-700); font-variant-numeric: tabular-nums; }
+  .ratio-sum.bad { color: #dc2626; }
+  .ratio-reset {
+    background: none; border: none; cursor: pointer;
+    color: var(--green-700); font-size: 12px; font-weight: 700;
+    text-decoration: underline; text-underline-offset: 2px;
+    padding: 0;
+  }
+  .ratio-reset:hover { color: var(--green-800); }
+  .ratio-warn {
+    display: none; margin-top: 8px;
+    font-size: 12px; color: #dc2626; font-weight: 600;
+  }
+  .ratio-warn.show { display: block; }
+
+  .disclaimer-inline {
+    margin-top: 20px;
+    padding: 12px 14px;
+    background: #fffbeb;
+    border-left: 3px solid var(--yellow);
+    border-radius: var(--radius-sm);
+    font-size: 12px; color: var(--ink-3); line-height: 1.6;
+  }
+
+  /* ============ Footer ============ */
+  footer {
+    background: #0a1f17;
+    color: rgba(255, 255, 255, 0.75);
+    padding: 64px 0 24px;
+  }
+  .foot-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+    gap: 32px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .foot-brand .brand-logo { margin-bottom: 16px; color: #fff; }
+  .foot-brand p { font-size: 14px; line-height: 1.65; max-width: 280px; margin-bottom: 20px; }
+  .foot-social { display: flex; gap: 10px; }
+  .foot-social a {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; transition: background .15s;
+  }
+  .foot-social a:hover { background: var(--green-700); }
+  .foot-col h4 {
+    font-size: 13px; font-weight: 700; color: #fff;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .foot-col ul { list-style: none; }
+  .foot-col li { margin-bottom: 10px; }
+  .foot-col a { font-size: 14px; color: rgba(255, 255, 255, 0.7); transition: color .15s; }
+  .foot-col a:hover { color: var(--green-500); }
+  .foot-bot {
+    padding-top: 24px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px;
+    font-size: 13px;
+  }
+  .foot-bot .legal { display: flex; gap: 20px; flex-wrap: wrap; }
+  .foot-bot .legal a { color: rgba(255, 255, 255, 0.6); }
+  .foot-bot .legal a:hover { color: #fff; }
+
+  /* 滚动出现 */
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* 响应式 */
+  .nav-toggle {
+    display: none;
+    width: 40px; height: 40px;
+    background: none; border: none; cursor: pointer;
+    flex-direction: column; justify-content: center; align-items: center;
+    gap: 5px; padding: 0;
+  }
+  .nav-toggle span {
+    display: block; width: 22px; height: 2px;
+    background: var(--ink); border-radius: 1px;
+    transition: transform .25s, opacity .25s;
+  }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .nav-drawer {
+    display: none;
+    position: fixed; top: 65px; left: 0; right: 0; bottom: 0;
+    background: #fff;
+    z-index: 90;
+    overflow-y: auto;
+    padding: 24px 24px 40px;
+    transform: translateX(100%);
+    transition: transform .28s ease;
+  }
+  .nav-drawer.open { transform: translateX(0); }
+  .nav-drawer-section { margin-bottom: 28px; }
+  .nav-drawer-label {
+    font-size: 11px; font-weight: 700; color: var(--ink-4);
+    letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 12px; padding: 0 4px;
+  }
+  .nav-drawer-item {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 4px;
+    border-bottom: 1px solid var(--line-soft);
+    text-decoration: none; color: var(--ink);
+    font-size: 16px; font-weight: 600;
+  }
+  .nav-drawer-item:last-child { border-bottom: none; }
+  .nav-drawer-item .d-ico {
+    width: 36px; height: 36px; border-radius: 9px;
+    background: linear-gradient(135deg, var(--green-600), var(--green-800));
+    color: #fff; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .nav-drawer-item .d-ico svg { width: 18px; height: 18px; }
+  .nav-drawer-item .d-desc { font-size: 13px; font-weight: 500; color: var(--ink-4); margin-top: 2px; }
+  .nav-drawer-simple {
+    display: block; padding: 14px 4px;
+    border-bottom: 1px solid var(--line-soft);
+    text-decoration: none; color: var(--ink);
+    font-size: 16px; font-weight: 600;
+  }
+
+  @media (max-width: 980px) {
+    .calc-layout { grid-template-columns: 1fr; }
+    .foot-grid { grid-template-columns: 1fr 1fr; }
+    .nav-menu { display: none; }
+    .nav-toggle { display: flex; }
+    .nav-drawer { display: block; }
+  }
+  @media (max-width: 600px) {
+    .container { padding: 0 18px; }
+    .calc-row { grid-template-columns: 1fr; }
+    .compare-box { grid-template-columns: 1fr; }
+    .ratio-grid { grid-template-columns: 1fr; }
+    .foot-grid { grid-template-columns: 1fr; }
+    .calc-card, .calc-result { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 公告 -->
+<div class="announce">
+  <span class="announce-dot"></span>
+  退休生活費規劃器上線 — 通脹下你的真實退休開銷
+  <a href="#calc">立即試用 →</a>
+</div>
+
+<!-- 导航 -->
+<div class="nav-wrap">
+  <nav class="nav">
+    <a href="index.html" class="brand">
+      <div class="brand-logo">
+        <svg viewBox="0 0 32 32" fill="none">
+          <path d="M4 14 C4 9, 9 5, 16 5 C23 5, 28 9, 28 14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M3 19 C3 14, 8 11, 16 11 C24 11, 29 14, 29 19" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+          <path d="M5 24 C5 19, 10 17, 16 17 C22 17, 27 19, 27 24" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" opacity="0.45"/>
+          <circle cx="16" cy="22" r="3.2" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="brand-name">Pensionwise</div>
+      <div class="brand-zh">養老智</div>
+    </a>
+    <ul class="nav-menu">
+      <li>
+        <a href="#calc">計算工具 <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="dropdown">
+          <a href="living-cost.html"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 11l9-7 9 7v9a2 2 0 0 1-2 2h-3v-7H10v7H5a2 2 0 0 1-2-2v-9z" fill="#fff"/><path d="M3 11l9-7 9 7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/><rect x="14.5" y="13" width="3" height="3" rx="0.4" fill="#047857"/><rect x="6.5" y="13" width="3" height="3" rx="0.4" fill="#047857"/></svg></span><div><div class="d-name">生活費規劃器</div><div class="d-desc">通脹下的真實退休開銷</div></div></a>
+          <a href="index.html#calc"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 1 0 10 10h-6a4 4 0 1 1-4-4V2z" fill="#fff" opacity="0.95"/><path d="M12 2a10 10 0 0 1 10 10h-6a4 4 0 0 0-4-4V2z" fill="#a7f3d0"/><circle cx="12" cy="12" r="3" fill="#fff"/></svg></span><div><div class="d-name">退休缺口計算器</div><div class="d-desc">算出退休那天還差多少</div></div></a>
+          <a href="mpf.html"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" fill="#fff"/><text x="12" y="16" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" font-weight="800" fill="#047857">HK$</text></svg></span><div><div class="d-name">MPF 強積金計算器</div><div class="d-desc">香港僱員專屬</div></div></a>
+          <a href="labor-pension.html"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M9 4 C9 4, 12 2, 15 4 L16 7 C18 8, 19 11, 19 14 C19 18, 16 21, 12 21 C8 21, 5 18, 5 14 C5 11, 6 8, 8 7 L9 4 Z" fill="#fff"/><path d="M9 4 C9 4, 12 2, 15 4" stroke="#fff" stroke-width="1.6" stroke-linecap="round" fill="none" opacity="0.6"/><rect x="11.5" y="12" width="1" height="2.2" rx="0.4" fill="#047857"/><rect x="11.5" y="15" width="1" height="1.6" rx="0.4" fill="#047857"/><circle cx="12" cy="14" r="4" stroke="#047857" stroke-width="1.2" fill="none" opacity="0.35"/></svg></span><div><div class="d-name">勞退勞保試算器</div><div class="d-desc">台灣勞工專屬</div></div></a>
+        </div>
+      </li>
+      <li><a href="index.html#resources">退休資訊</a></li>
+      <li><a href="index.html#about">關於我們</a></li>
+      <li>
+        <button class="nav-region" id="navRegionBtn">
+          <svg class="globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span id="navRegionLabel">香港</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          <div class="nav-region-menu">
+            <div class="nav-region-item active" data-region="hk">
+              <div><div>香港</div><div class="code">HKD 港幣</div></div>
+              <svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            </div>
+            <div class="nav-region-item" data-region="tw">
+              <div><div>台灣</div><div class="code">TWD 新台幣</div></div>
+              <svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            </div>
+          </div>
+        </button>
+      </li>
+      <li><a href="#calc" class="nav-cta">開始規劃</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="開啟選單">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</div>
+
+<!-- 移动端抽屉菜单 -->
+<div class="nav-drawer" id="navDrawer">
+  <div class="nav-drawer-section">
+    <div class="nav-drawer-label">計算工具</div>
+    <a href="living-cost.html" class="nav-drawer-item" data-close>
+      <span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 11l9-7 9 7v9a2 2 0 0 1-2 2h-3v-7H10v7H5a2 2 0 0 1-2-2v-9z" fill="#fff"/><path d="M3 11l9-7 9 7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/><rect x="14.5" y="13" width="3" height="3" rx="0.4" fill="#047857"/><rect x="6.5" y="13" width="3" height="3" rx="0.4" fill="#047857"/></svg></span>
+      <div><div>生活費規劃器</div><div class="d-desc">通脹下的真實退休開銷</div></div>
+    </a>
+    <a href="index.html#calc" class="nav-drawer-item" data-close>
+      <span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 1 0 10 10h-6a4 4 0 1 1-4-4V2z" fill="#fff" opacity="0.95"/><path d="M12 2a10 10 0 0 1 10 10h-6a4 4 0 0 0-4-4V2z" fill="#a7f3d0"/><circle cx="12" cy="12" r="3" fill="#fff"/></svg></span>
+      <div><div>退休缺口計算器</div><div class="d-desc">算出退休那天還差多少</div></div>
+    </a>
+    <a href="mpf.html" class="nav-drawer-item" data-close>
+      <span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" fill="#fff"/><text x="12" y="16" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" font-weight="800" fill="#047857">HK$</text></svg></span>
+      <div><div>MPF 強積金計算器</div><div class="d-desc">香港僱員專屬</div></div>
+    </a>
+    <a href="labor-pension.html" class="nav-drawer-item" data-close>
+      <span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M9 4 C9 4, 12 2, 15 4 L16 7 C18 8, 19 11, 19 14 C19 18, 16 21, 12 21 C8 21, 5 18, 5 14 C5 11, 6 8, 8 7 L9 4 Z" fill="#fff"/><path d="M9 4 C9 4, 12 2, 15 4" stroke="#fff" stroke-width="1.6" stroke-linecap="round" fill="none" opacity="0.6"/><rect x="11.5" y="12" width="1" height="2.2" rx="0.4" fill="#047857"/><rect x="11.5" y="15" width="1" height="1.6" rx="0.4" fill="#047857"/><circle cx="12" cy="14" r="4" stroke="#047857" stroke-width="1.2" fill="none" opacity="0.35"/></svg></span>
+      <div><div>勞退勞保試算器</div><div class="d-desc">台灣勞工專屬</div></div>
+    </a>
+  </div>
+  <div class="nav-drawer-section">
+    <div class="nav-drawer-label">其他</div>
+    <a href="index.html#resources" class="nav-drawer-simple" data-close>退休資訊</a>
+    <a href="index.html#about" class="nav-drawer-simple" data-close>關於我們</a>
+  </div>
+</div>
+
+<!-- 页面小 Hero -->
+<section class="page-hero">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-eyebrow">生活費規劃</div>
+      <h1>通脹下，退休每月<br/>到底要花<span class="accent">多少錢</span>？</h1>
+      <p>輸入目前每月開銷，按通脹率與退休年數推算退休時的真實月開銷。住屋、飲食、交通、醫療、休閒、其他六大類別逐一拆分，看清錢花到哪裡。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 计算器主区 -->
+<section id="calc" class="calc-section">
+  <div class="container">
+    <div class="calc-layout">
+      <!-- 表单卡 -->
+      <div class="calc-card reveal">
+        <div class="calc-card-head">
+          <div class="calc-card-ico">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M3 11l9-7 9 7v9a2 2 0 0 1-2 2h-3v-7H10v7H5a2 2 0 0 1-2-2v-9z" fill="#fff"/>
+              <path d="M3 11l9-7 9 7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+              <rect x="14.5" y="13" width="3" height="3" rx="0.4" fill="#047857"/>
+              <rect x="6.5" y="13" width="3" height="3" rx="0.4" fill="#047857"/>
+            </svg>
+          </div>
+          <div>
+            <div class="calc-card-title">退休生活費規劃器</div>
+            <div class="calc-card-desc">通用版 · 支援 HKD / TWD 貨幣切換</div>
+          </div>
+        </div>
+        <form class="calc-form" id="lcForm" onsubmit="return false;">
+          <div class="calc-field">
+            <label for="currentExpense">當前每月生活開銷 <span class="hint">（<span id="curLabel">HKD</span> / 月）</span></label>
+            <input class="calc-input" type="number" id="currentExpense" value="15000" min="2000" max="200000" step="1000" />
+          </div>
+          <div class="calc-row">
+            <div class="calc-field">
+              <label for="yearsToRetire">距退休年數 <span class="hint">（年）</span></label>
+              <input class="calc-input" type="number" id="yearsToRetire" value="20" min="1" max="50" />
+            </div>
+            <div class="calc-field">
+              <label for="regionSel">地區</label>
+              <select class="calc-select" id="regionSel">
+                <option value="hk">香港 · HKD 港幣</option>
+                <option value="tw">台灣 · TWD 新台幣</option>
+              </select>
+            </div>
+          </div>
+          <div class="calc-field">
+            <label for="inflation">預期年通脹率</label>
+            <div class="calc-slider-row">
+              <input class="calc-slider" type="range" id="inflation" min="0" max="10" step="0.1" value="2.5" />
+              <span class="calc-slider-val" id="infVal">2.5%</span>
+            </div>
+          </div>
+          <div class="calc-field">
+            <label for="lifestyle">退休後生活水平調整 <span class="hint">（80% = 降一檔，100% = 維持，120% = 醫療增）</span></label>
+            <div class="calc-slider-row">
+              <input class="calc-slider" type="range" id="lifestyle" min="50" max="150" step="5" value="80" />
+              <span class="calc-slider-val" id="lifeVal">80%</span>
+            </div>
+          </div>
+          <div class="calc-field">
+            <label for="ratioGrid">六大開支類別占比 <span class="hint">（可自行調整，合計需 = 100%）</span></label>
+            <div class="ratio-grid" id="ratioGrid"></div>
+            <div class="ratio-foot">
+              <span class="ratio-sum-wrap">目前合計：<span class="ratio-sum" id="ratioSum">100</span>%</span>
+              <button type="button" class="ratio-reset" id="ratioReset">重置為預設</button>
+            </div>
+            <div class="ratio-warn" id="ratioWarn">⚠ 占比合計需等於 100%，請調整後再計算。</div>
+          </div>
+          <button class="btn btn-primary btn-lg" id="calcBtn" type="button" style="margin-top: 6px;">
+            立即計算
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </form>
+      </div>
+
+      <!-- 结果卡 -->
+      <div class="calc-result reveal" id="result">
+        <div class="result-hero">
+          <div class="result-hero-label">退休後每月需要（通脹調整後）</div>
+          <div class="result-hero-amount"><span class="cur" id="rCur">HK$</span><span id="rMonthly">0</span></div>
+          <div class="result-hero-note" id="rNote">把這個數字記下來，對照你的退休收入規劃。</div>
+        </div>
+
+        <div class="compare-box">
+          <div class="compare-cell now">
+            <div class="compare-cell-label">目前月開銷</div>
+            <div class="compare-cell-val"><span class="cur" id="cNowCur">HK$</span><span id="cNow">0</span></div>
+            <div class="compare-cell-sub">今天的購買力</div>
+          </div>
+          <div class="compare-cell retire">
+            <div class="compare-cell-label">退休時月開銷</div>
+            <div class="compare-cell-val"><span class="cur" id="cRetCur">HK$</span><span id="cRet">0</span></div>
+            <div class="compare-cell-sub">通脹調整後</div>
+          </div>
+        </div>
+        <div class="compare-diff">每月增加 <span class="num" id="cDiff">HK$0</span> · <span id="cDiffPct">0%</span> 增幅</div>
+
+        <div class="pie-section">
+          <div class="pie-title">六大開支類別拆分（退休時月額）</div>
+          <div class="pie-wrap">
+            <div class="pie-chart" id="pieChart"></div>
+            <div class="pie-legend" id="pieLegend"></div>
+          </div>
+        </div>
+
+        <div class="growth-section">
+          <div class="growth-title">月開銷增長曲線（從現在到退休）</div>
+          <div class="growth-chart" id="growthChart"></div>
+          <div class="growth-axis">
+            <span id="gStart">現在</span>
+            <span id="gMid">中途</span>
+            <span id="gEnd">退休</span>
+          </div>
+        </div>
+
+        <div class="disclaimer-inline">
+          以上計算結果僅為估算，基於你輸入的參數與預設假設。實際開銷取決於個人生活方式、居住地區及市場變化。此工具不構成任何投資建議。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer id="about">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brand-logo">
+          <svg viewBox="0 0 32 32" fill="none">
+            <path d="M4 14 C4 9, 9 5, 16 5 C23 5, 28 9, 28 14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M3 19 C3 14, 8 11, 16 11 C24 11, 29 14, 29 19" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+            <path d="M5 24 C5 19, 10 17, 16 17 C22 17, 27 19, 27 24" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" opacity="0.45"/>
+            <circle cx="16" cy="22" r="3.2" fill="currentColor"/>
+          </svg>
+        </div>
+        <p>Pensionwise 養老智 — 為香港與台灣打工族而做的退休規劃平台。慢慢算，慢慢存，慢慢過好日子。</p>
+        <div class="foot-social">
+          <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.378 14.192 5 15.115 5H18V0h-3.808C10.596 0 9 1.583 9 4.615V8z"/></svg></a>
+          <a href="#" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>計算工具</h4>
+        <ul>
+          <li><a href="living-cost.html">生活費規劃</a></li>
+          <li><a href="index.html#calc">退休缺口</a></li>
+          <li><a href="mpf.html">MPF 強積金</a></li>
+          <li><a href="labor-pension.html">勞退勞保</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>退休資訊</h4>
+        <ul>
+          <li><a href="index.html#resources">香港退休</a></li>
+          <li><a href="index.html#resources">台灣退休</a></li>
+          <li><a href="index.html#resources">通用資訊</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>關於</h4>
+        <ul>
+          <li><a href="index.html#about">關於我們</a></li>
+          <li><a href="#">聯絡我們</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>法務</h4>
+        <ul>
+          <li><a href="#">隱私政策</a></li>
+          <li><a href="#">免責聲明</a></li>
+          <li><a href="#">使用條款</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 Pensionwise 養老智 · All rights reserved.</span>
+      <div class="legal">
+        <a href="#">隱私</a>
+        <a href="#">條款</a>
+        <a href="#">免責聲明</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ============ 开支类别常量（PRD 4.2.3）============
+  const EXPENSE_CATEGORIES = [
+    { key: 'housing',   label: '住屋開支', defaultRatio: 0.30, inflationOverride: 0.03, color: '#047857' },
+    { key: 'food',      label: '飲食開支', defaultRatio: 0.20, inflationOverride: null,  color: '#0c8551' },
+    { key: 'transport', label: '交通開支', defaultRatio: 0.10, inflationOverride: null,  color: '#10b981' },
+    { key: 'medical',   label: '醫療健康', defaultRatio: 0.15, inflationOverride: 0.05, color: '#fbbf24' },
+    { key: 'leisure',   label: '休閒娛樂', defaultRatio: 0.10, inflationOverride: null,  color: '#f59e0b' },
+    { key: 'other',     label: '其他開支', defaultRatio: 0.15, inflationOverride: null,  color: '#9ca3af' },
+  ];
+
+  // ============ 渲染占比输入栏 ============
+  const ratioGrid = document.getElementById('ratioGrid');
+  const ratioSumEl = document.getElementById('ratioSum');
+  const ratioWarnEl = document.getElementById('ratioWarn');
+  const calcBtnEl = document.getElementById('calcBtn');
+
+  function renderRatioInputs() {
+    ratioGrid.innerHTML = EXPENSE_CATEGORIES.map(cat => `
+      <div class="ratio-item">
+        <span class="dot" style="background:${cat.color}"></span>
+        <span class="name">${cat.label}</span>
+        <input type="number" min="0" max="100" step="1" value="${Math.round(cat.defaultRatio * 100)}" data-key="${cat.key}" aria-label="${cat.label}占比" />
+        <span class="pct">%</span>
+      </div>
+    `).join('');
+    ratioGrid.querySelectorAll('input').forEach(inp => {
+      inp.addEventListener('input', updateRatioSum);
+    });
+    updateRatioSum();
+  }
+
+  function getRatios() {
+    const map = {};
+    ratioGrid.querySelectorAll('input').forEach(inp => {
+      const v = parseFloat(inp.value);
+      map[inp.dataset.key] = (isNaN(v) || v < 0) ? 0 : v / 100;
+    });
+    return map;
+  }
+
+  function updateRatioSum() {
+    const ratios = getRatios();
+    const sum = Object.values(ratios).reduce((s, v) => s + v, 0);
+    const sumPct = Math.round(sum * 100);
+    const ok = sumPct === 100;
+    ratioSumEl.textContent = sumPct;
+    ratioSumEl.classList.toggle('bad', !ok);
+    ratioWarnEl.classList.toggle('show', !ok);
+    calcBtnEl.disabled = !ok;
+    calcBtnEl.style.opacity = ok ? '1' : '0.55';
+    calcBtnEl.style.cursor = ok ? 'pointer' : 'not-allowed';
+  }
+
+  function resetRatios() {
+    ratioGrid.querySelectorAll('input').forEach(inp => {
+      const cat = EXPENSE_CATEGORIES.find(c => c.key === inp.dataset.key);
+      if (cat) inp.value = Math.round(cat.defaultRatio * 100);
+    });
+    updateRatioSum();
+  }
+
+  renderRatioInputs();
+  document.getElementById('ratioReset').addEventListener('click', resetRatios);
+
+  // 地区切换
+  let region = 'hk';
+  function updateRegion(r) {
+    region = r;
+    const cur = region === 'hk' ? 'HK$' : 'NT$';
+    const curFull = region === 'hk' ? 'HKD' : 'TWD';
+    const label = region === 'hk' ? '香港' : '台灣';
+    document.getElementById('curLabel').textContent = curFull;
+    document.getElementById('regionSel').value = r;
+    document.getElementById('navRegionLabel').textContent = label;
+    document.querySelectorAll('.nav-region-item').forEach(el => {
+      el.classList.toggle('active', el.dataset.region === r);
+    });
+    if (document.getElementById('result').classList.contains('show')) {
+      calculate();
+    }
+  }
+  document.getElementById('regionSel').addEventListener('change', e => updateRegion(e.target.value));
+
+  // 导航栏地区下拉菜单
+  (function() {
+    const btn = document.getElementById('navRegionBtn');
+    if (!btn) return;
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      btn.classList.toggle('open');
+    });
+    document.querySelectorAll('.nav-region-item').forEach(el => {
+      el.addEventListener('click', e => {
+        e.stopPropagation();
+        updateRegion(el.dataset.region);
+        btn.classList.remove('open');
+      });
+    });
+    document.addEventListener('click', () => btn.classList.remove('open'));
+  })();
+
+  // 滑块联动
+  document.getElementById('inflation').addEventListener('input', e => {
+    document.getElementById('infVal').textContent = parseFloat(e.target.value).toFixed(1) + '%';
+  });
+  document.getElementById('lifestyle').addEventListener('input', e => {
+    document.getElementById('lifeVal').textContent = e.target.value + '%';
+  });
+
+  // 货币格式化
+  function fmt(n) {
+    const cur = region === 'hk' ? 'HK$' : 'NT$';
+    return cur + Math.round(Math.max(0, n)).toLocaleString('en-US');
+  }
+  function curSymbol() { return region === 'hk' ? 'HK$' : 'NT$'; }
+
+  // 计算
+  function calculate() {
+    const currentExpense = Math.max(0, parseFloat(document.getElementById('currentExpense').value) || 0);
+    const yearsToRetire = parseInt(document.getElementById('yearsToRetire').value) || 1;
+    const inflationRate = parseFloat(document.getElementById('inflation').value) / 100;
+    const lifestyleFactor = parseFloat(document.getElementById('lifestyle').value) / 100;
+    const userRatios = getRatios();
+
+    // 輸入校驗
+    if (!Number.isFinite(currentExpense) || !Number.isFinite(yearsToRetire) ||
+        !Number.isFinite(inflationRate) || !Number.isFinite(lifestyleFactor)) {
+      alert('請輸入有效的數字');
+      return;
+    }
+    if (yearsToRetire <= 0) {
+      alert('距離退休年數需大於 0');
+      return;
+    }
+
+    // 第一步：各开支类别明细（使用用户输入的占比 + 类别专属通胀率）
+    const categoryResults = EXPENSE_CATEGORIES.map(cat => {
+      const ratio = userRatios[cat.key] !== undefined ? userRatios[cat.key] : cat.defaultRatio;
+      const catInflation = cat.inflationOverride !== null ? cat.inflationOverride : inflationRate;
+      const amount = currentExpense * ratio * lifestyleFactor * Math.pow(1 + catInflation, yearsToRetire);
+      return { ...cat, amount };
+    });
+
+    // 第二步：主结果 = 各类别明细之和（口径一致，避免主结果与饼图对不上）
+    const retirementMonthlyExpense = categoryResults.reduce((sum, c) => sum + c.amount, 0);
+
+    // 显示主结果
+    document.getElementById('rCur').textContent = curSymbol();
+    document.getElementById('rMonthly').textContent = Math.round(retirementMonthlyExpense).toLocaleString('en-US');
+
+    // 对比
+    const currentAdjusted = currentExpense * lifestyleFactor;
+    document.getElementById('cNowCur').textContent = curSymbol();
+    document.getElementById('cNow').textContent = Math.round(currentAdjusted).toLocaleString('en-US');
+    document.getElementById('cRetCur').textContent = curSymbol();
+    document.getElementById('cRet').textContent = Math.round(retirementMonthlyExpense).toLocaleString('en-US');
+    const diff = retirementMonthlyExpense - currentAdjusted;
+    document.getElementById('cDiff').textContent = fmt(diff);
+    document.getElementById('cDiffPct').textContent = currentAdjusted > 0 ? ((diff / currentAdjusted) * 100).toFixed(0) + '%' : '0%';
+
+    // 饼图（conic-gradient）— 防止 total=0 時除零
+    const total = categoryResults.reduce((s, c) => s + c.amount, 0);
+    let gradientParts = [];
+    let cumulative = 0;
+    categoryResults.forEach(cat => {
+      const pct = total > 0 ? (cat.amount / total) * 100 : 0;
+      gradientParts.push(`${cat.color} ${cumulative}% ${cumulative + pct}%`);
+      cumulative += pct;
+    });
+    document.getElementById('pieChart').style.background = `conic-gradient(${gradientParts.join(', ')})`;
+
+    // 饼图图例
+    const legendHtml = categoryResults.map(cat => `
+      <div class="pie-legend-item">
+        <span class="pie-legend-dot" style="background:${cat.color}"></span>
+        <span class="pie-legend-name">${cat.label}</span>
+        <span class="pie-legend-val">${fmt(cat.amount)}</span>
+      </div>
+    `).join('');
+    document.getElementById('pieLegend').innerHTML = legendHtml;
+
+    // 增长曲线
+    const steps = Math.min(yearsToRetire, 20);
+    const bars = [];
+    const maxVal = retirementMonthlyExpense;
+    for (let i = 0; i <= steps; i++) {
+      const year = (yearsToRetire / steps) * i;
+      const val = currentAdjusted * Math.pow(1 + inflationRate, year);
+      const heightPct = maxVal > 0 ? (val / maxVal) * 100 : 0;
+      bars.push(`<div class="growth-bar" style="height:${heightPct}%" title="第${Math.round(year)}年: ${fmt(val)}"></div>`);
+    }
+    document.getElementById('growthChart').innerHTML = bars.join('');
+    document.getElementById('gStart').textContent = '現在';
+    document.getElementById('gMid').textContent = `第${Math.round(yearsToRetire / 2)}年`;
+    document.getElementById('gEnd').textContent = `第${yearsToRetire}年`;
+
+    // 边界条件提示
+    let note = '把這個數字記下來，對照你的退休收入規劃。';
+    if (yearsToRetire > 40) {
+      note = '⚠️ 距退休超過 40 年，通脹影響將非常顯著。建議定期重新檢視。';
+    } else if (lifestyleFactor === 1) {
+      note = '退休後維持目前消費水平。把這個數字記下來，對照你的退休收入規劃。';
+    } else if (lifestyleFactor < 1) {
+      note = `退休後消費降至目前的 ${Math.round(lifestyleFactor * 100)}%。把這個數字記下來，對照你的退休收入規劃。`;
+    } else {
+      note = `退休後消費為目前的 ${Math.round(lifestyleFactor * 100)}%（如醫療開支增大）。把這個數字記下來，對照你的退休收入規劃。`;
+    }
+    document.getElementById('rNote').textContent = note;
+
+    document.getElementById('result').classList.add('show', 'reveal-in');
+  }
+
+  document.getElementById('calcBtn').addEventListener('click', calculate);
+
+  // 滚动出现
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ===== 移动端汉堡菜单 =====
+  (function() {
+    const toggle = document.getElementById('navToggle');
+    const drawer = document.getElementById('navDrawer');
+    if (!toggle || !drawer) return;
+
+    const setOpen = (open) => {
+      toggle.classList.toggle('open', open);
+      drawer.classList.toggle('open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+      toggle.setAttribute('aria-label', open ? '關閉選單' : '開啟選單');
+    };
+
+    toggle.addEventListener('click', () => {
+      setOpen(!drawer.classList.contains('open'));
+    });
+
+    drawer.querySelectorAll('[data-close]').forEach(el => {
+      el.addEventListener('click', () => setOpen(false));
+    });
+
+    const mq = window.matchMedia('(min-width: 981px)');
+    mq.addEventListener('change', e => { if (e.matches) setOpen(false); });
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1727 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Pensionwise 養老智 — 香港與台灣退休規劃工具，提供退休缺口計算器、MPF 強積金、勞退勞保試算與兩地退休資訊。純網頁，免費即用。" />
+<meta name="theme-color" content="#047857" />
+<meta name="robots" content="index, follow" />
+<meta property="og:title" content="Pensionwise 養老智 — 香港台灣退休規劃與計算工具" />
+<meta property="og:description" content="純網頁退休規劃工具，3 分鐘算出你的退休缺口。香港 MPF、台灣勞退、通用退休資訊。" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="zh_Hant" />
+<title>Pensionwise 養老智 — 香港台灣退休規劃與計算工具</title>
+<link rel="canonical" href="https://pensionwise.example.com/" />
+<link rel="preconnect" href="https://trae-api-cn.mchost.guru" crossorigin />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" /></noscript>
+<style>
+  :root {
+    /* NerdWallet 风深绿系 */
+    --green-900: #053d2c;
+    --green-800: #074d36;
+    --green-700: #047857;
+    --green-600: #0c8551;
+    --green-500: #10b981;
+    --green-100: #d1fae5;
+    --green-50: #ecfdf5;
+
+    --ink: #0a0a0a;
+    --ink-2: #1f2937;
+    --ink-3: #4b5563;
+    --ink-4: #6b7280;
+    --ink-5: #9ca3af;
+    --line: #e5e7eb;
+    --line-soft: #f1f1ee;
+    --bg: #ffffff;
+    --bg-2: #fafaf7;
+    --bg-3: #f4f4ef;
+    --yellow: #fbbf24;
+
+    /* 多层阴影，替代边框 */
+    --shadow-xs: 0 1px 2px rgba(10, 10, 10, 0.04);
+    --shadow-sm: 0 1px 2px rgba(10, 10, 10, 0.04), 0 2px 4px rgba(10, 10, 10, 0.04);
+    --shadow-md: 0 2px 4px rgba(10, 10, 10, 0.04), 0 8px 16px -4px rgba(10, 10, 10, 0.08);
+    --shadow-lg: 0 4px 8px -2px rgba(10, 10, 10, 0.05), 0 16px 32px -8px rgba(10, 10, 10, 0.12);
+    --shadow-green: 0 8px 24px -8px rgba(12, 133, 81, 0.35);
+
+    --sans: 'Manrope', 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+    --radius: 10px;
+    --radius-sm: 6px;
+    --radius-lg: 16px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; }
+  img { display: block; max-width: 100%; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  /* ============ 顶部公告栏 ============ */
+  .announce {
+    background: var(--green-900);
+    color: #fff;
+    font-size: 13px;
+    text-align: center;
+    padding: 10px 16px;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+  }
+  .announce-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-500); }
+  .announce a { color: #fff; text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
+
+  /* ============ 主导航 ============ */
+  .nav-wrap {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: saturate(180%) blur(12px);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 24px; max-width: 1200px; margin: 0 auto;
+  }
+  .brand { display: flex; align-items: center; gap: 9px; }
+  .brand-logo {
+    width: 30px; height: 30px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--green-700);
+  }
+  .brand-logo svg { width: 30px; height: 30px; }
+  .brand-name {
+    font-size: 22px; font-weight: 700; letter-spacing: -0.02em; color: var(--ink);
+    font-family: 'Manrope', sans-serif;
+  }
+  .brand-zh {
+    font-size: 11px; color: var(--ink-4); font-weight: 500;
+    letter-spacing: 0.2em; margin-left: 2px;
+    padding-left: 9px; border-left: 1px solid var(--line);
+  }
+  .nav-menu { display: flex; align-items: center; gap: 4px; }
+  .nav-menu > li { list-style: none; position: relative; }
+  .nav-menu > li > a, .nav-menu > li > button {
+    padding: 10px 14px; font-size: 15px; font-weight: 600; color: var(--ink-2);
+    background: none; border: none; border-radius: var(--radius-sm);
+    display: inline-flex; align-items: center; gap: 4px;
+    transition: background .15s, color .15s;
+  }
+  .nav-menu > li > a:hover, .nav-menu > li > button:hover {
+    background: var(--bg-3); color: var(--ink);
+  }
+  .nav-menu .chev { width: 14px; height: 14px; opacity: 0.6; }
+  .dropdown {
+    position: absolute; top: calc(100% + 8px); left: 0;
+    background: #fff; border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    padding: 8px; min-width: 260px;
+    opacity: 0; visibility: hidden; transform: translateY(-4px);
+    transition: all .18s ease;
+    z-index: 100;
+  }
+  .nav-menu > li:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+  .nav-menu > li:focus-within .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+  .dropdown a {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 10px 12px; border-radius: var(--radius-sm);
+    transition: background .12s;
+  }
+  .dropdown a:hover { background: var(--bg-2); }
+  .dropdown .d-ico { width: 36px; height: 36px; border-radius: 9px; background: linear-gradient(135deg, var(--green-600), var(--green-800)); color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 10px -3px rgba(12, 133, 81, 0.35); }
+  .dropdown .d-ico svg { width: 18px; height: 18px; }
+  .dropdown .d-name { font-size: 14px; font-weight: 700; color: var(--ink); }
+  .dropdown .d-desc { font-size: 12px; color: var(--ink-4); margin-top: 2px; }
+  .nav-region {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 6px 12px; border-radius: 999px;
+    background: var(--bg-3); font-size: 13px; font-weight: 600; color: var(--ink-2);
+    border: none; cursor: pointer;
+    position: relative;
+    transition: background .15s;
+  }
+  .nav-region:hover { background: var(--line-soft); }
+  .nav-region .globe { width: 14px; height: 14px; }
+  .nav-region .chev { width: 12px; height: 12px; margin-left: 2px; transition: transform .2s; }
+  .nav-region.open .chev { transform: rotate(180deg); }
+  .nav-region-menu {
+    position: absolute; top: calc(100% + 8px); right: 0;
+    background: #fff; border-radius: 12px;
+    box-shadow: 0 12px 32px -8px rgba(0,0,0,0.18), 0 2px 6px rgba(0,0,0,0.06);
+    border: 1px solid var(--line-soft);
+    padding: 6px; min-width: 200px;
+    opacity: 0; visibility: hidden; transform: translateY(-6px);
+    transition: opacity .18s, transform .18s, visibility .18s;
+    z-index: 100;
+  }
+  .nav-region.open .nav-region-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+  .nav-region-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 12px; border-radius: 8px;
+    cursor: pointer; font-size: 14px; font-weight: 600; color: var(--ink-2);
+    transition: background .12s;
+  }
+  .nav-region-item:hover { background: var(--bg-3); }
+  .nav-region-item.active { background: var(--green-50); color: var(--green-700); }
+  .nav-region-item .check { margin-left: auto; opacity: 0; }
+  .nav-region-item.active .check { opacity: 1; }
+  .nav-region-item .code { font-size: 11px; color: var(--ink-4); font-weight: 500; }
+  .nav-cta {
+    background: var(--green-700); color: #fff;
+    padding: 9px 16px; border-radius: 8px;
+    font-size: 14px; font-weight: 600;
+    border: none;
+    transition: background .15s;
+  }
+  .nav-cta:hover { background: var(--green-800); }
+
+  /* ============ Hero ============ */
+  .hero {
+    position: relative;
+    padding: 64px 0 80px;
+    overflow: hidden;
+    background: var(--bg);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--green-50); color: var(--green-800);
+    padding: 6px 14px; border-radius: 999px;
+    font-size: 13px; font-weight: 600; margin-bottom: 20px;
+  }
+  .hero-eyebrow .leaf { width: 14px; height: 14px; }
+  .hero h1 {
+    font-size: clamp(40px, 5vw, 56px);
+    line-height: 1.08; letter-spacing: -0.025em;
+    color: var(--ink); font-weight: 800;
+    margin-bottom: 20px;
+  }
+  .hero h1 .accent { color: var(--green-700); }
+  .hero-sub {
+    font-size: 18px; line-height: 1.6; color: var(--ink-3);
+    max-width: 520px; margin-bottom: 32px;
+  }
+  .hero-cta-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 28px; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    font-weight: 700; font-size: 15px;
+    padding: 14px 22px; border-radius: var(--radius);
+    border: none; cursor: pointer; transition: all .15s ease;
+    white-space: nowrap;
+  }
+  .btn-primary {
+    background: var(--green-700); color: #fff;
+    box-shadow: var(--shadow-green);
+  }
+  .btn-primary:hover { background: var(--green-800); transform: translateY(-1px); box-shadow: 0 12px 28px -8px rgba(12, 133, 81, 0.45); }
+  .btn-secondary {
+    background: #fff; color: var(--ink);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--line);
+  }
+  .btn-secondary:hover { background: var(--bg-2); }
+  .btn-ghost {
+    background: transparent; color: var(--green-700);
+    padding: 14px 8px;
+  }
+  .btn-ghost:hover { color: var(--green-800); }
+  .btn-lg { padding: 16px 26px; font-size: 16px; }
+
+  .hero-trust { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .hero-stars { display: flex; align-items: center; gap: 8px; }
+  .stars { display: inline-flex; gap: 2px; color: var(--yellow); }
+  .stars svg { width: 16px; height: 16px; }
+  .hero-trust-text { font-size: 13px; color: var(--ink-3); }
+  .hero-trust-text strong { color: var(--ink); font-weight: 700; }
+  .hero-trust-sep { width: 1px; height: 16px; background: var(--line); }
+  .hero-trust-item { font-size: 13px; color: var(--ink-3); }
+  .hero-trust-item strong { color: var(--ink); font-weight: 700; }
+
+  /* Hero 右侧：照片 + 浮卡 */
+  .hero-art { position: relative; }
+  .hero-photo {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    aspect-ratio: 4 / 4.2;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    background: var(--bg-3);
+  }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-photo::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(5, 61, 44, 0.35));
+  }
+  .hero-float {
+    position: absolute; bottom: -24px; left: -24px;
+    background: #fff;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    padding: 18px 20px;
+    display: flex; align-items: center; gap: 14px;
+    max-width: 280px;
+  }
+  .hero-float-ico {
+    width: 46px; height: 46px; border-radius: 11px;
+    background: linear-gradient(135deg, var(--green-600), var(--green-800));
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 6px 14px -4px rgba(12, 133, 81, 0.4);
+  }
+  .hero-float-ico svg { width: 24px; height: 24px; }
+  .hero-float-num { font-size: 22px; font-weight: 800; color: var(--ink); line-height: 1; letter-spacing: -0.02em; }
+  .hero-float-num .pct { color: var(--green-600); }
+  .hero-float-label { font-size: 12px; color: var(--ink-4); margin-top: 4px; }
+
+  /* ============ 信任统计条 ============ */
+  .stats-bar {
+    background: var(--green-900);
+    color: #fff;
+    padding: 36px 0;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .stat {
+    text-align: center;
+    padding: 0 16px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num {
+    font-size: 36px; font-weight: 800; line-height: 1;
+    color: #fff; letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .stat-num .unit { font-size: 0.55em; color: var(--green-500); margin-left: 2px; font-weight: 700; }
+  .stat-label {
+    font-size: 14px; color: rgba(255, 255, 255, 0.85);
+    line-height: 1.4;
+  }
+
+  /* ============ 通用 section 标题 ============ */
+  section { padding: 80px 0; }
+  .section-head { margin-bottom: 40px; max-width: 720px; }
+  .section-eyebrow {
+    font-size: 13px; font-weight: 700; color: var(--green-700);
+    letter-spacing: 0.04em; text-transform: uppercase;
+    margin-bottom: 12px;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .section-eyebrow::before {
+    content: ''; width: 24px; height: 2px; background: var(--green-600);
+  }
+  .section-title {
+    font-size: clamp(28px, 3.4vw, 38px);
+    line-height: 1.15; letter-spacing: -0.02em;
+    font-weight: 700; color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .section-sub {
+    font-size: 17px; color: var(--ink-3); line-height: 1.6;
+  }
+
+  /* ============ 工具卡 grid ============ */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .tool-card {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow .2s ease, transform .2s ease;
+    display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
+  }
+  .tool-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+  .tool-card-ico {
+    width: 52px; height: 52px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--green-600), var(--green-800));
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 14px -4px rgba(12, 133, 81, 0.4);
+  }
+  .tool-card-ico svg { width: 26px; height: 26px; }
+  .tool-card-cat {
+    font-size: 11px; font-weight: 700; color: var(--ink-4);
+    letter-spacing: 0.06em; text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .tool-card-name {
+    font-size: 20px; font-weight: 700; color: var(--ink);
+    margin-bottom: 8px; letter-spacing: -0.01em;
+  }
+  .tool-card-desc {
+    font-size: 14px; color: var(--ink-3); line-height: 1.6;
+    margin-bottom: 20px; flex: 1;
+  }
+  .tool-card-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 14px; font-weight: 700; color: var(--green-700);
+  }
+  .tool-card-link svg { width: 14px; height: 14px; transition: transform .15s; }
+  .tool-card:hover .tool-card-link svg { transform: translateX(3px); }
+  .tool-card-tag {
+    position: absolute; top: 16px; right: 16px;
+    font-size: 11px; font-weight: 700;
+    padding: 4px 9px; border-radius: 999px;
+    background: var(--bg-3); color: var(--ink-3);
+    display: inline-flex; align-items: center; gap: 5px;
+  }
+  .tool-card-tag svg { width: 14px; height: 10px; border-radius: 2px; }
+  .tool-card-tag.hk { background: #fef3c7; color: #92400e; }
+  .tool-card-tag.tw { background: #dbeafe; color: #1e40af; }
+  .tool-card-tag.featured { background: var(--green-700); color: #fff; }
+
+  /* ============ 计算器主区 ============ */
+  .calc-section { background: var(--bg-2); }
+  .calc-layout {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  .calc-card {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: 32px;
+  }
+  .calc-card-head {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--line-soft);
+    margin-bottom: 24px;
+  }
+  .calc-card-ico {
+    width: 56px; height: 56px; border-radius: 14px;
+    background: linear-gradient(135deg, var(--green-600), var(--green-800));
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 8px 18px -6px rgba(12, 133, 81, 0.45);
+  }
+  .calc-card-ico svg { width: 30px; height: 30px; }
+  .calc-card-title { font-size: 22px; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
+  .calc-card-desc { font-size: 14px; color: var(--ink-3); margin-top: 4px; }
+  .calc-form { display: grid; gap: 18px; }
+  .calc-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .calc-field label {
+    display: block;
+    font-size: 13px; font-weight: 600; color: var(--ink-2);
+    margin-bottom: 6px;
+  }
+  .calc-field label .hint { font-weight: 500; color: var(--ink-4); }
+  .calc-input, .calc-select {
+    width: 100%; padding: 11px 14px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    font-family: inherit; font-size: 15px; font-weight: 500;
+    color: var(--ink);
+    transition: border-color .15s, box-shadow .15s;
+    -moz-appearance: textfield;
+  }
+  .calc-input::-webkit-outer-spin-button,
+  .calc-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  .calc-input:focus, .calc-select:focus {
+    outline: none; border-color: var(--green-600);
+    box-shadow: 0 0 0 3px rgba(12, 133, 81, 0.15);
+  }
+  .calc-slider-row { display: flex; align-items: center; gap: 14px; }
+  .calc-slider {
+    -webkit-appearance: none; appearance: none;
+    flex: 1; height: 4px;
+    background: var(--line); border-radius: 2px;
+    outline: none; cursor: pointer;
+  }
+  .calc-slider::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--green-700); border: 3px solid #fff;
+    box-shadow: 0 2px 6px rgba(12, 133, 81, 0.4);
+    cursor: pointer; transition: transform .12s;
+  }
+  .calc-slider::-webkit-slider-thumb:hover { transform: scale(1.15); }
+  .calc-slider::-moz-range-thumb {
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--green-700); border: 3px solid #fff;
+    box-shadow: 0 2px 6px rgba(12, 133, 81, 0.4); cursor: pointer;
+  }
+  .calc-slider-val {
+    min-width: 56px; text-align: right;
+    font-size: 15px; font-weight: 700; color: var(--green-700);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* 结果卡 */
+  .calc-result {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: 32px;
+    display: none;
+  }
+  .calc-result.show { display: block; animation: fade .4s ease both; }
+  @keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .result-hero {
+    background: linear-gradient(135deg, var(--green-50), #fff);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+  .result-hero-label {
+    font-size: 13px; font-weight: 600; color: var(--ink-3);
+    text-transform: uppercase; letter-spacing: 0.04em;
+    margin-bottom: 8px;
+  }
+  .result-hero-amount {
+    font-size: 40px; font-weight: 800; color: var(--ink);
+    letter-spacing: -0.025em; line-height: 1; margin-bottom: 6px;
+    font-variant-numeric: tabular-nums;
+  }
+  .result-hero-amount .cur { font-size: 0.5em; color: var(--ink-3); font-weight: 700; margin-right: 4px; vertical-align: 0.2em; }
+  .result-hero-note { font-size: 14px; color: var(--ink-3); }
+  .result-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .result-cell {
+    background: var(--bg-2);
+    border-radius: var(--radius);
+    padding: 14px;
+  }
+  .result-cell-label {
+    font-size: 11px; font-weight: 700; color: var(--ink-4);
+    text-transform: uppercase; letter-spacing: 0.04em;
+    margin-bottom: 6px;
+  }
+  .result-cell-val {
+    font-size: 18px; font-weight: 700; color: var(--ink);
+    letter-spacing: -0.01em; font-variant-numeric: tabular-nums;
+  }
+  .result-cell-val.good { color: var(--green-700); }
+  .result-cell-val.bad { color: #dc2626; }
+  .result-cell-sub { font-size: 12px; color: var(--ink-4); margin-top: 2px; }
+  .progress-wrap { margin-top: 4px; }
+  .progress-meta { display: flex; justify-content: space-between; font-size: 12px; color: var(--ink-4); margin-bottom: 6px; font-weight: 600; }
+  .progress-bar {
+    height: 10px; background: var(--bg-3); border-radius: 5px; overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--green-500), var(--green-700));
+    border-radius: 5px;
+    transition: width .8s cubic-bezier(.2,.7,.2,1);
+  }
+  .progress-legend { display: flex; justify-content: space-between; margin-top: 8px; font-size: 12px; color: var(--ink-4); }
+  .disclaimer-inline {
+    margin-top: 20px;
+    padding: 12px 14px;
+    background: #fffbeb;
+    border-left: 3px solid var(--yellow);
+    border-radius: var(--radius-sm);
+    font-size: 12px; color: var(--ink-3); line-height: 1.6;
+  }
+
+  /* ============ 资源 / 文章 ============ */
+  .resources-grid {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 16px;
+    margin: 0 -8px;
+    padding-left: 8px;
+    padding-right: 8px;
+    scrollbar-width: none;
+  }
+  .resources-grid::-webkit-scrollbar { display: none; }
+  .res-card {
+    flex: 0 0 360px;
+    scroll-snap-align: start;
+    background: #fff;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow .2s, transform .2s;
+    display: flex; flex-direction: column;
+  }
+  .res-card.large { flex: 0 0 420px; }
+  .res-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+  .res-cover { aspect-ratio: 16 / 10; overflow: hidden; background: var(--bg-3); position: relative; }
+  .res-card.large .res-cover { aspect-ratio: 16 / 10; }
+  .res-cover img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+  .res-card:hover .res-cover img { transform: scale(1.03); }
+  .res-cat {
+    position: absolute; top: 14px; left: 14px;
+    background: #fff; color: var(--ink);
+    padding: 5px 10px; border-radius: 999px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .res-body { padding: 22px; flex: 1; display: flex; flex-direction: column; }
+  .res-meta {
+    font-size: 12px; color: var(--ink-4); font-weight: 600;
+    margin-bottom: 10px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .res-meta .sep { width: 3px; height: 3px; border-radius: 50%; background: var(--ink-5); }
+  .res-title {
+    font-size: 18px; font-weight: 700; color: var(--ink);
+    line-height: 1.35; letter-spacing: -0.01em;
+    margin-bottom: 10px;
+    transition: color .15s;
+  }
+  .res-card.large .res-title { font-size: 22px; }
+  .res-card:hover .res-title { color: var(--green-700); }
+  .res-excerpt { font-size: 14px; color: var(--ink-3); line-height: 1.6; flex: 1; }
+  .res-author {
+    margin-top: 16px; padding-top: 16px;
+    border-top: 1px solid var(--line-soft);
+    display: flex; align-items: center; gap: 10px;
+    font-size: 13px; color: var(--ink-3);
+  }
+  .res-author-av {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--green-500), var(--green-700));
+    color: #fff; font-weight: 700; font-size: 11px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .res-author strong { color: var(--ink); font-weight: 700; }
+  .res-nav {
+    display: flex; align-items: center; gap: 10px;
+    margin-top: 8px;
+  }
+  .res-nav-btn {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: #fff; border: 1px solid var(--line);
+    color: var(--ink-2); cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all .15s;
+  }
+  .res-nav-btn:hover { background: var(--green-700); color: #fff; border-color: var(--green-700); }
+  .res-nav-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .res-nav-btn:disabled:hover { background: #fff; color: var(--ink-2); border-color: var(--line); }
+  .res-nav-btn svg { width: 18px; height: 18px; }
+  .res-nav-count { font-size: 13px; color: var(--ink-4); font-weight: 600; margin-left: 4px; }
+
+  /* ============ CTA banner ============ */
+  .cta-banner {
+    background: var(--bg-2);
+    padding: 60px 0;
+  }
+  .cta-inner {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 32px; flex-wrap: wrap;
+  }
+  .cta-text h3 {
+    font-size: 26px; font-weight: 700; color: var(--ink);
+    letter-spacing: -0.015em; margin-bottom: 6px;
+  }
+  .cta-text p { font-size: 15px; color: var(--ink-3); }
+
+  /* ============ Footer ============ */
+  footer {
+    background: #0a1f17;
+    color: rgba(255, 255, 255, 0.75);
+    padding: 64px 0 24px;
+  }
+  .foot-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+    gap: 32px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .foot-brand .brand-logo { margin-bottom: 16px; }
+  .foot-brand p { font-size: 14px; line-height: 1.65; max-width: 280px; margin-bottom: 20px; }
+  .foot-social { display: flex; gap: 10px; }
+  .foot-social a {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; transition: background .15s;
+  }
+  .foot-social a:hover { background: var(--green-700); }
+  .foot-col h4 {
+    font-size: 13px; font-weight: 700; color: #fff;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .foot-col ul { list-style: none; }
+  .foot-col li { margin-bottom: 10px; }
+  .foot-col a { font-size: 14px; color: rgba(255, 255, 255, 0.7); transition: color .15s; }
+  .foot-col a:hover { color: var(--green-500); }
+  .foot-bot {
+    padding-top: 24px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px;
+    font-size: 13px;
+  }
+  .foot-bot .legal { display: flex; gap: 20px; flex-wrap: wrap; }
+  .foot-bot .legal a { color: rgba(255, 255, 255, 0.6); }
+  .foot-bot .legal a:hover { color: #fff; }
+
+  /* 滚动出现 */
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* 响应式 */
+  /* 汉堡菜单按钮 */
+  .nav-toggle {
+    display: none;
+    width: 40px; height: 40px;
+    background: none; border: none; cursor: pointer;
+    flex-direction: column; justify-content: center; align-items: center;
+    gap: 5px; padding: 0;
+  }
+  .nav-toggle span {
+    display: block; width: 22px; height: 2px;
+    background: var(--ink); border-radius: 1px;
+    transition: transform .25s, opacity .25s;
+  }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* 移动端抽屉菜单 */
+  .nav-drawer {
+    display: none;
+    position: fixed; top: 65px; left: 0; right: 0; bottom: 0;
+    background: #fff;
+    z-index: 90;
+    overflow-y: auto;
+    padding: 24px 24px 40px;
+    transform: translateX(100%);
+    transition: transform .28s ease;
+  }
+  .nav-drawer.open { transform: translateX(0); }
+  .nav-drawer-section { margin-bottom: 28px; }
+  .nav-drawer-label {
+    font-size: 11px; font-weight: 700; color: var(--ink-4);
+    letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 12px; padding: 0 4px;
+  }
+  .nav-drawer-item {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 4px;
+    border-bottom: 1px solid var(--line-soft);
+    text-decoration: none; color: var(--ink);
+    font-size: 16px; font-weight: 600;
+  }
+  .nav-drawer-item:last-child { border-bottom: none; }
+  .nav-drawer-item .d-ico {
+    width: 36px; height: 36px; border-radius: 9px;
+    background: linear-gradient(135deg, var(--green-600), var(--green-800));
+    color: #fff; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .nav-drawer-item .d-ico svg { width: 18px; height: 18px; }
+  .nav-drawer-item .d-desc { font-size: 13px; font-weight: 500; color: var(--ink-4); margin-top: 2px; }
+  .nav-drawer-simple {
+    display: block; padding: 14px 4px;
+    border-bottom: 1px solid var(--line-soft);
+    text-decoration: none; color: var(--ink);
+    font-size: 16px; font-weight: 600;
+  }
+  .nav-drawer-region {
+    display: flex; align-items: center; gap: 8px;
+    padding: 12px 14px; border-radius: 10px;
+    background: var(--bg-3); font-size: 15px; font-weight: 600;
+    color: var(--ink-2); border: none; width: 100%; cursor: pointer;
+    margin-bottom: 16px;
+  }
+  .nav-drawer-cta {
+    display: block; text-align: center;
+    background: var(--green-700); color: #fff;
+    padding: 14px; border-radius: 10px;
+    font-size: 16px; font-weight: 600; text-decoration: none;
+    margin-top: 8px;
+  }
+
+  @media (max-width: 980px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero-art { max-width: 460px; margin: 0 auto; }
+    .calc-layout { grid-template-columns: 1fr; }
+    .tools-grid { grid-template-columns: repeat(2, 1fr); }
+    .res-card, .res-card.large { flex: 0 0 80vw; }
+    .app-grid { grid-template-columns: 1fr; gap: 32px; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+    .stat:nth-child(2n) { border-right: none; }
+    .foot-grid { grid-template-columns: 1fr 1fr; }
+    .nav-menu { display: none; }
+    .nav-toggle { display: flex; }
+    .nav-drawer { display: block; }
+  }
+  @media (max-width: 600px) {
+    section { padding: 60px 0; }
+    .container { padding: 0 18px; }
+    .hero { padding: 40px 0 60px; }
+    .hero-float { left: 0; right: 0; bottom: -16px; max-width: none; }
+    .calc-row { grid-template-columns: 1fr; }
+    .result-grid { grid-template-columns: 1fr; }
+    .tools-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: 1fr; }
+    .stat { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 20px; }
+    .stat:last-child { border-bottom: none; }
+    .foot-grid { grid-template-columns: 1fr; }
+    .cta-inner { flex-direction: column; text-align: center; padding: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 公告 -->
+<div class="announce">
+  <span class="announce-dot"></span>
+  全新「退休缺口計算器」上線 — 3 分鐘算出你的退休金缺口
+  <a href="#calc">立即試用 →</a>
+</div>
+
+<!-- 导航 -->
+<div class="nav-wrap">
+  <nav class="nav">
+    <a href="#" class="brand">
+      <div class="brand-logo">
+        <svg viewBox="0 0 32 32" fill="none">
+          <path d="M4 14 C4 9, 9 5, 16 5 C23 5, 28 9, 28 14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M3 19 C3 14, 8 11, 16 11 C24 11, 29 14, 29 19" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+          <path d="M5 24 C5 19, 10 17, 16 17 C22 17, 27 19, 27 24" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" opacity="0.45"/>
+          <circle cx="16" cy="22" r="3.2" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="brand-name">Pensionwise</div>
+      <div class="brand-zh">養老智</div>
+    </a>
+    <ul class="nav-menu">
+      <li>
+        <a href="#tools">計算工具 <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="dropdown">
+          <a href="living-cost.html"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 11l9-7 9 7v9a2 2 0 0 1-2 2h-3v-7H10v7H5a2 2 0 0 1-2-2v-9z" fill="#fff"/><path d="M3 11l9-7 9 7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/><rect x="14.5" y="13" width="3" height="3" rx="0.4" fill="#047857"/><rect x="6.5" y="13" width="3" height="3" rx="0.4" fill="#047857"/></svg></span><div><div class="d-name">生活費規劃器</div><div class="d-desc">通脹下的真實退休開銷</div></div></a>
+          <a href="#calc"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 1 0 10 10h-6a4 4 0 1 1-4-4V2z" fill="#fff" opacity="0.95"/><path d="M12 2a10 10 0 0 1 10 10h-6a4 4 0 0 0-4-4V2z" fill="#a7f3d0"/><circle cx="12" cy="12" r="3" fill="#fff"/></svg></span><div><div class="d-name">退休缺口計算器</div><div class="d-desc">算出退休那天還差多少</div></div></a>
+          <a href="mpf.html"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" fill="#fff"/><text x="12" y="16" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" font-weight="800" fill="#047857">HK$</text></svg></span><div><div class="d-name">MPF 強積金計算器</div><div class="d-desc">香港僱員專屬</div></div></a>
+          <a href="labor-pension.html"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M9 4 C9 4, 12 2, 15 4 L16 7 C18 8, 19 11, 19 14 C19 18, 16 21, 12 21 C8 21, 5 18, 5 14 C5 11, 6 8, 8 7 L9 4 Z" fill="#fff"/><path d="M9 4 C9 4, 12 2, 15 4" stroke="#fff" stroke-width="1.6" stroke-linecap="round" fill="none" opacity="0.6"/><rect x="11.5" y="12" width="1" height="2.2" rx="0.4" fill="#047857"/><rect x="11.5" y="15" width="1" height="1.6" rx="0.4" fill="#047857"/><circle cx="12" cy="14" r="4" stroke="#047857" stroke-width="1.2" fill="none" opacity="0.35"/></svg></span><div><div class="d-name">勞退勞保試算器</div><div class="d-desc">台灣勞工專屬</div></div></a>
+        </div>
+      </li>
+      <li>
+        <a href="#resources">退休資訊 <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="dropdown">
+          <a href="#resources"><span class="d-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span><div><div class="d-name">香港退休攻略</div><div class="d-desc">MPF、退休生活、規劃</div></div></a>
+          <a href="#resources"><span class="d-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span><div><div class="d-name">台灣退休攻略</div><div class="d-desc">勞退、勞保、自提分析</div></div></a>
+          <a href="#resources"><span class="d-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span><div><div class="d-name">通用退休資訊</div><div class="d-desc">投資、心理、全球趨勢</div></div></a>
+        </div>
+      </li>
+      <li><a href="#about">關於我們</a></li>
+      <li>
+        <button class="nav-region" id="navRegionBtn">
+          <svg class="globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span id="navRegionLabel">香港</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          <div class="nav-region-menu">
+            <div class="nav-region-item active" data-region="hk">
+              <div><div>香港</div><div class="code">HKD 港幣</div></div>
+              <svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            </div>
+            <div class="nav-region-item" data-region="tw">
+              <div><div>台灣</div><div class="code">TWD 新台幣</div></div>
+              <svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            </div>
+          </div>
+        </button>
+      </li>
+      <li><button class="nav-cta">開始規劃</button></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="開啟選單">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</div>
+
+<!-- 移动端抽屉菜单 -->
+<div class="nav-drawer" id="navDrawer">
+  <div class="nav-drawer-section">
+    <div class="nav-drawer-label">計算工具</div>
+    <a href="living-cost.html" class="nav-drawer-item" data-close>
+      <span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 11l9-7 9 7v9a2 2 0 0 1-2 2h-3v-7H10v7H5a2 2 0 0 1-2-2v-9z" fill="#fff"/><path d="M3 11l9-7 9 7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/><rect x="14.5" y="13" width="3" height="3" rx="0.4" fill="#047857"/><rect x="6.5" y="13" width="3" height="3" rx="0.4" fill="#047857"/></svg></span>
+      <div><div>生活費規劃器</div><div class="d-desc">通脹下的真實退休開銷</div></div>
+    </a>
+    <a href="#calc" class="nav-drawer-item" data-close>
+      <span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 1 0 10 10h-6a4 4 0 1 1-4-4V2z" fill="#fff" opacity="0.95"/><path d="M12 2a10 10 0 0 1 10 10h-6a4 4 0 0 0-4-4V2z" fill="#a7f3d0"/><circle cx="12" cy="12" r="3" fill="#fff"/></svg></span>
+      <div><div>退休缺口計算器</div><div class="d-desc">算出退休那天還差多少</div></div>
+    </a>
+    <a href="mpf.html" class="nav-drawer-item" data-close>
+      <span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" fill="#fff"/><text x="12" y="16" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" font-weight="800" fill="#047857">HK$</text></svg></span>
+      <div><div>MPF 強積金計算器</div><div class="d-desc">香港僱員專屬</div></div>
+    </a>
+    <a href="labor-pension.html" class="nav-drawer-item" data-close>
+      <span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M9 4 C9 4, 12 2, 15 4 L16 7 C18 8, 19 11, 19 14 C19 18, 16 21, 12 21 C8 21, 5 18, 5 14 C5 11, 6 8, 8 7 L9 4 Z" fill="#fff"/><path d="M9 4 C9 4, 12 2, 15 4" stroke="#fff" stroke-width="1.6" stroke-linecap="round" fill="none" opacity="0.6"/><rect x="11.5" y="12" width="1" height="2.2" rx="0.4" fill="#047857"/><rect x="11.5" y="15" width="1" height="1.6" rx="0.4" fill="#047857"/><circle cx="12" cy="14" r="4" stroke="#047857" stroke-width="1.2" fill="none" opacity="0.35"/></svg></span>
+      <div><div>勞退勞保試算器</div><div class="d-desc">台灣勞工專屬</div></div>
+    </a>
+  </div>
+
+  <div class="nav-drawer-section">
+    <div class="nav-drawer-label">退休資訊</div>
+    <a href="#resources" class="nav-drawer-simple" data-close>香港退休資訊</a>
+    <a href="#resources" class="nav-drawer-simple" data-close>台灣退休資訊</a>
+    <a href="#resources" class="nav-drawer-simple" data-close>通用退休資訊</a>
+  </div>
+
+  <div class="nav-drawer-section">
+    <div class="nav-drawer-label">其他</div>
+    <a href="#about" class="nav-drawer-simple" data-close>關於我們</a>
+    <div style="margin: 14px 0 8px; display: flex; gap: 8px;">
+      <button class="nav-drawer-region" data-region="hk" id="drawerRegionHk" style="flex: 1; margin-bottom: 0;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        香港
+      </button>
+      <button class="nav-drawer-region" data-region="tw" id="drawerRegionTw" style="flex: 1; margin-bottom: 0;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        台灣
+      </button>
+    </div>
+    <a href="#calc" class="nav-drawer-cta" data-close>開始規劃</a>
+  </div>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-left">
+        <div class="hero-eyebrow">
+          <svg class="leaf" viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3c.5.12 1 .18 1.5.18C19 19.88 22 8 22 8c-1 2-8 2.25-13 3.25S2 14.5 3 21c2.71-7.75 6.25-8.25 14-13z"/></svg>
+          香港與台灣超過 50,000 名用戶信賴
+        </div>
+        <h1>退休規劃，<br/>從<span class="accent">算得清楚</span>開始。</h1>
+        <p class="hero-sub">把強積金、勞退、缺口與通脹算成你能讀懂的數字。四件免費工具，3 分鐘得出屬於你的退休路線圖。</p>
+        <div class="hero-cta-row">
+          <a href="#calc" class="btn btn-primary btn-lg">
+            立即計算退休缺口
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#tools" class="btn btn-secondary btn-lg">瀏覽所有工具</a>
+        </div>
+        <div class="hero-trust">
+          <div class="hero-stars">
+            <span class="stars">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+            </span>
+            <div class="hero-trust-text"><strong>4.8</strong> · 1,200+ 評價</div>
+          </div>
+          <div class="hero-trust-sep"></div>
+          <div class="hero-trust-item"><strong>100%</strong> 私密計算</div>
+          <div class="hero-trust-sep"></div>
+          <div class="hero-trust-item"><strong>免費</strong> · 永久</div>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="hero-photo">
+          <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Professional%20candid%20lifestyle%20photograph%20of%20a%20happy%20Asian%20couple%20in%20their%2040s%20sitting%20together%20at%20a%20wooden%20dining%20table%20in%20a%20sunlit%20Hong%20Kong%20apartment%2C%20reviewing%20retirement%20planning%20documents%20on%20a%20tablet%2C%20soft%20natural%20window%20light%2C%20shallow%20depth%20of%20field%2C%20professional%20editorial%20financial%20photography%2C%20warm%20authentic%20mood%2C%20photorealistic&image_size=portrait_4_3" alt="夫妻在陽光明媚的公寓裡一起規劃退休" width="800" height="600" fetchpriority="high" />
+        </div>
+        <div class="hero-float">
+          <div class="hero-float-ico">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M3 17l5-5 4 4 8-8" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <path d="M16 8h5v5" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <circle cx="8" cy="12" r="1.6" fill="#a7f3d0"/>
+              <circle cx="12" cy="16" r="1.6" fill="#a7f3d0"/>
+            </svg>
+          </div>
+          <div>
+            <div class="hero-float-num">HK$<span id="floatNum">4.2M</span></div>
+            <div class="hero-float-label">平均退休缺口估算</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 信任统计条 -->
+<section class="stats-bar" style="padding: 36px 0;">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="stat-num">4<span class="unit">件</span></div>
+        <div class="stat-label">免費計算工具</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">50K<span class="unit">+</span></div>
+        <div class="stat-label">月活用戶</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100<span class="unit">%</span></div>
+        <div class="stat-label">瀏覽器內計算 · 不上傳</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">0<span class="unit">個</span></div>
+        <div class="stat-label">追蹤 Cookie</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 工具区 -->
+<section id="tools">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">計算工具</div>
+      <h2 class="section-title">四件工具，看清你的退休數字</h2>
+      <p class="section-sub">從生活費規劃到退休缺口、強積金、勞退試算，每件工具都把複雜的財務公式簡化成幾個欄位。算完即可下載或分享結果。</p>
+    </div>
+    <div class="tools-grid">
+      <a href="living-cost.html" class="tool-card reveal">
+        <span class="tool-card-tag featured">推薦</span>
+        <div class="tool-card-ico">
+          <!-- 生活费：房子（实色屋顶+门窗） -->
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M3 11l9-7 9 7v9a2 2 0 0 1-2 2h-3v-7H10v7H5a2 2 0 0 1-2-2v-9z" fill="#fff"/>
+            <path d="M3 11l9-7 9 7" stroke="#047857" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="14.5" y="13" width="3" height="3" rx="0.4" fill="#047857"/>
+            <rect x="6.5" y="13" width="3" height="3" rx="0.4" fill="#047857"/>
+          </svg>
+        </div>
+        <div class="tool-card-cat">通用</div>
+        <div class="tool-card-name">生活費規劃器</div>
+        <div class="tool-card-desc">按通脹推算退休時的真實月開銷，含住屋、醫療、飲食等六大類別細項。</div>
+        <span class="tool-card-link">立即使用 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a href="#calc" class="tool-card reveal">
+        <div class="tool-card-ico">
+          <!-- 退休缺口：donut 缺一角 -->
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M12 2a10 10 0 1 0 10 10h-6a4 4 0 1 1-4-4V2z" fill="#fff" opacity="0.95"/>
+            <path d="M12 2a10 10 0 0 1 10 10h-6a4 4 0 0 0-4-4V2z" fill="#a7f3d0"/>
+            <circle cx="12" cy="12" r="3.2" fill="#047857"/>
+          </svg>
+        </div>
+        <div class="tool-card-cat">通用</div>
+        <div class="tool-card-name">退休缺口計算器</div>
+        <div class="tool-card-desc">輸入年齡、目標月收入與現有儲蓄，算出退休那天還差多少本金，以及每月該存多少。</div>
+        <span class="tool-card-link">立即使用 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a href="mpf.html" class="tool-card reveal">
+        <span class="tool-card-tag hk">HK</span>
+        <div class="tool-card-ico">
+          <!-- MPF：港币符号圆牌 -->
+          <svg viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="9.5" fill="#fff"/>
+            <circle cx="12" cy="12" r="9.5" stroke="#047857" stroke-width="1.2" fill="none" opacity="0.3"/>
+            <text x="12" y="16" text-anchor="middle" font-family="Manrope, sans-serif" font-size="12" font-weight="800" fill="#047857">HK$</text>
+          </svg>
+        </div>
+        <div class="tool-card-cat">香港專屬</div>
+        <div class="tool-card-name">MPF 強積金計算器</div>
+        <div class="tool-card-desc">僱主僱員各 5% 供款、自僱、自願性供款，估算 65 歲提取時的累積金額。</div>
+        <span class="tool-card-link">立即使用 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a href="labor-pension.html" class="tool-card reveal">
+        <span class="tool-card-tag tw">TW</span>
+        <div class="tool-card-ico">
+          <!-- 劳退：钱袋（个人专户累积） -->
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M9 4 C9 4, 12 2, 15 4 L16 7 C18 8, 19 11, 19 14 C19 18, 16 21, 12 21 C8 21, 5 18, 5 14 C5 11, 6 8, 8 7 L9 4 Z" fill="#fff"/>
+            <path d="M9 4 C9 4, 12 2, 15 4" stroke="#047857" stroke-width="1.6" stroke-linecap="round" fill="none" opacity="0.6"/>
+            <rect x="11.5" y="12" width="1" height="2.2" rx="0.4" fill="#047857"/>
+            <rect x="11.5" y="15" width="1" height="1.6" rx="0.4" fill="#047857"/>
+            <circle cx="12" cy="14" r="4" stroke="#047857" stroke-width="1.2" fill="none" opacity="0.35"/>
+          </svg>
+        </div>
+        <div class="tool-card-cat">台灣專屬</div>
+        <div class="tool-card-name">勞退勞保試算器</div>
+        <div class="tool-card-desc">勞退新制專戶累積 + 勞保年金月領金額，含自提 6% 與所得替代率分析。</div>
+        <span class="tool-card-link">立即使用 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 计算器主区 -->
+<section id="calc" class="calc-section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">即時試算</div>
+      <h2 class="section-title">退休缺口計算器</h2>
+      <p class="section-sub">填寫下方欄位，即時計算你退休時需要的總本金、現有儲蓄終值、缺口與每月需儲蓄金額。所有數據僅在你的瀏覽器內計算。</p>
+    </div>
+    <div class="calc-layout">
+      <!-- 表单卡 -->
+      <div class="calc-card reveal">
+        <div class="calc-card-head">
+          <div class="calc-card-ico">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 2a10 10 0 1 0 10 10h-6a4 4 0 1 1-4-4V2z" fill="#fff" opacity="0.95"/>
+              <path d="M12 2a10 10 0 0 1 10 10h-6a4 4 0 0 0-4-4V2z" fill="#a7f3d0"/>
+              <circle cx="12" cy="12" r="3.2" fill="#fff"/>
+            </svg>
+          </div>
+          <div>
+            <div class="calc-card-title">退休缺口計算器</div>
+            <div class="calc-card-desc">通用版 · 支援 HKD / TWD 貨幣切換</div>
+          </div>
+        </div>
+        <form class="calc-form" id="gapForm" onsubmit="return false;">
+          <div class="calc-row">
+            <div class="calc-field">
+              <label for="currentAge">當前年齡 <span class="hint">（歲）</span></label>
+              <input class="calc-input" type="number" id="currentAge" value="30" min="18" max="70" />
+            </div>
+            <div class="calc-field">
+              <label for="retireAge">目標退休年齡 <span class="hint">（歲）</span></label>
+              <input class="calc-input" type="number" id="retireAge" value="65" min="30" max="80" />
+            </div>
+          </div>
+          <div class="calc-field">
+            <label for="targetIncome">期望退休後月收入 <span class="hint">（<span id="curLabel">HKD</span> / 月）</span></label>
+            <input class="calc-input" type="number" id="targetIncome" value="20000" min="1000" max="200000" step="1000" />
+          </div>
+          <div class="calc-field">
+            <label for="returnRate">預期年回報率</label>
+            <div class="calc-slider-row">
+              <input class="calc-slider" type="range" id="returnRate" min="0" max="15" step="0.1" value="5" />
+              <span class="calc-slider-val" id="rtrVal">5.0%</span>
+            </div>
+          </div>
+          <div class="calc-field">
+            <label for="inflation">預期通脹率</label>
+            <div class="calc-slider-row">
+              <input class="calc-slider" type="range" id="inflation" min="0" max="10" step="0.1" value="2.5" />
+              <span class="calc-slider-val" id="infVal">2.5%</span>
+            </div>
+          </div>
+          <div class="calc-row">
+            <div class="calc-field">
+              <label for="retireYears">退休後年數 <span class="hint">（年）</span></label>
+              <input class="calc-input" type="number" id="retireYears" value="25" min="5" max="45" />
+            </div>
+            <div class="calc-field">
+              <label for="currentSavings">現有儲蓄 <span class="hint">（<span id="curLabel2">HKD</span>）</span></label>
+              <input class="calc-input" type="number" id="currentSavings" value="100000" min="0" step="10000" />
+            </div>
+          </div>
+          <div class="calc-field">
+            <label for="regionSel">地區</label>
+            <select class="calc-select" id="regionSel">
+              <option value="hk">香港 · HKD 港幣</option>
+              <option value="tw">台灣 · TWD 新台幣</option>
+            </select>
+          </div>
+          <button class="btn btn-primary btn-lg" id="calcBtn" type="button" style="margin-top: 6px;">
+            立即計算
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </form>
+      </div>
+
+      <!-- 结果卡 -->
+      <div class="calc-result reveal" id="result">
+        <div class="result-hero">
+          <div class="result-hero-label">退休時需要的總本金</div>
+          <div class="result-hero-amount"><span class="cur" id="rCur">HK$</span><span id="rNeeded">0</span></div>
+          <div class="result-hero-note" id="rNote">把這個數字寫進你的退休規劃表裡。</div>
+        </div>
+        <div class="result-grid">
+          <div class="result-cell">
+            <div class="result-cell-label">現有儲蓄終值</div>
+            <div class="result-cell-val" id="rFv">HK$0</div>
+            <div class="result-cell-sub">到退休那年增長後</div>
+          </div>
+          <div class="result-cell">
+            <div class="result-cell-label">退休金缺口</div>
+            <div class="result-cell-val bad" id="rGap">HK$0</div>
+            <div class="result-cell-sub" id="rGapSub">還差這麼多</div>
+          </div>
+          <div class="result-cell">
+            <div class="result-cell-label">每月需儲蓄</div>
+            <div class="result-cell-val" id="rPmt">HK$0</div>
+            <div class="result-cell-sub">從現在到退休</div>
+          </div>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-meta">
+            <span>儲蓄覆蓋率</span>
+            <span id="rPct">0%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="rBar" style="width:0%"></div>
+          </div>
+          <div class="progress-legend">
+            <span id="rHave">現有 0%</span>
+            <span id="rNeed">缺口 100%</span>
+          </div>
+        </div>
+        <div class="disclaimer-inline">
+          以上計算結果僅為估算，基於你輸入的參數與預設假設。實際退休金金額取決於市場表現、政策變動及個人情況。此工具不構成任何投資建議。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 资源/文章 -->
+<section id="resources" style="background: var(--bg-2);">
+  <div class="container">
+    <div class="section-head reveal" style="display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+      <div>
+        <div class="section-eyebrow">最新內容</div>
+        <h2 class="section-title">退休資訊</h2>
+        <p class="section-sub">收錄香港與台灣的退休制度、政策與生活資訊，方便你查閱參考。</p>
+      </div>
+      <div class="res-nav">
+        <button class="res-nav-btn" id="resPrev" aria-label="上一個" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="res-nav-btn" id="resNext" aria-label="下一個">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="resources-grid" id="resourcesGrid">
+      <a href="#" class="res-card large reveal">
+        <div class="res-cover">
+          <span class="res-cat">HK · MPF</span>
+          <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Clean%20professional%20editorial%20flat-lay%20photograph%20of%20Hong%20Kong%20MPF%20retirement%20statement%20document%20on%20a%20wooden%20desk%20with%20a%20cup%20of%20coffee%20reading%20glasses%20and%20a%20pen%2C%20soft%20natural%20window%20light%2C%20photorealistic%2C%20shallow%20depth%20of%20field&image_size=landscape_4_3" alt="MPF 完全指南" width="600" height="375" loading="lazy" />
+        </div>
+        <div class="res-body">
+          <div class="res-meta"><span>香港退休</span><span class="sep"></span><span>8 分鐘閱讀</span><span class="sep"></span><span>2026.07</span></div>
+          <h3 class="res-title">2026 MPF 強積金完全指南：從供款到退休提取</h3>
+          <p class="res-excerpt">從僱主僱員各 5% 講到提早退休提取規則，附真實案例計算。一篇看完，從此對強積金不再陌生。</p>
+          <div class="res-author">
+            <div class="res-author-av">陳</div>
+            <span>由 <strong>陳志明</strong> · 認可財務策劃師撰寫</span>
+          </div>
+        </div>
+      </a>
+      <a href="#" class="res-card reveal">
+        <div class="res-cover">
+          <span class="res-cat">TW · 勞退</span>
+          <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Documentary%20lifestyle%20photograph%20of%20a%20smiling%20elderly%20Taiwanese%20woman%20in%20her%2060s%20looking%20at%20a%20laptop%20showing%20financial%20charts%20in%20a%20cozy%20living%20room%2C%20warm%20natural%20window%20light%2C%20photorealistic%2C%20professional%20editorial%20photography&image_size=landscape_4_3" alt="勞退教學" width="600" height="375" loading="lazy" />
+        </div>
+        <div class="res-body">
+          <div class="res-meta"><span>台灣退休</span><span class="sep"></span><span>6 分鐘</span></div>
+          <h3 class="res-title">勞退新制退休金怎麼算？完整教學</h3>
+          <p class="res-excerpt">雇主 6% + 自提 0-6%，退休那一天專戶裡到底會有多少？</p>
+          <div class="res-author">
+            <div class="res-author-av">林</div>
+            <span>由 <strong>林淑芬</strong>撰寫</span>
+          </div>
+        </div>
+      </a>
+      <a href="#" class="res-card reveal">
+        <div class="res-cover">
+          <span class="res-cat">通用</span>
+          <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Modern%20lifestyle%20photograph%20of%20a%2040%20year%20old%20Asian%20man%20in%20casual%20clothes%20sitting%20at%20a%20minimalist%20home%20office%20desk%20with%20notebook%20and%20pen%20thoughtfully%20planning%20finances%2C%20soft%20window%20light%2C%20photorealistic%2C%20professional%20editorial%20photography&image_size=landscape_4_3" alt="40 歲退休規劃" width="600" height="375" loading="lazy" />
+        </div>
+        <div class="res-body">
+          <div class="res-meta"><span>通用</span><span class="sep"></span><span>5 分鐘</span></div>
+          <h3 class="res-title">40 歲才開始規劃退休，來得及嗎？</h3>
+          <p class="res-excerpt">答案在這篇裡，附三個不同年齡層的試算對比。</p>
+          <div class="res-author">
+            <div class="res-author-av">王</div>
+            <span>由 <strong>王雅婷</strong>撰寫</span>
+          </div>
+        </div>
+      </a>
+      <a href="#" class="res-card reveal">
+        <div class="res-cover">
+          <span class="res-cat">通用 · 通脹</span>
+          <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Editorial%20still%20life%20photograph%20of%20a%20calculator%20on%20top%20of%20financial%20documents%20and%20coins%2C%20with%20a%20subtle%20rising%20trend%20chart%20in%20the%20background%2C%20warm%20soft%20light%2C%20photorealistic%2C%20clean%20minimalist%20composition&image_size=landscape_4_3" alt="通脹影響" width="600" height="375" loading="lazy" />
+        </div>
+        <div class="res-body">
+          <div class="res-meta"><span>通用</span><span class="sep"></span><span>7 分鐘</span></div>
+          <h3 class="res-title">通脹如何吃掉你的退休金？3 個真實案例</h3>
+          <p class="res-excerpt">每年 3% 通脹，20 年後購買力會縮水多少？實際算給你看。</p>
+          <div class="res-author">
+            <div class="res-author-av">陳</div>
+            <span>由 <strong>陳志明</strong>撰寫</span>
+          </div>
+        </div>
+      </a>
+      <a href="#" class="res-card reveal">
+        <div class="res-cover">
+          <span class="res-cat">HK · 生活費</span>
+          <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Documentary%20lifestyle%20photograph%20of%20a%20Hong%20Kong%20elderly%20couple%20in%20their%2060s%20walking%20in%20a%20local%20wet%20market%20buying%20groceries%2C%20natural%20daylight%2C%20photorealistic%2C%20professional%20editorial%20photography&image_size=landscape_4_3" alt="香港退休生活費" width="600" height="375" loading="lazy" />
+        </div>
+        <div class="res-body">
+          <div class="res-meta"><span>香港退休</span><span class="sep"></span><span>6 分鐘</span></div>
+          <h3 class="res-title">香港退休每月要多少錢？2026 生活費參考</h3>
+          <p class="res-excerpt">住屋、醫療、飲食、交通，逐項列出 65 歲退休族的真實開銷。</p>
+          <div class="res-author">
+            <div class="res-author-av">李</div>
+            <span>由 <strong>李偉強</strong>撰寫</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA banner -->
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-inner reveal">
+      <div class="cta-text">
+        <h3>準備好開始規劃你的退休了嗎？</h3>
+        <p>3 分鐘算出你的退休缺口，完全免費、無需登入。</p>
+      </div>
+      <a href="#calc" class="btn btn-primary btn-lg">
+        立即計算
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer id="about">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brand-logo" style="color: #fff;">
+          <svg viewBox="0 0 32 32" fill="none">
+            <path d="M4 14 C4 9, 9 5, 16 5 C23 5, 28 9, 28 14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M3 19 C3 14, 8 11, 16 11 C24 11, 29 14, 29 19" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+            <path d="M5 24 C5 19, 10 17, 16 17 C22 17, 27 19, 27 24" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" opacity="0.45"/>
+            <circle cx="16" cy="22" r="3.2" fill="currentColor"/>
+          </svg>
+        </div>
+        <p>Pensionwise 養老智 — 為香港與台灣打工族而做的退休規劃平台。慢慢算，慢慢存，慢慢過好日子。</p>
+        <div class="foot-social">
+          <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.378 14.192 5 15.115 5H18V0h-3.808C10.596 0 9 1.583 9 4.615V8z"/></svg></a>
+          <a href="#" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>計算工具</h4>
+        <ul>
+          <li><a href="living-cost.html">生活費規劃</a></li>
+          <li><a href="#calc">退休缺口</a></li>
+          <li><a href="mpf.html">MPF 強積金</a></li>
+          <li><a href="labor-pension.html">勞退勞保</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>退休資訊</h4>
+        <ul>
+          <li><a href="#resources">香港退休</a></li>
+          <li><a href="#resources">台灣退休</a></li>
+          <li><a href="#resources">通用資訊</a></li>
+          <li><a href="#resources">編輯選讀</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>關於</h4>
+        <ul>
+          <li><a href="#about">關於我們</a></li>
+          <li><a href="#">聯絡我們</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>法務</h4>
+        <ul>
+          <li><a href="#">隱私政策</a></li>
+          <li><a href="#">免責聲明</a></li>
+          <li><a href="#">Cookie 政策</a></li>
+          <li><a href="#">使用條款</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 Pensionwise 養老智 · All rights reserved.</span>
+      <div class="legal">
+        <a href="#">隱私</a>
+        <a href="#">條款</a>
+        <a href="#">免責聲明</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // 地区切换
+  let region = 'hk';
+  function updateRegion(r) {
+    region = r;
+    const cur = region === 'hk' ? 'HK$' : 'NT$';
+    const curFull = region === 'hk' ? 'HKD' : 'TWD';
+    const label = region === 'hk' ? '香港' : '台灣';
+    document.getElementById('curLabel').textContent = curFull;
+    document.getElementById('curLabel2').textContent = curFull;
+    document.getElementById('rCur').textContent = cur;
+    document.getElementById('regionSel').value = r;
+    document.getElementById('navRegionLabel').textContent = label;
+    document.getElementById('floatNum').textContent = region === 'hk' ? '4.2M' : '16M';
+
+    // 更新导航下拉菜单选中状态
+    document.querySelectorAll('.nav-region-item').forEach(el => {
+      el.classList.toggle('active', el.dataset.region === r);
+    });
+    // 更新移动端抽屉按钮选中状态
+    const dhk = document.getElementById('drawerRegionHk');
+    const dtw = document.getElementById('drawerRegionTw');
+    if (dhk) dhk.style.background = r === 'hk' ? 'var(--green-700)' : 'var(--bg-3)';
+    if (dhk) dhk.style.color = r === 'hk' ? '#fff' : 'var(--ink-2)';
+    if (dtw) dtw.style.background = r === 'tw' ? 'var(--green-700)' : 'var(--bg-3)';
+    if (dtw) dtw.style.color = r === 'tw' ? '#fff' : 'var(--ink-2)';
+
+    if (document.getElementById('result').classList.contains('show')) {
+      calculate();
+    }
+  }
+  document.getElementById('regionSel').addEventListener('change', e => updateRegion(e.target.value));
+
+  // 导航栏地区下拉菜单
+  (function() {
+    const btn = document.getElementById('navRegionBtn');
+    if (!btn) return;
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      btn.classList.toggle('open');
+    });
+    document.querySelectorAll('.nav-region-item').forEach(el => {
+      el.addEventListener('click', e => {
+        e.stopPropagation();
+        updateRegion(el.dataset.region);
+        btn.classList.remove('open');
+      });
+    });
+    document.addEventListener('click', () => btn.classList.remove('open'));
+  })();
+
+  // 移动端抽屉地区切换
+  (function() {
+    document.querySelectorAll('[data-region]').forEach(el => {
+      if (el.id === 'drawerRegionHk' || el.id === 'drawerRegionTw') {
+        el.addEventListener('click', () => updateRegion(el.dataset.region));
+      }
+    });
+  })();
+
+  // 滑块联动
+  document.getElementById('returnRate').addEventListener('input', e => {
+    document.getElementById('rtrVal').textContent = parseFloat(e.target.value).toFixed(1) + '%';
+  });
+  document.getElementById('inflation').addEventListener('input', e => {
+    document.getElementById('infVal').textContent = parseFloat(e.target.value).toFixed(1) + '%';
+  });
+
+  // 货币格式化
+  function fmt(n) {
+    const cur = region === 'hk' ? 'HK$' : 'NT$';
+    return cur + Math.round(Math.max(0, n)).toLocaleString('en-US');
+  }
+  function fmtShort(n) {
+    if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
+    if (n >= 1000) return (n / 1000).toFixed(0) + 'K';
+    return Math.round(n).toString();
+  }
+
+  // 计算
+  function calculate() {
+    const currentAge = parseInt(document.getElementById('currentAge').value);
+    const retireAge = parseInt(document.getElementById('retireAge').value);
+    const targetIncome = parseFloat(document.getElementById('targetIncome').value);
+    const annualReturn = parseFloat(document.getElementById('returnRate').value) / 100;
+    const inflation = parseFloat(document.getElementById('inflation').value) / 100;
+    const retireYears = parseInt(document.getElementById('retireYears').value);
+    const currentSavings = parseFloat(document.getElementById('currentSavings').value);
+
+    // 輸入校驗：防止 NaN、負數、年齡倒序
+    if (!Number.isFinite(currentAge) || !Number.isFinite(retireAge) || !Number.isFinite(targetIncome) ||
+        !Number.isFinite(annualReturn) || !Number.isFinite(inflation) || !Number.isFinite(retireYears) || !Number.isFinite(currentSavings)) {
+      alert('請輸入有效的數字');
+      return;
+    }
+    const yearsToRetire = retireAge - currentAge;
+    if (yearsToRetire <= 0) {
+      alert('退休年齡需大於當前年齡');
+      return;
+    }
+    if (retireYears <= 0) {
+      alert('退休後預計生活年數需大於 0');
+      return;
+    }
+
+    // 统一口径：全部用名义金额计算
+    // targetIncome 是「今天的购买力」→ 先用通胀调整到退休时的名义月收入
+    const nominalTargetIncome = targetIncome * Math.pow(1 + inflation, yearsToRetire);
+
+    // 退休后用名义月回报率计算年金现值（需要的本金）
+    const monthlyR = annualReturn / 12;
+    const n = retireYears * 12;
+
+    let fvNeeded;
+    if (Math.abs(monthlyR) < 1e-9) {
+      fvNeeded = nominalTargetIncome * n;
+    } else {
+      fvNeeded = nominalTargetIncome * (1 - Math.pow(1 + monthlyR, -n)) / monthlyR;
+    }
+
+    // 现有储蓄终值（同样用名义回报率，口径一致）
+    const fvCurrent = currentSavings * Math.pow(1 + annualReturn, yearsToRetire);
+
+    // 缺口
+    const gap = fvNeeded - fvCurrent;
+    const isSufficient = gap <= 0;
+
+    // 每月需储蓄 PMT
+    const M = yearsToRetire * 12;
+    const i = annualReturn / 12;
+    let pmt;
+    if (isSufficient) {
+      pmt = 0;
+    } else if (Math.abs(i) < 1e-9) {
+      pmt = gap / M;
+    } else {
+      pmt = gap * i / (Math.pow(1 + i, M) - 1);
+    }
+
+    // 显示
+    document.getElementById('rNeeded').textContent = Math.round(fvNeeded).toLocaleString('en-US');
+    document.getElementById('rFv').textContent = fmt(fvCurrent);
+
+    const rGap = document.getElementById('rGap');
+    const rGapSub = document.getElementById('rGapSub');
+    if (isSufficient) {
+      rGap.textContent = '已足夠';
+      rGap.classList.remove('bad');
+      rGap.classList.add('good');
+      rGapSub.textContent = '現有儲蓄已覆蓋目標';
+      document.getElementById('rNote').textContent = '恭喜！你目前的儲蓄已足夠覆蓋退休目標。';
+    } else {
+      rGap.textContent = fmt(gap);
+      rGap.classList.add('bad');
+      rGap.classList.remove('good');
+      rGapSub.textContent = '還差這麼多';
+      document.getElementById('rNote').textContent = '把這個數字寫進你的退休規劃表裡。';
+    }
+
+    document.getElementById('rPmt').textContent = isSufficient ? '0' : fmt(pmt);
+
+    // 进度条
+    const pct = Math.min(100, Math.max(0, (fvCurrent / fvNeeded) * 100));
+    document.getElementById('rBar').style.width = pct.toFixed(1) + '%';
+    document.getElementById('rPct').textContent = pct.toFixed(0) + '%';
+    document.getElementById('rHave').textContent = '現有 ' + pct.toFixed(0) + '%';
+    document.getElementById('rNeed').textContent = '缺口 ' + (100 - pct).toFixed(0) + '%';
+
+    // 更新 hero 浮卡数字
+    document.getElementById('floatNum').textContent = fmtShort(fvNeeded);
+
+    document.getElementById('result').classList.add('show', 'reveal-in');
+  }
+
+  document.getElementById('calcBtn').addEventListener('click', calculate);
+
+  // 滚动出现
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // 初始默认计算一次（不显示结果，但浮卡要有数字）
+  // 不显示结果，但更新 hero 浮卡
+  (function initFloat() {
+    const annualReturn = 0.05, inflation = 0.025;
+    const yearsToRetire = 30;
+    const nominalTarget = 20000 * Math.pow(1 + inflation, yearsToRetire);
+    const monthlyR = annualReturn / 12;
+    const n = 25 * 12;
+    const fvNeeded = nominalTarget * (1 - Math.pow(1 + monthlyR, -n)) / monthlyR;
+    document.getElementById('floatNum').textContent = fmtShort(fvNeeded);
+  })();
+
+  // ===== 资源卡片左右滚动 =====
+  (function() {
+    const grid = document.querySelector('.resources-grid');
+    const prev = document.getElementById('resPrev');
+    const next = document.getElementById('resNext');
+    if (!grid || !prev || !next) return;
+
+    const getScrollAmount = () => {
+      const card = grid.querySelector('.res-card');
+      if (!card) return 360;
+      const style = getComputedStyle(grid);
+      const gap = parseFloat(style.gap) || 20;
+      return card.offsetWidth + gap;
+    };
+
+    const updateBtns = () => {
+      const maxScroll = grid.scrollWidth - grid.clientWidth - 2;
+      prev.disabled = grid.scrollLeft <= 2;
+      next.disabled = grid.scrollLeft >= maxScroll;
+    };
+
+    // 防抖函数
+    const debounce = (fn, wait) => {
+      let t;
+      return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), wait); };
+    };
+
+    prev.addEventListener('click', () => {
+      grid.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+    });
+    next.addEventListener('click', () => {
+      grid.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+    });
+    grid.addEventListener('scroll', updateBtns, { passive: true });
+    window.addEventListener('resize', debounce(updateBtns, 150));
+    updateBtns();
+  })();
+
+  // ===== 移动端汉堡菜单 =====
+  (function() {
+    const toggle = document.getElementById('navToggle');
+    const drawer = document.getElementById('navDrawer');
+    if (!toggle || !drawer) return;
+
+    const setOpen = (open) => {
+      toggle.classList.toggle('open', open);
+      drawer.classList.toggle('open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+      toggle.setAttribute('aria-label', open ? '關閉選單' : '開啟選單');
+    };
+
+    toggle.addEventListener('click', () => {
+      setOpen(!drawer.classList.contains('open'));
+    });
+
+    // 点击任何带 data-close 的链接后关闭
+    drawer.querySelectorAll('[data-close]').forEach(el => {
+      el.addEventListener('click', () => setOpen(false));
+    });
+
+    // 桌面端重置
+    const mq = window.matchMedia('(min-width: 981px)');
+    mq.addEventListener('change', e => { if (e.matches) setOpen(false); });
+  })();
+
+  // ============ 退休資訊動態拉取（Decap CMS + articles.json） ============
+  // 構建時由 scripts/build-index.js 掃描 articles/*.md 生成 articles.json
+  // 失敗時自動降級為頁面現有靜態卡片，網站永不空白
+  (async function loadResources() {
+    const grid = document.getElementById('resourcesGrid');
+    if (!grid) return;
+
+    // XSS 防護：所有插入 HTML 的字段必須轉義
+    const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+    try {
+      const res = await fetch('/articles.json', { cache: 'no-cache' });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      // 防禦性校驗：確保 articles 是陣列
+      const articles = Array.isArray(data && data.articles) ? data.articles : [];
+      if (articles.length === 0) {
+        console.info('[Articles] articles.json 無文章，保留靜態卡片');
+        return;
+      }
+
+      const fmtDate = (dateStr) => {
+        if (!dateStr) return '';
+        const d = new Date(dateStr);
+        if (isNaN(d.getTime())) return '';
+        return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}`;
+      };
+
+      grid.innerHTML = articles.map(a => {
+        // 每個字段都轉義，防止 XSS
+        const title = esc(a.title);
+        const excerpt = esc(a.excerpt);
+        const badge = esc(a.badge);
+        const cover = esc(a.cover);
+        const coverAlt = esc(a.coverAlt || a.title);
+        const category = esc(a.categoryName || a.regionTag || '通用');
+        const authorName = esc(a.authorName || '編輯部');
+        const authorSurname = esc(a.authorSurname || (a.authorName ? a.authorName[0] : '編'));
+        const authorTitle = esc(a.authorTitle);
+        const readMinutes = parseInt(a.readMinutes) || 5;
+        const isFeatured = !!a.featured;
+        const dateStr = fmtDate(a.publishDate);
+        return `
+        <a href="#" class="res-card reveal${isFeatured ? ' large' : ''}">
+          <div class="res-cover">
+            ${badge ? `<span class="res-cat">${badge}</span>` : ''}
+            <img src="${cover}" alt="${coverAlt}" width="600" height="375" loading="lazy" />
+          </div>
+          <div class="res-body">
+            <div class="res-meta">
+              <span>${category}</span>
+              <span class="sep"></span>
+              <span>${readMinutes} 分鐘閱讀</span>
+              ${dateStr ? `<span class="sep"></span><span>${dateStr}</span>` : ''}
+            </div>
+            <h3 class="res-title">${title}</h3>
+            <p class="res-excerpt">${excerpt}</p>
+            <div class="res-author">
+              <div class="res-author-av">${authorSurname}</div>
+              <span>由 <strong>${authorName}</strong>${authorTitle ? ` · ${authorTitle}` : ''}撰寫</span>
+            </div>
+          </div>
+        </a>`;
+      }).join('');
+
+      // 重新觸發 reveal 動畫 + 重置箭頭按鈕狀態
+      grid.querySelectorAll('.reveal').forEach(el => el.classList.add('reveal-in'));
+      const prev = document.getElementById('resPrev');
+      const next = document.getElementById('resNext');
+      if (prev) prev.disabled = true;
+      if (next) next.disabled = false;
+      grid.scrollLeft = 0;
+
+      console.info(`[Articles] 成功載入 ${articles.length} 篇文章`);
+    } catch (err) {
+      console.warn('[Articles] 拉取失敗，保留靜態卡片:', err.message);
+    }
+  })();
+</script>
+
+</body>
+</html>

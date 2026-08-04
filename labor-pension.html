@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="勞退勞保試算器 — 台灣勞工專屬，計算勞退新制專戶累積金額與勞保老年年金月領金額。雇主 6% 提繳、自提 0-6%、所得替代率分析。" />
+<meta name="theme-color" content="#047857" />
+<meta name="robots" content="index, follow" />
+<meta property="og:title" content="勞退勞保試算器 — Pensionwise 養老智" />
+<meta property="og:description" content="台灣勞工專屬，勞退新制 + 勞保老年年金月領金額試算。" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="zh_Hant" />
+<title>勞退勞保試算器 — 台灣退休金月領估算 | Pensionwise 養老智</title>
+<link rel="canonical" href="https://pensionwise.example.com/labor-pension.html" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" /></noscript>
+<style>
+  :root {
+    --green-900: #053d2c;
+    --green-800: #074d36;
+    --green-700: #047857;
+    --green-600: #0c8551;
+    --green-500: #10b981;
+    --green-100: #d1fae5;
+    --green-50: #ecfdf5;
+    --ink: #0a0a0a;
+    --ink-2: #1f2937;
+    --ink-3: #4b5563;
+    --ink-4: #6b7280;
+    --ink-5: #9ca3af;
+    --line: #e5e7eb;
+    --line-soft: #f1f1ee;
+    --bg: #ffffff;
+    --bg-2: #fafaf7;
+    --bg-3: #f4f4ef;
+    --yellow: #fbbf24;
+    --shadow-xs: 0 1px 2px rgba(10, 10, 10, 0.04);
+    --shadow-sm: 0 1px 2px rgba(10, 10, 10, 0.04), 0 2px 4px rgba(10, 10, 10, 0.04);
+    --shadow-md: 0 2px 4px rgba(10, 10, 10, 0.04), 0 8px 16px -4px rgba(10, 10, 10, 0.08);
+    --shadow-lg: 0 4px 8px -2px rgba(10, 10, 10, 0.05), 0 16px 32px -8px rgba(10, 10, 10, 0.12);
+    --shadow-green: 0 8px 24px -8px rgba(12, 133, 81, 0.35);
+    --sans: 'Manrope', 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+    --radius: 10px;
+    --radius-sm: 6px;
+    --radius-lg: 16px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; }
+  img { display: block; max-width: 100%; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  .announce { background: var(--green-900); color: #fff; font-size: 13px; text-align: center; padding: 10px 16px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+  .announce-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-500); }
+  .announce a { color: #fff; text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
+
+  .nav-wrap { position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, 0.92); backdrop-filter: saturate(180%) blur(12px); -webkit-backdrop-filter: saturate(180%) blur(12px); border-bottom: 1px solid var(--line-soft); }
+  .nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; max-width: 1200px; margin: 0 auto; }
+  .brand { display: flex; align-items: center; gap: 9px; }
+  .brand-logo { width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; color: var(--green-700); }
+  .brand-logo svg { width: 30px; height: 30px; }
+  .brand-name { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); font-family: 'Manrope', sans-serif; }
+  .brand-zh { font-size: 11px; color: var(--ink-4); font-weight: 500; letter-spacing: 0.2em; margin-left: 2px; padding-left: 9px; border-left: 1px solid var(--line); }
+  .nav-menu { display: flex; align-items: center; gap: 4px; }
+  .nav-menu > li { list-style: none; position: relative; }
+  .nav-menu > li > a, .nav-menu > li > button { padding: 10px 14px; font-size: 15px; font-weight: 600; color: var(--ink-2); background: none; border: none; border-radius: var(--radius-sm); display: inline-flex; align-items: center; gap: 4px; transition: background .15s, color .15s; }
+  .nav-menu > li > a:hover, .nav-menu > li > button:hover { background: var(--bg-3); color: var(--ink); }
+  .nav-menu .chev { width: 14px; height: 14px; opacity: 0.6; }
+  .dropdown { position: absolute; top: calc(100% + 8px); left: 0; background: #fff; border-radius: var(--radius); box-shadow: var(--shadow-lg); padding: 8px; min-width: 260px; opacity: 0; visibility: hidden; transform: translateY(-4px); transition: all .18s ease; z-index: 100; }
+  .nav-menu > li:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+  .nav-menu > li:focus-within .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+  .dropdown a { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; border-radius: var(--radius-sm); transition: background .12s; }
+  .dropdown a:hover { background: var(--bg-2); }
+  .dropdown .d-ico { width: 36px; height: 36px; border-radius: 9px; background: linear-gradient(135deg, var(--green-600), var(--green-800)); color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 10px -3px rgba(12, 133, 81, 0.35); }
+  .dropdown .d-ico svg { width: 18px; height: 18px; }
+  .dropdown .d-name { font-size: 14px; font-weight: 700; color: var(--ink); }
+  .dropdown .d-desc { font-size: 12px; color: var(--ink-4); margin-top: 2px; }
+  .nav-cta { background: var(--green-700); color: #fff; padding: 9px 16px; border-radius: 8px; font-size: 14px; font-weight: 600; border: none; transition: background .15s; }
+  .nav-cta:hover { background: var(--green-800); }
+
+  .page-hero { background: var(--bg); padding: 48px 0 40px; }
+  .page-hero .section-eyebrow { font-size: 13px; font-weight: 700; color: var(--green-700); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 12px; display: inline-flex; align-items: center; gap: 8px; }
+  .page-hero .section-eyebrow::before { content: ''; width: 24px; height: 2px; background: var(--green-600); }
+  .page-hero h1 { font-size: clamp(32px, 4vw, 44px); line-height: 1.12; letter-spacing: -0.025em; color: var(--ink); font-weight: 800; margin-bottom: 12px; }
+  .page-hero h1 .accent { color: var(--green-700); }
+  .page-hero p { font-size: 17px; color: var(--ink-3); max-width: 640px; line-height: 1.6; }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; font-size: 15px; padding: 14px 22px; border-radius: var(--radius); border: none; cursor: pointer; transition: all .15s ease; white-space: nowrap; }
+  .btn-primary { background: var(--green-700); color: #fff; box-shadow: var(--shadow-green); }
+  .btn-primary:hover { background: var(--green-800); transform: translateY(-1px); box-shadow: 0 12px 28px -8px rgba(12, 133, 81, 0.45); }
+  .btn-lg { padding: 16px 26px; font-size: 16px; }
+
+  .calc-section { background: var(--bg-2); padding: 48px 0 80px; }
+  .calc-layout { display: grid; grid-template-columns: 1.05fr 1fr; gap: 32px; align-items: start; }
+  .calc-card { background: #fff; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); padding: 32px; }
+  .calc-card-head { display: flex; align-items: flex-start; gap: 16px; padding-bottom: 24px; border-bottom: 1px solid var(--line-soft); margin-bottom: 24px; }
+  .calc-card-ico { width: 56px; height: 56px; border-radius: 14px; background: linear-gradient(135deg, var(--green-600), var(--green-800)); color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 8px 18px -6px rgba(12, 133, 81, 0.45); }
+  .calc-card-ico svg { width: 30px; height: 30px; }
+  .calc-card-title { font-size: 22px; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
+  .calc-card-desc { font-size: 14px; color: var(--ink-3); margin-top: 4px; }
+  .calc-form { display: grid; gap: 18px; }
+  .calc-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .calc-field label { display: block; font-size: 13px; font-weight: 600; color: var(--ink-2); margin-bottom: 6px; }
+  .calc-field label .hint { font-weight: 500; color: var(--ink-4); }
+  .calc-input, .calc-select { width: 100%; padding: 11px 14px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); font-family: inherit; font-size: 15px; font-weight: 500; color: var(--ink); transition: border-color .15s, box-shadow .15s; -moz-appearance: textfield; }
+  .calc-input::-webkit-outer-spin-button, .calc-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  .calc-input:focus, .calc-select:focus { outline: none; border-color: var(--green-600); box-shadow: 0 0 0 3px rgba(12, 133, 81, 0.15); }
+  .calc-slider-row { display: flex; align-items: center; gap: 14px; }
+  .calc-slider { -webkit-appearance: none; appearance: none; flex: 1; height: 4px; background: var(--line); border-radius: 2px; outline: none; cursor: pointer; }
+  .calc-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--green-700); border: 3px solid #fff; box-shadow: 0 2px 6px rgba(12, 133, 81, 0.4); cursor: pointer; transition: transform .12s; }
+  .calc-slider::-webkit-slider-thumb:hover { transform: scale(1.15); }
+  .calc-slider::-moz-range-thumb { width: 20px; height: 20px; border-radius: 50%; background: var(--green-700); border: 3px solid #fff; box-shadow: 0 2px 6px rgba(12, 133, 81, 0.4); cursor: pointer; }
+  .calc-slider-val { min-width: 56px; text-align: right; font-size: 15px; font-weight: 700; color: var(--green-700); font-variant-numeric: tabular-nums; }
+
+  .calc-result { background: #fff; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); padding: 32px; display: none; }
+  .calc-result.show { display: block; animation: fade .4s ease both; }
+  @keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .result-hero { background: linear-gradient(135deg, var(--green-50), #fff); border-radius: var(--radius); padding: 24px; margin-bottom: 20px; }
+  .result-hero-label { font-size: 13px; font-weight: 600; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 8px; }
+  .result-hero-amount { font-size: 40px; font-weight: 800; color: var(--ink); letter-spacing: -0.025em; line-height: 1; margin-bottom: 6px; font-variant-numeric: tabular-nums; }
+  .result-hero-amount .cur { font-size: 0.5em; color: var(--ink-3); font-weight: 700; margin-right: 4px; vertical-align: 0.2em; }
+  .result-hero-note { font-size: 14px; color: var(--ink-3); }
+
+  /* 拆分块 */
+  .split-box { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+  .split-cell { background: var(--bg-2); border-radius: var(--radius); padding: 16px; border-left: 3px solid var(--green-600); }
+  .split-cell.insurance { border-left-color: #f59e0b; }
+  .split-cell-label { font-size: 12px; font-weight: 700; color: var(--ink-4); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px; }
+  .split-cell-val { font-size: 22px; font-weight: 800; color: var(--ink); letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+  .split-cell-val .cur { font-size: 0.6em; color: var(--ink-3); font-weight: 700; margin-right: 2px; }
+  .split-cell-sub { font-size: 12px; color: var(--ink-4); margin-top: 4px; }
+
+  /* 明细表格 */
+  .detail-section { margin-bottom: 20px; }
+  .detail-title { font-size: 14px; font-weight: 700; color: var(--ink-2); margin-bottom: 12px; }
+  .detail-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .detail-table th { text-align: left; padding: 8px 10px; background: var(--bg-3); color: var(--ink-3); font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .detail-table th:first-child { border-radius: var(--radius-sm) 0 0 var(--radius-sm); }
+  .detail-table th:last-child { border-radius: 0 var(--radius-sm) var(--radius-sm) 0; text-align: right; }
+  .detail-table td { padding: 10px; border-bottom: 1px solid var(--line-soft); color: var(--ink-2); font-weight: 600; }
+  .detail-table td:last-child { text-align: right; color: var(--ink); font-weight: 700; font-variant-numeric: tabular-nums; }
+  .detail-table tr:last-child td { border-bottom: none; }
+  .detail-table tr.total td { background: var(--green-50); font-weight: 800; color: var(--green-800); }
+
+  /* 替代率条 */
+  .replace-section { margin-bottom: 20px; }
+  .replace-label { display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; color: var(--ink-2); margin-bottom: 8px; }
+  .replace-label .pct { font-size: 18px; font-weight: 800; color: var(--green-700); }
+  .replace-bar { height: 12px; background: var(--bg-3); border-radius: 6px; overflow: hidden; }
+  .replace-fill { height: 100%; background: linear-gradient(90deg, var(--green-500), var(--green-700)); border-radius: 6px; transition: width .8s cubic-bezier(.2,.7,.2,1); }
+  .replace-hint { font-size: 12px; color: var(--ink-4); margin-top: 6px; }
+
+  .warning-box { margin-top: 16px; padding: 12px 14px; background: #fef3c7; border-left: 3px solid #f59e0b; border-radius: var(--radius-sm); font-size: 13px; color: #92400e; line-height: 1.6; font-weight: 600; }
+  .info-box { margin-top: 16px; padding: 12px 14px; background: var(--green-50); border-left: 3px solid var(--green-600); border-radius: var(--radius-sm); font-size: 13px; color: var(--green-800); line-height: 1.6; font-weight: 600; }
+
+  .disclaimer-inline { margin-top: 20px; padding: 12px 14px; background: #fffbeb; border-left: 3px solid var(--yellow); border-radius: var(--radius-sm); font-size: 12px; color: var(--ink-3); line-height: 1.6; }
+
+  footer { background: #0a1f17; color: rgba(255, 255, 255, 0.75); padding: 64px 0 24px; }
+  .foot-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr; gap: 32px; padding-bottom: 40px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+  .foot-brand .brand-logo { margin-bottom: 16px; color: #fff; }
+  .foot-brand p { font-size: 14px; line-height: 1.65; max-width: 280px; margin-bottom: 20px; }
+  .foot-social { display: flex; gap: 10px; }
+  .foot-social a { width: 36px; height: 36px; border-radius: 8px; background: rgba(255, 255, 255, 0.08); display: flex; align-items: center; justify-content: center; color: #fff; transition: background .15s; }
+  .foot-social a:hover { background: var(--green-700); }
+  .foot-col h4 { font-size: 13px; font-weight: 700; color: #fff; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 16px; }
+  .foot-col ul { list-style: none; }
+  .foot-col li { margin-bottom: 10px; }
+  .foot-col a { font-size: 14px; color: rgba(255, 255, 255, 0.7); transition: color .15s; }
+  .foot-col a:hover { color: var(--green-500); }
+  .foot-bot { padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 13px; }
+  .foot-bot .legal { display: flex; gap: 20px; flex-wrap: wrap; }
+  .foot-bot .legal a { color: rgba(255, 255, 255, 0.6); }
+  .foot-bot .legal a:hover { color: #fff; }
+
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  .nav-toggle { display: none; width: 40px; height: 40px; background: none; border: none; cursor: pointer; flex-direction: column; justify-content: center; align-items: center; gap: 5px; padding: 0; }
+  .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 1px; transition: transform .25s, opacity .25s; }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .nav-drawer { display: none; position: fixed; top: 65px; left: 0; right: 0; bottom: 0; background: #fff; z-index: 90; overflow-y: auto; padding: 24px 24px 40px; transform: translateX(100%); transition: transform .28s ease; }
+  .nav-drawer.open { transform: translateX(0); }
+  .nav-drawer-section { margin-bottom: 28px; }
+  .nav-drawer-label { font-size: 11px; font-weight: 700; color: var(--ink-4); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; padding: 0 4px; }
+  .nav-drawer-item { display: flex; align-items: center; gap: 14px; padding: 14px 4px; border-bottom: 1px solid var(--line-soft); text-decoration: none; color: var(--ink); font-size: 16px; font-weight: 600; }
+  .nav-drawer-item:last-child { border-bottom: none; }
+  .nav-drawer-item .d-ico { width: 36px; height: 36px; border-radius: 9px; background: linear-gradient(135deg, var(--green-600), var(--green-800)); color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .nav-drawer-item .d-ico svg { width: 18px; height: 18px; }
+  .nav-drawer-item .d-desc { font-size: 13px; font-weight: 500; color: var(--ink-4); margin-top: 2px; }
+  .nav-drawer-simple { display: block; padding: 14px 4px; border-bottom: 1px solid var(--line-soft); text-decoration: none; color: var(--ink); font-size: 16px; font-weight: 600; }
+
+  @media (max-width: 980px) {
+    .calc-layout { grid-template-columns: 1fr; }
+    .foot-grid { grid-template-columns: 1fr 1fr; }
+    .nav-menu { display: none; }
+    .nav-toggle { display: flex; }
+    .nav-drawer { display: block; }
+  }
+  @media (max-width: 600px) {
+    .container { padding: 0 18px; }
+    .calc-row { grid-template-columns: 1fr; }
+    .split-box { grid-template-columns: 1fr; }
+    .foot-grid { grid-template-columns: 1fr; }
+    .calc-card, .calc-result { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="announce">
+  <span class="announce-dot"></span>
+  勞退勞保試算器上線 — 估算你的退休月領金額
+  <a href="#calc">立即試用 →</a>
+</div>
+
+<div class="nav-wrap">
+  <nav class="nav">
+    <a href="index.html" class="brand">
+      <div class="brand-logo">
+        <svg viewBox="0 0 32 32" fill="none">
+          <path d="M4 14 C4 9, 9 5, 16 5 C23 5, 28 9, 28 14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M3 19 C3 14, 8 11, 16 11 C24 11, 29 14, 29 19" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+          <path d="M5 24 C5 19, 10 17, 16 17 C22 17, 27 19, 27 24" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" opacity="0.45"/>
+          <circle cx="16" cy="22" r="3.2" fill="currentColor"/>
+        </svg>
+      </div>
+      <div class="brand-name">Pensionwise</div>
+      <div class="brand-zh">養老智</div>
+    </a>
+    <ul class="nav-menu">
+      <li>
+        <a href="#calc">計算工具 <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="dropdown">
+          <a href="living-cost.html"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 11l9-7 9 7v9a2 2 0 0 1-2 2h-3v-7H10v7H5a2 2 0 0 1-2-2v-9z" fill="#fff"/><path d="M3 11l9-7 9 7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/><rect x="14.5" y="13" width="3" height="3" rx="0.4" fill="#047857"/><rect x="6.5" y="13" width="3" height="3" rx="0.4" fill="#047857"/></svg></span><div><div class="d-name">生活費規劃器</div><div class="d-desc">通脹下的真實退休開銷</div></div></a>
+          <a href="index.html#calc"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 1 0 10 10h-6a4 4 0 1 1-4-4V2z" fill="#fff" opacity="0.95"/><path d="M12 2a10 10 0 0 1 10 10h-6a4 4 0 0 0-4-4V2z" fill="#a7f3d0"/><circle cx="12" cy="12" r="3" fill="#fff"/></svg></span><div><div class="d-name">退休缺口計算器</div><div class="d-desc">算出退休那天還差多少</div></div></a>
+          <a href="mpf.html"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" fill="#fff"/><text x="12" y="16" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" font-weight="800" fill="#047857">HK$</text></svg></span><div><div class="d-name">MPF 強積金計算器</div><div class="d-desc">香港僱員專屬</div></div></a>
+          <a href="labor-pension.html"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M9 4 C9 4, 12 2, 15 4 L16 7 C18 8, 19 11, 19 14 C19 18, 16 21, 12 21 C8 21, 5 18, 5 14 C5 11, 6 8, 8 7 L9 4 Z" fill="#fff"/><path d="M9 4 C9 4, 12 2, 15 4" stroke="#fff" stroke-width="1.6" stroke-linecap="round" fill="none" opacity="0.6"/><rect x="11.5" y="12" width="1" height="2.2" rx="0.4" fill="#047857"/><rect x="11.5" y="15" width="1" height="1.6" rx="0.4" fill="#047857"/><circle cx="12" cy="14" r="4" stroke="#047857" stroke-width="1.2" fill="none" opacity="0.35"/></svg></span><div><div class="d-name">勞退勞保試算器</div><div class="d-desc">台灣勞工專屬</div></div></a>
+        </div>
+      </li>
+      <li><a href="index.html#resources">退休資訊</a></li>
+      <li><a href="index.html#about">關於我們</a></li>
+      <li><a href="#calc" class="nav-cta">開始規劃</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="開啟選單">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</div>
+
+<div class="nav-drawer" id="navDrawer">
+  <div class="nav-drawer-section">
+    <div class="nav-drawer-label">計算工具</div>
+    <a href="living-cost.html" class="nav-drawer-item" data-close>
+      <span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 11l9-7 9 7v9a2 2 0 0 1-2 2h-3v-7H10v7H5a2 2 0 0 1-2-2v-9z" fill="#fff"/><path d="M3 11l9-7 9 7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/><rect x="14.5" y="13" width="3" height="3" rx="0.4" fill="#047857"/><rect x="6.5" y="13" width="3" height="3" rx="0.4" fill="#047857"/></svg></span>
+      <div><div>生活費規劃器</div><div class="d-desc">通脹下的真實退休開銷</div></div>
+    </a>
+    <a href="index.html#calc" class="nav-drawer-item" data-close>
+      <span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 1 0 10 10h-6a4 4 0 1 1-4-4V2z" fill="#fff" opacity="0.95"/><path d="M12 2a10 10 0 0 1 10 10h-6a4 4 0 0 0-4-4V2z" fill="#a7f3d0"/><circle cx="12" cy="12" r="3" fill="#fff"/></svg></span>
+      <div><div>退休缺口計算器</div><div class="d-desc">算出退休那天還差多少</div></div>
+    </a>
+    <a href="mpf.html" class="nav-drawer-item" data-close>
+      <span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" fill="#fff"/><text x="12" y="16" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" font-weight="800" fill="#047857">HK$</text></svg></span>
+      <div><div>MPF 強積金計算器</div><div class="d-desc">香港僱員專屬</div></div>
+    </a>
+    <a href="labor-pension.html" class="nav-drawer-item" data-close>
+      <span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M9 4 C9 4, 12 2, 15 4 L16 7 C18 8, 19 11, 19 14 C19 18, 16 21, 12 21 C8 21, 5 18, 5 14 C5 11, 6 8, 8 7 L9 4 Z" fill="#fff"/><path d="M9 4 C9 4, 12 2, 15 4" stroke="#fff" stroke-width="1.6" stroke-linecap="round" fill="none" opacity="0.6"/><rect x="11.5" y="12" width="1" height="2.2" rx="0.4" fill="#047857"/><rect x="11.5" y="15" width="1" height="1.6" rx="0.4" fill="#047857"/><circle cx="12" cy="14" r="4" stroke="#047857" stroke-width="1.2" fill="none" opacity="0.35"/></svg></span>
+      <div><div>勞退勞保試算器</div><div class="d-desc">台灣勞工專屬</div></div>
+    </a>
+  </div>
+  <div class="nav-drawer-section">
+    <div class="nav-drawer-label">其他</div>
+    <a href="index.html#resources" class="nav-drawer-simple" data-close>退休資訊</a>
+    <a href="index.html#about" class="nav-drawer-simple" data-close>關於我們</a>
+  </div>
+</div>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-eyebrow">台灣專屬 · 勞退勞保</div>
+      <h1>退休後每月<br/>能領<span class="accent">多少錢</span>？</h1>
+      <p>勞退新制專戶累積金額 + 勞保老年年金，兩筆退休收入一次算清楚。含雇主 6% 提繳、自提 0-6%、保證收益 2%，以及所得替代率分析。</p>
+    </div>
+  </div>
+</section>
+
+<section id="calc" class="calc-section">
+  <div class="container">
+    <div class="calc-layout">
+      <div class="calc-card reveal">
+        <div class="calc-card-head">
+          <div class="calc-card-ico">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M9 4 C9 4, 12 2, 15 4 L16 7 C18 8, 19 11, 19 14 C19 18, 16 21, 12 21 C8 21, 5 18, 5 14 C5 11, 6 8, 8 7 L9 4 Z" fill="#fff"/>
+              <path d="M9 4 C9 4, 12 2, 15 4" stroke="#fff" stroke-width="1.6" stroke-linecap="round" fill="none" opacity="0.6"/>
+              <rect x="11.5" y="12" width="1" height="2.2" rx="0.4" fill="#047857"/>
+              <rect x="11.5" y="15" width="1" height="1.6" rx="0.4" fill="#047857"/>
+              <circle cx="12" cy="14" r="4" stroke="#047857" stroke-width="1.2" fill="none" opacity="0.35"/>
+            </svg>
+          </div>
+          <div>
+            <div class="calc-card-title">勞退勞保試算器</div>
+            <div class="calc-card-desc">台灣專屬 · 貨幣固定為 TWD</div>
+          </div>
+        </div>
+        <form class="calc-form" id="lpForm" onsubmit="return false;">
+          <div class="calc-field">
+            <label for="insuranceSalary">當前月投保薪資 <span class="hint">（TWD / 月，27,470 - 45,800）</span></label>
+            <input class="calc-input" type="number" id="insuranceSalary" value="36000" min="27470" max="45800" step="500" />
+          </div>
+          <div class="calc-row">
+            <div class="calc-field">
+              <label for="currentAge">當前年齡 <span class="hint">（歲）</span></label>
+              <input class="calc-input" type="number" id="currentAge" value="35" min="15" max="64" />
+            </div>
+            <div class="calc-field">
+              <label for="retireAge">預計退休年齡 <span class="hint">（歲）</span></label>
+              <input class="calc-input" type="number" id="retireAge" value="65" min="50" max="70" />
+            </div>
+          </div>
+          <div class="calc-row">
+            <div class="calc-field">
+              <label for="laborPensionBalance">勞退現有專戶金額 <span class="hint">（TWD）</span></label>
+              <input class="calc-input" type="number" id="laborPensionBalance" value="200000" min="0" max="10000000" step="10000" />
+            </div>
+            <div class="calc-field">
+              <label for="existingYears">勞保年資（已有） <span class="hint">（年）</span></label>
+              <input class="calc-input" type="number" id="existingYears" value="10" min="0" max="50" />
+            </div>
+          </div>
+          <div class="calc-field">
+            <label for="voluntaryRate">勞工自提比例 <span class="hint">（0-6%，建議自提增加退休準備）</span></label>
+            <div class="calc-slider-row">
+              <input class="calc-slider" type="range" id="voluntaryRate" min="0" max="6" step="1" value="0" />
+              <span class="calc-slider-val" id="volVal">0%</span>
+            </div>
+          </div>
+          <div class="calc-field">
+            <label for="fundReturn">勞退專戶預期年收益率</label>
+            <div class="calc-slider-row">
+              <input class="calc-slider" type="range" id="fundReturn" min="-5" max="10" step="0.1" value="4" />
+              <span class="calc-slider-val" id="returnVal">4.0%</span>
+            </div>
+          </div>
+          <div class="calc-field">
+            <label for="avgSalary">勞保平均月投保薪資 <span class="hint">（TWD，用於年金計算）</span></label>
+            <input class="calc-input" type="number" id="avgSalary" value="36000" min="27470" max="45800" step="500" />
+          </div>
+          <button class="btn btn-primary btn-lg" id="calcBtn" type="button" style="margin-top: 6px;">
+            立即計算
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </form>
+      </div>
+
+      <div class="calc-result reveal" id="result">
+        <div class="result-hero">
+          <div class="result-hero-label">退休後每月預估收入</div>
+          <div class="result-hero-amount"><span class="cur">NT$</span><span id="rTotal">0</span></div>
+          <div class="result-hero-note" id="rNote">勞退月領 + 勞保年金合計</div>
+        </div>
+
+        <div class="split-box">
+          <div class="split-cell">
+            <div class="split-cell-label">勞退新制月領</div>
+            <div class="split-cell-val"><span class="cur">NT$</span><span id="rPension">0</span></div>
+            <div class="split-cell-sub" id="rPensionSub">專戶累積按 20 年月領</div>
+          </div>
+          <div class="split-cell insurance">
+            <div class="split-cell-label">勞保年金月領</div>
+            <div class="split-cell-val"><span class="cur">NT$</span><span id="rInsurance">0</span></div>
+            <div class="split-cell-sub" id="rInsuranceSub">平均薪資 × 年資 × 1.55%</div>
+          </div>
+        </div>
+
+        <div class="detail-section">
+          <div class="detail-title">明細拆分</div>
+          <table class="detail-table">
+            <thead>
+              <tr><th>項目</th><th>金額</th></tr>
+            </thead>
+            <tbody id="detailBody"></tbody>
+          </table>
+        </div>
+
+        <div class="replace-section">
+          <div class="replace-label">
+            <span>所得替代率</span>
+            <span class="pct" id="rReplacePct">0%</span>
+          </div>
+          <div class="replace-bar">
+            <div class="replace-fill" id="rReplaceBar" style="width:0%"></div>
+          </div>
+          <div class="replace-hint" id="rReplaceHint">退休月收入 / 目前月投保薪資</div>
+        </div>
+
+        <div id="warningArea"></div>
+
+        <div class="disclaimer-inline">
+          本計算器依據勞工退休金條例及勞工保險條例之現行規定進行試算。勞保年金給付金額受投保薪資調整、法令變更等因素影響，實際金額以勞工保險局核定為準。計算結果僅為估算，不構成任何投資建議。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="about">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brand-logo">
+          <svg viewBox="0 0 32 32" fill="none">
+            <path d="M4 14 C4 9, 9 5, 16 5 C23 5, 28 9, 28 14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M3 19 C3 14, 8 11, 16 11 C24 11, 29 14, 29 19" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" opacity="0.7"/>
+            <path d="M5 24 C5 19, 10 17, 16 17 C22 17, 27 19, 27 24" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" opacity="0.45"/>
+            <circle cx="16" cy="22" r="3.2" fill="currentColor"/>
+          </svg>
+        </div>
+        <p>Pensionwise 養老智 — 為香港與台灣打工族而做的退休規劃平台。慢慢算，慢慢存，慢慢過好日子。</p>
+        <div class="foot-social">
+          <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.378 14.192 5 15.115 5H18V0h-3.808C10.596 0 9 1.583 9 4.615V8z"/></svg></a>
+          <a href="#" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>計算工具</h4>
+        <ul>
+          <li><a href="living-cost.html">生活費規劃</a></li>
+          <li><a href="index.html#calc">退休缺口</a></li>
+          <li><a href="mpf.html">MPF 強積金</a></li>
+          <li><a href="labor-pension.html">勞退勞保</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>退休資訊</h4>
+        <ul>
+          <li><a href="index.html#resources">香港退休</a></li>
+          <li><a href="index.html#resources">台灣退休</a></li>
+          <li><a href="index.html#resources">通用資訊</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>關於</h4>
+        <ul>
+          <li><a href="index.html#about">關於我們</a></li>
+          <li><a href="#">聯絡我們</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>法務</h4>
+        <ul>
+          <li><a href="#">隱私政策</a></li>
+          <li><a href="#">免責聲明</a></li>
+          <li><a href="#">使用條款</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 Pensionwise 養老智 · All rights reserved.</span>
+      <div class="legal">
+        <a href="#">隱私</a>
+        <a href="#">條款</a>
+        <a href="#">免責聲明</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ============ 台灣勞退勞保常量（PRD 4.4.2）============
+  // 数据来源：劳动部劳工保险局 | 更新日期：2024-01
+  const TAIWAN_LABOR_CONSTANTS = {
+    // 劳退新制
+    EMPLOYER_CONTRIBUTION_RATE: 0.06,    // 雇主强制提缴 6%
+    VOLUNTARY_CONTRIBUTION_MIN: 0.01,    // 劳工自提最低 1%
+    VOLUNTARY_CONTRIBUTION_MAX: 0.06,    // 劳工自提最高 6%
+    GUARANTEED_MIN_RETURN: 0.02,         // 保证收益率不低于 2%
+
+    // 劳保老年给付
+    INSURANCE_SALARY_CAP: 45800,         // 劳保投保薪资上限 TWD 45,800（2024年）
+    MIN_INSURANCE_SALARY: 27470,         // 最低投保薪资 TWD 27,470（= 2024年基本工资）
+
+    // 年金给付率（两个公式择优发给）
+    PENSION_FORMULA_A_RATE: 0.0155,      // 公式A：平均月投保薪资 × 年资 × 1.55%
+    PENSION_FORMULA_B_RATE: 0.00775,     // 公式B：平均月投保薪资 × 年资 × 0.775% + 3000
+    PENSION_FORMULA_B_BASE: 3000,        // 公式B 加计 3,000 元
+
+    // 劳保年金法定请领年龄（逐年调高，2026年起 = 65岁）
+    STATUTORY_CLAIM_AGE: 65,             // 2026年起全面65岁
+    EARLY_CLAIM_MIN_AGE: 60,             // 提前请领最低年龄60岁
+    EARLY_CLAIM_PENALTY: 0.04,           // 每提前1年减额4%
+    DEFERRED_CLAIM_BONUS: 0.04,          // 每延后1年增额4%
+  };
+
+  // 滑块联动
+  document.getElementById('voluntaryRate').addEventListener('input', e => {
+    document.getElementById('volVal').textContent = e.target.value + '%';
+  });
+  document.getElementById('fundReturn').addEventListener('input', e => {
+    document.getElementById('returnVal').textContent = parseFloat(e.target.value).toFixed(1) + '%';
+  });
+
+  // 货币格式化（固定 NT$）
+  function fmt(n) {
+    return 'NT$' + Math.round(Math.max(0, n)).toLocaleString('en-US');
+  }
+
+  // 计算
+  function calculate() {
+    const insuranceSalary = Math.max(0, parseFloat(document.getElementById('insuranceSalary').value) || 27470);
+    const currentAge = parseInt(document.getElementById('currentAge').value) || 15;
+    const retireAge = parseInt(document.getElementById('retireAge').value) || 65;
+    const laborPensionBalance = Math.max(0, parseFloat(document.getElementById('laborPensionBalance').value) || 0);
+    const voluntaryRate = Math.max(0, Math.min(0.06, parseFloat(document.getElementById('voluntaryRate').value) / 100 || 0));
+    const existingYears = Math.max(0, parseInt(document.getElementById('existingYears').value) || 0);
+    const pensionFundReturn = parseFloat(document.getElementById('fundReturn').value) / 100;
+    // 劳保投保薪资上限 45800
+    const avgSalary = Math.min(parseFloat(document.getElementById('avgSalary').value) || insuranceSalary, TAIWAN_LABOR_CONSTANTS.INSURANCE_SALARY_CAP);
+
+    // 輸入校驗
+    if (!Number.isFinite(currentAge) || !Number.isFinite(retireAge) || !Number.isFinite(pensionFundReturn)) {
+      alert('請輸入有效的數字');
+      return;
+    }
+    if (retireAge <= currentAge) {
+      alert('退休年齡需大於當前年齡');
+      return;
+    }
+
+    // ===== Part A：劳退新制退休金（PRD 4.4.4）=====
+    // 每月提缴总额
+    const employerMonthly = insuranceSalary * TAIWAN_LABOR_CONSTANTS.EMPLOYER_CONTRIBUTION_RATE;
+    const voluntaryMonthly = insuranceSalary * voluntaryRate;
+    const totalMonthly = employerMonthly + voluntaryMonthly;
+
+    // 距退休月数
+    const M = (retireAge - currentAge) * 12;
+    const monthlyR = pensionFundReturn / 12;
+
+    // 现有专户终值
+    const fvBalance = laborPensionBalance * Math.pow(1 + monthlyR, M);
+
+    // 每月提缴年金终值
+    let fvContributions;
+    if (Math.abs(monthlyR) < 1e-9) {
+      fvContributions = totalMonthly * M;
+    } else {
+      fvContributions = totalMonthly * (Math.pow(1 + monthlyR, M) - 1) / monthlyR;
+    }
+
+    // 劳退新制总累积
+    const laborPensionTotal = fvBalance + fvContributions;
+
+    // 分别计算各部分累积
+    const calcFV = (monthly) => {
+      if (monthly === 0) return 0;
+      if (Math.abs(monthlyR) < 1e-9) return monthly * M;
+      return monthly * (Math.pow(1 + monthlyR, M) - 1) / monthlyR;
+    };
+    const fvEmployer = calcFV(employerMonthly);
+    const fvVoluntary = calcFV(voluntaryMonthly);
+    const totalContributed = laborPensionBalance + fvEmployer + fvVoluntary;
+    const investmentReturn = laborPensionTotal - totalContributed;
+
+    // 退休后每月可领（按 20 年平均领取）
+    const monthlyPension = laborPensionTotal / (20 * 12);
+
+    // ===== Part B：劳保老年给付（PRD 4.4.4）=====
+    // 实际请领年龄：若 retireAge < 60，劳保年金最低请领年龄为 60 岁，强制以 60 岁计算
+    const statutoryAge = TAIWAN_LABOR_CONSTANTS.STATUTORY_CLAIM_AGE;
+    const earlyClaimMin = TAIWAN_LABOR_CONSTANTS.EARLY_CLAIM_MIN_AGE;
+    const actualClaimAge = Math.max(retireAge, earlyClaimMin);
+    const isBelowMinAge = retireAge < earlyClaimMin;
+
+    // 总保险年资（累计到实际请领年龄）
+    const totalInsuranceYears = existingYears + (actualClaimAge - currentAge);
+
+    // 公式A：平均月投保薪资 × 年资 × 1.55%
+    const formulaA = avgSalary * totalInsuranceYears * TAIWAN_LABOR_CONSTANTS.PENSION_FORMULA_A_RATE;
+    // 公式B：平均月投保薪资 × 年资 × 0.775% + 3000
+    const formulaB = avgSalary * totalInsuranceYears * TAIWAN_LABOR_CONSTANTS.PENSION_FORMULA_B_RATE + TAIWAN_LABOR_CONSTANTS.PENSION_FORMULA_B_BASE;
+    // 两个公式择优发给
+    let baseInsurancePension = Math.max(formulaA, formulaB);
+    let formulaUsed = formulaA >= formulaB ? 'A' : 'B';
+
+    // 提前/延后请领调整（每提前1年减4%，每延后1年增4%）
+    // 注意：仅 60 岁后才能提前请领；提前请领后年资仍累计到 actualClaimAge
+    let adjustmentFactor = 1;
+    let adjustmentDesc = '法定年龄请领（无增减）';
+    if (actualClaimAge < statutoryAge && actualClaimAge >= earlyClaimMin) {
+      const earlyYears = statutoryAge - actualClaimAge;
+      adjustmentFactor = 1 - earlyYears * TAIWAN_LABOR_CONSTANTS.EARLY_CLAIM_PENALTY;
+      adjustmentDesc = `提前 ${earlyYears} 年请领，每年 -4% → 减额 ${Math.round(earlyYears * 4)}%`;
+    } else if (actualClaimAge > statutoryAge) {
+      const deferYears = actualClaimAge - statutoryAge;
+      adjustmentFactor = 1 + deferYears * TAIWAN_LABOR_CONSTANTS.DEFERRED_CLAIM_BONUS;
+      adjustmentDesc = `延后 ${deferYears} 年请领，每年 +4% → 增额 ${Math.round(deferYears * 4)}%`;
+    }
+    const monthlyInsurancePension = baseInsurancePension * adjustmentFactor;
+
+    // ===== Part C：合计 =====
+    const totalMonthlyRetirementIncome = monthlyPension + monthlyInsurancePension;
+
+    // 显示主结果
+    document.getElementById('rTotal').textContent = Math.round(totalMonthlyRetirementIncome).toLocaleString('en-US');
+
+    // 拆分
+    document.getElementById('rPension').textContent = Math.round(monthlyPension).toLocaleString('en-US');
+    document.getElementById('rPensionSub').textContent = `專戶累積 ${fmt(laborPensionTotal)} ÷ 240 月`;
+    document.getElementById('rInsurance').textContent = Math.round(monthlyInsurancePension).toLocaleString('en-US');
+    document.getElementById('rInsuranceSub').textContent = `公式${formulaUsed} × ${adjustmentFactor === 1 ? '無增減' : (adjustmentFactor > 1 ? '+' : '') + Math.round((adjustmentFactor - 1) * 100) + '%'}`;
+
+    // 明细表格
+    const detailBody = document.getElementById('detailBody');
+    let detailHtml = '';
+    detailHtml += `<tr><td>勞退專戶總累積</td><td>${fmt(laborPensionTotal)}</td></tr>`;
+    detailHtml += `<tr><td>　雇主 6% 提繳累積</td><td>${fmt(fvEmployer)}</td></tr>`;
+    detailHtml += `<tr><td>　自提累積</td><td>${fmt(fvVoluntary)}</td></tr>`;
+    detailHtml += `<tr><td>　投資收益</td><td>${fmt(investmentReturn)}</td></tr>`;
+    detailHtml += `<tr><td>勞退月領（20 年）</td><td>${fmt(monthlyPension)}</td></tr>`;
+    detailHtml += `<tr><td>勞保年金基額（公式${formulaUsed}）</td><td>${fmt(baseInsurancePension)}</td></tr>`;
+    detailHtml += `<tr><td>　${fmt(avgSalary)} × ${totalInsuranceYears} 年 × ${formulaUsed === 'A' ? '1.55%' : '0.775%'}${formulaUsed === 'B' ? ' + 3,000' : ''}</td><td>${fmt(baseInsurancePension)}</td></tr>`;
+    detailHtml += `<tr><td>　請領年齡調整</td><td>${adjustmentFactor === 1 ? '無增減' : (adjustmentFactor > 1 ? '+' : '') + Math.round((adjustmentFactor - 1) * 100) + '%'}</td></tr>`;
+    detailHtml += `<tr><td>勞保年金實領（月）</td><td>${fmt(monthlyInsurancePension)}</td></tr>`;
+    detailHtml += `<tr class="total"><td>退休月收入合計</td><td>${fmt(totalMonthlyRetirementIncome)}</td></tr>`;
+    detailBody.innerHTML = detailHtml;
+
+    // 所得替代率
+    const replaceRate = insuranceSalary > 0 ? (totalMonthlyRetirementIncome / insuranceSalary) * 100 : 0;
+    document.getElementById('rReplacePct').textContent = replaceRate.toFixed(1) + '%';
+    document.getElementById('rReplaceBar').style.width = Math.min(100, replaceRate) + '%';
+    let replaceHint = '退休月收入 / 目前月投保薪資';
+    if (replaceRate < 30) {
+      replaceHint = '所得替代率偏低，建議增加自提或考慮其他退休儲蓄。';
+    } else if (replaceRate < 50) {
+      replaceHint = '所得替代率尚可，仍建議透過自提補充退休準備。';
+    } else if (replaceRate < 70) {
+      replaceHint = '所得替代率良好，退休生活有一定保障。';
+    } else {
+      replaceHint = '所得替代率充足，退休生活較為寬裕。';
+    }
+    document.getElementById('rReplaceHint').textContent = replaceHint;
+
+    // 边界条件提示
+    let warnings = '';
+    let note = '勞退月領 + 勞保年金合計';
+    if (isBelowMinAge) {
+      warnings += `<div class="warning-box">⚠️ 勞保年金最低請領年齡為 60 歲。你設定的 ${retireAge} 歲尚未達請領年齡，本試算已自動以 60 歲作為勞保年金請領年齡計算（勞退專戶仍可依 ${retireAge} 歲退休提取）。實際請領時請以勞保局規定為準。</div>`;
+    } else if (actualClaimAge < statutoryAge) {
+      warnings += `<div class="warning-box">⚠️ 提前請領減額：每提前 1 年扣減 4%，終身減額。你提前 ${statutoryAge - actualClaimAge} 年，扣減 ${Math.round((statutoryAge - actualClaimAge) * 4)}%。<br/>${adjustmentDesc}</div>`;
+    } else if (actualClaimAge > statutoryAge) {
+      warnings += `<div class="info-box">ℹ️ 延後請領增額：每延後 1 年增給 4%，終身增額。你延後 ${actualClaimAge - statutoryAge} 年，增額 ${Math.round((actualClaimAge - statutoryAge) * 4)}%。<br/>${adjustmentDesc}</div>`;
+    }
+    if (totalInsuranceYears < 15) {
+      warnings += `<div class="warning-box">⚠️ 保險年資未滿 15 年，依規定僅能請領一次給付（老年一次金）而非按月年金。建議累積至少 15 年年資以領取月年金。</div>`;
+    }
+    if (voluntaryRate === 0) {
+      warnings += `<div class="info-box">ℹ️ 你未自提，建議考慮自提以增加退休準備。自提可享節稅效果，且享有不低於 2% 的保證收益。</div>`;
+    }
+    document.getElementById('rNote').textContent = note;
+    document.getElementById('warningArea').innerHTML = warnings;
+
+    document.getElementById('result').classList.add('show', 'reveal-in');
+  }
+
+  document.getElementById('calcBtn').addEventListener('click', calculate);
+
+  // 滚动出现
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // 移动端汉堡菜单
+  (function() {
+    const toggle = document.getElementById('navToggle');
+    const drawer = document.getElementById('navDrawer');
+    if (!toggle || !drawer) return;
+    const setOpen = (open) => {
+      toggle.classList.toggle('open', open);
+      drawer.classList.toggle('open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+      toggle.setAttribute('aria-label', open ? '關閉選單' : '開啟選單');
+    };
+    toggle.addEventListener('click', () => setOpen(!drawer.classList.contains('open')));
+    drawer.querySelectorAll('[data-close]').forEach(el => { el.addEventListener('click', () => setOpen(false)); });
+    const mq = window.matchMedia('(min-width: 981px)');
+    mq.addEventListener('change', e => { if (e.matches) setOpen(false); });
+  })();
+</script>
+
+</body>
+</html>

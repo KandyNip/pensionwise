@@ -1,0 +1,109 @@
+# Decap CMS 後台配置
+# 文檔：https://decapcms.org/docs/configuration-options/
+
+# ====== 後端認證 ======
+# 使用 GitHub OAuth PKCE（Vercel 部署無需額外 OAuth proxy）
+# 部署前需要：
+#   1. 在 GitHub 創建 OAuth App（Settings → Developer settings → OAuth Apps）
+#        - Homepage URL: https://你的域名
+#        - Authorization callback URL: https://你的域名/admin/
+#   2. 把 OAuth App 的 Client ID 填到下面的 client_id
+#   3. 把你的 GitHub 倉庫名填到 repo
+backend:
+  name: github
+  repo: your-username/pension-project   # ← 替換為你的 GitHub 倉庫（用戶名/倉庫名）
+  branch: main
+  auth_type: pkce
+  app_id: your-github-oauth-client-id   # ← 替換為 GitHub OAuth App 的 Client ID
+
+# ====== 本地開發模式 ======
+# 本地預覽時用 `npx decap-server` 啟動本地後台，改為 local_git
+# 部署到 Vercel 時註釋掉下面這行
+# local_backend: true
+
+# ====== 媒體（圖片上傳） ======
+# 圖片存在倉庫的 assets/images/ 文件夾，跟著 git 走，不依賴圖床
+media_folder: "assets/images"
+public_folder: "/assets/images"
+
+# ====== 內容集合 ======
+collections:
+  - name: "articles"
+    label: "退休資訊文章"
+    label_singular: "文章"
+    folder: "articles"
+    create: true
+    delete: true
+    extension: "md"
+    format: "frontmatter"
+    slug: "{{slug}}"
+    summary: "{{title}} · {{publishDate}}"
+    sortable_fields: ['publishDate', 'title', 'featured']
+    view_filters:
+      - label: "香港文章"
+        field: regionTag
+        pattern: "HK"
+      - label: "台灣文章"
+        field: regionTag
+        pattern: "TW"
+      - label: "推薦大卡片"
+        field: featured
+        pattern: true
+    fields:
+      - { name: "title", label: "標題", widget: "string", hint: "卡片顯示的主標題，建議 20-40 字", pattern: ['.{6,80}', '標題需 6-80 字'] }
+      - { name: "publishDate", label: "發布日期", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+      - { name: "excerpt", label: "摘要", widget: "text", hint: "卡片上的一句話摘要，建議 50-80 字", pattern: ['.{10,150}', '摘要需 10-150 字'] }
+      - { name: "cover", label: "封面圖", widget: "image", hint: "建議 1200×900，4:3 比例" }
+      - { name: "coverAlt", label: "封面替代文字", widget: "string", hint: "無障礙用，描述圖片內容" }
+      - name: "regionTag"
+        label: "地區標籤"
+        widget: "select"
+        options: ["HK", "TW", "通用"]
+        default: "通用"
+        hint: "用於卡片右下角分類顯示"
+      - name: "badge"
+        label: "卡片左上角彩色徽章"
+        widget: "string"
+        required: false
+        hint: "例如「HK · MPF」「TW · 勞退」「通用 · 通脹」，留空則不顯示"
+      - name: "categoryName"
+        label: "分類名稱"
+        widget: "select"
+        options: ["香港退休", "台灣退休", "通用"]
+        default: "通用"
+      - name: "authorName"
+        label: "作者姓名"
+        widget: "string"
+        default: "編輯部"
+      - name: "authorSurname"
+        label: "作者姓氏首字"
+        widget: "string"
+        default: "編"
+        hint: "用作作者頭像的單字，例如「陳」「林」「王」"
+      - name: "authorTitle"
+        label: "作者頭銜"
+        widget: "string"
+        required: false
+        hint: "例如「認可財務策劃師」，留空則不顯示"
+      - name: "readMinutes"
+        label: "閱讀時長（分鐘）"
+        widget: "number"
+        default: 5
+        min: 1
+        max: 60
+        value_type: "int"
+      - name: "featured"
+        label: "設為推薦大卡片"
+        widget: "boolean"
+        default: false
+        hint: "勾選後此文章會顯示為第一張大卡片"
+      - name: "body"
+        label: "正文"
+        widget: "markdown"
+        required: false
+        hint: "正文內容（未來做文章詳情頁用，目前卡片只顯示摘要）"
+
+# ====== 站點設置 ======
+site_url: https://pensionwise.example.com   # ← 部署後改為你的正式域名
+display_url: https://pensionwise.example.com  # ← 同上，改為你的正式域名
+logo_url: /assets/images/admin-logo.svg
