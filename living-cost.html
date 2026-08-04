@@ -612,7 +612,7 @@
   .share-qr img { width: 160px; height: 160px; margin: 0 auto 8px; display: block; }
   .share-qr p { font-size: 12px; color: var(--ink-4); }
 </style>
-<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.min.js" defer></script>
 </head>
 <body>
 
@@ -1163,10 +1163,11 @@
     btn.disabled = true;
     try {
       const result = document.getElementById('result');
-      const canvas = await html2canvas(result, { scale: 2, backgroundColor: '#ffffff', useCORS: true });
+      await document.fonts.ready;
+      const dataUrl = await htmlToImage.toPng(result, { pixelRatio: 3, backgroundColor: '#ffffff', cacheBust: true });
       const link = document.createElement('a');
       link.download = '生活費規劃結果_' + new Date().toISOString().slice(0, 10) + '.png';
-      link.href = canvas.toDataURL('image/png');
+      link.href = dataUrl;
       link.click();
     } catch (e) {
       alert('圖片生成失敗，請改用分享功能');
