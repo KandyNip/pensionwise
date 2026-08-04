@@ -390,7 +390,7 @@
             </div>
           </div>
           <div class="calc-field">
-            <label for="fundReturn">勞退專戶預期年收益率</label>
+            <label for="fundReturn">勞退專戶預期年收益率 <span class="hint">（法規保證最低 2%）</span></label>
             <div class="calc-slider-row">
               <input class="calc-slider" type="range" id="fundReturn" min="-5" max="10" step="0.1" value="4" />
               <span class="calc-slider-val" id="returnVal">4.0%</span>
@@ -482,9 +482,9 @@
         </div>
         <p>Pensionwise 養老智 — 為香港與台灣打工族而做的退休規劃平台。慢慢算，慢慢存，慢慢過好日子。</p>
         <div class="foot-social">
-          <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.378 14.192 5 15.115 5H18V0h-3.808C10.596 0 9 1.583 9 4.615V8z"/></svg></a>
-          <a href="#" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-          <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://pensionwisetool.com/" target="_blank" rel="noopener" aria-label="分享到 Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.378 14.192 5 15.115 5H18V0h-3.808C10.596 0 9 1.583 9 4.615V8z"/></svg></a>
+          <a href="https://twitter.com/intent/tweet?text=Pensionwise%20%E9%A4%8A%E8%80%81%E6%99%BA%20%E2%80%94%20%E9%A6%99%E6%B8%AF%E5%8F%B0%E7%81%A3%E9%80%80%E4%BC%8F%E8%A6%8F%E5%8A%83%E8%88%87%E8%A8%88%E7%AE%97%E5%B7%A5%E5%85%B7&url=https://pensionwisetool.com/" target="_blank" rel="noopener" aria-label="分享到 X"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://pensionwisetool.com/" target="_blank" rel="noopener" aria-label="分享到 LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
         </div>
       </div>
       <div class="foot-col">
@@ -563,7 +563,11 @@
     document.getElementById('volVal').textContent = e.target.value + '%';
   });
   document.getElementById('fundReturn').addEventListener('input', e => {
-    document.getElementById('returnVal').textContent = parseFloat(e.target.value).toFixed(1) + '%';
+    const val = parseFloat(e.target.value);
+    const minPct = TAIWAN_LABOR_CONSTANTS.GUARANTEED_MIN_RETURN * 100;
+    document.getElementById('returnVal').textContent = val < minPct
+      ? minPct.toFixed(1) + '%（法規保證最低）'
+      : val.toFixed(1) + '%';
   });
 
   // 货币格式化（固定 NT$）
@@ -579,7 +583,8 @@
     const laborPensionBalance = Math.max(0, parseFloat(document.getElementById('laborPensionBalance').value) || 0);
     const voluntaryRate = Math.max(0, Math.min(0.06, parseFloat(document.getElementById('voluntaryRate').value) / 100 || 0));
     const existingYears = Math.max(0, parseInt(document.getElementById('existingYears').value) || 0);
-    const pensionFundReturn = parseFloat(document.getElementById('fundReturn').value) / 100;
+    // 劳退法规保证最低收益率 2%，滑块值低于 2% 时强制以 2% 计算
+    const pensionFundReturn = Math.max(parseFloat(document.getElementById('fundReturn').value) / 100, TAIWAN_LABOR_CONSTANTS.GUARANTEED_MIN_RETURN);
     // 劳保投保薪资上限 45800
     const avgSalary = Math.min(parseFloat(document.getElementById('avgSalary').value) || insuranceSalary, TAIWAN_LABOR_CONSTANTS.INSURANCE_SALARY_CAP);
 
@@ -625,8 +630,11 @@
     };
     const fvEmployer = calcFV(employerMonthly);
     const fvVoluntary = calcFV(voluntaryMonthly);
-    const totalContributed = laborPensionBalance + fvEmployer + fvVoluntary;
-    const investmentReturn = laborPensionTotal - totalContributed;
+    // 明细拆分采用本金口径：现有结余 + 雇主/自提本金 + 投资收益 = 总累積
+    const employerPrincipal = employerMonthly * M;
+    const voluntaryPrincipal = voluntaryMonthly * M;
+    const totalPrincipal = laborPensionBalance + employerPrincipal + voluntaryPrincipal;
+    const investmentReturn = laborPensionTotal - totalPrincipal;
 
     // 退休后每月可领（按 20 年平均领取）
     const monthlyPension = laborPensionTotal / (20 * 12);
@@ -680,8 +688,9 @@
     const detailBody = document.getElementById('detailBody');
     let detailHtml = '';
     detailHtml += `<tr><td>勞退專戶總累積</td><td>${fmt(laborPensionTotal)}</td></tr>`;
-    detailHtml += `<tr><td>　雇主 6% 提繳累積</td><td>${fmt(fvEmployer)}</td></tr>`;
-    detailHtml += `<tr><td>　自提累積</td><td>${fmt(fvVoluntary)}</td></tr>`;
+    detailHtml += `<tr><td>　現有專戶結餘</td><td>${fmt(laborPensionBalance)}</td></tr>`;
+    detailHtml += `<tr><td>　雇主 6% 提繳本金</td><td>${fmt(employerPrincipal)}</td></tr>`;
+    detailHtml += `<tr><td>　自提本金</td><td>${fmt(voluntaryPrincipal)}</td></tr>`;
     detailHtml += `<tr><td>　投資收益</td><td>${fmt(investmentReturn)}</td></tr>`;
     detailHtml += `<tr><td>勞退月領（20 年）</td><td>${fmt(monthlyPension)}</td></tr>`;
     detailHtml += `<tr><td>勞保年金基額（公式${formulaUsed}）</td><td>${fmt(baseInsurancePension)}</td></tr>`;
@@ -745,7 +754,7 @@
       '勞退現有專戶金額：NT$ ' + document.getElementById('laborPensionBalance').value,
       '勞保年資（已有）：' + document.getElementById('existingYears').value + ' 年',
       '勞工自提比例：' + document.getElementById('voluntaryRate').value + '%',
-      '勞退專戶預期年收益率：' + document.getElementById('fundReturn').value + '%',
+      '勞退專戶預期年收益率：' + Math.max(parseFloat(document.getElementById('fundReturn').value), TAIWAN_LABOR_CONSTANTS.GUARANTEED_MIN_RETURN * 100).toFixed(1) + '%（法規保證最低 2%）',
       '勞保平均月投保薪資：NT$ ' + document.getElementById('avgSalary').value,
       '',
       '【計算結果】',
