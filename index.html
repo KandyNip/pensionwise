@@ -968,7 +968,7 @@
             </svg>
           </div>
           <div>
-            <div class="hero-float-num">HK$<span id="floatNum">4.2M</span></div>
+            <div class="hero-float-num"><span id="floatCur">HK$</span><span id="floatNum">4.2M</span></div>
             <div class="hero-float-label">平均退休缺口估算</div>
           </div>
         </div>
@@ -1392,6 +1392,7 @@
     document.getElementById('regionSel').value = r;
     document.getElementById('navRegionLabel').textContent = label;
     document.getElementById('floatNum').textContent = region === 'hk' ? '4.2M' : '16M';
+    document.getElementById('floatCur').textContent = cur;
 
     // 更新导航下拉菜单选中状态
     document.querySelectorAll('.nav-region-item').forEach(el => {
