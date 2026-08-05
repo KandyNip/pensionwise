@@ -1,7 +1,7 @@
 ---
 title: "台灣勞退新制完整指南：雇主提撥 6% + 自提免稅，退休那一天專戶裡會有多少錢？"
-date: 2026-08-05
-description: "勞退新制退休金怎麼算？雇主 6% + 自提 0-6%，2025 年收益率 15.6%，退休那一天你的勞退專戶裡到底會有多少錢？月退跟一次領差多少？2026 年 8 月新規你有什麼新保障？一篇搞懂。"
+publishDate: "2026-08-05"
+excerpt: "勞退新制退休金怎麼算？雇主 6% + 自提 0-6%，2025 年收益率 15.6%，退休那一天你的勞退專戶裡到底會有多少錢？月退跟一次領差多少？2026 年 8 月新規你有什麼新保障？一篇搞懂。"
 slug: 2026-labor-pension-guide
 badge: "台灣 · 勞退"
 regionTag: "TW"
@@ -11,7 +11,8 @@ authorSurname: "Nip"
 authorTitle: "站長"
 readMinutes: 8
 featured: false
-coverImage: "/assets/images/article-labor-pension.jpg"
+cover: "/assets/images/article-labor-pension.jpg"
+coverAlt: "台北101夜景——台灣勞工的退休養老金"
 ---
 
 # 台灣勞退新制完整指南：雇主提撥 6% + 自提免稅，退休那一天專戶裡會有多少錢？
