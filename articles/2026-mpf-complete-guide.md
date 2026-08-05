@@ -5,11 +5,11 @@ excerpt: "從僱主僱員各 5% 講到提早退休提取規則，附真實案例
 cover: "/assets/images/article-mpf-guide-v2.jpg"
 coverAlt: "香港維多利亞港天際線夜景"
 regionTag: "HK"
-badge: "HK · MPF"
+badge: "香港 · MPF"
 categoryName: "香港退休"
 authorName: "Kandy Nip"
 authorSurname: "Nip"
-authorTitle: "站长"
+authorTitle: "站長"
 readMinutes: 8
 featured: true
 ---
