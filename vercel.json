@@ -6,7 +6,8 @@
   "framework": null,
   "rewrites": [
     { "source": "/admin", "destination": "/admin/index.html" },
-    { "source": "/admin/", "destination": "/admin/index.html" }
+    { "source": "/admin/", "destination": "/admin/index.html" },
+    { "source": "/article/:slug", "destination": "/article.html?slug=:slug" }
   ],
   "headers": [
     {
