@@ -11,7 +11,7 @@ authorSurname: "Nip"
 authorTitle: "站長"
 readMinutes: 8
 featured: false
-cover: "/assets/images/article-labor-pension.jpg"
+cover: "/assets/images/article-labor-pension-v2.jpg"
 coverAlt: "台北101夜景——台灣勞工的退休養老金"
 ---
 
@@ -23,7 +23,7 @@ coverAlt: "台北101夜景——台灣勞工的退休養老金"
 
 今天就用最直白的語言，把勞退新制從頭到尾講清楚。不講法條原文，只講你真正需要知道的事。
 
-![台北101夜景](/assets/images/article-labor-pension.jpg)
+![台北101夜景](/assets/images/article-labor-pension-v2.jpg)
 *台北 101 夜景——台灣勞工的退休養老金，可能就藏在這座城市的天際線裡*
 
 ## 先搞清楚：勞退新制到底是什麼
@@ -57,7 +57,7 @@ coverAlt: "台北101夜景——台灣勞工的退休養老金"
 
 自提的部分是額外的，你可以選擇提 0% 到 6%。重點來了：**自提的部分可以從當年度個人綜合所得總額中全數扣除**，也就是說自提的金額免稅。
 
-![存錢罐與硬幣](/assets/images/labor-illust-2.jpg)
+![存錢罐與硬幣](/assets/images/labor-illust-2-v2.jpg)
 *自提勞退的免稅優惠，是台灣勞工最常被忽略的節流工具*
 
 ### 提繳薪資上限
@@ -80,7 +80,7 @@ coverAlt: "台北101夜景——台灣勞工的退休養老金"
 - **2026 年前 2 月整體基金收益**：8,131 億，收益率 10.83%
 - **平均每位勞工 2025 年收益分配**：約 5.78 萬元台幣
 
-![台北信義區夜景](/assets/images/labor-illust-1.jpg)
+![台北信義區夜景](/assets/images/labor-illust-1-v2.jpg)
 *勞動基金運用局管理超過 5 兆台幣的勞工退休基金，規模驚人*
 
 ### 歷史表現怎麼看
@@ -113,7 +113,7 @@ coverAlt: "台北101夜景——台灣勞工的退休養老金"
 
 老實說，95% 選一次領這個數字蠻驚人的。大部分人在退休那一刻拿到一筆錢，可能拿去還房貸、給小孩、投資失敗或不知不覺就花掉了。
 
-![台灣立法院](/assets/images/labor-illust-3.jpg)
+![台灣立法院](/assets/images/labor-illust-3-v2.jpg)
 *2026 年 8 月勞退新制修法上路，勞工權益再升級*
 
 ## 2026 年 8 月新規：你的三大新保障
@@ -174,7 +174,7 @@ coverAlt: "台北101夜景——台灣勞工的退休養老金"
 2. **評估是否自提**：如果你有所得稅要繳，自提 6% 可以同時節稅和增加退休本金，是最划算的操作
 3. **算一算你的缺口**：用上面的公式估算退休時能領多少，對照你理想中的退休生活費，看看差距有多大
 
-![台北夜景長曝光](/assets/images/labor-illust-4.jpg)
+![台北夜景長曝光](/assets/images/labor-illust-4-v2.jpg)
 *退休準備不是明天的事，是今天就要開始算的數學題*
 
 ## 結語
