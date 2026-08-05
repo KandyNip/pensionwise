@@ -240,6 +240,10 @@
     html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
     // italic
     html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+    // images (must be before links)
+    html = html.replace(/!\[(.+?)\]\((.+?)\)/g, '<img src="$2" alt="$1" loading="lazy" style="width:100%;border-radius:12px;margin:16px 0;">');
+    // links
+    html = html.replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank" style="color:#c9a96e;">$1</a>');
     // inline code
     html = html.replace(/`(.+?)`/g, '<code>$1</code>');
     // unordered list items
@@ -252,7 +256,7 @@
     html = html.split(/\n\n+/).map(function(block) {
       block = block.trim();
       if (!block) return '';
-      if (/^<(h[1-6]|ul|ol|blockquote|table|div)/.test(block)) return block;
+      if (/^<(h[1-6]|img|ul|ol|blockquote|table|div)/.test(block)) return block;
       return '<p>' + block.replace(/\n/g, '<br/>') + '</p>';
     }).join('\n');
     return html;
