@@ -2,20 +2,17 @@
 # 文檔：https://decapcms.org/docs/configuration-options/
 
 # ====== 後端認證 ======
-# 使用 GitHub OAuth + 外部 OAuth Proxy（Vercel 部署必需）
-#
-# GitHub OAuth 的 token 交換需要服務器，純靜態站點無法直接完成。
-# 解決方案：用 Cloudflare Worker 部署一個 OAuth Proxy（免費，5 分鐘搞定）
-# 詳細步驟見：https://github.com/sterlingwes/decap-proxy
-#
-# 部署完成 OAuth Proxy 後，把下面 base_url 改為你的 Proxy URL
-# 並刪除 auth_type 和 app_id 兩行
+# 使用 GitHub OAuth + Vercel Serverless OAuth Proxy
+# OAuth Proxy 代碼在 /api/auth.js 和 /api/callback.js
+# 需要在 Vercel 項目設置中配置環境變數：
+#   GITHUB_OAUTH_ID - GitHub OAuth App 的 Client ID
+#   GITHUB_OAUTH_SECRET - GitHub OAuth App 的 Client Secret
 backend:
   name: github
   repo: KandyNip/pensionwise
   branch: main
-  base_url: https://your-proxy-domain.workers.dev   # ← 替換為 Cloudflare Worker 的 URL
-  auth_endpoint: /auth
+  base_url: https://pensionwisetool.com
+  auth_endpoint: /api/auth
 
 # ====== 本地開發模式 ======
 # 本地預覽時用 `npx decap-server` 啟動本地後台，改為 local_git
