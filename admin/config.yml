@@ -14,7 +14,7 @@ backend:
   repo: KandyNip/pensionwise
   branch: main
   auth_type: pkce
-  app_id: your-github-oauth-client-id   # ← 替換為 GitHub OAuth App 的 Client ID（見下方說明）
+  app_id: Ov23liqGtiTCHuBwgcxE
 
 # ====== 本地開發模式 ======
 # 本地預覽時用 `npx decap-server` 啟動本地後台，改為 local_git
