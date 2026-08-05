@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="香港退休資訊 — MPF 強積金、退休生活費、規劃策略等專題文章。Pensionwise 養老智為香港打工族整理的退休理財指南。" />
+<meta name="theme-color" content="#047857" />
+<meta name="robots" content="index, follow" />
+<meta property="og:title" content="香港退休資訊 — Pensionwise 養老智" />
+<meta property="og:description" content="MPF 強積金、退休生活費、規劃策略等香港退休專題文章。" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="zh_Hant" />
+<title>香港退休資訊 — MPF、生活費、規劃指南 | Pensionwise 養老智</title>
+<link rel="canonical" href="https://pensionwisetool.com/articles-hk.html" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" /></noscript>
+<style>
+  :root {
+    --green-900: #053d2c;
+    --green-800: #074d36;
+    --green-700: #047857;
+    --green-600: #0c8551;
+    --green-500: #10b981;
+    --green-100: #d1fae5;
+    --green-50: #ecfdf5;
+    --ink: #0a0a0a;
+    --ink-2: #1f2937;
+    --ink-3: #4b5563;
+    --ink-4: #6b7280;
+    --ink-5: #9ca3af;
+    --line: #e5e7eb;
+    --line-soft: #f1f1ee;
+    --bg: #ffffff;
+    --bg-2: #fafaf7;
+    --bg-3: #f4f4ef;
+    --yellow: #fbbf24;
+    --shadow-xs: 0 1px 2px rgba(10, 10, 10, 0.04);
+    --shadow-sm: 0 1px 2px rgba(10, 10, 10, 0.04), 0 2px 4px rgba(10, 10, 10, 0.04);
+    --shadow-md: 0 2px 4px rgba(10, 10, 10, 0.04), 0 8px 16px -4px rgba(10, 10, 10, 0.08);
+    --shadow-lg: 0 4px 8px -2px rgba(10, 10, 10, 0.05), 0 16px 32px -8px rgba(10, 10, 10, 0.12);
+    --shadow-green: 0 8px 24px -8px rgba(12, 133, 81, 0.35);
+    --sans: 'Manrope', 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+    --radius: 10px;
+    --radius-sm: 6px;
+    --radius-lg: 16px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; }
+  img { display: block; max-width: 100%; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  .announce { background: var(--green-900); color: #fff; font-size: 13px; text-align: center; padding: 10px 16px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+  .announce-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-500); }
+  .announce a { color: #fff; text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
+
+  .nav-wrap { position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, 0.92); backdrop-filter: saturate(180%) blur(12px); -webkit-backdrop-filter: saturate(180%) blur(12px); border-bottom: 1px solid var(--line-soft); }
+  .nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; max-width: 1200px; margin: 0 auto; }
+  .brand { display: flex; align-items: center; gap: 9px; }
+  .brand-logo { width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; color: var(--green-700); }
+  .brand-logo svg { width: 30px; height: 30px; }
+  .brand-name { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); font-family: 'Manrope', sans-serif; }
+  .brand-zh { font-size: 11px; color: var(--ink-4); font-weight: 500; letter-spacing: 0.2em; margin-left: 2px; padding-left: 9px; border-left: 1px solid var(--line); }
+  .nav-menu { display: flex; align-items: center; gap: 4px; }
+  .nav-menu > li { list-style: none; position: relative; }
+  .nav-menu > li > a, .nav-menu > li > button { padding: 10px 14px; font-size: 15px; font-weight: 600; color: var(--ink-2); background: none; border: none; border-radius: var(--radius-sm); display: inline-flex; align-items: center; gap: 4px; transition: background .15s, color .15s; }
+  .nav-menu > li > a:hover, .nav-menu > li > button:hover { background: var(--bg-3); color: var(--ink); }
+  .nav-menu .chev { width: 14px; height: 14px; opacity: 0.6; }
+  .dropdown { position: absolute; top: calc(100% + 8px); left: 0; background: #fff; border-radius: var(--radius); box-shadow: var(--shadow-lg); padding: 8px; min-width: 260px; opacity: 0; visibility: hidden; transform: translateY(-4px); transition: all .18s ease; z-index: 100; }
+  .nav-menu > li:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+  .nav-menu > li:focus-within .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+  .dropdown a { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; border-radius: var(--radius-sm); transition: background .12s; }
+  .dropdown a:hover { background: var(--bg-2); }
+  .dropdown .d-ico { width: 36px; height: 36px; border-radius: 9px; background: linear-gradient(135deg, var(--green-600), var(--green-800)); color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 10px -3px rgba(12, 133, 81, 0.35); }
+  .dropdown .d-ico svg { width: 18px; height: 18px; }
+  .dropdown .d-name { font-size: 14px; font-weight: 700; color: var(--ink); }
+  .dropdown .d-desc { font-size: 12px; color: var(--ink-4); margin-top: 2px; }
+  .nav-cta { background: var(--green-700); color: #fff; padding: 9px 16px; border-radius: 8px; font-size: 14px; font-weight: 600; border: none; transition: background .15s; }
+  .nav-cta:hover { background: var(--green-800); }
+
+  .page-hero {
+    position: relative;
+    padding: 72px 0 64px;
+    overflow: hidden;
+    background: var(--green-900);
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 20% 50%, rgba(12, 133, 81, 0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 30%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
+    z-index: 1;
+  }
+  .page-hero > .container { position: relative; z-index: 2; }
+  .page-hero .section-eyebrow { font-size: 13px; font-weight: 700; color: #6ee7b7; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 12px; display: inline-flex; align-items: center; gap: 8px; }
+  .page-hero .section-eyebrow::before { content: ''; width: 24px; height: 2px; background: #6ee7b7; }
+  .page-hero h1 { font-size: clamp(32px, 4vw, 44px); line-height: 1.12; letter-spacing: -0.025em; color: #fff; font-weight: 800; margin-bottom: 12px; }
+  .page-hero h1 .accent { color: #6ee7b7; }
+  .page-hero p { font-size: 17px; color: rgba(255, 255, 255, 0.88); max-width: 640px; line-height: 1.6; }
+  .region-badge { display: inline-flex; align-items: center; gap: 8px; margin-top: 20px; padding: 8px 16px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 999px; font-size: 14px; font-weight: 600; color: #fff; backdrop-filter: blur(8px); }
+  .region-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: #fbbf24; }
+
+  .articles-section { background: var(--bg-2); padding: 56px 0 80px; }
+  .articles-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; }
+  .res-card { background: #fff; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); transition: box-shadow .2s, transform .2s; display: flex; flex-direction: column; }
+  .res-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+  .res-cover { aspect-ratio: 16 / 10; overflow: hidden; background: var(--bg-3); position: relative; }
+  .res-cover img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+  .res-card:hover .res-cover img { transform: scale(1.03); }
+  .res-cat { position: absolute; top: 14px; left: 14px; background: #fff; color: var(--ink); padding: 5px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: 0.02em; box-shadow: var(--shadow-sm); }
+  .res-body { padding: 20px; display: flex; flex-direction: column; flex: 1; }
+  .res-meta { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--ink-4); font-weight: 600; margin-bottom: 10px; }
+  .res-meta .sep { width: 3px; height: 3px; border-radius: 50%; background: var(--ink-5); }
+  .res-title { font-size: 18px; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; line-height: 1.35; margin-bottom: 8px; }
+  .res-excerpt { font-size: 14px; color: var(--ink-3); line-height: 1.55; margin-bottom: 16px; flex: 1; }
+  .res-author { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--ink-4); }
+  .res-author-av { width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, var(--green-600), var(--green-800)); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; }
+  .res-author strong { color: var(--ink-2); font-weight: 700; }
+
+  .empty-state { text-align: center; padding: 80px 24px; color: var(--ink-4); }
+  .empty-state svg { width: 48px; height: 48px; margin: 0 auto 16px; opacity: 0.4; }
+  .empty-state p { font-size: 16px; font-weight: 600; }
+
+  .region-switch { background: #fff; border-top: 1px solid var(--line-soft); padding: 48px 0; }
+  .region-switch-title { font-size: 16px; font-weight: 700; color: var(--ink-2); margin-bottom: 20px; text-align: center; }
+  .region-switch-links { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+  .region-switch-link { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 999px; font-size: 14px; font-weight: 600; color: var(--ink-3); background: var(--bg-2); border: 1px solid var(--line); transition: all .15s; }
+  .region-switch-link:hover { background: var(--green-50); border-color: var(--green-500); color: var(--green-700); }
+  .region-switch-link.current { background: var(--green-700); color: #fff; border-color: var(--green-700); }
+  .region-switch-link .dot { width: 8px; height: 8px; border-radius: 50%; }
+  .region-switch-link .dot.hk { background: #fbbf24; }
+  .region-switch-link .dot.tw { background: #3b82f6; }
+  .region-switch-link .dot.general { background: var(--green-500); }
+  .region-switch-link.current .dot { background: #fff; }
+
+  .footer { background: var(--green-900); color: rgba(255,255,255,0.8); padding: 56px 0 24px; }
+  .foot-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 40px; }
+  .foot-brand { display: flex; align-items: center; gap: 9px; margin-bottom: 16px; }
+  .foot-brand .brand-name { color: #fff; }
+  .foot-brand .brand-zh { color: rgba(255,255,255,0.5); border-left-color: rgba(255,255,255,0.15); }
+  .foot-brand svg { color: var(--green-500); }
+  .footer p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.6; max-width: 300px; }
+  .foot-social { display: flex; gap: 10px; margin-top: 16px; }
+  .foot-social a { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.7); transition: all .15s; }
+  .foot-social a:hover { background: rgba(255,255,255,0.15); color: #fff; }
+  .foot-col h4 { font-size: 13px; font-weight: 700; color: #fff; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 14px; }
+  .foot-col ul { list-style: none; }
+  .foot-col li { margin-bottom: 8px; }
+  .foot-col a { font-size: 14px; color: rgba(255,255,255,0.6); transition: color .15s; }
+  .foot-col a:hover { color: #fff; }
+  .foot-bot { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 13px; color: rgba(255,255,255,0.4); }
+  .foot-bot .legal { display: flex; gap: 16px; }
+  .foot-bot .legal a { color: rgba(255,255,255,0.4); transition: color .15s; }
+  .foot-bot .legal a:hover { color: rgba(255,255,255,0.7); }
+
+  .nav-toggle { display: none; }
+  .nav-drawer { display: none; }
+
+  @media (max-width: 980px) {
+    .nav-menu { display: none; }
+    .nav-toggle { display: flex; flex-direction: column; gap: 5px; background: none; border: none; padding: 8px; cursor: pointer; }
+    .nav-toggle span { width: 22px; height: 2px; background: var(--ink); border-radius: 2px; transition: all .2s; }
+    .nav-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.active span:nth-child(2) { opacity: 0; }
+    .nav-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-drawer { display: block; position: fixed; top: 0; right: 0; width: 320px; max-width: 85vw; height: 100vh; background: #fff; box-shadow: -8px 0 32px rgba(0,0,0,0.12); z-index: 100; transform: translateX(100%); transition: transform .3s cubic-bezier(.2,.7,.2,1); overflow-y: auto; padding: 72px 20px 24px; }
+    .nav-drawer.open { transform: translateX(0); }
+    .nav-drawer-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 99; }
+    .nav-drawer-overlay.show { display: block; }
+    .nav-drawer-close { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 24px; color: var(--ink-3); cursor: pointer; }
+    .nav-drawer-section { margin-bottom: 24px; }
+    .nav-drawer-label { font-size: 12px; font-weight: 700; color: var(--ink-4); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 10px; }
+    .nav-drawer-simple { display: block; padding: 10px 12px; font-size: 15px; font-weight: 600; color: var(--ink-2); border-radius: var(--radius-sm); transition: background .12s; }
+    .nav-drawer-simple:hover { background: var(--bg-2); }
+    .foot-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .foot-bot { flex-direction: column; gap: 12px; text-align: center; }
+  }
+
+  @media (max-width: 600px) {
+    .articles-grid { grid-template-columns: 1fr; }
+    .page-hero { padding: 48px 0 40px; }
+    .articles-section { padding: 40px 0 56px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="announce">
+  <span class="announce-dot"></span>
+  <span>純網頁退休規劃工具，免費即用 — <a href="/#tools">開始計算</a></span>
+</div>
+
+<div class="nav-wrap">
+  <nav class="nav">
+    <a href="/" class="brand">
+      <span class="brand-logo"><svg viewBox="0 0 32 32" fill="none"><path d="M16 2C8 2 5 8 5 14c0 4 2 7 4 9v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7c2-2 4-5 4-9 0-6-3-12-11-12z" fill="currentColor" opacity="0.15"/><path d="M16 2C8 2 5 8 5 14c0 4 2 7 4 9v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7c2-2 4-5 4-9 0-6-3-12-11-12z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="13" r="1.5" fill="currentColor"/><circle cx="20" cy="13" r="1.5" fill="currentColor"/><path d="M12 17c1 1.5 2.5 2 4 2s3-0.5 4-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg></span>
+      <span class="brand-name">Pensionwise</span>
+      <span class="brand-zh">養老智</span>
+    </a>
+    <ul class="nav-menu">
+      <li>
+        <a href="/#tools">計算工具 <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="dropdown">
+          <a href="/living-cost.html"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 11l9-7 9 7v9a2 2 0 0 1-2 2h-3v-7H10v7H5a2 2 0 0 1-2-2v-9z" fill="#fff"/></svg></span><div><div class="d-name">生活費規劃器</div><div class="d-desc">通脹下的真實退休開銷</div></div></a>
+          <a href="/retirement-gap.html"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 1 0 10 10h-6a4 4 0 1 1-4-4V2z" fill="#fff"/></svg></span><div><div class="d-name">退休缺口計算器</div><div class="d-desc">算出退休那天還差多少</div></div></a>
+          <a href="/mpf.html"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" fill="#fff"/><text x="12" y="16" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" font-weight="800" fill="#047857">HK$</text></svg></span><div><div class="d-name">MPF 強積金計算器</div><div class="d-desc">香港僱員專屬</div></div></a>
+          <a href="/labor-pension.html"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M9 4 C9 4, 12 2, 15 4 L16 7 C18 8, 19 11, 19 14 C19 18, 16 21, 12 21 C8 21, 5 18, 5 14 C5 11, 6 8, 8 7 L9 4 Z" fill="#fff"/></svg></span><div><div class="d-name">勞退勞保試算器</div><div class="d-desc">台灣勞工專屬</div></div></a>
+        </div>
+      </li>
+      <li>
+        <a href="/articles-hk.html">退休資訊 <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="dropdown">
+          <a href="/articles-hk.html"><span class="d-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span><div><div class="d-name">香港退休攻略</div><div class="d-desc">MPF、退休生活、規劃</div></div></a>
+          <a href="/articles-tw.html"><span class="d-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span><div><div class="d-name">台灣退休攻略</div><div class="d-desc">勞退、勞保、自提分析</div></div></a>
+          <a href="/articles-general.html"><span class="d-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span><div><div class="d-name">通用退休資訊</div><div class="d-desc">投資、心理、全球趨勢</div></div></a>
+        </div>
+      </li>
+      <li><a href="/about.html">關於我們</a></li>
+      <li><a href="/#tools" class="nav-cta">開始規劃</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="開啟選單">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</div>
+
+<div class="nav-drawer-overlay" id="navDrawerOverlay"></div>
+<div class="nav-drawer" id="navDrawer">
+  <button class="nav-drawer-close" id="navDrawerClose" aria-label="關閉選單">✕</button>
+  <div class="nav-drawer-section">
+    <div class="nav-drawer-label">計算工具</div>
+    <a href="/living-cost.html" class="nav-drawer-simple" data-close>生活費規劃器</a>
+    <a href="/retirement-gap.html" class="nav-drawer-simple" data-close>退休缺口計算器</a>
+    <a href="/mpf.html" class="nav-drawer-simple" data-close>MPF 強積金計算器</a>
+    <a href="/labor-pension.html" class="nav-drawer-simple" data-close>勞退勞保試算器</a>
+  </div>
+  <div class="nav-drawer-section">
+    <div class="nav-drawer-label">退休資訊</div>
+    <a href="/articles-hk.html" class="nav-drawer-simple" data-close>香港退休資訊</a>
+    <a href="/articles-tw.html" class="nav-drawer-simple" data-close>台灣退休資訊</a>
+    <a href="/articles-general.html" class="nav-drawer-simple" data-close>通用退休資訊</a>
+  </div>
+  <div class="nav-drawer-section">
+    <div class="nav-drawer-label">其他</div>
+    <a href="/about.html" class="nav-drawer-simple" data-close>關於我們</a>
+    <a href="/contact.html" class="nav-drawer-simple" data-close>聯絡我們</a>
+  </div>
+</div>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="section-eyebrow">香港退休</div>
+    <h1>香港<span class="accent">退休資訊</span></h1>
+    <p>MPF 強積金供款與提取、退休生活費參考、香港退休規劃策略。為香港打工族整理的實用指南。</p>
+    <div class="region-badge">
+      <span class="dot"></span>
+      <span>HK · 香港專區</span>
+    </div>
+  </div>
+</section>
+
+<section class="articles-section">
+  <div class="container">
+    <div class="articles-grid" id="articlesGrid">
+      <div class="empty-state" id="loadingState">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <p>載入中…</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="region-switch">
+  <div class="container">
+    <div class="region-switch-title">瀏覽其他地區資訊</div>
+    <div class="region-switch-links">
+      <a href="/articles-hk.html" class="region-switch-link current"><span class="dot hk"></span>香港退休</a>
+      <a href="/articles-tw.html" class="region-switch-link"><span class="dot tw"></span>台灣退休</a>
+      <a href="/articles-general.html" class="region-switch-link"><span class="dot general"></span>通用資訊</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <div class="foot-brand">
+          <span class="brand-logo"><svg viewBox="0 0 32 32" fill="none" width="30" height="30"><path d="M16 2C8 2 5 8 5 14c0 4 2 7 4 9v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7c2-2 4-5 4-9 0-6-3-12-11-12z" fill="currentColor" opacity="0.15"/><path d="M16 2C8 2 5 8 5 14c0 4 2 7 4 9v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7c2-2 4-5 4-9 0-6-3-12-11-12z" stroke="currentColor" stroke-width="2"/></svg></span>
+          <span class="brand-name">Pensionwise</span>
+          <span class="brand-zh">養老智</span>
+        </div>
+        <p>Pensionwise 養老智 — 為香港與台灣打工族而做的退休規劃平台。慢慢算，慢慢存，慢慢過好日子。</p>
+        <div class="foot-social">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://pensionwisetool.com/articles-hk.html" target="_blank" rel="noopener" aria-label="分享到 Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.378 14.192 5 15.115 5H18V0h-3.808C10.596 0 9 1.583 9 4.615V8z"/></svg></a>
+          <a href="https://twitter.com/intent/tweet?text=%E9%A6%99%E6%B8%AF%E9%80%80%E4%BC%91%E8%B3%87%E8%A8%8A%20Pensionwise&url=https://pensionwisetool.com/articles-hk.html" target="_blank" rel="noopener" aria-label="分享到 X"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://pensionwisetool.com/articles-hk.html" target="_blank" rel="noopener" aria-label="分享到 LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>計算工具</h4>
+        <ul>
+          <li><a href="/living-cost.html">生活費規劃</a></li>
+          <li><a href="/retirement-gap.html">退休缺口</a></li>
+          <li><a href="/mpf.html">MPF 強積金</a></li>
+          <li><a href="/labor-pension.html">勞退勞保</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>退休資訊</h4>
+        <ul>
+          <li><a href="/articles-hk.html">香港退休</a></li>
+          <li><a href="/articles-tw.html">台灣退休</a></li>
+          <li><a href="/articles-general.html">通用資訊</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>關於</h4>
+        <ul>
+          <li><a href="/about.html">關於我們</a></li>
+          <li><a href="/contact.html">聯絡我們</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>法務</h4>
+        <ul>
+          <li><a href="/privacy.html">隱私政策</a></li>
+          <li><a href="/disclaimer.html">免責聲明</a></li>
+          <li><a href="/cookie-policy.html">Cookie 政策</a></li>
+          <li><a href="/terms.html">使用條款</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 Pensionwise 養老智 · All rights reserved.</span>
+      <div class="legal">
+        <a href="/privacy.html">隱私</a>
+        <a href="/terms.html">條款</a>
+        <a href="/disclaimer.html">免責聲明</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // 移动端抽屉
+  (function() {
+    const toggle = document.getElementById('navToggle');
+    const drawer = document.getElementById('navDrawer');
+    const overlay = document.getElementById('navDrawerOverlay');
+    const close = document.getElementById('navDrawerClose');
+    function setOpen(open) {
+      drawer.classList.toggle('open', open);
+      overlay.classList.toggle('show', open);
+      toggle.classList.toggle('active', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+    toggle.addEventListener('click', () => setOpen(!drawer.classList.contains('open')));
+    overlay.addEventListener('click', () => setOpen(false));
+    close.addEventListener('click', () => setOpen(false));
+    drawer.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', () => setOpen(false)));
+    const mq = window.matchMedia('(min-width: 981px)');
+    mq.addEventListener('change', e => { if (e.matches) setOpen(false); });
+  })();
+
+  // 动态拉取文章（按地区筛选）
+  (async function loadArticles() {
+    const grid = document.getElementById('articlesGrid');
+    const REGION = 'HK';
+
+    const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+    try {
+      const res = await fetch('/articles.json', { cache: 'no-cache' });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      const allArticles = Array.isArray(data && data.articles) ? data.articles : [];
+      const articles = allArticles.filter(a => a.regionTag === REGION);
+
+      if (articles.length === 0) {
+        grid.innerHTML = `
+          <div class="empty-state">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+            <p>暫無香港退休文章，敬請期待。</p>
+          </div>`;
+        return;
+      }
+
+      // 按发布日期降序排列
+      articles.sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
+
+      const fmtDate = (dateStr) => {
+        if (!dateStr) return '';
+        const d = new Date(dateStr);
+        if (isNaN(d.getTime())) return '';
+        return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}`;
+      };
+
+      grid.innerHTML = articles.map(a => {
+        const title = esc(a.title);
+        const excerpt = esc(a.excerpt);
+        const badge = esc(a.badge);
+        const cover = esc(a.cover);
+        const coverAlt = esc(a.coverAlt || a.title);
+        const category = esc(a.categoryName || '香港退休');
+        const authorName = esc(a.authorName || '編輯部');
+        const authorSurname = esc(a.authorSurname || (a.authorName ? a.authorName[0] : '編'));
+        const authorTitle = esc(a.authorTitle);
+        const readMinutes = parseInt(a.readMinutes) || 5;
+        const dateStr = fmtDate(a.publishDate);
+        return `
+        <a href="/article.html?slug=${esc(a.slug)}" class="res-card">
+          <div class="res-cover">
+            ${badge ? `<span class="res-cat">${badge}</span>` : ''}
+            <img src="${cover}" alt="${coverAlt}" width="600" height="375" loading="lazy" />
+          </div>
+          <div class="res-body">
+            <div class="res-meta">
+              <span>${category}</span>
+              <span class="sep"></span>
+              <span>${readMinutes} 分鐘閱讀</span>
+              ${dateStr ? `<span class="sep"></span><span>${dateStr}</span>` : ''}
+            </div>
+            <h3 class="res-title">${title}</h3>
+            <p class="res-excerpt">${excerpt}</p>
+            <div class="res-author">
+              <div class="res-author-av">${authorSurname}</div>
+              <span>由 <strong>${authorName}</strong>${authorTitle ? ` · ${authorTitle}` : ''}撰寫</span>
+            </div>
+          </div>
+        </a>`;
+      }).join('');
+    } catch (err) {
+      grid.innerHTML = `
+        <div class="empty-state">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+          <p>文章載入失敗，請稍後再試。</p>
+        </div>`;
+    }
+  })();
+</script>
+
+</body>
+</html>
