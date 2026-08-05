@@ -254,6 +254,21 @@
     return html;
   }
 
+  // XSS sanitize：移除 <script>/事件属性/javascript: 协议
+  function sanitizeHtml(html) {
+    // 移除 <script>...</script> 整段
+    html = html.replace(/<script[\s\S]*?<\/script>/gi, '');
+    // 移除 <style>...</style> 整段
+    html = html.replace(/<style[\s\S]*?<\/style>/gi, '');
+    // 移除 <iframe>/<object>/<embed> 标签
+    html = html.replace(/<\/?(iframe|object|embed)[\s\S]*?>/gi, '');
+    // 移除所有 on* 事件属性（onclick, onload, onerror 等）
+    html = html.replace(/\son\w+\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi, '');
+    // 移除 javascript: 协议的 href/src
+    html = html.replace(/(href|src)\s*=\s*("javascript:[^"]*"|'javascript:[^']*'|javascript:[^\s>]+)/gi, '');
+    return html;
+  }
+
   try {
     const res = await fetch('/articles.json', { cache: 'no-cache' });
     if (!res.ok) throw new Error('HTTP ' + res.status);
@@ -299,11 +314,11 @@
     // Body
     html += '<div class="article-body">';
     if (article.content) {
-      // If content field exists (HTML), use it directly
-      html += article.content;
+      // If content field exists (HTML), sanitize before use
+      html += sanitizeHtml(article.content);
     } else if (article.body) {
-      // Markdown body from articles.json (if we add it later)
-      html += mdToHtml(article.body);
+      // Markdown body from articles.json, render then sanitize
+      html += sanitizeHtml(mdToHtml(article.body));
     } else {
       html += '<p>文章內容即將更新，敬請期待。</p>';
     }

@@ -14,7 +14,8 @@
       "authorSurname": "陳",
       "authorTitle": "認可財務策劃師",
       "readMinutes": 8,
-      "featured": true
+      "featured": true,
+      "body": "# 2026 MPF 強積金完全指南\n\n（正文待補充）"
     },
     {
       "slug": "labor-pension-guide",
@@ -30,7 +31,8 @@
       "authorSurname": "林",
       "authorTitle": "",
       "readMinutes": 6,
-      "featured": false
+      "featured": false,
+      "body": "# 勞退新制退休金怎麼算\n\n（正文待補充）"
     },
     {
       "slug": "start-at-40",
@@ -46,7 +48,8 @@
       "authorSurname": "王",
       "authorTitle": "",
       "readMinutes": 5,
-      "featured": false
+      "featured": false,
+      "body": "# 40 歲才開始規劃退休\n\n（正文待補充）"
     },
     {
       "slug": "inflation-impact",
@@ -62,7 +65,8 @@
       "authorSurname": "陳",
       "authorTitle": "",
       "readMinutes": 7,
-      "featured": false
+      "featured": false,
+      "body": "# 通脹如何吃掉你的退休金\n\n（正文待補充）"
     },
     {
       "slug": "hk-living-cost-2026",
@@ -78,7 +82,8 @@
       "authorSurname": "李",
       "authorTitle": "",
       "readMinutes": 6,
-      "featured": false
+      "featured": false,
+      "body": "# 香港退休每月要多少錢\n\n（正文待補充）"
     }
   ]
 }

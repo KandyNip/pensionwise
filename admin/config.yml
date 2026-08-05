@@ -11,10 +11,10 @@
 #   3. 把你的 GitHub 倉庫名填到 repo
 backend:
   name: github
-  repo: your-username/pension-project   # ← 替換為你的 GitHub 倉庫（用戶名/倉庫名）
+  repo: KandyNip/pensionwise
   branch: main
   auth_type: pkce
-  app_id: your-github-oauth-client-id   # ← 替換為 GitHub OAuth App 的 Client ID
+  app_id: your-github-oauth-client-id   # ← 替換為 GitHub OAuth App 的 Client ID（見下方說明）
 
 # ====== 本地開發模式 ======
 # 本地預覽時用 `npx decap-server` 啟動本地後台，改為 local_git

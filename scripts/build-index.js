@@ -83,6 +83,7 @@ try {
         authorTitle: data.authorTitle || '',
         readMinutes: data.readMinutes || 5,
         featured: !!data.featured,
+        body: body.trim(),
       };
       return [article];
     } catch (e) {
