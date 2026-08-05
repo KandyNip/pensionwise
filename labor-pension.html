@@ -540,12 +540,14 @@
 </footer>
 
 <script>
+  // HTML 转义工具（防止 innerHTML 注入）
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
   // ============ 台灣勞退勞保常量（PRD 4.4.2）============
   // 数据来源：劳动部劳工保险局 | 更新日期：2024-01
   const TAIWAN_LABOR_CONSTANTS = {
     // 劳退新制
     EMPLOYER_CONTRIBUTION_RATE: 0.06,    // 雇主强制提缴 6%
-    VOLUNTARY_CONTRIBUTION_MIN: 0.01,    // 劳工自提最低 1%
     VOLUNTARY_CONTRIBUTION_MAX: 0.06,    // 劳工自提最高 6%
     GUARANTEED_MIN_RETURN: 0.02,         // 保证收益率不低于 2%
 
@@ -694,17 +696,17 @@
     // 明细表格
     const detailBody = document.getElementById('detailBody');
     let detailHtml = '';
-    detailHtml += `<tr><td>勞退專戶總累積</td><td>${fmt(laborPensionTotal)}</td></tr>`;
-    detailHtml += `<tr><td>　現有專戶結餘</td><td>${fmt(laborPensionBalance)}</td></tr>`;
-    detailHtml += `<tr><td>　雇主 6% 提繳本金</td><td>${fmt(employerPrincipal)}</td></tr>`;
-    detailHtml += `<tr><td>　自提本金</td><td>${fmt(voluntaryPrincipal)}</td></tr>`;
-    detailHtml += `<tr><td>　投資收益</td><td>${fmt(investmentReturn)}</td></tr>`;
-    detailHtml += `<tr><td>勞退月領（20 年）</td><td>${fmt(monthlyPension)}</td></tr>`;
-    detailHtml += `<tr><td>勞保年金基額（公式${formulaUsed}）</td><td>${fmt(baseInsurancePension)}</td></tr>`;
-    detailHtml += `<tr><td>　${fmt(avgSalary)} × ${totalInsuranceYears} 年 × ${formulaUsed === 'A' ? '1.55%' : '0.775%'}${formulaUsed === 'B' ? ' + 3,000' : ''}</td><td>${fmt(baseInsurancePension)}</td></tr>`;
-    detailHtml += `<tr><td>　請領年齡調整</td><td>${adjustmentFactor === 1 ? '無增減' : (adjustmentFactor > 1 ? '+' : '') + Math.round((adjustmentFactor - 1) * 100) + '%'}</td></tr>`;
-    detailHtml += `<tr><td>勞保年金實領（月）</td><td>${fmt(monthlyInsurancePension)}</td></tr>`;
-    detailHtml += `<tr class="total"><td>退休月收入合計</td><td>${fmt(totalMonthlyRetirementIncome)}</td></tr>`;
+    detailHtml += `<tr><td>勞退專戶總累積</td><td>${esc(fmt(laborPensionTotal))}</td></tr>`;
+    detailHtml += `<tr><td>　現有專戶結餘</td><td>${esc(fmt(laborPensionBalance))}</td></tr>`;
+    detailHtml += `<tr><td>　雇主 6% 提繳本金</td><td>${esc(fmt(employerPrincipal))}</td></tr>`;
+    detailHtml += `<tr><td>　自提本金</td><td>${esc(fmt(voluntaryPrincipal))}</td></tr>`;
+    detailHtml += `<tr><td>　投資收益</td><td>${esc(fmt(investmentReturn))}</td></tr>`;
+    detailHtml += `<tr><td>勞退月領（20 年）</td><td>${esc(fmt(monthlyPension))}</td></tr>`;
+    detailHtml += `<tr><td>勞保年金基額（公式${esc(formulaUsed)}）</td><td>${esc(fmt(baseInsurancePension))}</td></tr>`;
+    detailHtml += `<tr><td>　${esc(fmt(avgSalary))} × ${esc(totalInsuranceYears)} 年 × ${formulaUsed === 'A' ? '1.55%' : '0.775%'}${formulaUsed === 'B' ? ' + 3,000' : ''}</td><td>${esc(fmt(baseInsurancePension))}</td></tr>`;
+    detailHtml += `<tr><td>　請領年齡調整</td><td>${esc(adjustmentFactor === 1 ? '無增減' : (adjustmentFactor > 1 ? '+' : '') + Math.round((adjustmentFactor - 1) * 100) + '%')}</td></tr>`;
+    detailHtml += `<tr><td>勞保年金實領（月）</td><td>${esc(fmt(monthlyInsurancePension))}</td></tr>`;
+    detailHtml += `<tr class="total"><td>退休月收入合計</td><td>${esc(fmt(totalMonthlyRetirementIncome))}</td></tr>`;
     detailBody.innerHTML = detailHtml;
 
     // 所得替代率
@@ -727,11 +729,11 @@
     let warnings = '';
     let note = '勞退月領 + 勞保年金合計';
     if (isBelowMinAge) {
-      warnings += `<div class="warning-box">⚠️ 勞保年金最低請領年齡為 60 歲。你設定的 ${retireAge} 歲尚未達請領年齡，本試算已自動以 60 歲作為勞保年金請領年齡計算（勞退專戶仍可依 ${retireAge} 歲退休提取）。實際請領時請以勞保局規定為準。</div>`;
+      warnings += `<div class="warning-box">⚠️ 勞保年金最低請領年齡為 60 歲。你設定的 ${esc(retireAge)} 歲尚未達請領年齡，本試算已自動以 60 歲作為勞保年金請領年齡計算（勞退專戶仍可依 ${esc(retireAge)} 歲退休提取）。實際請領時請以勞保局規定為準。</div>`;
     } else if (actualClaimAge < statutoryAge) {
-      warnings += `<div class="warning-box">⚠️ 提前請領減額：每提前 1 年扣減 4%，終身減額。你提前 ${statutoryAge - actualClaimAge} 年，扣減 ${Math.round((statutoryAge - actualClaimAge) * 4)}%。<br/>${adjustmentDesc}</div>`;
+      warnings += `<div class="warning-box">⚠️ 提前請領減額：每提前 1 年扣減 4%，終身減額。你提前 ${esc(statutoryAge - actualClaimAge)} 年，扣減 ${esc(Math.round((statutoryAge - actualClaimAge) * 4))}%。<br/>${esc(adjustmentDesc)}</div>`;
     } else if (actualClaimAge > statutoryAge) {
-      warnings += `<div class="info-box">ℹ️ 延後請領增額：每延後 1 年增給 4%，終身增額。你延後 ${actualClaimAge - statutoryAge} 年，增額 ${Math.round((actualClaimAge - statutoryAge) * 4)}%。<br/>${adjustmentDesc}</div>`;
+      warnings += `<div class="info-box">ℹ️ 延後請領增額：每延後 1 年增給 4%，終身增額。你延後 ${esc(actualClaimAge - statutoryAge)} 年，增額 ${esc(Math.round((actualClaimAge - statutoryAge) * 4))}%。<br/>${esc(adjustmentDesc)}</div>`;
     }
     if (totalInsuranceYears < 15) {
       warnings += `<div class="warning-box">⚠️ 保險年資未滿 15 年，依規定僅能請領一次給付（老年一次金）而非按月年金。建議累積至少 15 年年資以領取月年金。</div>`;
@@ -747,35 +749,6 @@
 
   document.getElementById('calcBtn').addEventListener('click', calculate);
 
-  // ===== 下載與分享 =====
-  function generateSummary() {
-    const lines = [
-      'Pensionwise 養老智 — 勞退勞保試算結果',
-      '================================',
-      '計算日期：' + new Date().toLocaleDateString('zh-TW'),
-      '',
-      '【輸入參數】',
-      '當前月投保薪資：NT$ ' + document.getElementById('insuranceSalary').value,
-      '當前年齡：' + document.getElementById('currentAge').value + ' 歲',
-      '預計退休年齡：' + document.getElementById('retireAge').value + ' 歲',
-      '勞退現有專戶金額：NT$ ' + document.getElementById('laborPensionBalance').value,
-      '勞保年資（已有）：' + document.getElementById('existingYears').value + ' 年',
-      '勞工自提比例：' + document.getElementById('voluntaryRate').value + '%',
-      '勞退專戶預期年收益率：' + Math.max(parseFloat(document.getElementById('fundReturn').value), TAIWAN_LABOR_CONSTANTS.GUARANTEED_MIN_RETURN * 100).toFixed(1) + '%（法規保證最低 2%）',
-      '勞保平均月投保薪資：NT$ ' + document.getElementById('avgSalary').value,
-      '',
-      '【計算結果】',
-      '退休後每月預估收入：NT$ ' + document.getElementById('rTotal').textContent + '/月',
-      '勞退新制月領：NT$ ' + document.getElementById('rPension').textContent + '/月',
-      '勞保年金月領：NT$ ' + document.getElementById('rInsurance').textContent + '/月',
-      '所得替代率：' + document.getElementById('rReplacePct').textContent,
-      '',
-      '免責聲明：以上計算結果僅為估算，不構成任何投資建議。',
-      '了解更多：https://pensionwisetool.com',
-    ];
-    return lines.join('\n');
-  }
-
   // ===== 下載 PNG 與社交分享 =====
   const SHARE_URL = 'https://pensionwisetool.com/labor-pension.html';
   const SHARE_TEXT = '我用 Pensionwise 養老智試算了勞退勞保年金，快來看看你的退休勞保給付有多少！';
@@ -785,8 +758,11 @@
     const origText = btn.innerHTML;
     btn.innerHTML = '生成圖片中...';
     btn.disabled = true;
+    const result = document.getElementById('result');
+    // 截图前隐藏操作按钮
+    const actionBtns = result.querySelectorAll('.result-actions');
+    actionBtns.forEach(el => el.style.visibility = 'hidden');
     try {
-      const result = document.getElementById('result');
       await document.fonts.ready;
       const dataUrl = await htmlToImage.toPng(result, { pixelRatio: 3, backgroundColor: '#ffffff', cacheBust: true });
       const link = document.createElement('a');
@@ -796,6 +772,7 @@
     } catch (e) {
       alert('圖片生成失敗，請改用分享功能');
     } finally {
+      actionBtns.forEach(el => el.style.visibility = '');
       btn.innerHTML = origText;
       btn.disabled = false;
     }

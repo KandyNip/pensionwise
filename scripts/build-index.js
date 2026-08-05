@@ -28,17 +28,25 @@ function parseFrontmatter(content) {
     let value = m[2].trim();
 
     // 處理引號字符串
+    let wasQuoted = false;
     if (value.startsWith('"') && value.endsWith('"')) {
       value = value.slice(1, -1);
+      wasQuoted = true;
     }
     // 處理單引號字符串
-    else if (value.startsWith("'") && value.endsWith("'")) value = value.slice(1, -1);
-    // 處理布爾值
-    if (value === 'true') value = true;
-    else if (value === 'false') value = false;
-    // 處理數字
-    else if (/^\d+$/.test(value)) value = parseInt(value, 10);
-    else if (/^\d+\.\d+$/.test(value)) value = parseFloat(value);
+    else if (value.startsWith("'") && value.endsWith("'")) {
+      value = value.slice(1, -1);
+      wasQuoted = true;
+    }
+    // 只有未加引號的值才做類型轉換
+    if (!wasQuoted) {
+      // 處理布爾值
+      if (value === 'true') value = true;
+      else if (value === 'false') value = false;
+      // 處理數字
+      else if (/^\d+$/.test(value)) value = parseInt(value, 10);
+      else if (/^\d+\.\d+$/.test(value)) value = parseFloat(value);
+    }
 
     data[key] = value;
   });

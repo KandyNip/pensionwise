@@ -394,7 +394,11 @@
       }
 
       // 按发布日期降序排列
-      articles.sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
+      articles.sort((a, b) => {
+        const dateA = a.publishDate ? new Date(a.publishDate).getTime() : 0;
+        const dateB = b.publishDate ? new Date(b.publishDate).getTime() : 0;
+        return dateB - dateA;
+      });
 
       const fmtDate = (dateStr) => {
         if (!dateStr) return '';

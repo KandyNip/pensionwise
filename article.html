@@ -4,8 +4,14 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="robots" content="index, follow" />
+<meta name="description" content="Pensionwise 養老智的退休規劃文章，涵蓋香港 MPF、台灣勞退、通用退休策略。" />
+<meta name="theme-color" content="#047857" />
 <title id="pageTitle">文章 — Pensionwise 養老智</title>
 <link rel="canonical" href="https://pensionwisetool.com/article.html" />
+<meta property="og:title" content="退休文章 — Pensionwise 養老智" />
+<meta property="og:description" content="Pensionwise 養老智的退休規劃文章，涵蓋香港 MPF、台灣勞退、通用退休策略。" />
+<meta property="og:type" content="article" />
+<meta property="og:locale" content="zh_Hant" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" />
@@ -60,9 +66,43 @@
   .brand-logo img { width: 48px; height: 48px; border-radius: 8px; object-fit: cover; }
   .brand-name { font-size: 22px; font-weight: 700; letter-spacing: -.02em; color: var(--ink); font-family: 'Manrope',sans-serif; }
   .brand-zh { font-size: 11px; color: var(--ink-4); font-weight: 500; letter-spacing: .2em; margin-left: 2px; padding-left: 9px; border-left: 1px solid var(--line); }
-  .nav-back { display: inline-flex; align-items: center; gap: 6px; padding: 10px 14px; font-size: 15px; font-weight: 600; color: var(--ink-2); background: none; border: none; border-radius: var(--radius-sm); transition: background .15s, color .15s; }
-  .nav-back:hover { background: var(--bg-3); color: var(--ink); }
-  .nav-back svg { width: 16px; height: 16px; }
+  .nav-menu { display: flex; align-items: center; gap: 4px; }
+  .nav-menu > li { list-style: none; position: relative; }
+  .nav-menu > li > a, .nav-menu > li > button { padding: 10px 14px; font-size: 15px; font-weight: 600; color: var(--ink-2); background: none; border: none; border-radius: var(--radius-sm); display: inline-flex; align-items: center; gap: 4px; transition: background .15s, color .15s; }
+  .nav-menu > li > a:hover, .nav-menu > li > button:hover { background: var(--bg-3); color: var(--ink); }
+  .nav-menu .chev { width: 14px; height: 14px; opacity: 0.6; }
+  .dropdown { position: absolute; top: calc(100% + 8px); left: 0; background: #fff; border-radius: var(--radius); box-shadow: var(--shadow-lg); padding: 8px; min-width: 260px; opacity: 0; visibility: hidden; transform: translateY(-4px); transition: all .18s ease; z-index: 100; }
+  .nav-menu > li:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+  .nav-menu > li:focus-within .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+  .dropdown a { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; border-radius: var(--radius-sm); transition: background .12s; }
+  .dropdown a:hover { background: var(--bg-2); }
+  .dropdown .d-ico { width: 36px; height: 36px; border-radius: 9px; background: linear-gradient(135deg, var(--green-600), var(--green-800)); color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 10px -3px rgba(12,133,81,0.35); }
+  .dropdown .d-ico svg { width: 18px; height: 18px; }
+  .dropdown .d-name { font-size: 14px; font-weight: 700; color: var(--ink); }
+  .dropdown .d-desc { font-size: 12px; color: var(--ink-4); margin-top: 2px; }
+  .nav-cta { background: var(--green-700); color: #fff; padding: 9px 16px; border-radius: 8px; font-size: 14px; font-weight: 600; border: none; transition: background .15s; }
+  .nav-cta:hover { background: var(--green-800); }
+  .nav-toggle { display: none; }
+  .nav-drawer { display: none; }
+  @media (max-width: 980px) {
+    .nav-menu { display: none; }
+    .nav-toggle { display: flex; flex-direction: column; gap: 5px; background: none; border: none; padding: 8px; cursor: pointer; }
+    .nav-toggle span { width: 22px; height: 2px; background: var(--ink); border-radius: 2px; transition: all .2s; }
+    .nav-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.active span:nth-child(2) { opacity: 0; }
+    .nav-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-drawer { display: block; position: fixed; top: 0; right: 0; width: 320px; max-width: 85vw; height: 100vh; background: #fff; box-shadow: -8px 0 32px rgba(0,0,0,0.12); z-index: 100; transform: translateX(100%); transition: transform .3s cubic-bezier(.2,.7,.2,1); overflow-y: auto; padding: 72px 20px 24px; }
+    .nav-drawer.open { transform: translateX(0); }
+    .nav-drawer-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 99; }
+    .nav-drawer-overlay.show { display: block; }
+    .nav-drawer-close { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 24px; color: var(--ink-3); cursor: pointer; }
+    .nav-drawer-section { margin-bottom: 24px; }
+    .nav-drawer-label { font-size: 12px; font-weight: 700; color: var(--ink-4); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 10px; }
+    .nav-drawer-simple { display: block; padding: 10px 12px; font-size: 15px; font-weight: 600; color: var(--ink-2); border-radius: var(--radius-sm); transition: background .12s; }
+    .nav-drawer-simple:hover { background: var(--bg-2); }
+    .foot-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .foot-bot { flex-direction: column; gap: 12px; text-align: center; }
+  }
 
   /* Article */
   .article-hero { padding: 48px 0 32px; }
@@ -95,78 +135,118 @@
   .article-error a { color: var(--green-700); font-weight: 600; }
 
   /* Footer */
-  footer { background: var(--bg-2); border-top: 1px solid var(--line-soft); padding: 56px 0 24px; }
-  .foot-grid { display: grid; grid-template-columns: 1.6fr repeat(4,1fr); gap: 32px; padding-bottom: 32px; border-bottom: 1px solid var(--line); }
-  .foot-brand p { font-size: 14px; color: var(--ink-4); margin-top: 12px; line-height: 1.6; }
-  .foot-brand-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
-  .foot-brand .brand-logo { width: auto; height: auto; color: inherit; }
-  .foot-brand .brand-logo img { width: 56px; height: 56px; border-radius: 10px; object-fit: cover; }
-  .foot-social { display: flex; gap: 12px; margin-top: 16px; }
-  .foot-social a { width: 36px; height: 36px; border-radius: 8px; background: var(--bg-3); display: flex; align-items: center; justify-content: center; color: var(--ink-4); transition: background .15s, color .15s; }
-  .foot-social a:hover { background: var(--green-50); color: var(--green-700); }
-  .foot-col h4 { font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 14px; text-transform: uppercase; letter-spacing: .04em; }
+  .footer { background: var(--green-900); color: rgba(255,255,255,0.8); padding: 56px 0 24px; }
+  .foot-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 40px; }
+  .foot-brand { display: flex; align-items: center; gap: 9px; margin-bottom: 16px; }
+  .foot-brand .brand-logo { width: auto; height: auto; }
+  .foot-brand .brand-logo img { width: 56px; height: 56px; border-radius: 10px; }
+  .foot-brand .brand-name { color: #fff; }
+  .foot-brand .brand-zh { color: rgba(255,255,255,0.5); border-left-color: rgba(255,255,255,0.15); }
+  .foot-brand svg { color: var(--green-500); }
+  .footer p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.6; max-width: 300px; }
+  .foot-social { display: flex; gap: 10px; margin-top: 16px; }
+  .foot-social a { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.7); transition: all .15s; }
+  .foot-social a:hover { background: rgba(255,255,255,0.15); color: #fff; }
+  .foot-col h4 { font-size: 13px; font-weight: 700; color: #fff; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 14px; }
   .foot-col ul { list-style: none; }
   .foot-col li { margin-bottom: 8px; }
-  .foot-col a { font-size: 14px; color: var(--ink-4); transition: color .15s; }
-  .foot-col a:hover { color: var(--green-700); }
-  .foot-bot { display: flex; align-items: center; justify-content: space-between; padding-top: 20px; font-size: 13px; color: var(--ink-5); }
-  .legal { display: flex; gap: 16px; }
-  .legal a { color: var(--ink-5); transition: color .15s; }
-  .legal a:hover { color: var(--ink-3); }
-
-  @media (max-width: 768px) {
-    .foot-grid { grid-template-columns: 1fr 1fr; }
-    .foot-brand { grid-column: 1/-1; }
-    .foot-bot { flex-direction: column; gap: 12px; text-align: center; }
-  }
+  .foot-col a { font-size: 14px; color: rgba(255,255,255,0.6); transition: color .15s; }
+  .foot-col a:hover { color: #fff; }
+  .foot-bot { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 13px; color: rgba(255,255,255,0.4); }
+  .foot-bot .legal { display: flex; gap: 16px; }
+  .foot-bot .legal a { color: rgba(255,255,255,0.4); transition: color .15s; }
+  .foot-bot .legal a:hover { color: rgba(255,255,255,0.7); }
 </style>
 </head>
 <body>
 
 <div class="announce">
   <span class="announce-dot"></span>
-  <span>退休規劃，從了解開始。</span>
-  <a href="/">使用免費工具</a>
+  <span>純網頁退休規劃工具，免費即用 — <a href="/#tools">開始計算</a></span>
 </div>
 
 <div class="nav-wrap">
   <nav class="nav">
     <a href="/" class="brand">
-      <div class="brand-logo">
-        <img src="/assets/images/brand-logo-128.png" alt="Pensionwise 養老智 Logo" />
-      </div>
+      <span class="brand-logo"><img src="/assets/images/brand-logo-128.png" alt="Pensionwise 養老智 Logo" /></span>
       <span class="brand-name">Pensionwise</span>
       <span class="brand-zh">養老智</span>
     </a>
-    <a href="/" class="nav-back">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-      返回首頁
-    </a>
+    <ul class="nav-menu">
+      <li>
+        <a href="/#tools">計算工具 <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="dropdown">
+          <a href="/living-cost.html"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 11l9-7 9 7v9a2 2 0 0 1-2 2h-3v-7H10v7H5a2 2 0 0 1-2-2v-9z" fill="#fff"/></svg></span><div><div class="d-name">生活費規劃器</div><div class="d-desc">通脹下的真實退休開銷</div></div></a>
+          <a href="/retirement-gap.html"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 1 0 10 10h-6a4 4 0 1 1-4-4V2z" fill="#fff"/></svg></span><div><div class="d-name">退休缺口計算器</div><div class="d-desc">算出退休那天還差多少</div></div></a>
+          <a href="/mpf.html"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" fill="#fff"/><text x="12" y="16" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" font-weight="800" fill="#047857">HK$</text></svg></span><div><div class="d-name">MPF 強積金計算器</div><div class="d-desc">香港僱員專屬</div></div></a>
+          <a href="/labor-pension.html"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M9 4 C9 4, 12 2, 15 4 L16 7 C18 8, 19 11, 19 14 C19 18, 16 21, 12 21 C8 21, 5 18, 5 14 C5 11, 6 8, 8 7 L9 4 Z" fill="#fff"/></svg></span><div><div class="d-name">勞退勞保試算器</div><div class="d-desc">台灣勞工專屬</div></div></a>
+        </div>
+      </li>
+      <li>
+        <a href="/articles-hk.html">退休資訊 <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="dropdown">
+          <a href="/articles-hk.html"><span class="d-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span><div><div class="d-name">香港退休攻略</div><div class="d-desc">MPF、退休生活、規劃</div></div></a>
+          <a href="/articles-tw.html"><span class="d-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span><div><div class="d-name">台灣退休攻略</div><div class="d-desc">勞退、勞保、自提分析</div></div></a>
+          <a href="/articles-general.html"><span class="d-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span><div><div class="d-name">通用退休資訊</div><div class="d-desc">投資、心理、全球趨勢</div></div></a>
+        </div>
+      </li>
+      <li><a href="/about.html">關於我們</a></li>
+      <li><a href="/#tools" class="nav-cta">開始規劃</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="開啟選單">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+</div>
+
+<div class="nav-drawer-overlay" id="navDrawerOverlay"></div>
+<div class="nav-drawer" id="navDrawer">
+  <button class="nav-drawer-close" id="navDrawerClose" aria-label="關閉選單">✕</button>
+  <div class="nav-drawer-section">
+    <div class="nav-drawer-label">計算工具</div>
+    <a href="/living-cost.html" class="nav-drawer-simple" data-close>生活費規劃器</a>
+    <a href="/retirement-gap.html" class="nav-drawer-simple" data-close>退休缺口計算器</a>
+    <a href="/mpf.html" class="nav-drawer-simple" data-close>MPF 強積金計算器</a>
+    <a href="/labor-pension.html" class="nav-drawer-simple" data-close>勞退勞保試算器</a>
+  </div>
+  <div class="nav-drawer-section">
+    <div class="nav-drawer-label">退休資訊</div>
+    <a href="/articles-hk.html" class="nav-drawer-simple" data-close>香港退休資訊</a>
+    <a href="/articles-tw.html" class="nav-drawer-simple" data-close>台灣退休資訊</a>
+    <a href="/articles-general.html" class="nav-drawer-simple" data-close>通用退休資訊</a>
+  </div>
+  <div class="nav-drawer-section">
+    <div class="nav-drawer-label">其他</div>
+    <a href="/about.html" class="nav-drawer-simple" data-close>關於我們</a>
+    <a href="/contact.html" class="nav-drawer-simple" data-close>聯絡我們</a>
+  </div>
 </div>
 
 <div id="content">
   <div class="article-loading">載入中⋯</div>
 </div>
 
-<footer>
+<footer class="footer">
   <div class="container">
     <div class="foot-grid">
-      <div class="foot-brand">
-        <div class="foot-brand-header">
-          <div class="brand-logo">
-            <img src="/assets/images/brand-logo-128.png" alt="Pensionwise 養老智 Logo" />
-          </div>
-          <div class="foot-brand-name">Pensionwise</div>
-          <div class="foot-brand-zh">養老智</div>
+      <div class="foot-col">
+        <div class="foot-brand">
+          <span class="brand-logo"><img src="/assets/images/brand-logo-128.png" alt="Pensionwise 養老智 Logo" /></span>
+          <span class="brand-name">Pensionwise</span>
+          <span class="brand-zh">養老智</span>
         </div>
-        <p>為香港與台灣打工族而做的退休規劃平台。慢慢算，慢慢存，慢慢過好日子。</p>
+        <p>Pensionwise 養老智 — 為香港與台灣打工族而做的退休規劃平台。慢慢算，慢慢存，慢慢過好日子。</p>
+        <div class="foot-social">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://pensionwisetool.com/article.html" target="_blank" rel="noopener" aria-label="分享到 Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.378 14.192 5 15.115 5H18V0h-3.808C10.596 0 9 1.583 9 4.615V8z"/></svg></a>
+          <a href="https://twitter.com/intent/tweet?text=%E9%80%80%E4%BC%91%E6%96%87%E7%AB%A0%20Pensionwise&url=https://pensionwisetool.com/article.html" target="_blank" rel="noopener" aria-label="分享到 X"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://pensionwisetool.com/article.html" target="_blank" rel="noopener" aria-label="分享到 LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+        </div>
       </div>
       <div class="foot-col">
         <h4>計算工具</h4>
         <ul>
           <li><a href="/living-cost.html">生活費規劃</a></li>
-          <li><a href="/index.html#calc">退休缺口</a></li>
+          <li><a href="/retirement-gap.html">退休缺口</a></li>
           <li><a href="/mpf.html">MPF 強積金</a></li>
           <li><a href="/labor-pension.html">勞退勞保</a></li>
         </ul>
@@ -208,6 +288,27 @@
 </footer>
 
 <script>
+// 移动端抽屉
+(function() {
+  var toggle = document.getElementById('navToggle');
+  var drawer = document.getElementById('navDrawer');
+  var overlay = document.getElementById('navDrawerOverlay');
+  var close = document.getElementById('navDrawerClose');
+  if (!toggle || !drawer || !overlay || !close) return;
+  function setOpen(open) {
+    drawer.classList.toggle('open', open);
+    overlay.classList.toggle('show', open);
+    toggle.classList.toggle('active', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  toggle.addEventListener('click', function() { setOpen(!drawer.classList.contains('open')); });
+  overlay.addEventListener('click', function() { setOpen(false); });
+  close.addEventListener('click', function() { setOpen(false); });
+  drawer.querySelectorAll('[data-close]').forEach(function(el) { el.addEventListener('click', function() { setOpen(false); }); });
+  var mq = window.matchMedia('(min-width: 981px)');
+  mq.addEventListener('change', function(e) { if (e.matches) setOpen(false); });
+})();
+
 (async function() {
   const params = new URLSearchParams(window.location.search);
   var slug = params.get('slug');
@@ -222,38 +323,125 @@
     return;
   }
 
-  // Simple Markdown-like renderer (no external deps)
+  // Markdown renderer (tables, ordered/unordered lists, hr, headings, etc.)
   function mdToHtml(md) {
-    let html = md;
-    // headings
-    html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
-    html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
-    html = html.replace(/^# (.+)$/gm, '<h1>$1</h1>');
-    // blockquote
-    html = html.replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>');
-    // bold
+    if (!md) return '';
+    md = md.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+    var lines = md.split('\n');
+    var result = [];
+    var i = 0;
+    var inUl = false;
+    var inOl = false;
+    var paraBuf = [];
+
+    function flushPara() {
+      if (paraBuf.length) {
+        var text = paraBuf.join('<br/>').trim();
+        if (text) result.push('<p>' + text + '</p>');
+        paraBuf = [];
+      }
+    }
+    function closeLists() {
+      if (inUl) { result.push('</ul>'); inUl = false; }
+      if (inOl) { result.push('</ol>'); inOl = false; }
+    }
+    function parseRow(line) {
+      line = line.trim();
+      if (line.charAt(0) === '|') line = line.slice(1);
+      if (line.charAt(line.length - 1) === '|') line = line.slice(0, -1);
+      return line.split('|').map(function(c) { return c.trim(); });
+    }
+
+    while (i < lines.length) {
+      var line = lines[i];
+      var trimmed = line.trim();
+
+      // Empty line
+      if (trimmed === '') { flushPara(); closeLists(); i++; continue; }
+
+      // Table: line starts with | and next line is separator |---|---|
+      if (trimmed.charAt(0) === '|' && i + 1 < lines.length && /^\|[\s\-:|]+\|$/.test(lines[i + 1].trim())) {
+        flushPara(); closeLists();
+        var headerCells = parseRow(trimmed);
+        var bodyRows = [];
+        i += 2;
+        while (i < lines.length && lines[i].trim().charAt(0) === '|' && lines[i].trim() !== '') {
+          bodyRows.push(parseRow(lines[i].trim()));
+          i++;
+        }
+        var tableHtml = '<table><thead><tr>';
+        headerCells.forEach(function(c) { tableHtml += '<th>' + c + '</th>'; });
+        tableHtml += '</tr></thead><tbody>';
+        bodyRows.forEach(function(row) {
+          tableHtml += '<tr>';
+          row.forEach(function(c) { tableHtml += '<td>' + c + '</td>'; });
+          tableHtml += '</tr>';
+        });
+        tableHtml += '</tbody></table>';
+        result.push(tableHtml);
+        continue;
+      }
+
+      // Horizontal rule
+      if (/^(-{3,}|\*{3,}|_{3,})$/.test(trimmed)) {
+        flushPara(); closeLists();
+        result.push('<hr/>');
+        i++; continue;
+      }
+
+      // Headings
+      var hMatch = trimmed.match(/^(#{1,6})\s+(.+)$/);
+      if (hMatch) {
+        flushPara(); closeLists();
+        var level = hMatch[1].length;
+        result.push('<h' + level + '>' + hMatch[2] + '</h' + level + '>');
+        i++; continue;
+      }
+
+      // Blockquote
+      if (/^>/.test(trimmed)) {
+        flushPara(); closeLists();
+        result.push('<blockquote>' + trimmed.replace(/^>\s?/, '') + '</blockquote>');
+        i++; continue;
+      }
+
+      // Ordered list item
+      var olMatch = trimmed.match(/^(\d+)\.\s+(.+)$/);
+      if (olMatch) {
+        flushPara();
+        if (inUl) { result.push('</ul>'); inUl = false; }
+        if (!inOl) { result.push('<ol>'); inOl = true; }
+        result.push('<li>' + olMatch[2] + '</li>');
+        i++; continue;
+      }
+
+      // Unordered list item
+      var ulMatch = trimmed.match(/^[-*+]\s+(.+)$/);
+      if (ulMatch) {
+        flushPara();
+        if (inOl) { result.push('</ol>'); inOl = false; }
+        if (!inUl) { result.push('<ul>'); inUl = true; }
+        result.push('<li>' + ulMatch[1] + '</li>');
+        i++; continue;
+      }
+
+      // Regular text line
+      paraBuf.push(trimmed);
+      i++;
+    }
+
+    flushPara();
+    closeLists();
+
+    var html = result.join('\n');
+
+    // Inline formatting
     html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-    // italic
     html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
-    // images (must be before links)
-    html = html.replace(/!\[(.+?)\]\((.+?)\)/g, '<img src="$2" alt="$1" loading="lazy" style="width:100%;border-radius:12px;margin:16px 0;">');
-    // links
-    html = html.replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank" style="color:#c9a96e;">$1</a>');
-    // inline code
+    html = html.replace(/!\[(.+?)\]\((.+?)\)/g, '<img src="$2" alt="$1" loading="lazy" style="width:100%;border-radius:16px;margin:16px 0;">');
+    html = html.replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank" rel="noopener" style="color:#047857;">$1</a>');
     html = html.replace(/`(.+?)`/g, '<code>$1</code>');
-    // unordered list items
-    html = html.replace(/^- (.+)$/gm, '<li>$1</li>');
-    // ordered list items
-    html = html.replace(/^\d+\. (.+)$/gm, '<li>$1</li>');
-    // wrap consecutive <li> in <ul>
-    html = html.replace(/((?:<li>.*<\/li>\n?)+)/g, '<ul>$1</ul>');
-    // paragraphs: split by double newline
-    html = html.split(/\n\n+/).map(function(block) {
-      block = block.trim();
-      if (!block) return '';
-      if (/^<(h[1-6]|img|ul|ol|blockquote|table|div)/.test(block)) return block;
-      return '<p>' + block.replace(/\n/g, '<br/>') + '</p>';
-    }).join('\n');
+
     return html;
   }
 
@@ -284,8 +472,14 @@
       return;
     }
 
-    // Update page title
-    document.title = article.title + ' | Pensionwise 養老智';
+    // 加载文章后动态更新SEO
+    if (article.title) document.title = article.title + ' — Pensionwise 養老智';
+    var canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (canonicalLink && article.slug) canonicalLink.href = 'https://pensionwisetool.com/article.html?slug=' + article.slug;
+    var ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle && article.title) ogTitle.content = article.title + ' — Pensionwise 養老智';
+    var ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc && article.excerpt) ogDesc.content = article.excerpt;
 
     // Build meta info
     var fmtDate = function(d) {
@@ -303,8 +497,11 @@
     html += '<span>by <strong>' + escHtml(article.authorName || '編輯部') + '</strong>';
     if (article.authorTitle) html += ' · ' + escHtml(article.authorTitle);
     html += '</span></div>';
-    html += '<span class="sep"></span>';
-    html += '<span>' + fmtDate(article.publishDate) + '</span>';
+    var dateStr = fmtDate(article.publishDate);
+    if (dateStr) {
+      html += '<span class="sep"></span>';
+      html += '<span>' + dateStr + '</span>';
+    }
     html += '<span class="sep"></span>';
     html += '<span>' + (parseInt(article.readMinutes) || 5) + ' 分鐘閱讀</span>';
     html += '</div></div></div>';

@@ -912,6 +912,9 @@
 </footer>
 
 <script>
+  // HTML 转义工具（防止 innerHTML 注入）
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
   // ============ 开支类别常量（PRD 4.2.3）============
   const EXPENSE_CATEGORIES = [
     { key: 'housing',   label: '住屋開支', defaultRatio: 0.30, inflationOverride: 0.03, color: '#047857' },
@@ -1087,8 +1090,8 @@
     const legendHtml = categoryResults.map(cat => `
       <div class="pie-legend-item">
         <span class="pie-legend-dot" style="background:${cat.color}"></span>
-        <span class="pie-legend-name">${cat.label}</span>
-        <span class="pie-legend-val">${fmt(cat.amount)}</span>
+        <span class="pie-legend-name">${esc(cat.label)}</span>
+        <span class="pie-legend-val">${esc(fmt(cat.amount))}</span>
       </div>
     `).join('');
     document.getElementById('pieLegend').innerHTML = legendHtml;
@@ -1101,7 +1104,7 @@
       const year = (yearsToRetire / steps) * i;
       const val = currentAdjusted * Math.pow(1 + inflationRate, year);
       const heightPct = maxVal > 0 ? (val / maxVal) * 100 : 0;
-      bars.push(`<div class="growth-bar" style="height:${heightPct}%" title="第${Math.round(year)}年: ${fmt(val)}"></div>`);
+      bars.push(`<div class="growth-bar" style="height:${esc(heightPct)}%" title="第${esc(Math.round(year))}年: ${esc(fmt(val))}"></div>`);
     }
     document.getElementById('growthChart').innerHTML = bars.join('');
     document.getElementById('gStart').textContent = '現在';
@@ -1126,38 +1129,6 @@
 
   document.getElementById('calcBtn').addEventListener('click', calculate);
 
-  // ===== 下載與分享 =====
-  function generateSummary() {
-    const cur = region === 'hk' ? 'HK$' : 'NT$';
-    const lines = [
-      'Pensionwise 養老智 — 生活費規劃器計算結果',
-      '================================',
-      '計算日期：' + new Date().toLocaleDateString('zh-TW'),
-      '地區：' + (region === 'hk' ? '香港 HKD' : '台灣 TWD'),
-      '',
-      '【輸入參數】',
-      '當前每月支出：' + cur + ' ' + document.getElementById('currentExpense').value,
-      '距退休年數：' + document.getElementById('yearsToRetire').value + ' 年',
-      '預期通脹率：' + document.getElementById('inflation').value + '%',
-      '生活方式調整：' + document.getElementById('lifestyle').value + '%',
-    ];
-    // 六大開支類別占比
-    document.querySelectorAll('#ratioGrid input').forEach(inp => {
-      const cat = EXPENSE_CATEGORIES.find(c => c.key === inp.dataset.key);
-      if (cat) lines.push(cat.label + '占比：' + inp.value + '%');
-    });
-    lines.push('', '【計算結果】');
-    lines.push('退休後每月需要：' + cur + ' ' + document.getElementById('rMonthly').textContent);
-    // 類別拆分（退休時月額）
-    document.querySelectorAll('#pieLegend .pie-legend-item').forEach(item => {
-      const name = item.querySelector('.pie-legend-name').textContent;
-      const val = item.querySelector('.pie-legend-val').textContent;
-      lines.push(name + '：' + val);
-    });
-    lines.push('', '免責聲明：以上計算結果僅為估算，不構成任何投資建議。', '了解更多：https://pensionwisetool.com');
-    return lines.join('\n');
-  }
-
   // ===== 下載 PNG 與社交分享 =====
   const SHARE_URL = 'https://pensionwisetool.com/living-cost.html';
   const SHARE_TEXT = '我用 Pensionwise 養老智規劃了退休生活費，快來看看你退休後每月需要多少錢！';
@@ -1167,8 +1138,11 @@
     const origText = btn.innerHTML;
     btn.innerHTML = '生成圖片中...';
     btn.disabled = true;
+    const result = document.getElementById('result');
+    // 截图前隐藏操作按钮
+    const actionBtns = result.querySelectorAll('.result-actions');
+    actionBtns.forEach(el => el.style.visibility = 'hidden');
     try {
-      const result = document.getElementById('result');
       await document.fonts.ready;
       const dataUrl = await htmlToImage.toPng(result, { pixelRatio: 3, backgroundColor: '#ffffff', cacheBust: true });
       const link = document.createElement('a');
@@ -1178,6 +1152,7 @@
     } catch (e) {
       alert('圖片生成失敗，請改用分享功能');
     } finally {
+      actionBtns.forEach(el => el.style.visibility = '');
       btn.innerHTML = origText;
       btn.disabled = false;
     }

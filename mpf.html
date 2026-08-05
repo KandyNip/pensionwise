@@ -538,6 +538,9 @@
 </footer>
 
 <script>
+  // HTML 转义工具（防止 innerHTML 注入）
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
   // ============ MPF 制度常量（PRD 4.3.2）============
   // 数据来源：积金局 | 更新日期：2024-06
   const MPF_CONSTANTS = {
@@ -637,22 +640,6 @@
       fvContributions = totalMonthlyContribution * (Math.pow(1 + monthlyR, M) - 1) / monthlyR;
     }
 
-    // 分别计算各部分累积（用于明细）
-    let fvEmployee = 0, fvEmployer = 0, fvVoluntary = 0;
-    const calcFV = (monthly) => {
-      if (monthly === 0) return 0;
-      if (Math.abs(monthlyR) < 1e-9) return monthly * M;
-      return monthly * (Math.pow(1 + monthlyR, M) - 1) / monthlyR;
-    };
-    if (isSelfEmployed) {
-      fvEmployee = calcFV(selfEmployedMonthly); // 自雇部分显示在雇员栏
-      fvEmployer = 0;
-    } else {
-      fvEmployee = calcFV(employeeMonthly);
-      fvEmployer = calcFV(employerMonthly);
-    }
-    fvVoluntary = calcFV(voluntaryContribution);
-
     // 总累积金额
     const totalAccumulated = fvBalance + fvContributions;
     // 明细拆分采用本金口径：现有结余 + 各部分供款本金 + 投资回报 = 总额
@@ -690,11 +677,11 @@
     };
     let timelineHtml = '';
     for (let age = currentAge; age <= withdrawAge; age += 5) {
-      timelineHtml += `<tr><td>${age} 歲</td><td>${fmt(calcAtAge(age))}</td></tr>`;
+      timelineHtml += `<tr><td>${esc(age)} 歲</td><td>${esc(fmt(calcAtAge(age)))}</td></tr>`;
     }
     // 确保最后一个节点是 withdrawAge
     if ((withdrawAge - currentAge) % 5 !== 0) {
-      timelineHtml += `<tr><td>${withdrawAge} 歲</td><td>${fmt(calcAtAge(withdrawAge))}</td></tr>`;
+      timelineHtml += `<tr><td>${esc(withdrawAge)} 歲</td><td>${esc(fmt(calcAtAge(withdrawAge)))}</td></tr>`;
     }
     timelineBody.innerHTML = timelineHtml;
 
@@ -709,7 +696,7 @@
       warnings += `<div class="warning-box">⚠️ 負回報率將導致本金縮水，實際累積金額可能低於總供款額。</div>`;
     }
     if (withdrawAge < 65) {
-      warnings += `<div class="info-box">ℹ️ 提早退休提取（${withdrawAge} 歲）：年滿 60 歲且提早退休的人士，可選擇一筆過或分期提取強積金。65 歲後可自由選擇一次性、分期提取或繼續保留在計劃內投資。</div>`;
+      warnings += `<div class="info-box">ℹ️ 提早退休提取（${esc(withdrawAge)} 歲）：年滿 60 歲且提早退休的人士，可選擇一筆過或分期提取強積金。65 歲後可自由選擇一次性、分期提取或繼續保留在計劃內投資。</div>`;
     }
     if (currentBalance === 0 && monthlyIncome < MPF_CONSTANTS.MIN_INCOME_FOR_MPF) {
       note = '你目前無需供款強積金，建議考慮其他退休儲蓄方式（如自願性供款或個人投資）。';
@@ -722,40 +709,6 @@
 
   document.getElementById('calcBtn').addEventListener('click', calculate);
 
-  // ===== 下載與分享 =====
-  function generateSummary() {
-    const fundTypeSel = document.getElementById('fundType');
-    const fundTypeLabel = fundTypeSel.options[fundTypeSel.selectedIndex].text;
-    const isSelfEmployed = document.getElementById('isSelfEmployed').checked;
-    const lines = [
-      'Pensionwise 養老智 — MPF 強積金計算結果',
-      '================================',
-      '計算日期：' + new Date().toLocaleDateString('zh-TW'),
-      '',
-      '【輸入參數】',
-      '每月有關入息：HK$ ' + document.getElementById('monthlyIncome').value,
-      '當前年齡：' + document.getElementById('currentAge').value + ' 歲',
-      '目標提取年齡：' + document.getElementById('withdrawAge').value + ' 歲',
-      '現有 MPF 結餘：HK$ ' + document.getElementById('currentBalance').value,
-      '基金類型：' + fundTypeLabel,
-      '年回報率：' + document.getElementById('fundReturn').value + '%',
-      '額外自願性供款：HK$ ' + document.getElementById('voluntaryContribution').value + '/月',
-      '自僱人士：' + (isSelfEmployed ? '是' : '否'),
-      '',
-      '【計算結果】',
-      '退休時 MPF 預計總額：HK$ ' + document.getElementById('rTotal').textContent,
-      '現有結餘：HK$ ' + document.getElementById('rBalance').textContent,
-      '僱員供款本金：HK$ ' + document.getElementById('rEmployee').textContent,
-      '僱主供款本金：HK$ ' + document.getElementById('rEmployer').textContent,
-      '自願性供款本金：HK$ ' + document.getElementById('rVoluntary').textContent,
-      '投資回報累積：HK$ ' + document.getElementById('rReturn').textContent,
-      '',
-      '免責聲明：以上計算結果僅為估算，不構成任何投資建議。',
-      '了解更多：https://pensionwisetool.com',
-    ];
-    return lines.join('\n');
-  }
-
   // ===== 下載 PNG 與社交分享 =====
   const SHARE_URL = 'https://pensionwisetool.com/mpf.html';
   const SHARE_TEXT = '我用 Pensionwise 養老智計算了 MPF 強積金累積金額，快來看看你的退休強積金有多少！';
@@ -765,8 +718,11 @@
     const origText = btn.innerHTML;
     btn.innerHTML = '生成圖片中...';
     btn.disabled = true;
+    const result = document.getElementById('result');
+    // 截图前隐藏操作按钮
+    const actionBtns = result.querySelectorAll('.result-actions');
+    actionBtns.forEach(el => el.style.visibility = 'hidden');
     try {
-      const result = document.getElementById('result');
       await document.fonts.ready;
       const dataUrl = await htmlToImage.toPng(result, { pixelRatio: 3, backgroundColor: '#ffffff', cacheBust: true });
       const link = document.createElement('a');
@@ -776,6 +732,7 @@
     } catch (e) {
       alert('圖片生成失敗，請改用分享功能');
     } finally {
+      actionBtns.forEach(el => el.style.visibility = '');
       btn.innerHTML = origText;
       btn.disabled = false;
     }

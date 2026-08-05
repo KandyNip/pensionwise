@@ -1215,7 +1215,7 @@
       </div>
     </div>
     <div class="resources-grid" id="resourcesGrid">
-      <a href="/article/2026-mpf-complete-guide" class="res-card large reveal">
+      <a href="/article.html?slug=2026-mpf-complete-guide" class="res-card large reveal">
         <div class="res-cover">
           <span class="res-cat">香港 · MPF</span>
           <img src="/assets/images/article-mpf-guide-v2.jpg" alt="MPF 完全指南" width="600" height="375" loading="lazy" />
@@ -1230,7 +1230,7 @@
           </div>
         </div>
       </a>
-      <a href="/article/2026-labor-pension-guide" class="res-card reveal">
+      <a href="/article.html?slug=2026-labor-pension-guide" class="res-card reveal">
         <div class="res-cover">
           <span class="res-cat">台灣 · 勞退</span>
           <img src="/assets/images/article-labor-pension-v2.jpg" alt="勞退教學" width="600" height="375" loading="lazy" />
@@ -1260,7 +1260,7 @@
           </div>
         </div>
       </a>
-      <a href="/article/2026-inflation-impact-retirement" class="res-card reveal">
+      <a href="/article.html?slug=2026-inflation-impact-retirement" class="res-card reveal">
         <div class="res-cover">
           <span class="res-cat">通用 · 通脹</span>
           <img src="/assets/images/article-inflation-impact.jpg" alt="通脹對退休金的影響" width="600" height="375" loading="lazy" />
@@ -1275,7 +1275,7 @@
           </div>
         </div>
       </a>
-      <a href="/article/2026-hk-living-cost" class="res-card large reveal">
+      <a href="/article.html?slug=2026-hk-living-cost" class="res-card large reveal">
         <div class="res-cover">
           <span class="res-cat">香港 · 生活費</span>
           <img src="/assets/images/article-hk-living-cost-v2.jpg" alt="香港維多利亞港天際線夜景" width="600" height="375" loading="lazy" />
@@ -1387,7 +1387,7 @@
     document.getElementById('rCur').textContent = cur;
     document.getElementById('regionSel').value = r;
     document.getElementById('navRegionLabel').textContent = label;
-    document.getElementById('floatNum').textContent = region === 'hk' ? '4.2M' : '16M';
+    document.getElementById('floatNum').textContent = region === 'hk' ? '7.2M' : '16M';
     document.getElementById('floatCur').textContent = cur;
 
     // 更新导航下拉菜单选中状态
@@ -1434,6 +1434,12 @@
       }
     });
   })();
+
+  // 初始化移动端抽屉地区按钮状态（只同步按钮样式，不触发计算）
+  const dhk = document.getElementById('drawerRegionHk');
+  const dtw = document.getElementById('drawerRegionTw');
+  if (dhk) { dhk.style.background = 'var(--green-700)'; dhk.style.color = '#fff'; }
+  if (dtw) { dtw.style.background = 'var(--bg-3)'; dtw.style.color = 'var(--ink-2)'; }
 
   // 滑块联动
   document.getElementById('returnRate').addEventListener('input', e => {
@@ -1682,7 +1688,7 @@
         const isFeatured = !!a.featured;
         const dateStr = fmtDate(a.publishDate);
         return `
-        <a href="/article.html?slug=${a.slug}" class="res-card reveal${isFeatured ? ' large' : ''}">
+        <a href="/article.html?slug=${encodeURIComponent(esc(a.slug))}" class="res-card reveal${isFeatured ? ' large' : ''}">
           <div class="res-cover">
             ${badge ? `<span class="res-cat">${badge}</span>` : ''}
             <img src="${cover}" alt="${coverAlt}" width="600" height="375" loading="lazy" />
