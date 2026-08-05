@@ -256,7 +256,7 @@
 
   // XSS sanitize：移除 <script>/事件属性/javascript: 协议
   function sanitizeHtml(html) {
-    // 移除 <script>...</script> 整段
+    // 移除 script 标签整段
     html = html.replace(/<script[\s\S]*?<\/script>/gi, '');
     // 移除 <style>...</style> 整段
     html = html.replace(/<style[\s\S]*?<\/style>/gi, '');
