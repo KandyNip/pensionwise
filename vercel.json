@@ -4,6 +4,10 @@
   "buildCommand": "node scripts/build-index.js",
   "outputDirectory": ".",
   "framework": null,
+  "rewrites": [
+    { "source": "/admin", "destination": "/admin/index.html" },
+    { "source": "/admin/", "destination": "/admin/index.html" }
+  ],
   "headers": [
     {
       "source": "/(.*)",
