@@ -2,17 +2,12 @@
 # 文檔：https://decapcms.org/docs/configuration-options/
 
 # ====== 後端認證 ======
-# 使用 GitHub OAuth + Vercel Serverless OAuth Proxy
-# OAuth Proxy 代碼在 /api/auth.js 和 /api/callback.js
-# 需要在 Vercel 項目設置中配置環境變數：
-#   GITHUB_OAUTH_ID - GitHub OAuth App 的 Client ID
-#   GITHUB_OAUTH_SECRET - GitHub OAuth App 的 Client Secret
+# 目前不使用線上 CMS 後台，文章通過本地 md 文件手動更新
+# 如需啟用線上後台，請參考 https://decapcms.org/docs/backends-overview/
 backend:
   name: github
   repo: KandyNip/pensionwise
   branch: main
-  base_url: https://pensionwisetool.com
-  auth_endpoint: /api/auth
 
 # ====== 本地開發模式 ======
 # 本地預覽時用 `npx decap-server` 啟動本地後台，改為 local_git
