@@ -215,7 +215,11 @@
 <script>
 (async function() {
   const params = new URLSearchParams(window.location.search);
-  const slug = params.get('slug');
+  var slug = params.get('slug');
+  if (!slug) {
+    var m = window.location.pathname.match(/^\/article\/([^\/]+)/);
+    if (m) slug = decodeURIComponent(m[1]);
+  }
   const contentEl = document.getElementById('content');
 
   if (!slug) {
