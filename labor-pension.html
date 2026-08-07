@@ -659,7 +659,7 @@
     const actualClaimAge = Math.max(retireAge, earlyClaimMin);
     const isBelowMinAge = retireAge < earlyClaimMin;
 
-    // 总保险年资（累计到实际请领年龄）
+    // ��保险年资（累计到实际请领年龄）
     const totalInsuranceYears = existingYears + (actualClaimAge - currentAge);
 
     // 公式A：平均月投保薪资 × 年��� × 1.55%
@@ -677,7 +677,7 @@
     if (actualClaimAge < statutoryAge && actualClaimAge >= earlyClaimMin) {
       const earlyYears = statutoryAge - actualClaimAge;
       adjustmentFactor = 1 - earlyYears * TAIWAN_LABOR_CONSTANTS.EARLY_CLAIM_PENALTY;
-      adjustmentDesc = `提前 ${earlyYears} 年请领，每年 -4% → 减额 ${Math.round(earlyYears * 4)}%`;
+      adjustmentDesc = `提前 ${earlyYears} 年请领，每年 -4% ��� 减额 ${Math.round(earlyYears * 4)}%`;
     } else if (actualClaimAge > statutoryAge) {
       const deferYears = actualClaimAge - statutoryAge;
       adjustmentFactor = 1 + deferYears * TAIWAN_LABOR_CONSTANTS.DEFERRED_CLAIM_BONUS;
@@ -880,6 +880,9 @@
     </div>
   </div>
 </div>
+
+<!-- Vercel Web Analytics -->
+<script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
 
 </body>
 </html>
