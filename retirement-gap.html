@@ -544,7 +544,7 @@
 </footer>
 
 <script>
-  // HTML 转义工具（防止 innerHTML 注入）
+  // HTML 转��工具（防止 innerHTML 注入）
   const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
   // 地區切換
@@ -801,6 +801,9 @@
     </div>
   </div>
 </div>
+
+<!-- Vercel Web Analytics -->
+<script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
 
 </body>
 </html>
