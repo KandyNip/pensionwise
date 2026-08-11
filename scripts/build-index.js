@@ -10,6 +10,9 @@ const path = require('path');
 
 const ARTICLES_DIR = path.join(__dirname, '..', 'articles');
 const OUTPUT_FILE = path.join(__dirname, '..', 'articles.json');
+const SITEMAP_FILE = path.join(__dirname, '..', 'sitemap.xml');
+const BASE_URL = 'https://pensionwisetool.com';
+const TODAY = new Date().toISOString().slice(0, 10);
 
 // 簡易 frontmatter 解析器（不依賴第三方套件）
 function parseFrontmatter(content) {
@@ -108,6 +111,50 @@ try {
 
   fs.writeFileSync(OUTPUT_FILE, JSON.stringify({ articles }, null, 2));
   console.log(`[build-index] 生成 articles.json，共 ${articles.length} 篇文章`);
+
+  // 生成 sitemap.xml：靜態頁面 + 文章頁面
+  const staticPages = [
+    { path: '/', priority: '1.0', changefreq: 'monthly' },
+    { path: '/living-cost.html', priority: '0.8', changefreq: 'monthly' },
+    { path: '/retirement-gap.html', priority: '0.8', changefreq: 'monthly' },
+    { path: '/mpf.html', priority: '0.8', changefreq: 'monthly' },
+    { path: '/labor-pension.html', priority: '0.8', changefreq: 'monthly' },
+    { path: '/articles-hk.html', priority: '0.8', changefreq: 'weekly' },
+    { path: '/articles-tw.html', priority: '0.8', changefreq: 'weekly' },
+    { path: '/articles-general.html', priority: '0.8', changefreq: 'weekly' },
+    { path: '/about.html', priority: '0.5', changefreq: 'yearly' },
+    { path: '/contact.html', priority: '0.4', changefreq: 'yearly' },
+    { path: '/privacy.html', priority: '0.3', changefreq: 'yearly' },
+    { path: '/disclaimer.html', priority: '0.3', changefreq: 'yearly' },
+    { path: '/cookie-policy.html', priority: '0.3', changefreq: 'yearly' },
+    { path: '/terms.html', priority: '0.3', changefreq: 'yearly' },
+  ];
+
+  let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
+  xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+
+  staticPages.forEach(p => {
+    xml += '  <url>\n';
+    xml += `    <loc>${BASE_URL}${p.path}</loc>\n`;
+    xml += `    <lastmod>${TODAY}</lastmod>\n`;
+    xml += `    <changefreq>${p.changefreq}</changefreq>\n`;
+    xml += `    <priority>${p.priority}</priority>\n`;
+    xml += '  </url>\n';
+  });
+
+  articles.forEach(a => {
+    xml += '  <url>\n';
+    xml += `    <loc>${BASE_URL}/article/${a.slug}</loc>\n`;
+    xml += `    <lastmod>${a.publishDate || TODAY}</lastmod>\n`;
+    xml += `    <changefreq>weekly</changefreq>\n`;
+    xml += `    <priority>0.9</priority>\n`;
+    xml += '  </url>\n';
+  });
+
+  xml += '</urlset>\n';
+
+  fs.writeFileSync(SITEMAP_FILE, xml);
+  console.log(`[build-index] 生成 sitemap.xml，共 ${staticPages.length + articles.length} 個 URL`);
 } catch (err) {
   console.error('[build-index] 生成失敗:', err.message);
   // 失敗時生成空索引，避免前端崩潰
