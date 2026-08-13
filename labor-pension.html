@@ -670,18 +670,18 @@
     let baseInsurancePension = Math.max(formulaA, formulaB);
     let formulaUsed = formulaA >= formulaB ? 'A' : 'B';
 
-    // 提前/延后请领调整（每提前1年减4%，每延后1年增4%）
-    // 注意：仅 60 岁后才能提前请领；提前请领后年资仍累计到 actualClaimAge
+    // 提前/延後請領調整（每提前1年減4%，每延後1年增4%）
+    // 注意：僅 60 歲後才能提前請領；提前請領後年資仍累計到 actualClaimAge
     let adjustmentFactor = 1;
-    let adjustmentDesc = '法定年龄请领（无增减）';
+    let adjustmentDesc = '法定年齡請領（無增減）';
     if (actualClaimAge < statutoryAge && actualClaimAge >= earlyClaimMin) {
       const earlyYears = statutoryAge - actualClaimAge;
       adjustmentFactor = 1 - earlyYears * TAIWAN_LABOR_CONSTANTS.EARLY_CLAIM_PENALTY;
-      adjustmentDesc = `提前 ${earlyYears} 年请领，每年 -4% ��� 减额 ${Math.round(earlyYears * 4)}%`;
+      adjustmentDesc = `提前 ${earlyYears} 年請領，每年 -4% → 減額 ${Math.round(earlyYears * 4)}%`;
     } else if (actualClaimAge > statutoryAge) {
       const deferYears = actualClaimAge - statutoryAge;
       adjustmentFactor = 1 + deferYears * TAIWAN_LABOR_CONSTANTS.DEFERRED_CLAIM_BONUS;
-      adjustmentDesc = `延后 ${deferYears} 年请领，每年 +4% → 增额 ${Math.round(deferYears * 4)}%`;
+      adjustmentDesc = `延後 ${deferYears} 年請領，每年 +4% → 增額 ${Math.round(deferYears * 4)}%`;
     }
     const monthlyInsurancePension = baseInsurancePension * adjustmentFactor;
 
