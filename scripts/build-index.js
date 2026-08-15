@@ -82,7 +82,7 @@ try {
       const article = {
         slug: filename.replace(/\.md$/, ''),
         title: data.title || '',
-        publishDate: data.publishDate || '',
+        publishDate: data.publishDate || data.date || '',
         excerpt: data.excerpt || '',
         cover: data.cover || '',
         coverAlt: data.coverAlt || '',
