@@ -157,6 +157,18 @@
   .foot-bot .legal { display: flex; gap: 16px; }
   .foot-bot .legal a { color: rgba(255,255,255,0.4); transition: color .15s; }
   .foot-bot .legal a:hover { color: rgba(255,255,255,0.7); }
+
+  /* mobile-footer-fix */
+  @media (max-width: 980px) {
+    .footer .foot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 20px; margin-bottom: 32px; }
+    .footer .foot-grid > .foot-col:first-child { grid-column: 1 / -1; }
+    .footer .foot-bot { display: flex; flex-direction: column; gap: 12px; text-align: center; }
+    .footer .foot-bot .legal { flex-wrap: wrap; justify-content: center; }
+    .footer .footer p, .footer p { max-width: 100%; }
+  }
+  @media (max-width: 600px) {
+    .footer .foot-grid { grid-template-columns: 1fr; gap: 24px; }
+  }
 </style>
 <script>
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -456,19 +468,7 @@
   function sanitizeHtml(html) {
     // 移除 script 标签整段
     html = html.replace(/<script[\s\S]*?<\/script>/gi, '');
-    // 移除 <style>...
-  /* mobile-footer-fix */
-  @media (max-width: 980px) {
-    .footer .foot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 20px; margin-bottom: 32px; }
-    .footer .foot-grid > .foot-col:first-child { grid-column: 1 / -1; }
-    .footer .foot-bot { display: flex; flex-direction: column; gap: 12px; text-align: center; }
-    .footer .foot-bot .legal { flex-wrap: wrap; justify-content: center; }
-    .footer .footer p, .footer p { max-width: 100%; }
-  }
-  @media (max-width: 600px) {
-    .footer .foot-grid { grid-template-columns: 1fr; gap: 24px; }
-  }
-</style> 整段
+    // 移除 <style>...</style> 整段
     html = html.replace(/<style[\s\S]*?<\/style>/gi, '');
     // 移除 <iframe>/<object>/<embed> 标签
     html = html.replace(/<\/?(iframe|object|embed)[\s\S]*?>/gi, '');
