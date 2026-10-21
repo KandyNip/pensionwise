@@ -1,6 +1,6 @@
 ---
 title: "台灣勞保年金 vs 國民年金：2026最新數據比較，你是哪一種？請領路徑完全拆解"
-date: 2026-10-21
+date: 2026-09-04
 description: "2026年國保月投保金額調高至21,103元、勞保請領年齡已達65歲。用五種職業情境拆解你的年金請領路徑，算出你退休每月到底領多少。"
 slug: 2026-national-pension-vs-labor-insurance
 coverImage: /assets/images/20261021-labor-vs-national-pension-cover.jpg
