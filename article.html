@@ -337,6 +337,8 @@
   const contentEl = document.getElementById('content');
 
   if (!slug) {
+    var rm0 = document.querySelector('meta[name="robots"]');
+    if (rm0) rm0.setAttribute('content', 'noindex, follow');
     contentEl.innerHTML = '<div class="article-error"><h2>找不到文章</h2><p>請從首頁選擇一篇文章閱讀。</p><a href="/">返回首頁</a></div>';
     return;
   }
@@ -488,14 +490,18 @@
     const article = articles.find(function(a) { return a.slug === slug; });
 
     if (!article) {
+      var rmMiss = document.querySelector('meta[name="robots"]');
+      if (rmMiss) rmMiss.setAttribute('content', 'noindex, follow');
       contentEl.innerHTML = '<div class="article-error"><h2>文章不存在</h2><p>該文章可能已移除或連結有誤。</p><a href="/">返回首頁</a></div>';
       return;
     }
 
     // 加载文章后动态更新SEO
+    var robotsMeta = document.querySelector('meta[name="robots"]');
+    if (robotsMeta) robotsMeta.setAttribute('content', 'index, follow');
     if (article.title) document.title = article.title + ' — Pensionwise 養老智';
     var canonicalLink = document.querySelector('link[rel="canonical"]');
-    if (canonicalLink && article.slug) canonicalLink.href = 'https://pensionwisetool.com/article.html?slug=' + article.slug;
+    if (canonicalLink && article.slug) canonicalLink.href = 'https://pensionwisetool.com/article/' + article.slug;
     var ogTitle = document.querySelector('meta[property="og:title"]');
     if (ogTitle && article.title) ogTitle.content = article.title + ' — Pensionwise 養老智';
     var ogDesc = document.querySelector('meta[property="og:description"]');

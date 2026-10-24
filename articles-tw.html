@@ -438,7 +438,7 @@
         const readMinutes = parseInt(a.readMinutes) || 5;
         const dateStr = fmtDate(a.publishDate);
         return `
-        <a href="/article.html?slug=${esc(a.slug)}" class="res-card">
+        <a href="/article/${esc(a.slug)}" class="res-card">
           <div class="res-cover">
             ${badge ? `<span class="res-cat">${badge}</span>` : ''}
             <img src="${cover}" alt="${coverAlt}" width="600" height="375" loading="lazy" />
