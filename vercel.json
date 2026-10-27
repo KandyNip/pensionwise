@@ -4,32 +4,61 @@
   "buildCommand": "node scripts/build-index.js && node scripts/prerender-articles.js",
   "outputDirectory": ".",
   "framework": null,
-  "rewrites": [
-    { "source": "/admin", "destination": "/admin/index.html" },
-    { "source": "/admin/", "destination": "/admin/index.html" },
-    { "source": "/article/:slug", "destination": "/article.html?slug=:slug" },
-    { "source": "/favicon.png", "destination": "/public/favicon.png" }
+  "routes": [
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/article/([^/]+)",
+      "dest": "/article.html?slug=$1"
+    },
+    {
+      "src": "/admin/?",
+      "dest": "/admin/index.html"
+    },
+    {
+      "src": "/favicon.png",
+      "dest": "/public/favicon.png"
+    }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        }
       ]
     },
     {
       "source": "/articles.json",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=60, s-maxage=300" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=60, s-maxage=300"
+        }
       ]
     },
     {
       "source": "/assets/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     }
   ]
