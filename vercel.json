@@ -6,11 +6,11 @@
   "framework": null,
   "routes": [
     {
-      "handle": "filesystem"
+      "src": "/article/([^/]+)",
+      "dest": "/article/$1.html"
     },
     {
-      "src": "/article/([^/]+)",
-      "dest": "/article.html?slug=$1"
+      "handle": "filesystem"
     },
     {
       "src": "/admin/?",
