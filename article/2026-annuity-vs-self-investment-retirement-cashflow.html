@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="index, follow" />
+<meta name="description" content="AEI/ACLI 2026年最新研究：10,000次模擬證明部分年金化打敗純4%法則和全額年金。但年金陷阱和自投風險各有什麼？用港台真實案例拆解最佳策略。" />
+<meta name="theme-color" content="#047857" />
+<link rel="icon" type="image/png" href="/favicon.png" />
+<title id="pageTitle">年金險 vs 自己投資：退休終身現金流該怎麼選？2026最新研究拆解 — Pensionwise 養老智</title>
+<link rel="canonical" href="https://pensionwisetool.com/article/2026-annuity-vs-self-investment-retirement-cashflow" />
+<meta property="og:title" content="年金險 vs 自己投資：退休終身現金流該怎麼選？2026最新研究拆解 — Pensionwise 養老智" />
+<meta property="og:description" content="AEI/ACLI 2026年最新研究：10,000次模擬證明部分年金化打敗純4%法則和全額年金。但年金陷阱和自投風險各有什麼？用港台真實案例拆解最佳策略。" />
+<meta property="og:type" content="article" />
+<meta property="og:locale" content="zh_Hant" />
+<meta property="og:image" content="https://pensionwisetool.com/assets/images/20260925-annuity-vs-self-investment-cover.jpg" />
+<meta property="og:url" content="https://pensionwisetool.com/article/2026-annuity-vs-self-investment-retirement-cashflow" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"年金險 vs 自己投資：退休終身現金流該怎麼選？2026最新研究拆解","description":"AEI/ACLI 2026年最新研究：10,000次模擬證明部分年金化打敗純4%法則和全額年金。但年金陷阱和自投風險各有什麼？用港台真實案例拆解最佳策略。","image":"https://pensionwisetool.com/assets/images/20260925-annuity-vs-self-investment-cover.jpg","datePublished":"2026-09-25","dateModified":"2026-09-25","author":{"@type":"Person","name":"Kandy Nip"},"publisher":{"@type":"Organization","name":"Pensionwise 養老智","logo":{"@type":"ImageObject","url":"https://pensionwisetool.com/favicon.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://pensionwisetool.com/article/2026-annuity-vs-self-investment-retirement-cashflow"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" /></noscript>
+<style>
+  :root {
+    --green-900: #053d2c;
+    --green-800: #074d36;
+    --green-700: #047857;
+    --green-600: #0c8551;
+    --green-500: #10b981;
+    --green-100: #d1fae5;
+    --green-50: #ecfdf5;
+    --ink: #0a0a0a;
+    --ink-2: #1f2937;
+    --ink-3: #4b5563;
+    --ink-4: #6b7280;
+    --ink-5: #9ca3af;
+    --line: #e5e7eb;
+    --line-soft: #f1f1ee;
+    --bg: #ffffff;
+    --bg-2: #fafaf7;
+    --bg-3: #f4f4ef;
+    --yellow: #fbbf24;
+    --shadow-xs: 0 1px 2px rgba(10,10,10,.04);
+    --shadow-sm: 0 1px 2px rgba(10,10,10,.04),0 2px 4px rgba(10,10,10,.04);
+    --shadow-md: 0 2px 4px rgba(10,10,10,.04),0 8px 16px -4px rgba(10,10,10,.08);
+    --shadow-lg: 0 4px 8px -2px rgba(10,10,10,.05),0 16px 32px -8px rgba(10,10,10,.12);
+    --shadow-green: 0 8px 24px -8px rgba(12,133,81,.35);
+    --sans: 'Manrope','Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;
+    --radius: 10px;
+    --radius-sm: 6px;
+    --radius-lg: 16px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; }
+  img { display: block; max-width: 100%; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  /* Nav */
+  .announce { background: var(--green-900); color: #fff; font-size: 13px; text-align: center; padding: 10px 16px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+  .announce-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-500); }
+  .announce a { color: #fff; text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
+  .nav-wrap { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.92); backdrop-filter: saturate(180%) blur(12px); -webkit-backdrop-filter: saturate(180%) blur(12px); border-bottom: 1px solid var(--line-soft); }
+  .nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; max-width: 1200px; margin: 0 auto; }
+  .brand { display: flex; align-items: center; gap: 9px; }
+  .brand-logo { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; color: var(--green-700); }
+  .brand-logo img { width: 48px; height: 48px; border-radius: 8px; object-fit: cover; }
+  .brand-name { font-size: 22px; font-weight: 700; letter-spacing: -.02em; color: var(--ink); font-family: 'Manrope',sans-serif; }
+  .brand-zh { font-size: 11px; color: var(--ink-4); font-weight: 500; letter-spacing: .2em; margin-left: 2px; padding-left: 9px; border-left: 1px solid var(--line); }
+  .nav-menu { display: flex; align-items: center; gap: 4px; }
+  .nav-menu > li { list-style: none; position: relative; }
+  .nav-menu > li > a, .nav-menu > li > button { padding: 10px 14px; font-size: 15px; font-weight: 600; color: var(--ink-2); background: none; border: none; border-radius: var(--radius-sm); display: inline-flex; align-items: center; gap: 4px; transition: background .15s, color .15s; }
+  .nav-menu > li > a:hover, .nav-menu > li > button:hover { background: var(--bg-3); color: var(--ink); }
+  .nav-menu .chev { width: 14px; height: 14px; opacity: 0.6; }
+  .dropdown { position: absolute; top: calc(100% + 8px); left: 0; background: #fff; border-radius: var(--radius); box-shadow: var(--shadow-lg); padding: 8px; min-width: 260px; opacity: 0; visibility: hidden; transform: translateY(-4px); transition: all .18s ease; z-index: 100; }
+  .nav-menu > li:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+  .nav-menu > li:focus-within .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+  .dropdown a { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; border-radius: var(--radius-sm); transition: background .12s; }
+  .dropdown a:hover { background: var(--bg-2); }
+  .dropdown .d-ico { width: 36px; height: 36px; border-radius: 9px; background: linear-gradient(135deg, var(--green-600), var(--green-800)); color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 10px -3px rgba(12,133,81,0.35); }
+  .dropdown .d-ico svg { width: 18px; height: 18px; }
+  .dropdown .d-name { font-size: 14px; font-weight: 700; color: var(--ink); }
+  .dropdown .d-desc { font-size: 12px; color: var(--ink-4); margin-top: 2px; }
+  .nav-cta { background: var(--green-700); color: #fff; padding: 9px 16px; border-radius: 8px; font-size: 14px; font-weight: 600; border: none; transition: background .15s; }
+  .nav-cta:hover { background: var(--green-800); }
+  .nav-toggle { display: none; }
+  .nav-drawer { display: none; }
+  @media (max-width: 980px) {
+    .nav-menu { display: none; }
+    .nav-toggle { display: flex; flex-direction: column; gap: 5px; background: none; border: none; padding: 8px; cursor: pointer; }
+    .nav-toggle span { width: 22px; height: 2px; background: var(--ink); border-radius: 2px; transition: all .2s; }
+    .nav-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.active span:nth-child(2) { opacity: 0; }
+    .nav-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-drawer { display: block; position: fixed; top: 0; right: 0; width: 320px; max-width: 85vw; height: 100vh; background: #fff; box-shadow: -8px 0 32px rgba(0,0,0,0.12); z-index: 100; transform: translateX(100%); transition: transform .3s cubic-bezier(.2,.7,.2,1); overflow-y: auto; padding: 72px 20px 24px; }
+    .nav-drawer.open { transform: translateX(0); }
+    .nav-drawer-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 99; }
+    .nav-drawer-overlay.show { display: block; }
+    .nav-drawer-close { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 24px; color: var(--ink-3); cursor: pointer; }
+    .nav-drawer-section { margin-bottom: 24px; }
+    .nav-drawer-label { font-size: 12px; font-weight: 700; color: var(--ink-4); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 10px; }
+    .nav-drawer-simple { display: block; padding: 10px 12px; font-size: 15px; font-weight: 600; color: var(--ink-2); border-radius: var(--radius-sm); transition: background .12s; }
+    .nav-drawer-simple:hover { background: var(--bg-2); }
+    .foot-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .foot-bot { flex-direction: column; gap: 12px; text-align: center; }
+  }
+
+  /* Article */
+  .article-hero { padding: 48px 0 32px; }
+  .article-badge { display: inline-block; font-size: 12px; font-weight: 700; color: var(--green-700); background: var(--green-50); padding: 4px 12px; border-radius: 999px; margin-bottom: 16px; }
+  .article-hero h1 { font-size: clamp(28px,4vw,40px); line-height: 1.2; letter-spacing: -.02em; font-weight: 800; color: var(--ink); margin-bottom: 16px; }
+  .article-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; font-size: 14px; color: var(--ink-4); }
+  .article-meta .sep { width: 3px; height: 3px; border-radius: 50%; background: var(--ink-5); }
+  .article-author { display: flex; align-items: center; gap: 8px; }
+  .article-author-av { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg,var(--green-600),var(--green-800)); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; }
+  .article-cover { margin: 0 auto 40px; max-width: 800px; border-radius: var(--radius-lg); overflow: hidden; }
+  .article-cover img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+
+  .article-body { max-width: 720px; margin: 0 auto; padding: 0 24px 64px; }
+  .article-body h2 { font-size: 22px; font-weight: 700; color: var(--ink); margin: 36px 0 12px; }
+  .article-body h3 { font-size: 18px; font-weight: 700; color: var(--ink-2); margin: 28px 0 10px; }
+  .article-body p { margin-bottom: 16px; color: var(--ink-2); line-height: 1.8; }
+  .article-body ul, .article-body ol { margin: 0 0 16px 24px; color: var(--ink-2); }
+  .article-body li { margin-bottom: 6px; line-height: 1.7; }
+  .article-body blockquote { border-left: 3px solid var(--green-700); padding: 12px 20px; margin: 20px 0; background: var(--bg-2); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; color: var(--ink-3); font-style: italic; }
+  .article-body strong { color: var(--ink); font-weight: 700; }
+  .article-body table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
+  .article-body th, .article-body td { padding: 10px 14px; border: 1px solid var(--line); text-align: left; }
+  .article-body th { background: var(--bg-3); font-weight: 700; color: var(--ink); }
+  .article-body code { background: var(--bg-3); padding: 2px 6px; border-radius: 4px; font-size: 14px; }
+
+  .article-loading { text-align: center; padding: 120px 24px; color: var(--ink-4); }
+  .article-error { text-align: center; padding: 120px 24px; }
+  .article-error h2 { font-size: 20px; color: var(--ink); margin-bottom: 8px; }
+  .article-error p { color: var(--ink-4); margin-bottom: 20px; }
+  .article-error a { color: var(--green-700); font-weight: 600; }
+
+  /* Footer */
+  .footer { background: var(--green-900); color: rgba(255,255,255,0.8); padding: 56px 0 24px; }
+  .foot-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 40px; }
+  .foot-brand { display: flex; align-items: center; gap: 9px; margin-bottom: 16px; }
+  .foot-brand .brand-logo { width: auto; height: auto; }
+  .foot-brand .brand-logo img { width: 56px; height: 56px; border-radius: 10px; }
+  .foot-brand .brand-name { color: #fff; }
+  .foot-brand .brand-zh { color: rgba(255,255,255,0.5); border-left-color: rgba(255,255,255,0.15); }
+  .foot-brand svg { color: var(--green-500); }
+  .footer p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.6; max-width: 300px; }
+  .foot-social { display: flex; gap: 10px; margin-top: 16px; }
+  .foot-social a { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.7); transition: all .15s; }
+  .foot-social a:hover { background: rgba(255,255,255,0.15); color: #fff; }
+  .foot-col h4 { font-size: 13px; font-weight: 700; color: #fff; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 14px; }
+  .foot-col ul { list-style: none; }
+  .foot-col li { margin-bottom: 8px; }
+  .foot-col a { font-size: 14px; color: rgba(255,255,255,0.6); transition: color .15s; }
+  .foot-col a:hover { color: #fff; }
+  .foot-bot { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 13px; color: rgba(255,255,255,0.4); }
+  .foot-bot .legal { display: flex; gap: 16px; }
+  .foot-bot .legal a { color: rgba(255,255,255,0.4); transition: color .15s; }
+  .foot-bot .legal a:hover { color: rgba(255,255,255,0.7); }
+
+  /* mobile-footer-fix */
+  @media (max-width: 980px) {
+    .footer .foot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 20px; margin-bottom: 32px; }
+    .footer .foot-grid > .foot-col:first-child { grid-column: 1 / -1; }
+    .footer .foot-bot { display: flex; flex-direction: column; gap: 12px; text-align: center; }
+    .footer .foot-bot .legal { flex-wrap: wrap; justify-content: center; }
+    .footer .footer p, .footer p { max-width: 100%; }
+  }
+  @media (max-width: 600px) {
+    .footer .foot-grid { grid-template-columns: 1fr; gap: 24px; }
+  }
+</style>
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2396601421108638" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div class="announce">
+  <span class="announce-dot"></span>
+  <span>純網頁退休規劃工具，免費即用 — <a href="/#tools">開始計算</a></span>
+</div>
+
+<div class="nav-wrap">
+  <nav class="nav">
+    <a href="/" class="brand">
+      <span class="brand-logo"><img src="/assets/images/logo-pensionwise.png" alt="Pensionwise 養老智 Logo" /></span>
+      <span class="brand-name">Pensionwise</span>
+      <span class="brand-zh">養老智</span>
+    </a>
+    <ul class="nav-menu">
+      <li>
+        <a href="/#tools">計算工具 <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="dropdown">
+          <a href="/living-cost.html"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 11l9-7 9 7v9a2 2 0 0 1-2 2h-3v-7H10v7H5a2 2 0 0 1-2-2v-9z" fill="#fff"/></svg></span><div><div class="d-name">生活費規劃器</div><div class="d-desc">通脹下的真實退休開銷</div></div></a>
+          <a href="/retirement-gap.html"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 1 0 10 10h-6a4 4 0 1 1-4-4V2z" fill="#fff"/></svg></span><div><div class="d-name">退休缺口計算器</div><div class="d-desc">算出退休那天還差多少</div></div></a>
+          <a href="/mpf.html"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" fill="#fff"/><text x="12" y="16" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" font-weight="800" fill="#047857">HK$</text></svg></span><div><div class="d-name">MPF 強積金計算器</div><div class="d-desc">香港僱員專屬</div></div></a>
+          <a href="/labor-pension.html"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M9 4 C9 4, 12 2, 15 4 L16 7 C18 8, 19 11, 19 14 C19 18, 16 21, 12 21 C8 21, 5 18, 5 14 C5 11, 6 8, 8 7 L9 4 Z" fill="#fff"/></svg></span><div><div class="d-name">勞退勞保試算器</div><div class="d-desc">台灣勞工專屬</div></div></a>
+        </div>
+      </li>
+      <li>
+        <a href="/articles-hk.html">退休資訊 <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="dropdown">
+          <a href="/articles-hk.html"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H3z" fill="#fff"/><path d="M21 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" fill="#fff"/></svg></span><div><div class="d-name">香港退休攻略</div><div class="d-desc">MPF、退休生活、規劃</div></div></a>
+          <a href="/articles-tw.html"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H3z" fill="#fff"/><path d="M21 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" fill="#fff"/></svg></span><div><div class="d-name">台灣退休攻略</div><div class="d-desc">勞退、勞保、自提分析</div></div></a>
+          <a href="/articles-general.html"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H3z" fill="#fff"/><path d="M21 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" fill="#fff"/></svg></span><div><div class="d-name">通用退休資訊</div><div class="d-desc">投資、心理、全球趨勢</div></div></a>
+        </div>
+      </li>
+      <li><a href="/about.html">關於我們</a></li>
+      <li><a href="/#tools" class="nav-cta">開始規劃</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="開啟選單">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</div>
+
+<div class="nav-drawer-overlay" id="navDrawerOverlay"></div>
+<div class="nav-drawer" id="navDrawer">
+  <button class="nav-drawer-close" id="navDrawerClose" aria-label="關閉選單">✕</button>
+  <div class="nav-drawer-section">
+    <div class="nav-drawer-label">計算工具</div>
+    <a href="/living-cost.html" class="nav-drawer-simple" data-close>生活費規劃器</a>
+    <a href="/retirement-gap.html" class="nav-drawer-simple" data-close>退休缺口計算器</a>
+    <a href="/mpf.html" class="nav-drawer-simple" data-close>MPF 強積金計算器</a>
+    <a href="/labor-pension.html" class="nav-drawer-simple" data-close>勞退勞保試算器</a>
+  </div>
+  <div class="nav-drawer-section">
+    <div class="nav-drawer-label">退休資訊</div>
+    <a href="/articles-hk.html" class="nav-drawer-simple" data-close>香港退休資訊</a>
+    <a href="/articles-tw.html" class="nav-drawer-simple" data-close>台灣退休資訊</a>
+    <a href="/articles-general.html" class="nav-drawer-simple" data-close>通用退休資訊</a>
+  </div>
+  <div class="nav-drawer-section">
+    <div class="nav-drawer-label">其他</div>
+    <a href="/about.html" class="nav-drawer-simple" data-close>關於我們</a>
+    <a href="/contact.html" class="nav-drawer-simple" data-close>聯絡我們</a>
+  </div>
+</div>
+
+<div id="content">
+<div class="article-hero"><div class="container"><span class="article-badge">通用 · 退休現金流</span><h1>年金險 vs 自己投資：退休終身現金流該怎麼選？2026最新研究拆解</h1><div class="article-meta"><div class="article-author"><div class="article-author-av">Nip</div><span>by <strong>Kandy Nip</strong> · PensionWise 編輯部</span></div><span class="sep"></span><span>2026 年 9 月 25 日</span><span class="sep"></span><span>8 分鐘閱讀</span></div></div></div><div class="article-cover"><img src="/assets/images/20260925-annuity-vs-self-investment-cover.jpg" alt="一對銀髮夫婦並肩坐在家中，一起看著平板上的退休財務圖表" /></div><div class="article-body"><p>50萬美金買即期年金，65歲女性每月約領3,290美元，活多久領多久。</p>
+<p>同樣50萬美金用4%法則自己提領，月領1,667美元。</p>
+<p>月入差了近一倍。到底年金比較划算，還是自己投資比較聰明？</p>
+<p>這個問題我糾結了很久。直到看到2026年7月AEI和ACLI聯合發表的研究——10,000次市場情境模擬——答案才真正清晰。不是二選一，而是怎麼混合。</p>
+<p>這篇把數據攤開來，不偏年金也不偏自投。用研究說話，用港台真實案例對照。</p>
+<p><img src="/assets/images/20260925-annuity-illust-1-retirement-walk.jpg" alt="年金 vs 自投：找到你的平衡點" loading="lazy" style="width:100%;border-radius:16px;margin:16px 0;"></p>
+<h2>年金的核心邏輯：死亡率紅利</h2>
+<p>先搞清楚年金到底是什麼。</p>
+<p>年金不是投資。它是<strong>風險共擔機制</strong>。</p>
+<p>你付一筆錢給保險公司，保險公司每個月付你固定金額，直到你過世。如果你活到95歲，領到的總額遠超本金。如果你70歲走了，大部分錢歸保險公司。</p>
+<p>這裡面的關鍵叫「死亡率紅利」——短壽者的錢補貼了長壽者。沒有任何投資產品能複製這種機制。（<a href="https://www.annuity.com/guides/spia-guide" target="_blank" rel="noopener" style="color:#047857;">annuity.com SPIA指南</a>）</p>
+<p>2026年9月美國即期年金（SPIA）真實費率：65歲男性每10萬美元保費月領693美元（年化派發率約8.3%），女性月領658美元（7.9%）。70歲男性月領767美元（9.2%）。（<a href="https://lifeannuities.us/rates/" target="_blank" rel="noopener" style="color:#047857;">LifeAnnuities.us 2026年9月報價</a>）</p>
+<p>年金的好處很單純：<strong>你不會活到沒錢。</strong> 不管市場怎麼跌、你活到幾歲，支票照寄。</p>
+<p>但代價也很清楚：</p>
+<ul>
+<li><strong>流動性鎖死</strong>：即期年金一旦買了就不可逆。急需用大筆錢？拿不回來</li>
+<li><strong>通脹侵蝕</strong>：名義年金每月金額固定，20年後購買力可能腰斬。2026年6月美國PCE物價指數年增3.7%（<a href="https://www.bea.gov/news/2026/personal-income-and-outlays-june-2026" target="_blank" rel="noopener" style="color:#047857;">BEA 2026年6月數據</a>），按此計算，固定年金20年後實質購買力約只剩48%</li>
+<li><strong>傳承歸零</strong>：人走了，錢就沒了。除非額外付費買保證期間條款，否則不留一分錢給家人</li>
+</ul>
+<h2>自投的核心邏輯：流動性加抗通脹加傳承</h2>
+<p>自己從投資組合提領（用4%法則或其他方式），邏輯完全不同。</p>
+<p><strong>流動性</strong>：錢隨時可用。緊急醫療、幫小孩付頭期款、想環遊世界——都行。</p>
+<p><strong>抗通脹</strong>：投資組合可以隨通脹調整。今年提4萬，明年物價漲3%，你可以提41,200。年金做不到（除非買通脹調整型，但初始給付會少很多）。</p>
+<p><strong>傳承</strong>：用不完的錢留給家人。4%法則30年後大概率還有本金剩。</p>
+<p>但自投有一個致命傷：<strong>報酬序列風險。</strong></p>
+<p>Dr. Wade Pfau的研究顯示，以30年退休來看，前十年的市場表現大約決定了80%的退休結果，後面20年幾乎不影響大局。（<a href="https://investresolve.com/podcasts/resolve-riffs-with-wade-pfau-on-optimal-retirement-strategies/" target="_blank" rel="noopener" style="color:#047857;">Wade Pfau 退休策略訪談</a>）</p>
+<p>退休第一年就遇到大跌，即使長期平均回報達標，組合可能提早破產。同樣年回報6%的兩個人，因為漲跌順序不同，一個30年後剩231萬美元，另一個第22年就歸零。（<a href="https://finexplained.com/playbooks/4-percent-rule/" target="_blank" rel="noopener" style="color:#047857;">finexplained.com</a>）</p>
+<p>年金不受這個問題影響——不管市場怎麼走，每月給的錢不變。</p>
+<p><img src="/assets/images/20260925-annuity-illust-2-financial-planning.jpg" alt="退休財務規劃需要數據支撐" loading="lazy" style="width:100%;border-radius:16px;margin:16px 0;"></p>
+<h2>2026最新研究：10,000次模擬結果出爐</h2>
+<p>2026年7月29日，美國企業研究院（AEI）和美國人壽保險委員會（ACLI）發表了一篇重量級研究。作者Mark Warshawsky博士和Gaobo Pang博士。（<a href="https://www.investmentnews.com/retirement-planning/partial-annuitization-beats-the-4-rule-new-aei-acli-research-finds/267610" target="_blank" rel="noopener" style="color:#047857;">Investment News報導</a>）</p>
+<p><strong>研究前提條件寫清楚</strong>：</p>
+<ul>
+<li>資本市場假設：使用2026年JPMorgan Asset Management數據</li>
+<li>模擬次數：超過10,000次隨機情境</li>
+<li>基準設定：65歲單身女性、100萬美元儲蓄</li>
+<li>已納入：聯邦所得稅、Medicare保費、RMD規則、Social Security請領決策</li>
+<li>評估指標：ACE（Average Certainty Equivalent）消費，綜合考量收入、資產餘額、長壽風險和傳承偏好</li>
+</ul>
+<p>四種策略按ACE評分由高到低排名（已扣除稅和Medicare，第1名表現最佳）：</p>
+<table><thead><tr><th>排名</th><th>策略</th><th>ACE評分</th><th>平均年收入</th><th>平均剩餘資產</th></tr></thead><tbody><tr><td>1</td><td>一次50%年金+剩餘自投</td><td><strong>59.12</strong></td><td>~$64,700</td><td>~$470,000</td></tr><tr><td>2</td><td>漸進年金（65-75歲從20%增到60%）</td><td><strong>58.94</strong></td><td>~$65,200</td><td>~$537,000</td></tr><tr><td>3</td><td>全額年金化</td><td>54.58</td><td>~$65,700</td><td>$0</td></tr><tr><td>4</td><td>純4%法則</td><td>53.79</td><td>~$58,100</td><td>不定</td></tr></tbody></table>
+<p><strong>核心發現：混合策略在幾乎所有情境中勝出。</strong></p>
+<p>4%法則的失敗風險特別值得注意：</p>
+<ul>
+<li>90歲前資產歸零：12%的情境</li>
+<li>95歲前歸零：24%</li>
+<li>100歲前歸零：<strong>38%</strong></li>
+</ul>
+<p>接近四成的機率會在百歲前花光積蓄。這就是為什麼純4%法則排名墊底。</p>
+<p>混合策略之所以勝出，原因很直觀：年金覆蓋了基本開支（不用擔心市場跌），剩餘資金保持投資（抗通脹＋傳承）。兩邊各取所長。</p>
+<p>研究還發現，混合策略的優勢在不同退休年齡（62歲和67歲）、不同資產規模（25萬和200萬美元）、不同健康和傳承偏好下都成立。</p>
+<h2>四種策略逐一拆解</h2>
+<p>把四種策略攤開看各自的適用場景。</p>
+<p><strong>純4%法則</strong></p>
+<ul>
+<li>優點：簡單、完全靈活</li>
+<li>缺點：收入最低（~$58,100/年）、破產風險最高</li>
+<li>適合：資產很大、有其他保證收入（如社保/勞保年金已覆蓋基本開支）的人</li>
+</ul>
+<p><strong>全額年金化</strong></p>
+<ul>
+<li>優點：消除長壽風險、收入最高（~$65,700/年）</li>
+<li>缺點：零流動性、零傳承、通脹侵蝕</li>
+<li>適合：沒有傳承需求、極度擔心活太久沒錢的人</li>
+</ul>
+<p><strong>50%一次年金化</strong></p>
+<ul>
+<li>優點：ACE最高（59.12）、兼顧收入和資產保留</li>
+<li>缺點：一半資金鎖死</li>
+<li>適合：想要穩定底線又不想完全放棄彈性的人</li>
+</ul>
+<p><strong>漸進年金化（20%→60%）</strong></p>
+<ul>
+<li>優點：資產保留最多（~$537,000）、提供調整彈性</li>
+<li>缺點：規劃較複雜</li>
+<li>適合：退休初期不確定需要多少流動性的人</li>
+</ul>
+<h2>年金陷阱：費用結構要看清楚</h2>
+<p>年金不是都一樣的。費用差異巨大。</p>
+<p><strong>即期年金（SPIA）</strong>：沒有年度管理費。保費本身就包含了保險公司的利潤和風險定價，相對透明。（<a href="https://www.annuity.com/guides/spia-guide" target="_blank" rel="noopener" style="color:#047857;">annuity.com</a>）</p>
+<p><strong>變額年金</strong>：費用結構複雜得多——</p>
+<ul>
+<li>M&E（ mortality and expense）費：0.10-1.50%/年</li>
+<li>基金費用：0.04-1.00%/年</li>
+<li>Rider（附加保障）費：0.25-1.50%/年</li>
+<li>Surrender Charge（退保費用）：5-10年</li>
+</ul>
+<p>加起來每年可能吃掉2-4%的資產。30年下來，複利效果非常驚人。</p>
+<p>另一個隱形陷阱：<strong>通脹侵蝕</strong>。</p>
+<p>名義年金每個月金額固定。按3.7%的年通脹率計算（<a href="https://www.bea.gov/news/2026/personal-income-and-outlays-june-2026" target="_blank" rel="noopener" style="color:#047857;">BEA 2026/6數據</a>），今天月領5,000元，20年後購買力只剩約2,420元。除非你額外付費買通脹調整條款——但那會立刻降低初始給付金額。</p>
+<h2>自投風險：兩個不能忽視的殺手</h2>
+<p>自投的問題不只是報酬序列風險。</p>
+<p><strong>第二個殺手：活太久。</strong></p>
+<p>4%法則在60年期限的成功率只有約78%（<a href="https://finexplained.com/playbooks/4-percent-rule/" target="_blank" rel="noopener" style="color:#047857;">finexplained.com</a>）。如果你60歲退休、活到95歲，35年的提款期已經夠長了。40年以上，破產風險大幅上升。</p>
+<p>4%法則本來是為30年設計的。現代人越來越長壽，30年可能不夠用。</p>
+<p>而且Morningstar 2026年的更新把安全提款率下調到3.9%，比傳統的4%更保守。（<a href="https://www.vineyardwealthgroup.com/planning-investing-insights/retirement-income-planning-guide" target="_blank" rel="noopener" style="color:#047857;">Vineyard Wealth引用Morningstar 2026數據</a>）</p>
+<h2>香港視角：HKMC年金 vs 自行從MPF提取</h2>
+<p>回到我們熟悉的場景。</p>
+<p>香港年金計劃（HKMC年金）：65歲男性投100萬港幣，月領約5,800港元（派發率6.9%）；女性月領約5,300港元（6.3%）。105%保證回本。（<a href="/article/hkmc-annuity-plan-guide" target="_blank" rel="noopener" style="color:#047857;">HKMC年金解析</a>）</p>
+<p>優勢：保證終身現金流，105%回本保障。2026年8月更推出跨境年金支付，可直接把港元年金換算成人民幣、匯到內地銀行帳戶。</p>
+<p>劣勢：資金鎖死在年金裡，名義派發受通脹侵蝕，傳承空間有限。</p>
+<p>另一邊，自行從MPF提取：用4%法則，100萬港元首年提4萬（月均3,333港元），之後按通脹調整。</p>
+<p>優勢：資金靈活、可傳承、可繼續投資增長。</p>
+<p>劣勢：市場風險、長壽風險、活太久可能不夠。</p>
+<p>用AEI研究的框架看：香港人最優解可能也是<strong>部分年金化</strong>——把一部分MPF轉成HKMC年金覆蓋基本開支，剩餘留在MPF繼續投資。</p>
+<h2>台灣視角：年金險 vs 自投報酬潛力</h2>
+<p>台灣市場，年金險的IRR大約在2.0-3.5%之間。台幣計價年金受低利率環境限制。保證終身給付是核心賣點。（<a href="https://direct.fubonlife.com.tw/blog/es001.html" target="_blank" rel="noopener" style="color:#047857;">富邦人壽年金險說明</a>）</p>
+<p>自己投資呢？勞動基金近10年（2016至2026年6月）平均年收益率約12.24%（<a href="https://www.1111.com.tw/news/jobns/166983" target="_blank" rel="noopener" style="color:#047857;">勞動基金運用局2026/8數據</a>）。這是各年度收益率的算數平均、包含2026年上半年的異常高點，不能直接當未來預期，也不等同長期複利年化。</p>
+<p>但即使保守假設年化5-6%，長期報酬潛力仍然遠高於年金險的保證IRR。代價是你得承受波動，而且有活太久錢不夠的風險。</p>
+<p>台灣退休族的最優解，邏輯跟AEI研究的結論一致：<strong>用年金險（或勞保年金）打底覆蓋基本開支，剩餘資金自行投資保持彈性。</strong></p>
+<p>勞保年金怎麼算、每月能領多少，請看：<a href="/article/2026-labor-insurance-pension-calculation" target="_blank" rel="noopener" style="color:#047857;">台灣勞保年金怎麼算？2026最新給付公式＋實際試算</a></p>
+<h2>最佳實踐：部分年金化20-40%</h2>
+<p>綜合2026年最新研究和港台市場現實，最佳策略的核心原則是：</p>
+<p><strong>用年金覆蓋基本開支的20-40%，剩餘自行投資。</strong></p>
+<p><img src="/assets/images/20260925-annuity-illust-3-daily-life.jpg" alt="退休生活的日常節奏" loading="lazy" style="width:100%;border-radius:16px;margin:16px 0;"></p>
+<p>具體操作：</p>
+<ul>
+<li>先算出每月基本開支（伙食、水電、醫療、交通——不含旅遊奢侈品）</li>
+<li>用年金（或社保/勞保年金）覆蓋其中20-40%</li>
+<li>剩餘資金維持投資組合，按動態提款策略調整</li>
+</ul>
+<p>這樣你同時獲得：</p>
+<ul>
+<li>年金的「不會活到沒錢」的安全感</li>
+<li>投資組合的抗通脹能力和傳承空間</li>
+<li>緊急情況下的流動性緩衝</li>
+</ul>
+<p>不同地區的具體做法：</p>
+<ul>
+<li><strong>香港</strong>：部分MPF轉HKMC年金＋剩餘MPF/自投資金保留彈性。4%法則細節見：<a href="/article/2026-4-percent-rule-retirement-withdrawal" target="_blank" rel="noopener" style="color:#047857;">退休提款策略：4%法則在港台適用嗎？</a></li>
+<li><strong>台灣</strong>：年金險打底＋勞保勞退＋自行投資組合</li>
+<li><strong>美國</strong>：SPIA＋Social Security（延遲到70歲）＋401(k)/IRA提款</li>
+</ul>
+<p>AEI研究還發現，延遲Social Security到70歲（用儲蓄橋接65-70歲），在幾乎所有策略中都能提升結果。因為政府延遲請領的信用條件很好——實質利率3%、無交易成本——等於政府補貼的年金。</p>
+<h2>實際試算：100萬美元的混合方案</h2>
+<p>用一個例子把所有數字串起來。</p>
+<p>假設你65歲退休，有100萬美元儲蓄（約合3,200萬台幣，或780萬港幣）。</p>
+<p>混合策略：50萬買即期年金，50萬自行投資。</p>
+<table><thead><tr><th>項目</th><th>金額</th></tr></thead><tbody><tr><td>即期年金月領（65歲女性）</td><td>~$3,300/月</td></tr><tr><td>4%法則自投年提領</td><td>$20,000/年（~$1,667/月）</td></tr><tr><td><strong>月均總收入</strong></td><td><strong>~$4,967</strong></td></tr><tr><td>年收入合計</td><td>~$59,600</td></tr><tr><td>剩餘投資資產（平均）</td><td>~$470,000</td></tr></tbody></table>
+<p>對照純4%法則：月領$3,333，年收入$40,000，且38%機率在百歲前歸零。</p>
+<p>混合策略月領多了約50%，還保留了47萬的平均資產餘額。</p>
+<p>用站內的<a href="/retirement-gap.html" target="_blank" rel="noopener" style="color:#047857;">退休缺口計算器</a>，輸入你的實際數字，看看不同比例的混合方案怎麼影響你的退休現金流。</p>
+<h2>寫在最後</h2>
+<p>重點三句話。</p>
+<p><strong>第一，年金和自投不是非黑即白。</strong> 年金解決長壽風險，但犧牲流動性；自投保持彈性，但要承受市場波動。兩者各有所長，也各有致命弱點。</p>
+<p><strong>第二，2026年最新研究給出了明確方向。</strong> AEI/ACLI 10,000次模擬證明：部分年金化（20-50%）在幾乎所有情境中勝出純4%法則和全額年金。關鍵數字：ACE評分59.12 vs 53.79。</p>
+<p><strong>第三，最好的策略是「打底加彈性」。</strong> 用年金或社保覆蓋基本開支的20-40%，剩餘保持投資。既有安全網，又有成長空間。</p>
+<p>退休現金流規劃不是選邊站。是找到適合你的平衡點。</p>
+<hr/>
+<h3>相關文章</h3>
+<ul>
+<li><a href="/article/2026-4-percent-rule-retirement-withdrawal" target="_blank" rel="noopener" style="color:#047857;">退休提款策略：4%法則在港台適用嗎？真實數據拆解30年不缺錢的領法</a></li>
+<li><a href="/article/hkmc-annuity-plan-guide" target="_blank" rel="noopener" style="color:#047857;">香港年金計劃全解析：HKMC年金值唔值得買？保證月入幾多？</a></li>
+<li><a href="/article/2026-retirement-medical-long-term-care" target="_blank" rel="noopener" style="color:#047857;">退休後最大筆開銷不是生活費：醫療與長照要準備多少？</a></li>
+<li><a href="/article/2026-tw-retirement-monthly-living-cost" target="_blank" rel="noopener" style="color:#047857;">台灣退休每月生活費要多少？2026雙北、中南部真實開支拆解</a></li>
+<li><a href="/retirement-gap.html" target="_blank" rel="noopener" style="color:#047857;">立即試用退休缺口計算器</a></li>
+</ul>
+<hr/>
+<h3>資料來源</h3>
+<ol>
+<li>AEI/ACLI 2026年7月研究：Mark Warshawsky & Gaobo Pang，「Partial Annuuitization Beats the 4% Rule」。10,000+次模擬、JPMorgan 2026資本市場假設、ACE效用框架。<a href="https://www.investmentnews.com/retirement-planning/partial-annuitization-beats-the-4-rule-new-aei-acli-research-finds/267610" target="_blank" rel="noopener" style="color:#047857;">Investment News報導</a></li>
+<li>LifeAnnuities.us 2026年9月SPIA費率表：8家A級以上保險公司報價調查。<a href="https://lifeannuities.us/rates/best-spia-rates/" target="_blank" rel="noopener" style="color:#047857;">lifeannuities.us</a></li>
+<li>annuity.com SPIA指南：即期年金派發率說明。<a href="https://www.annuity.com/guides/spia-guide" target="_blank" rel="noopener" style="color:#047857;">annuity.com</a></li>
+<li>U.S. Bureau of Economic Analysis（BEA）：2026年6月PCE通脹率3.7%。<a href="https://www.bea.gov/news/2026/personal-income-and-outlays-june-2026" target="_blank" rel="noopener" style="color:#047857;">BEA發布</a></li>
+<li>Morningstar 2026安全提款率：3.9%基準。<a href="https://www.vineyardwealthgroup.com/planning-investing-insights/retirement-income-planning-guide" target="_blank" rel="noopener" style="color:#047857;">Vineyard Wealth整理</a></li>
+<li>finexplained.com：4%法則在不同期限的成功率。<a href="https://finexplained.com/playbooks/4-percent-rule/" target="_blank" rel="noopener" style="color:#047857;">finexplained.com</a></li>
+<li>富邦人壽年金險商品說明：台灣年金險IRR 2.0-3.5%。<a href="https://direct.fubonlife.com.tw/blog/es001.html" target="_blank" rel="noopener" style="color:#047857;">fubonlife.com.tw</a></li>
+<li>勞動基金運用局：勞動基金近10年平均收益率12.24%（2026/8/3公布）。<a href="https://www.1111.com.tw/news/jobns/166983" target="_blank" rel="noopener" style="color:#047857;">1111報導</a></li>
+<li>HKMC香港年金計劃數據：本站第12篇核實。<a href="/article/hkmc-annuity-plan-guide" target="_blank" rel="noopener" style="color:#047857;">HKMC年金解析</a></li>
+</ol>
+<p><em>以上資料截至2026年9月，僅供參考，不構成投資或保險建議。個人規劃請諮詢專業顧問。年金產品保證由發行保險公司的財務實力支撐，非政府擔保。</em></p></div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <div class="foot-brand">
+          <span class="brand-logo"><img src="/assets/images/logo-pensionwise.png" alt="Pensionwise 養老智 Logo" /></span>
+          <span class="brand-name">Pensionwise</span>
+          <span class="brand-zh">養老智</span>
+        </div>
+        <p>Pensionwise 養老智 — 為香港與台灣打工族而做的退休規劃平台。慢慢算，慢慢存，慢慢過好日子。</p>
+        <div class="foot-social">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://pensionwisetool.com/article.html" target="_blank" rel="noopener" aria-label="分享到 Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.378 14.192 5 15.115 5H18V0h-3.808C10.596 0 9 1.583 9 4.615V8z"/></svg></a>
+          <a href="https://twitter.com/intent/tweet?text=%E9%80%80%E4%BC%91%E6%96%87%E7%AB%A0%20Pensionwise&url=https://pensionwisetool.com/article.html" target="_blank" rel="noopener" aria-label="分享到 X"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://pensionwisetool.com/article.html" target="_blank" rel="noopener" aria-label="分享到 LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>計算工具</h4>
+        <ul>
+          <li><a href="/living-cost.html">生活費規劃</a></li>
+          <li><a href="/retirement-gap.html">退休缺口</a></li>
+          <li><a href="/mpf.html">MPF 強積金</a></li>
+          <li><a href="/labor-pension.html">勞退勞保</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>退休資訊</h4>
+        <ul>
+          <li><a href="/articles-hk.html">香港退休</a></li>
+          <li><a href="/articles-tw.html">台灣退休</a></li>
+          <li><a href="/articles-general.html">通用資訊</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>關於</h4>
+        <ul>
+          <li><a href="/about.html">關於我們</a></li>
+          <li><a href="/contact.html">聯絡我們</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>法務</h4>
+        <ul>
+          <li><a href="/privacy.html">隱私政策</a></li>
+          <li><a href="/disclaimer.html">免責聲明</a></li>
+          <li><a href="/cookie-policy.html">Cookie 政策</a></li>
+          <li><a href="/terms.html">使用條款</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 Pensionwise 養老智 · All rights reserved.</span>
+      <div class="legal">
+        <a href="/privacy.html">隱私</a>
+        <a href="/terms.html">條款</a>
+        <a href="/disclaimer.html">免責聲明</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// 移动端抽屉
+(function() {
+  var toggle = document.getElementById('navToggle');
+  var drawer = document.getElementById('navDrawer');
+  var overlay = document.getElementById('navDrawerOverlay');
+  var close = document.getElementById('navDrawerClose');
+  if (!toggle || !drawer || !overlay || !close) return;
+  function setOpen(open) {
+    drawer.classList.toggle('open', open);
+    overlay.classList.toggle('show', open);
+    toggle.classList.toggle('active', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  toggle.addEventListener('click', function() { setOpen(!drawer.classList.contains('open')); });
+  overlay.addEventListener('click', function() { setOpen(false); });
+  close.addEventListener('click', function() { setOpen(false); });
+  drawer.querySelectorAll('[data-close]').forEach(function(el) { el.addEventListener('click', function() { setOpen(false); }); });
+  var mq = window.matchMedia('(min-width: 981px)');
+  mq.addEventListener('change', function(e) { if (e.matches) setOpen(false); });
+})();
+
+(async function() {
+  // 預渲染頁已含靜態內容，跳過 SPA 渲染以免覆蓋
+  if (document.querySelector('#content .article-hero')) return;
+  const params = new URLSearchParams(window.location.search);
+  var slug = params.get('slug');
+  if (!slug) {
+    var m = window.location.pathname.match(/^\/article\/([^\/]+)/);
+    if (m) slug = decodeURIComponent(m[1]);
+  }
+  const contentEl = document.getElementById('content');
+
+  if (!slug) {
+    var rm0 = document.querySelector('meta[name="robots"]');
+    if (rm0) rm0.setAttribute('content', 'noindex, follow');
+    contentEl.innerHTML = '<div class="article-error"><h2>找不到文章</h2><p>請從首頁選擇一篇文章閱讀。</p><a href="/">返回首頁</a></div>';
+    return;
+  }
+
+  // Markdown renderer (tables, ordered/unordered lists, hr, headings, etc.)
+  function mdToHtml(md) {
+    if (!md) return '';
+    md = md.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+    var lines = md.split('\n');
+    var result = [];
+    var i = 0;
+    var inUl = false;
+    var inOl = false;
+    var paraBuf = [];
+
+    function flushPara() {
+      if (paraBuf.length) {
+        var text = paraBuf.join('<br/>').trim();
+        if (text) result.push('<p>' + text + '</p>');
+        paraBuf = [];
+      }
+    }
+    function closeLists() {
+      if (inUl) { result.push('</ul>'); inUl = false; }
+      if (inOl) { result.push('</ol>'); inOl = false; }
+    }
+    function parseRow(line) {
+      line = line.trim();
+      if (line.charAt(0) === '|') line = line.slice(1);
+      if (line.charAt(line.length - 1) === '|') line = line.slice(0, -1);
+      return line.split('|').map(function(c) { return c.trim(); });
+    }
+
+    while (i < lines.length) {
+      var line = lines[i];
+      var trimmed = line.trim();
+
+      // Empty line
+      if (trimmed === '') { flushPara(); closeLists(); i++; continue; }
+
+      // Table: line starts with | and next line is separator |---|---|
+      if (trimmed.charAt(0) === '|' && i + 1 < lines.length && /^\|[\s\-:|]+\|$/.test(lines[i + 1].trim())) {
+        flushPara(); closeLists();
+        var headerCells = parseRow(trimmed);
+        var bodyRows = [];
+        i += 2;
+        while (i < lines.length && lines[i].trim().charAt(0) === '|' && lines[i].trim() !== '') {
+          bodyRows.push(parseRow(lines[i].trim()));
+          i++;
+        }
+        var tableHtml = '<table><thead><tr>';
+        headerCells.forEach(function(c) { tableHtml += '<th>' + c + '</th>'; });
+        tableHtml += '</tr></thead><tbody>';
+        bodyRows.forEach(function(row) {
+          tableHtml += '<tr>';
+          row.forEach(function(c) { tableHtml += '<td>' + c + '</td>'; });
+          tableHtml += '</tr>';
+        });
+        tableHtml += '</tbody></table>';
+        result.push(tableHtml);
+        continue;
+      }
+
+      // Horizontal rule
+      if (/^(-{3,}|\*{3,}|_{3,})$/.test(trimmed)) {
+        flushPara(); closeLists();
+        result.push('<hr/>');
+        i++; continue;
+      }
+
+      // Headings
+      var hMatch = trimmed.match(/^(#{1,6})\s+(.+)$/);
+      if (hMatch) {
+        flushPara(); closeLists();
+        var level = hMatch[1].length;
+        result.push('<h' + level + '>' + hMatch[2] + '</h' + level + '>');
+        i++; continue;
+      }
+
+      // Blockquote
+      if (/^>/.test(trimmed)) {
+        flushPara(); closeLists();
+        result.push('<blockquote>' + trimmed.replace(/^>\s?/, '') + '</blockquote>');
+        i++; continue;
+      }
+
+      // Ordered list item
+      var olMatch = trimmed.match(/^(\d+)\.\s+(.+)$/);
+      if (olMatch) {
+        flushPara();
+        if (inUl) { result.push('</ul>'); inUl = false; }
+        if (!inOl) { result.push('<ol>'); inOl = true; }
+        result.push('<li>' + olMatch[2] + '</li>');
+        i++; continue;
+      }
+
+      // Unordered list item
+      var ulMatch = trimmed.match(/^[-*+]\s+(.+)$/);
+      if (ulMatch) {
+        flushPara();
+        if (inOl) { result.push('</ol>'); inOl = false; }
+        if (!inUl) { result.push('<ul>'); inUl = true; }
+        result.push('<li>' + ulMatch[1] + '</li>');
+        i++; continue;
+      }
+
+      // Regular text line
+      paraBuf.push(trimmed);
+      i++;
+    }
+
+    flushPara();
+    closeLists();
+
+    var html = result.join('\n');
+
+    // Inline formatting
+    html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+    html = html.replace(/!\[(.+?)\]\((.+?)\)/g, '<img src="$2" alt="$1" loading="lazy" style="width:100%;border-radius:16px;margin:16px 0;">');
+    html = html.replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank" rel="noopener" style="color:#047857;">$1</a>');
+    // 裸網址轉連結（避開已存在於 href=" / src=" 屬性內的網址）
+    html = html.replace(/(?<!=["'])https?:\/\/[^\s<"'）)]+/g, function(u){ return '<a href="' + u + '" target="_blank" rel="noopener" style="color:#047857;word-break:break-all;">' + u + '</a>'; });
+    html = html.replace(/`(.+?)`/g, '<code>$1</code>');
+
+    return html;
+  }
+
+  // XSS sanitize：移除 <script>/事件属性/javascript: 协议
+  function sanitizeHtml(html) {
+    // 移除 script 标签整段
+    html = html.replace(/<script[\s\S]*?<\/script>/gi, '');
+    // 移除 <style>...</style> 整段
+    html = html.replace(/<style[\s\S]*?<\/style>/gi, '');
+    // 移除 <iframe>/<object>/<embed> 标签
+    html = html.replace(/<\/?(iframe|object|embed)[\s\S]*?>/gi, '');
+    // 移除所有 on* 事件属性（onclick, onload, onerror 等）
+    html = html.replace(/\son\w+\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi, '');
+    // 移除 javascript: 协议的 href/src
+    html = html.replace(/(href|src)\s*=\s*("javascript:[^"]*"|'javascript:[^']*'|javascript:[^\s>]+)/gi, '');
+    return html;
+  }
+
+  try {
+    const res = await fetch('/articles.json', { cache: 'no-cache' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    const articles = Array.isArray(data && data.articles) ? data.articles : [];
+    const article = articles.find(function(a) { return a.slug === slug; });
+
+    if (!article) {
+      var rmMiss = document.querySelector('meta[name="robots"]');
+      if (rmMiss) rmMiss.setAttribute('content', 'noindex, follow');
+      contentEl.innerHTML = '<div class="article-error"><h2>文章不存在</h2><p>該文章可能已移除或連結有誤。</p><a href="/">返回首頁</a></div>';
+      return;
+    }
+
+    // 加载文章后动态更新SEO
+    var robotsMeta = document.querySelector('meta[name="robots"]');
+    if (robotsMeta) robotsMeta.setAttribute('content', 'index, follow');
+    if (article.title) document.title = article.title + ' — Pensionwise 養老智';
+    var canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (canonicalLink && article.slug) canonicalLink.href = 'https://pensionwisetool.com/article/' + article.slug;
+    var ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle && article.title) ogTitle.content = article.title + ' — Pensionwise 養老智';
+    var ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc && article.excerpt) ogDesc.content = article.excerpt;
+
+    // Build meta info
+    var fmtDate = function(d) {
+      if (!d) return '';
+      var dt = new Date(d);
+      if (isNaN(dt.getTime())) return '';
+      return dt.getFullYear() + ' 年 ' + (dt.getMonth()+1) + ' 月 ' + dt.getDate() + ' 日';
+    };
+
+    var html = '<div class="article-hero"><div class="container">';
+    if (article.badge) html += '<span class="article-badge">' + escHtml(article.badge) + '</span>';
+    html += '<h1>' + escHtml(article.title) + '</h1>';
+    html += '<div class="article-meta">';
+    html += '<div class="article-author"><div class="article-author-av">' + escHtml(article.authorSurname || '編') + '</div>';
+    html += '<span>by <strong>' + escHtml(article.authorName || '編輯部') + '</strong>';
+    if (article.authorTitle) html += ' · ' + escHtml(article.authorTitle);
+    html += '</span></div>';
+    var dateStr = fmtDate(article.publishDate);
+    if (dateStr) {
+      html += '<span class="sep"></span>';
+      html += '<span>' + dateStr + '</span>';
+    }
+    html += '<span class="sep"></span>';
+    html += '<span>' + (parseInt(article.readMinutes) || 5) + ' 分鐘閱讀</span>';
+    html += '</div></div></div>';
+
+    // Cover
+    if (article.cover) {
+      html += '<div class="article-cover"><img src="' + escHtml(article.cover) + '" alt="' + escHtml(article.coverAlt || article.title) + '" /></div>';
+    }
+
+    // Body
+    html += '<div class="article-body">';
+    if (article.content) {
+      // If content field exists (HTML), sanitize before use
+      html += sanitizeHtml(article.content);
+    } else if (article.body) {
+      // Markdown body from articles.json, render then sanitize
+      html += sanitizeHtml(mdToHtml(article.body));
+    } else {
+      html += '<p>文章內容即將更新，敬請期待。</p>';
+    }
+    html += '</div>';
+
+    contentEl.innerHTML = html;
+  } catch (err) {
+    contentEl.innerHTML = '<div class="article-error"><h2>載入失敗</h2><p>無法載入文章，請稍後再試。</p><a href="/">返回首頁</a></div>';
+    console.error('[Article]', err);
+  }
+
+  function escHtml(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function(c) {
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+})();
+</script>
+
+<!-- Vercel Web Analytics -->
+<script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+
+</body>
+</html>

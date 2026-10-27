@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="index, follow" />
+<meta name="description" content="退休後在台灣一個月要花多少？本文用主計總處2025年家庭收支調查、衛福部長照2.0/3.0、勞保局數據，把雙北與中南部單身、夫婦的食衣住行醫開銷逐項拆開，再用4%法則倒推退休金，並和香港生活費對比。" />
+<meta name="theme-color" content="#047857" />
+<link rel="icon" type="image/png" href="/favicon.png" />
+<title id="pageTitle">台灣退休每月生活費要多少？2026雙北、中南部真實開支拆解 — Pensionwise 養老智</title>
+<link rel="canonical" href="https://pensionwisetool.com/article/2026-tw-retirement-monthly-living-cost" />
+<meta property="og:title" content="台灣退休每月生活費要多少？2026雙北、中南部真實開支拆解 — Pensionwise 養老智" />
+<meta property="og:description" content="退休後在台灣一個月要花多少？本文用主計總處2025年家庭收支調查、衛福部長照2.0/3.0、勞保局數據，把雙北與中南部單身、夫婦的食衣住行醫開銷逐項拆開，再用4%法則倒推退休金，並和香港生活費對比。" />
+<meta property="og:type" content="article" />
+<meta property="og:locale" content="zh_Hant" />
+<meta property="og:image" content="https://pensionwisetool.com/assets/images/2026-tw-retirement-living-cost-cover.jpg" />
+<meta property="og:url" content="https://pensionwisetool.com/article/2026-tw-retirement-monthly-living-cost" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"台灣退休每月生活費要多少？2026雙北、中南部真實開支拆解","description":"退休後在台灣一個月要花多少？本文用主計總處2025年家庭收支調查、衛福部長照2.0/3.0、勞保局數據，把雙北與中南部單身、夫婦的食衣住行醫開銷逐項拆開，再用4%法則倒推退休金，並和香港生活費對比。","image":"https://pensionwisetool.com/assets/images/2026-tw-retirement-living-cost-cover.jpg","datePublished":"2026-09-18","dateModified":"2026-09-18","author":{"@type":"Person","name":"Kandy Nip"},"publisher":{"@type":"Organization","name":"Pensionwise 養老智","logo":{"@type":"ImageObject","url":"https://pensionwisetool.com/favicon.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://pensionwisetool.com/article/2026-tw-retirement-monthly-living-cost"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" /></noscript>
+<style>
+  :root {
+    --green-900: #053d2c;
+    --green-800: #074d36;
+    --green-700: #047857;
+    --green-600: #0c8551;
+    --green-500: #10b981;
+    --green-100: #d1fae5;
+    --green-50: #ecfdf5;
+    --ink: #0a0a0a;
+    --ink-2: #1f2937;
+    --ink-3: #4b5563;
+    --ink-4: #6b7280;
+    --ink-5: #9ca3af;
+    --line: #e5e7eb;
+    --line-soft: #f1f1ee;
+    --bg: #ffffff;
+    --bg-2: #fafaf7;
+    --bg-3: #f4f4ef;
+    --yellow: #fbbf24;
+    --shadow-xs: 0 1px 2px rgba(10,10,10,.04);
+    --shadow-sm: 0 1px 2px rgba(10,10,10,.04),0 2px 4px rgba(10,10,10,.04);
+    --shadow-md: 0 2px 4px rgba(10,10,10,.04),0 8px 16px -4px rgba(10,10,10,.08);
+    --shadow-lg: 0 4px 8px -2px rgba(10,10,10,.05),0 16px 32px -8px rgba(10,10,10,.12);
+    --shadow-green: 0 8px 24px -8px rgba(12,133,81,.35);
+    --sans: 'Manrope','Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;
+    --radius: 10px;
+    --radius-sm: 6px;
+    --radius-lg: 16px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; }
+  img { display: block; max-width: 100%; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  /* Nav */
+  .announce { background: var(--green-900); color: #fff; font-size: 13px; text-align: center; padding: 10px 16px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+  .announce-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-500); }
+  .announce a { color: #fff; text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
+  .nav-wrap { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.92); backdrop-filter: saturate(180%) blur(12px); -webkit-backdrop-filter: saturate(180%) blur(12px); border-bottom: 1px solid var(--line-soft); }
+  .nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; max-width: 1200px; margin: 0 auto; }
+  .brand { display: flex; align-items: center; gap: 9px; }
+  .brand-logo { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; color: var(--green-700); }
+  .brand-logo img { width: 48px; height: 48px; border-radius: 8px; object-fit: cover; }
+  .brand-name { font-size: 22px; font-weight: 700; letter-spacing: -.02em; color: var(--ink); font-family: 'Manrope',sans-serif; }
+  .brand-zh { font-size: 11px; color: var(--ink-4); font-weight: 500; letter-spacing: .2em; margin-left: 2px; padding-left: 9px; border-left: 1px solid var(--line); }
+  .nav-menu { display: flex; align-items: center; gap: 4px; }
+  .nav-menu > li { list-style: none; position: relative; }
+  .nav-menu > li > a, .nav-menu > li > button { padding: 10px 14px; font-size: 15px; font-weight: 600; color: var(--ink-2); background: none; border: none; border-radius: var(--radius-sm); display: inline-flex; align-items: center; gap: 4px; transition: background .15s, color .15s; }
+  .nav-menu > li > a:hover, .nav-menu > li > button:hover { background: var(--bg-3); color: var(--ink); }
+  .nav-menu .chev { width: 14px; height: 14px; opacity: 0.6; }
+  .dropdown { position: absolute; top: calc(100% + 8px); left: 0; background: #fff; border-radius: var(--radius); box-shadow: var(--shadow-lg); padding: 8px; min-width: 260px; opacity: 0; visibility: hidden; transform: translateY(-4px); transition: all .18s ease; z-index: 100; }
+  .nav-menu > li:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+  .nav-menu > li:focus-within .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+  .dropdown a { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; border-radius: var(--radius-sm); transition: background .12s; }
+  .dropdown a:hover { background: var(--bg-2); }
+  .dropdown .d-ico { width: 36px; height: 36px; border-radius: 9px; background: linear-gradient(135deg, var(--green-600), var(--green-800)); color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 10px -3px rgba(12,133,81,0.35); }
+  .dropdown .d-ico svg { width: 18px; height: 18px; }
+  .dropdown .d-name { font-size: 14px; font-weight: 700; color: var(--ink); }
+  .dropdown .d-desc { font-size: 12px; color: var(--ink-4); margin-top: 2px; }
+  .nav-cta { background: var(--green-700); color: #fff; padding: 9px 16px; border-radius: 8px; font-size: 14px; font-weight: 600; border: none; transition: background .15s; }
+  .nav-cta:hover { background: var(--green-800); }
+  .nav-toggle { display: none; }
+  .nav-drawer { display: none; }
+  @media (max-width: 980px) {
+    .nav-menu { display: none; }
+    .nav-toggle { display: flex; flex-direction: column; gap: 5px; background: none; border: none; padding: 8px; cursor: pointer; }
+    .nav-toggle span { width: 22px; height: 2px; background: var(--ink); border-radius: 2px; transition: all .2s; }
+    .nav-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.active span:nth-child(2) { opacity: 0; }
+    .nav-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-drawer { display: block; position: fixed; top: 0; right: 0; width: 320px; max-width: 85vw; height: 100vh; background: #fff; box-shadow: -8px 0 32px rgba(0,0,0,0.12); z-index: 100; transform: translateX(100%); transition: transform .3s cubic-bezier(.2,.7,.2,1); overflow-y: auto; padding: 72px 20px 24px; }
+    .nav-drawer.open { transform: translateX(0); }
+    .nav-drawer-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 99; }
+    .nav-drawer-overlay.show { display: block; }
+    .nav-drawer-close { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 24px; color: var(--ink-3); cursor: pointer; }
+    .nav-drawer-section { margin-bottom: 24px; }
+    .nav-drawer-label { font-size: 12px; font-weight: 700; color: var(--ink-4); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 10px; }
+    .nav-drawer-simple { display: block; padding: 10px 12px; font-size: 15px; font-weight: 600; color: var(--ink-2); border-radius: var(--radius-sm); transition: background .12s; }
+    .nav-drawer-simple:hover { background: var(--bg-2); }
+    .foot-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .foot-bot { flex-direction: column; gap: 12px; text-align: center; }
+  }
+
+  /* Article */
+  .article-hero { padding: 48px 0 32px; }
+  .article-badge { display: inline-block; font-size: 12px; font-weight: 700; color: var(--green-700); background: var(--green-50); padding: 4px 12px; border-radius: 999px; margin-bottom: 16px; }
+  .article-hero h1 { font-size: clamp(28px,4vw,40px); line-height: 1.2; letter-spacing: -.02em; font-weight: 800; color: var(--ink); margin-bottom: 16px; }
+  .article-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; font-size: 14px; color: var(--ink-4); }
+  .article-meta .sep { width: 3px; height: 3px; border-radius: 50%; background: var(--ink-5); }
+  .article-author { display: flex; align-items: center; gap: 8px; }
+  .article-author-av { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg,var(--green-600),var(--green-800)); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; }
+  .article-cover { margin: 0 auto 40px; max-width: 800px; border-radius: var(--radius-lg); overflow: hidden; }
+  .article-cover img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+
+  .article-body { max-width: 720px; margin: 0 auto; padding: 0 24px 64px; }
+  .article-body h2 { font-size: 22px; font-weight: 700; color: var(--ink); margin: 36px 0 12px; }
+  .article-body h3 { font-size: 18px; font-weight: 700; color: var(--ink-2); margin: 28px 0 10px; }
+  .article-body p { margin-bottom: 16px; color: var(--ink-2); line-height: 1.8; }
+  .article-body ul, .article-body ol { margin: 0 0 16px 24px; color: var(--ink-2); }
+  .article-body li { margin-bottom: 6px; line-height: 1.7; }
+  .article-body blockquote { border-left: 3px solid var(--green-700); padding: 12px 20px; margin: 20px 0; background: var(--bg-2); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; color: var(--ink-3); font-style: italic; }
+  .article-body strong { color: var(--ink); font-weight: 700; }
+  .article-body table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
+  .article-body th, .article-body td { padding: 10px 14px; border: 1px solid var(--line); text-align: left; }
+  .article-body th { background: var(--bg-3); font-weight: 700; color: var(--ink); }
+  .article-body code { background: var(--bg-3); padding: 2px 6px; border-radius: 4px; font-size: 14px; }
+
+  .article-loading { text-align: center; padding: 120px 24px; color: var(--ink-4); }
+  .article-error { text-align: center; padding: 120px 24px; }
+  .article-error h2 { font-size: 20px; color: var(--ink); margin-bottom: 8px; }
+  .article-error p { color: var(--ink-4); margin-bottom: 20px; }
+  .article-error a { color: var(--green-700); font-weight: 600; }
+
+  /* Footer */
+  .footer { background: var(--green-900); color: rgba(255,255,255,0.8); padding: 56px 0 24px; }
+  .foot-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 40px; }
+  .foot-brand { display: flex; align-items: center; gap: 9px; margin-bottom: 16px; }
+  .foot-brand .brand-logo { width: auto; height: auto; }
+  .foot-brand .brand-logo img { width: 56px; height: 56px; border-radius: 10px; }
+  .foot-brand .brand-name { color: #fff; }
+  .foot-brand .brand-zh { color: rgba(255,255,255,0.5); border-left-color: rgba(255,255,255,0.15); }
+  .foot-brand svg { color: var(--green-500); }
+  .footer p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.6; max-width: 300px; }
+  .foot-social { display: flex; gap: 10px; margin-top: 16px; }
+  .foot-social a { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.7); transition: all .15s; }
+  .foot-social a:hover { background: rgba(255,255,255,0.15); color: #fff; }
+  .foot-col h4 { font-size: 13px; font-weight: 700; color: #fff; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 14px; }
+  .foot-col ul { list-style: none; }
+  .foot-col li { margin-bottom: 8px; }
+  .foot-col a { font-size: 14px; color: rgba(255,255,255,0.6); transition: color .15s; }
+  .foot-col a:hover { color: #fff; }
+  .foot-bot { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 13px; color: rgba(255,255,255,0.4); }
+  .foot-bot .legal { display: flex; gap: 16px; }
+  .foot-bot .legal a { color: rgba(255,255,255,0.4); transition: color .15s; }
+  .foot-bot .legal a:hover { color: rgba(255,255,255,0.7); }
+
+  /* mobile-footer-fix */
+  @media (max-width: 980px) {
+    .footer .foot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 20px; margin-bottom: 32px; }
+    .footer .foot-grid > .foot-col:first-child { grid-column: 1 / -1; }
+    .footer .foot-bot { display: flex; flex-direction: column; gap: 12px; text-align: center; }
+    .footer .foot-bot .legal { flex-wrap: wrap; justify-content: center; }
+    .footer .footer p, .footer p { max-width: 100%; }
+  }
+  @media (max-width: 600px) {
+    .footer .foot-grid { grid-template-columns: 1fr; gap: 24px; }
+  }
+</style>
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2396601421108638" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div class="announce">
+  <span class="announce-dot"></span>
+  <span>純網頁退休規劃工具，免費即用 — <a href="/#tools">開始計算</a></span>
+</div>
+
+<div class="nav-wrap">
+  <nav class="nav">
+    <a href="/" class="brand">
+      <span class="brand-logo"><img src="/assets/images/logo-pensionwise.png" alt="Pensionwise 養老智 Logo" /></span>
+      <span class="brand-name">Pensionwise</span>
+      <span class="brand-zh">養老智</span>
+    </a>
+    <ul class="nav-menu">
+      <li>
+        <a href="/#tools">計算工具 <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="dropdown">
+          <a href="/living-cost.html"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 11l9-7 9 7v9a2 2 0 0 1-2 2h-3v-7H10v7H5a2 2 0 0 1-2-2v-9z" fill="#fff"/></svg></span><div><div class="d-name">生活費規劃器</div><div class="d-desc">通脹下的真實退休開銷</div></div></a>
+          <a href="/retirement-gap.html"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2a10 10 0 1 0 10 10h-6a4 4 0 1 1-4-4V2z" fill="#fff"/></svg></span><div><div class="d-name">退休缺口計算器</div><div class="d-desc">算出退休那天還差多少</div></div></a>
+          <a href="/mpf.html"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9.5" fill="#fff"/><text x="12" y="16" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" font-weight="800" fill="#047857">HK$</text></svg></span><div><div class="d-name">MPF 強積金計算器</div><div class="d-desc">香港僱員專屬</div></div></a>
+          <a href="/labor-pension.html"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M9 4 C9 4, 12 2, 15 4 L16 7 C18 8, 19 11, 19 14 C19 18, 16 21, 12 21 C8 21, 5 18, 5 14 C5 11, 6 8, 8 7 L9 4 Z" fill="#fff"/></svg></span><div><div class="d-name">勞退勞保試算器</div><div class="d-desc">台灣勞工專屬</div></div></a>
+        </div>
+      </li>
+      <li>
+        <a href="/articles-hk.html">退休資訊 <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="dropdown">
+          <a href="/articles-hk.html"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H3z" fill="#fff"/><path d="M21 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" fill="#fff"/></svg></span><div><div class="d-name">香港退休攻略</div><div class="d-desc">MPF、退休生活、規劃</div></div></a>
+          <a href="/articles-tw.html"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H3z" fill="#fff"/><path d="M21 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" fill="#fff"/></svg></span><div><div class="d-name">台灣退休攻略</div><div class="d-desc">勞退、勞保、自提分析</div></div></a>
+          <a href="/articles-general.html"><span class="d-ico"><svg viewBox="0 0 24 24" fill="none"><path d="M3 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H3z" fill="#fff"/><path d="M21 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" fill="#fff"/></svg></span><div><div class="d-name">通用退休資訊</div><div class="d-desc">投資、心理、全球趨勢</div></div></a>
+        </div>
+      </li>
+      <li><a href="/about.html">關於我們</a></li>
+      <li><a href="/#tools" class="nav-cta">開始規劃</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="開啟選單">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</div>
+
+<div class="nav-drawer-overlay" id="navDrawerOverlay"></div>
+<div class="nav-drawer" id="navDrawer">
+  <button class="nav-drawer-close" id="navDrawerClose" aria-label="關閉選單">✕</button>
+  <div class="nav-drawer-section">
+    <div class="nav-drawer-label">計算工具</div>
+    <a href="/living-cost.html" class="nav-drawer-simple" data-close>生活費規劃器</a>
+    <a href="/retirement-gap.html" class="nav-drawer-simple" data-close>退休缺口計算器</a>
+    <a href="/mpf.html" class="nav-drawer-simple" data-close>MPF 強積金計算器</a>
+    <a href="/labor-pension.html" class="nav-drawer-simple" data-close>勞退勞保試算器</a>
+  </div>
+  <div class="nav-drawer-section">
+    <div class="nav-drawer-label">退休資訊</div>
+    <a href="/articles-hk.html" class="nav-drawer-simple" data-close>香港退休資訊</a>
+    <a href="/articles-tw.html" class="nav-drawer-simple" data-close>台灣退休資訊</a>
+    <a href="/articles-general.html" class="nav-drawer-simple" data-close>通用退休資訊</a>
+  </div>
+  <div class="nav-drawer-section">
+    <div class="nav-drawer-label">其他</div>
+    <a href="/about.html" class="nav-drawer-simple" data-close>關於我們</a>
+    <a href="/contact.html" class="nav-drawer-simple" data-close>聯絡我們</a>
+  </div>
+</div>
+
+<div id="content">
+<div class="article-hero"><div class="container"><span class="article-badge">台灣 · 退休生活</span><h1>台灣退休每月生活費要多少？2026雙北、中南部真實開支拆解</h1><div class="article-meta"><div class="article-author"><div class="article-author-av">Nip</div><span>by <strong>Kandy Nip</strong> · PensionWise 編輯部</span></div><span class="sep"></span><span>2026 年 9 月 18 日</span><span class="sep"></span><span>11 分鐘閱讀</span></div></div></div><div class="article-cover"><img src="/assets/images/2026-tw-retirement-living-cost-cover.jpg" alt="一位白髮長者提著竹籃，在台灣傳統菜市場攤位前挑選新鮮青菜" /></div><div class="article-body"><p>前幾天陪我媽去菜市場，她在青菜攤前站了很久，嘴裡一直念：「一把青菜又變貴了。」</p>
+<p>那一刻我突然意識到，退休過得好不好，不在於年輕時賺多少，而在於你有沒有算清楚這筆帳：<strong>每個月固定會燒掉多少錢。</strong></p>
+<p>有人說10萬，有人說3萬就夠。還有一種最危險的態度，叫「船到橋頭自然直」。</p>
+<p>這篇我把主計總處、衛福部、勞保局的最新數據翻出來，把雙北和中南部、單身和夫婦的開銷逐項拆給你看。數字攤開，你心裡就有底。</p>
+<h2>一、先看官方數據：台灣人一年花多少</h2>
+<p>2026年8月14日，主計總處公布2025年（民國114年）家庭收支調查，這是台灣最權威的家庭開銷調查，一年發一次。</p>
+<p>幾個和你退休息息相關的數字：</p>
+<ul>
+<li>2025年全體家庭<strong>平均每戶消費支出約新台幣92萬元</strong>，年增3.6%。（主計總處2025年家庭收支調查）</li>
+<li>92萬除以12，等於<strong>平均每個月花掉約76,667元</strong>。</li>
+<li>每戶平均可支配所得121萬元，平均儲蓄約29萬元，可支配所得中位數101.8萬元。</li>
+</ul>
+<p>平均數高於中位數，代表前段家庭把平均值拉上去了，<strong>多數人的手頭比平均數緊。</strong></p>
+<p>但這裡有個陷阱：76,667元是「全體家庭」平均，一堆人還在繳房貸、養小孩。退休家庭不繳房貸、不養小孩，開銷結構完全不同，不能直接拿這數字當預算。</p>
+<p>同一份調查裡，<strong>65歲以上「有所得的人」平均一年所得約50.2萬元</strong>，換算每月約41,833元，是各年齡層最低。對照45到54歲頂峰族群的98.2萬元，多數人退休後的現金流，會比工作時少一半以上。（主計總處所得收入者統計，中央社彙整）</p>
+<p>支出不會因為退休就消失，但收入會。這是退休財務最核心的矛盾。</p>
+<p>另外，2025年1到2人小家庭已占全台51.6%，第一次過半，1人戶占17.33%，雙雙寫下新高。退休後兩老相依或一個人過，已是常態。</p>
+<p>還有個和荷包有關的數字。2026年報稅，每人基本生活費是21.3萬元。主計總處依2025年中位數366,841元乘以60%推算，<strong>2027年度預計上看22萬元</strong>。這是「預計」，確切數字等財政部年底公告。但方向很清楚：一個人維持基本生活的門檻，一年已超過21萬。</p>
+<h2>二、逐項拆解：錢花在哪</h2>
+<p>官方給的是全體平均，退休族真正需要的，是一張自己的預算表。</p>
+<p>我把固定開銷分成五塊：住房、餐飲、醫療、交通、休閒日用，每塊都用官方數據或市場行情當基準，再分雙北、中南部。</p>
+<p>下面是<strong>參考範例預算</strong>，不是公定價格，但能當你試算的底稿。</p>
+<h3>1. 住房：有殼沒殼，差最多</h3>
+<p>退休後最大的開銷分水嶺，就是房子是不是自己的、有無房貸。</p>
+<p><strong>如果房貸已經繳完</strong>，住房成本會大幅壓低，剩下的是管理費、房屋稅、地價稅、水電瓦斯、第四台與網路。雙北一層老公寓或華廈，每個月抓5,000元上下；中南部透天或公寓，3,500到4,500元很常見。</p>
+<p><strong>如果退休後還在租屋</strong>，數字完全不同。內政部不動資訊平台的租金查詢系統顯示，整戶租金中位數：台北文山區約2.1萬元、新北永和區約1.99萬元、高雄左營區約1.5萬元。（內政部不動資訊平台租金資訊）</p>
+<p>雙北一個月動輒2萬元租金，足以把退休預算拉高一個量級。這也是為什麼我一再說，<strong>退休前把房貸繳完，是性價比最高的財務動作之一。</strong></p>
+<p>租屋族還有一項權益別漏掉：無自有住宅者可申請中央擴大租金補貼，台北市每月最高3,000到8,000元，其他縣市約2,000到5,000元，2026年隨到隨辦，弱勢身分再加碼。（內政部國土管理署租金補貼專案）</p>
+<p><img src="/assets/images/2026-tw-retirement-living-cost-illust-1.jpg" alt="中南部安靜的住宅巷弄，午後陽光下一位戴斗笠的長者走過斑馬線，兩旁是老式公寓與機車" loading="lazy" style="width:100%;border-radius:16px;margin:16px 0;"></p>
+<h3>2. 餐飲：自己煮和天天外食，是兩種人生</h3>
+<p>吃這件事，伸縮空間最大。</p>
+<p>主計總處的物價統計很誠實：2025年外食費上漲3.39%，肉類漲4.62%、水果漲8.62%。<strong>高齡家庭面對的物價壓力更大</strong>——2025年高齡家庭CPI是110.41，高於全體109.6，因為長者支出集中在食物、居住這些「不買不行」的項目。</p>
+<p>對退休族來說，自己開伙是省錢關鍵。我的範例抓得並不苛刻：</p>
+<ul>
+<li>雙北單身自炊為主，伙食每月約8,000元；夫婦約13,000元。</li>
+<li>中南部單身約6,500元；夫婦約11,000元。</li>
+</ul>
+<p>菜市場買當季青菜、水果、魚肉，兩人一天400多元就能吃很好。真正撐爆餐飲費的是三餐外送、動輒上館子。一頓兩人吃到700、800元，一個月多個2、3萬元毫無感覺。偶爾享受該保留，但基線最好建立在自己煮。</p>
+<h3>3. 醫療保健：平時小錢，大病大錢</h3>
+<p>健康時，醫療開銷看起來不大。健保部分負擔、掛號費、慢性病處方籤、一年幾次自費健檢，單身每月抓3,000元、夫婦5,000元做預備，算合理。</p>
+<p>真正的風險不是感冒看病，而是下一節要講的長期照顧，那是動輒幾百萬的等級。</p>
+<h3>4. 交通、休閒與日用</h3>
+<p>退休後通勤支出消失，但多了看病、回診、休閒移動。好消息是各縣市幾乎都有敬老卡，搭公車、客運、捷運有折扣。2026年起，70歲以上長者自願繳回駕照、換領TPASS通勤月票者，可享購票金額50%的乘車回饋，每月回饋上限1,500元，最長補助2年；名額與適用縣市依各縣市政府公告。（衛福部、交通部2026年新制）</p>
+<p>交通費我抓雙北單身2,000元；中南部靠機車汽車、油錢較高，單身約2,500元。日用雜貨衣著手機費抓1,500到3,000元，休閒交際、含飴弄孫的紅包抓2,500到5,000元。這部分別刪到零，退休後的人際連結和生活品質，全靠這筆錢。</p>
+<h2>三、最容易被忽略的隱藏開銷：長照</h2>
+<p>這段可能是全文最重要的部分。</p>
+<p>2025年，台灣65歲以上人口達467萬人，占20.06%，正式跨進「超高齡社會」，每5人就有1人超過65歲。（內政部、國發會）</p>
+<p>依衛福部及國發會推估，長照需求人口從2021年約85.5萬人，增到2024年約89.2萬人，2035年可能達129.6萬人，失智人口也已超過30萬。</p>
+<p><strong>這不是會不會發生，而是何時、多久、花多少。</strong></p>
+<p>先說讓你安心的，政府投入很大：</p>
+<ul>
+<li>長照經費從2017年181.9億元，成長到2025年約926億元；長照3.0已提前於2026年啟動。</li>
+<li>服務涵蓋率從2017年20.30%，提升到2025年6月的89.9%。（衛福部長照司）</li>
+<li>居家服務、日照中心依失能等級（第2到8級）給付，照顧及專業服務每月額度約10,020元到36,180元；一般戶只負擔16%，中低收5%，低收0%。（衛福部長照2.0給付標準）</li>
+</ul>
+<p>舉例來說，失能第7級、額度32,090元的長者，用居家服務時，一般戶每月部分負擔約5,134元，其餘政府給付。2026年長照3.0再放寬：聘外籍看護的家庭，在喘息、陪同就醫、交通接送等情境，也能使用長照資源。</p>
+<p>但要注意，<strong>長照2.0給付是買「服務」，不是直接給你一筆錢。</strong> 外籍看護薪資行情約每月2.5萬到3.5萬元，要家庭自己出。住宿式機構也不走居家額度，是另外一套補助。</p>
+<p>住宿式機構的開銷最可觀。衛福部統計，機構每月平均費用約3萬到4萬元，雙北好一點的上看5、6萬元。2026年的「住宿式服務機構使用者補助」，中重度失能（第4級以上）、當年住滿180天者，<strong>每人每年最高補助12萬元，已取消排富</strong>。（衛生福利部住宿式服務機構使用者補助）</p>
+<p>把補助算進去，住機構的真實自費大約是：</p>
+<ul>
+<li>月費3萬元：補助1萬後，月自付約2萬，一年約24萬。</li>
+<li>月費4萬元：補助後月自付約3萬，一年約36萬。</li>
+</ul>
+<p>也就是說，住進機構3到5年，家庭要自備約72萬到180萬元，還不含尿布、營養品、住院等額外支出。</p>
+<p>稅務上有個減壓工具：長照特別扣除額2026年5月報稅時，已從12萬元提高到18萬元，可追溯適用2025年所得，預計35萬戶受惠。（財政部、衛福部）</p>
+<p>講白話：政府幫你扛了基層居家照顧，但<strong>中重度、需要住機構的長期風險，還是要自己提前準備一筆錢。</strong> 這也是預算表裡每月先抓長照預備金的原因。</p>
+<h2>四、單身vs夫婦：四種真實預算</h2>
+<p>把分項兜起來，以「自有住宅、無房貸」為基準，參考範例預算如下（每月，新台幣）：</p>
+<table><thead><tr><th>項目</th><th>雙北單身</th><th>雙北夫婦</th><th>中南部單身</th><th>中南部夫婦</th></tr></thead><tbody><tr><td>伙食（自炊為主）</td><td>8,000</td><td>13,000</td><td>6,500</td><td>11,000</td></tr><tr><td>住宅管理／水電瓦斯／網路</td><td>5,000</td><td>6,500</td><td>3,500</td><td>4,500</td></tr><tr><td>醫療保健</td><td>3,000</td><td>5,000</td><td>3,000</td><td>5,000</td></tr><tr><td>交通</td><td>2,000</td><td>3,000</td><td>2,500</td><td>4,000</td></tr><tr><td>日用雜貨衣著</td><td>2,000</td><td>3,000</td><td>1,500</td><td>2,500</td></tr><tr><td>休閒娛樂交際</td><td>3,000</td><td>5,000</td><td>2,500</td><td>4,000</td></tr><tr><td>小計</td><td>23,000</td><td>35,500</td><td>19,500</td><td>31,000</td></tr><tr><td>長照／醫療預備金</td><td>3,000</td><td>5,000</td><td>3,000</td><td>5,000</td></tr><tr><td><strong>每月合計</strong></td><td><strong>26,000</strong></td><td><strong>40,500</strong></td><td><strong>22,500</strong></td><td><strong>36,000</strong></td></tr></tbody></table>
+<p>四個數字先記下來：雙北單身每月約2.6萬（一年31.2萬）、雙北夫婦約4.05萬（48.6萬）、中南部單身約2.25萬（27萬）、中南部夫婦約3.6萬（43.2萬）。</p>
+<p>這是過得去、但不寬裕的「健康長者」版本。想出國、上才藝、住得講究，請自行往上加。</p>
+<p><strong>租屋族還要再加一筆租金。</strong> 用內政部的租金中位數加：</p>
+<ul>
+<li>雙北單身（永和1.99萬）：每月約45,900元，一年約55.1萬。</li>
+<li>雙北夫婦（文山2.1萬）：每月約61,500元，一年約73.8萬。</li>
+<li>中南部（左營1.5萬）：單身每月約37,500元，夫婦約51,000元。</li>
+</ul>
+<p>這是台灣退休財務最殘酷的一道題。</p>
+<h2>五、用4%法則倒推：要準備多少本金</h2>
+<p>知道每年花多少，就能倒推本金。</p>
+<p>最常見的<a href="/article/2026-4-percent-rule-retirement-withdrawal" target="_blank" rel="noopener" style="color:#047857;">退休提款策略：4%法則在港台適用嗎？真實數據拆解30年不缺錢的領法</a>，邏輯很簡單：第一年提款率抓4%，之後依通膨微調，組合大概撐得住30年。</p>
+<p>口訣就是<strong>準備「年支出的25倍」</strong>。但考量台灣利率與高齡家庭的物價漲幅，我建議從更保守的3%抓，約33倍，心裡更安穩。</p>
+<p>用前面的年支出來算：</p>
+<table><thead><tr><th>生活型態</th><th>年支出</th><th>4%法則（25倍）</th><th>保守3%（約33倍）</th></tr></thead><tbody><tr><td>雙北單身自有</td><td>31.2萬</td><td>780萬</td><td>1,040萬</td></tr><tr><td>雙北夫婦自有</td><td>48.6萬</td><td>1,215萬</td><td>1,620萬</td></tr><tr><td>中南部單身自有</td><td>27萬</td><td>675萬</td><td>900萬</td></tr><tr><td>中南部夫婦自有</td><td>43.2萬</td><td>1,080萬</td><td>1,440萬</td></tr><tr><td>雙北單身租屋</td><td>55.1萬</td><td>1,377萬</td><td>1,836萬</td></tr><tr><td>雙北夫婦租屋</td><td>73.8萬</td><td>1,845萬</td><td>2,460萬</td></tr><tr><td>中南部單身租屋</td><td>45萬</td><td>1,125萬</td><td>1,500萬</td></tr><tr><td>中南部夫婦租屋</td><td>61.2萬</td><td>1,530萬</td><td>2,040萬</td></tr></tbody></table>
+<p>數字可能比你想的大，先別慌。這是「完全不靠其他收入、只吃老本」的情境。實際上你還有勞保年金、勞退專戶、利息股息，本金門檻會往下降。</p>
+<p>別忘了長照這顆未爆彈。以雙北夫婦為例，若想把「一方住5年中價位機構」也備好，補助後月自付2.5萬、5年就是150萬。基本生活的1,215萬加上150萬，<strong>保險一點的準備大約1,365萬元</strong>，再依你選3%或4%微調。</p>
+<p>4%不是聖經，它是幫你把模糊焦慮換成具體目標的起點。</p>
+<h2>六、勞保年金＋勞退，能cover多少</h2>
+<p>講完支出看收入端。</p>
+<p>依勞保局資料，2025年請領勞保老年年金者約203萬人，平均每月領約1.9萬元出頭。這是平均，高薪、年資長的領更多，但也有非常多人只領1萬多元。（勞動部勞保局老年年金統計）</p>
+<p>用平均19,105元，對前面的預算看覆蓋率：</p>
+<ul>
+<li>中南部單身（月需22,500元）：覆蓋約84.9%，只差3,395元。</li>
+<li>雙北單身（月需26,000元）：覆蓋約73.5%，缺口6,895元。</li>
+<li>中南部夫婦只靠一人年金（月需36,000元）：覆蓋約53.1%，缺口16,895元。</li>
+<li>雙北夫婦只靠一人年金（月需40,500元）：覆蓋約47.2%，缺口21,395元。</li>
+</ul>
+<p>關鍵很清楚：<strong>單身、中南部、有房的人，單靠勞保年金差得不算離譜；雙北、單薪夫婦，年金連一半都不到。</strong></p>
+<p>如果太太年輕時也有工作、兩人都有勞保年資，即使各領平均值八成（各約15,284元），合計也有約30,568元。對中南部夫婦覆蓋率回到84.9%，對雙北夫婦也有75.5%。這就是「雙薪家庭、兩份年金」的隱形價值。</p>
+<p>除了勞保年金，你還有勞退新制個人專戶：雇主每月提撥6%，自己也能自提6%免稅。怎麼累積、一次領或月領，細節看<a href="/article/2026-labor-pension-guide" target="_blank" rel="noopener" style="color:#047857;">台灣勞退新制完整指南：雇主提撥 6% + 自提免稅，退休那一天專戶裡會有多少錢？</a>。</p>
+<p>勞保年金A式、B式怎麼算、怎麼領最有利、2026年請領年齡已全面來到65歲，請看這篇：<a href="/article/2026-labor-insurance-pension-calculation" target="_blank" rel="noopener" style="color:#047857;">台灣勞保年金怎麼算？2026最新給付公式＋實際試算，看你退休每月領多少</a>。</p>
+<p>把勞保、勞退、自己的投資三塊疊起來再對開銷，缺口才是你真正要補的金額。多數人的問題不是「完全沒準備」，而是「沒算過缺口多大」。</p>
+<h2>七、和香港對比：台灣生活費貴不貴</h2>
+<p>很多讀者港台都有親友，常問我退休住哪划算。</p>
+<p>香港的真實開銷我寫過。依香港退休計劃協會與韋萊韜悅（WTW）2026年調查，香港一對退休夫婦的基本開銷基線，大約每月2萬港幣。</p>
+<p>以大約1港幣兌4元新台幣粗算（匯率浮動，僅供參考），2萬港幣約相當於8萬元新台幣。對照一下：</p>
+<ul>
+<li>約是雙北夫婦自有住宅預算（4.05萬）的1.98倍。</li>
+<li>約是中南部單身預算（2.25萬）的3.5倍。</li>
+</ul>
+<p><img src="/assets/images/2026-tw-retirement-living-cost-illust-2.jpg" alt="一對白髮夫婦坐在家中餐桌前，一起用計算機核對記帳本，桌上有一杯茶與一副老花眼鏡" loading="lazy" style="width:100%;border-radius:16px;margin:16px 0;"></p>
+<p>同樣是華人城市、同樣有老年醫療需求，台灣生活成本明顯親民，主因是房租房價差距，以及長照與健保的公共支應較完整。</p>
+<p>香港有資產、強積金、公屋的人不在這比較裡；台灣雙北租屋族壓力也沒比較輕鬆。但只問「同樣一筆退休金，哪邊過得比較寬」，中南部自有住宅的台灣退休生活，CP值很難打敗。</p>
+<p>香港完整開銷拆解，可看這篇：<a href="/article/2026-hk-living-cost" target="_blank" rel="noopener" style="color:#047857;">香港退休每月生活費要幾多？2026真實開支拆解</a>。</p>
+<h2>八、寫在最後：先算，再怕</h2>
+<p>重點其實只有三句：</p>
+<p>第一，<strong>退休生活費不是用感覺決定，是用預算表決定。</strong> 雙北夫婦自有住宅每月約4萬、中南部單身約2.2萬，是健康長者合理基線；租屋與長照會再往上疊一大塊。</p>
+<p>第二，<strong>勞保年金顧基本盤，顧不了全部。</strong> 雙北、單薪家庭缺口最大，要靠勞退和自己的投資補。</p>
+<p>第三，<strong>長照是一定要提前設防的百萬級風險。</strong> 政府照顧基層，中重度機構費用還是要靠自己。</p>
+<p>帳算出來當下可能有點焦慮，很正常。但下一步不是逃避，而是打開計算機，把自己的數字填進去。</p>
+<p>先用站內的<a href="/living-cost.html" target="_blank" rel="noopener" style="color:#047857;">退休生活費計算機</a>把每月開銷按通脹推算到退休那年，再用<a href="/retirement-gap.html" target="_blank" rel="noopener" style="color:#047857;">退休缺口計算器</a>輸入存款、勞保勞退預估，幾分鐘就知道自己距離目標還差多少。與其每晚擔心「夠不夠」，不如今天動手算一次。</p>
+<p>算清楚，你才知道接下來每月該多存多少、怎麼配置資產、何時能安心退休。數字不會騙人，準備好的人，運氣通常不會太差。</p>
+<hr/>
+<h3>資料來源</h3>
+<ol>
+<li>行政院主計總處，2025年（民國114年）家庭收支調查新聞稿，2026年8月14日：<a href="https://www.stat.gov.tw/News_Content.aspx?n=3703&s=236591" target="_blank" rel="noopener" style="color:#047857;word-break:break-all;">https://www.stat.gov.tw/News_Content.aspx?n=3703&s=236591</a></li>
+<li>行政院主計總處，我國家庭所得分配情形（114年資料）：<a href="https://www.dgbas.gov.tw/News_Content.aspx?n=3991&s=102932" target="_blank" rel="noopener" style="color:#047857;word-break:break-all;">https://www.dgbas.gov.tw/News_Content.aspx?n=3991&s=102932</a></li>
+<li>行政院主計總處，2025年消費者物價指數（CPI）及高齡家庭CPI統計（2026年1月發布）：<a href="https://www.stat.gov.tw/" target="_blank" rel="noopener" style="color:#047857;word-break:break-all;">https://www.stat.gov.tw/</a></li>
+<li>內政部不動產資訊平台租金資訊及中央擴大租金補貼專案：<a href="https://www.gov.tw/News_Content_37_561179" target="_blank" rel="noopener" style="color:#047857;word-break:break-all;">https://www.gov.tw/News_Content_37_561179</a></li>
+<li>衛生福利部，住宿式服務機構使用者補助（115年度最高12萬、住滿180天）：<a href="https://www.gov.tw/News_Content_26_556149" target="_blank" rel="noopener" style="color:#047857;word-break:break-all;">https://www.gov.tw/News_Content_26_556149</a></li>
+<li>衛生福利部長期照顧司，長照服務暨收費標準（失能等級給付額度、部分負擔16%／5%／0%，臺北榮民總醫院轉載官方標準表）：<a href="https://org.vghtpe.gov.tw/ysvh/freePage/-1/494" target="_blank" rel="noopener" style="color:#047857;word-break:break-all;">https://org.vghtpe.gov.tw/ysvh/freePage/-1/494</a></li>
+<li>衛生福利部長期照顧司司長祝健芳署名〈台灣長期照顧政策與展望：從長照2.0到3.0〉（長照經費926億、服務涵蓋率89.9%）：<a href="https://www.learningandaging.com/post/台灣長期照顧政策與展望：從長照2.0到3.0" target="_blank" rel="noopener" style="color:#047857;word-break:break-all;">https://www.learningandaging.com/post/台灣長期照顧政策與展望：從長照2.0到3.0</a></li>
+<li>財政部／政府公開資訊，申報114年度個人綜合所得稅懶人包（長照特別扣除額調高至18萬、基本生活費21.3萬）：<a href="https://www.gov.tw/News_Content_26_534742" target="_blank" rel="noopener" style="color:#047857;word-break:break-all;">https://www.gov.tw/News_Content_26_534742</a></li>
+<li>勞動部勞工保險局，勞保老年給付與老年年金統計：<a href="https://www.gov.tw/News_Content_2_381583" target="_blank" rel="noopener" style="color:#047857;word-break:break-all;">https://www.gov.tw/News_Content_2_381583</a></li>
+</ol>
+<blockquote>備註：文中各年齡層「所得收入者平均年所得」（如65歲以上50.2萬、45–54歲98.2萬）及1到2人家庭占比51.6%，出自主計總處2025年家庭收支調查，由中央社（Focus Taiwan）彙整報導；該調查原始新聞稿見來源1。各項補助名額、額度與申請期限，以各主管機關及1966長照專線最新公告為準。</blockquote></div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <div class="foot-brand">
+          <span class="brand-logo"><img src="/assets/images/logo-pensionwise.png" alt="Pensionwise 養老智 Logo" /></span>
+          <span class="brand-name">Pensionwise</span>
+          <span class="brand-zh">養老智</span>
+        </div>
+        <p>Pensionwise 養老智 — 為香港與台灣打工族而做的退休規劃平台。慢慢算，慢慢存，慢慢過好日子。</p>
+        <div class="foot-social">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://pensionwisetool.com/article.html" target="_blank" rel="noopener" aria-label="分享到 Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.378 14.192 5 15.115 5H18V0h-3.808C10.596 0 9 1.583 9 4.615V8z"/></svg></a>
+          <a href="https://twitter.com/intent/tweet?text=%E9%80%80%E4%BC%91%E6%96%87%E7%AB%A0%20Pensionwise&url=https://pensionwisetool.com/article.html" target="_blank" rel="noopener" aria-label="分享到 X"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://pensionwisetool.com/article.html" target="_blank" rel="noopener" aria-label="分享到 LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>計算工具</h4>
+        <ul>
+          <li><a href="/living-cost.html">生活費規劃</a></li>
+          <li><a href="/retirement-gap.html">退休缺口</a></li>
+          <li><a href="/mpf.html">MPF 強積金</a></li>
+          <li><a href="/labor-pension.html">勞退勞保</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>退休資訊</h4>
+        <ul>
+          <li><a href="/articles-hk.html">香港退休</a></li>
+          <li><a href="/articles-tw.html">台灣退休</a></li>
+          <li><a href="/articles-general.html">通用資訊</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>關於</h4>
+        <ul>
+          <li><a href="/about.html">關於我們</a></li>
+          <li><a href="/contact.html">聯絡我們</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>法務</h4>
+        <ul>
+          <li><a href="/privacy.html">隱私政策</a></li>
+          <li><a href="/disclaimer.html">免責聲明</a></li>
+          <li><a href="/cookie-policy.html">Cookie 政策</a></li>
+          <li><a href="/terms.html">使用條款</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 Pensionwise 養老智 · All rights reserved.</span>
+      <div class="legal">
+        <a href="/privacy.html">隱私</a>
+        <a href="/terms.html">條款</a>
+        <a href="/disclaimer.html">免責聲明</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// 移动端抽屉
+(function() {
+  var toggle = document.getElementById('navToggle');
+  var drawer = document.getElementById('navDrawer');
+  var overlay = document.getElementById('navDrawerOverlay');
+  var close = document.getElementById('navDrawerClose');
+  if (!toggle || !drawer || !overlay || !close) return;
+  function setOpen(open) {
+    drawer.classList.toggle('open', open);
+    overlay.classList.toggle('show', open);
+    toggle.classList.toggle('active', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  toggle.addEventListener('click', function() { setOpen(!drawer.classList.contains('open')); });
+  overlay.addEventListener('click', function() { setOpen(false); });
+  close.addEventListener('click', function() { setOpen(false); });
+  drawer.querySelectorAll('[data-close]').forEach(function(el) { el.addEventListener('click', function() { setOpen(false); }); });
+  var mq = window.matchMedia('(min-width: 981px)');
+  mq.addEventListener('change', function(e) { if (e.matches) setOpen(false); });
+})();
+
+(async function() {
+  // 預渲染頁已含靜態內容，跳過 SPA 渲染以免覆蓋
+  if (document.querySelector('#content .article-hero')) return;
+  const params = new URLSearchParams(window.location.search);
+  var slug = params.get('slug');
+  if (!slug) {
+    var m = window.location.pathname.match(/^\/article\/([^\/]+)/);
+    if (m) slug = decodeURIComponent(m[1]);
+  }
+  const contentEl = document.getElementById('content');
+
+  if (!slug) {
+    var rm0 = document.querySelector('meta[name="robots"]');
+    if (rm0) rm0.setAttribute('content', 'noindex, follow');
+    contentEl.innerHTML = '<div class="article-error"><h2>找不到文章</h2><p>請從首頁選擇一篇文章閱讀。</p><a href="/">返回首頁</a></div>';
+    return;
+  }
+
+  // Markdown renderer (tables, ordered/unordered lists, hr, headings, etc.)
+  function mdToHtml(md) {
+    if (!md) return '';
+    md = md.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+    var lines = md.split('\n');
+    var result = [];
+    var i = 0;
+    var inUl = false;
+    var inOl = false;
+    var paraBuf = [];
+
+    function flushPara() {
+      if (paraBuf.length) {
+        var text = paraBuf.join('<br/>').trim();
+        if (text) result.push('<p>' + text + '</p>');
+        paraBuf = [];
+      }
+    }
+    function closeLists() {
+      if (inUl) { result.push('</ul>'); inUl = false; }
+      if (inOl) { result.push('</ol>'); inOl = false; }
+    }
+    function parseRow(line) {
+      line = line.trim();
+      if (line.charAt(0) === '|') line = line.slice(1);
+      if (line.charAt(line.length - 1) === '|') line = line.slice(0, -1);
+      return line.split('|').map(function(c) { return c.trim(); });
+    }
+
+    while (i < lines.length) {
+      var line = lines[i];
+      var trimmed = line.trim();
+
+      // Empty line
+      if (trimmed === '') { flushPara(); closeLists(); i++; continue; }
+
+      // Table: line starts with | and next line is separator |---|---|
+      if (trimmed.charAt(0) === '|' && i + 1 < lines.length && /^\|[\s\-:|]+\|$/.test(lines[i + 1].trim())) {
+        flushPara(); closeLists();
+        var headerCells = parseRow(trimmed);
+        var bodyRows = [];
+        i += 2;
+        while (i < lines.length && lines[i].trim().charAt(0) === '|' && lines[i].trim() !== '') {
+          bodyRows.push(parseRow(lines[i].trim()));
+          i++;
+        }
+        var tableHtml = '<table><thead><tr>';
+        headerCells.forEach(function(c) { tableHtml += '<th>' + c + '</th>'; });
+        tableHtml += '</tr></thead><tbody>';
+        bodyRows.forEach(function(row) {
+          tableHtml += '<tr>';
+          row.forEach(function(c) { tableHtml += '<td>' + c + '</td>'; });
+          tableHtml += '</tr>';
+        });
+        tableHtml += '</tbody></table>';
+        result.push(tableHtml);
+        continue;
+      }
+
+      // Horizontal rule
+      if (/^(-{3,}|\*{3,}|_{3,})$/.test(trimmed)) {
+        flushPara(); closeLists();
+        result.push('<hr/>');
+        i++; continue;
+      }
+
+      // Headings
+      var hMatch = trimmed.match(/^(#{1,6})\s+(.+)$/);
+      if (hMatch) {
+        flushPara(); closeLists();
+        var level = hMatch[1].length;
+        result.push('<h' + level + '>' + hMatch[2] + '</h' + level + '>');
+        i++; continue;
+      }
+
+      // Blockquote
+      if (/^>/.test(trimmed)) {
+        flushPara(); closeLists();
+        result.push('<blockquote>' + trimmed.replace(/^>\s?/, '') + '</blockquote>');
+        i++; continue;
+      }
+
+      // Ordered list item
+      var olMatch = trimmed.match(/^(\d+)\.\s+(.+)$/);
+      if (olMatch) {
+        flushPara();
+        if (inUl) { result.push('</ul>'); inUl = false; }
+        if (!inOl) { result.push('<ol>'); inOl = true; }
+        result.push('<li>' + olMatch[2] + '</li>');
+        i++; continue;
+      }
+
+      // Unordered list item
+      var ulMatch = trimmed.match(/^[-*+]\s+(.+)$/);
+      if (ulMatch) {
+        flushPara();
+        if (inOl) { result.push('</ol>'); inOl = false; }
+        if (!inUl) { result.push('<ul>'); inUl = true; }
+        result.push('<li>' + ulMatch[1] + '</li>');
+        i++; continue;
+      }
+
+      // Regular text line
+      paraBuf.push(trimmed);
+      i++;
+    }
+
+    flushPara();
+    closeLists();
+
+    var html = result.join('\n');
+
+    // Inline formatting
+    html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+    html = html.replace(/!\[(.+?)\]\((.+?)\)/g, '<img src="$2" alt="$1" loading="lazy" style="width:100%;border-radius:16px;margin:16px 0;">');
+    html = html.replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank" rel="noopener" style="color:#047857;">$1</a>');
+    // 裸網址轉連結（避開已存在於 href=" / src=" 屬性內的網址）
+    html = html.replace(/(?<!=["'])https?:\/\/[^\s<"'）)]+/g, function(u){ return '<a href="' + u + '" target="_blank" rel="noopener" style="color:#047857;word-break:break-all;">' + u + '</a>'; });
+    html = html.replace(/`(.+?)`/g, '<code>$1</code>');
+
+    return html;
+  }
+
+  // XSS sanitize：移除 <script>/事件属性/javascript: 协议
+  function sanitizeHtml(html) {
+    // 移除 script 标签整段
+    html = html.replace(/<script[\s\S]*?<\/script>/gi, '');
+    // 移除 <style>...</style> 整段
+    html = html.replace(/<style[\s\S]*?<\/style>/gi, '');
+    // 移除 <iframe>/<object>/<embed> 标签
+    html = html.replace(/<\/?(iframe|object|embed)[\s\S]*?>/gi, '');
+    // 移除所有 on* 事件属性（onclick, onload, onerror 等）
+    html = html.replace(/\son\w+\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi, '');
+    // 移除 javascript: 协议的 href/src
+    html = html.replace(/(href|src)\s*=\s*("javascript:[^"]*"|'javascript:[^']*'|javascript:[^\s>]+)/gi, '');
+    return html;
+  }
+
+  try {
+    const res = await fetch('/articles.json', { cache: 'no-cache' });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    const articles = Array.isArray(data && data.articles) ? data.articles : [];
+    const article = articles.find(function(a) { return a.slug === slug; });
+
+    if (!article) {
+      var rmMiss = document.querySelector('meta[name="robots"]');
+      if (rmMiss) rmMiss.setAttribute('content', 'noindex, follow');
+      contentEl.innerHTML = '<div class="article-error"><h2>文章不存在</h2><p>該文章可能已移除或連結有誤。</p><a href="/">返回首頁</a></div>';
+      return;
+    }
+
+    // 加载文章后动态更新SEO
+    var robotsMeta = document.querySelector('meta[name="robots"]');
+    if (robotsMeta) robotsMeta.setAttribute('content', 'index, follow');
+    if (article.title) document.title = article.title + ' — Pensionwise 養老智';
+    var canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (canonicalLink && article.slug) canonicalLink.href = 'https://pensionwisetool.com/article/' + article.slug;
+    var ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle && article.title) ogTitle.content = article.title + ' — Pensionwise 養老智';
+    var ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc && article.excerpt) ogDesc.content = article.excerpt;
+
+    // Build meta info
+    var fmtDate = function(d) {
+      if (!d) return '';
+      var dt = new Date(d);
+      if (isNaN(dt.getTime())) return '';
+      return dt.getFullYear() + ' 年 ' + (dt.getMonth()+1) + ' 月 ' + dt.getDate() + ' 日';
+    };
+
+    var html = '<div class="article-hero"><div class="container">';
+    if (article.badge) html += '<span class="article-badge">' + escHtml(article.badge) + '</span>';
+    html += '<h1>' + escHtml(article.title) + '</h1>';
+    html += '<div class="article-meta">';
+    html += '<div class="article-author"><div class="article-author-av">' + escHtml(article.authorSurname || '編') + '</div>';
+    html += '<span>by <strong>' + escHtml(article.authorName || '編輯部') + '</strong>';
+    if (article.authorTitle) html += ' · ' + escHtml(article.authorTitle);
+    html += '</span></div>';
+    var dateStr = fmtDate(article.publishDate);
+    if (dateStr) {
+      html += '<span class="sep"></span>';
+      html += '<span>' + dateStr + '</span>';
+    }
+    html += '<span class="sep"></span>';
+    html += '<span>' + (parseInt(article.readMinutes) || 5) + ' 分鐘閱讀</span>';
+    html += '</div></div></div>';
+
+    // Cover
+    if (article.cover) {
+      html += '<div class="article-cover"><img src="' + escHtml(article.cover) + '" alt="' + escHtml(article.coverAlt || article.title) + '" /></div>';
+    }
+
+    // Body
+    html += '<div class="article-body">';
+    if (article.content) {
+      // If content field exists (HTML), sanitize before use
+      html += sanitizeHtml(article.content);
+    } else if (article.body) {
+      // Markdown body from articles.json, render then sanitize
+      html += sanitizeHtml(mdToHtml(article.body));
+    } else {
+      html += '<p>文章內容即將更新，敬請期待。</p>';
+    }
+    html += '</div>';
+
+    contentEl.innerHTML = html;
+  } catch (err) {
+    contentEl.innerHTML = '<div class="article-error"><h2>載入失敗</h2><p>無法載入文章，請稍後再試。</p><a href="/">返回首頁</a></div>';
+    console.error('[Article]', err);
+  }
+
+  function escHtml(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function(c) {
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+})();
+</script>
+
+<!-- Vercel Web Analytics -->
+<script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+
+</body>
+</html>

@@ -1,7 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
-  "buildCommand": "node scripts/build-index.js",
+  "buildCommand": "node scripts/build-index.js && node scripts/prerender-articles.js",
   "outputDirectory": ".",
   "framework": null,
   "rewrites": [

@@ -328,6 +328,8 @@
 })();
 
 (async function() {
+  // 預渲染頁已含靜態內容，跳過 SPA 渲染以免覆蓋
+  if (document.querySelector('#content .article-hero')) return;
   const params = new URLSearchParams(window.location.search);
   var slug = params.get('slug');
   if (!slug) {
