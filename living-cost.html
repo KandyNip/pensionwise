@@ -865,6 +865,216 @@
   </div>
 </section>
 
+
+<!-- ===== 計算公式與參數說明（SEO 實質內容）===== -->
+<section style="max-width:1200px;margin:0 auto;padding:56px 24px 8px;">
+  <div style="background:#fafaf7;border:1px solid #e5e7eb;border-radius:16px;padding:40px;">
+
+    <h2 style="font-size:28px;font-weight:800;color:#053d2c;margin:0 0 12px;">計算公式與參數說明</h2>
+    <p style="color:#4b5563;font-size:16px;line-height:1.8;margin:0 0 32px;">這部計算機用什麼邏輯推算退休生活費？預設數字從哪裡來？以下完整拆解公式、每個參數的官方數據來源，以及三個不同情境的算例。</p>
+
+    <!-- 1. 完整計算公式 -->
+    <div style="margin-bottom:36px;">
+      <h3 style="font-size:20px;font-weight:700;color:#047857;margin:0 0 12px;">一、完整計算公式</h3>
+      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 14px;">核心公式是<strong>複利通脹折算</strong>：</p>
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:20px 24px;margin:0 0 14px;font-size:16px;line-height:2;">
+        <strong>退休時每月開銷 ＝ 當前月開銷 × 生活水平係數 ×（1 ＋ 通脹率）^ 距退休年數</strong>
+      </div>
+      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 8px;">逐項說明：</p>
+      <ul style="color:#1f2937;font-size:15px;line-height:1.8;padding-left:20px;margin:0 0 14px;">
+        <li style="margin-bottom:6px;"><strong>當前月開銷</strong>：你現在每月的生活總開支（輸入值），包含住屋、飲食、交通、醫療、休閒和其他六大類別。</li>
+        <li style="margin-bottom:6px;"><strong>生活水平係數</strong>：退休後消費相對目前的調整比例。預設 80% 反映退休後通勤、外食等開支通常減少；設為 100% 表示維持目前水平；120% 以上反映醫療開支可能大增。</li>
+        <li style="margin-bottom:6px;"><strong>通脹率</strong>：年化物價上漲率。公式使用複利計算——每一年物價在前一年的基礎上再漲一次。<strong>（1 ＋ 通脹率）^ 年數</strong>就是「通脹倍數」。</li>
+        <li><strong>距退休年數</strong>：從目前到預計退休年齡的年數。年數越長，複利效果越顯著。</li>
+      </ul>
+      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 8px;"><strong>六大類別各自獨立計算</strong>：計算機不只用一個通脹率。每個開支類別有各自的通脹率——例如醫療健康預設年增 5%，高於整體通脹，反映醫療成本上漲通常較快。各類別分別計算後加總，得到最終退休月開銷。</p>
+      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;"><strong>簡單範例</strong>：目前月開銷 HK$15,000、通脹率 2.5%、距退休 20 年、生活水平 100%——通脹倍數 ＝（1.025）^20 ≈ 1.6386，退休時月開銷 ≈ 15,000 × 1.6386 ≈ <strong>HK$24,579</strong>。同樣的生活，20 年後每月要多花近 HK$10,000。</p>
+    </div>
+
+    <!-- 2. 每個預設參數的數據來源 -->
+    <div style="margin-bottom:36px;">
+      <h3 style="font-size:20px;font-weight:700;color:#047857;margin:0 0 12px;">二、預設參數的數據來源與年份</h3>
+      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 16px;">計算機的預設值全部取自官方統計，以下逐一標明來源與數據年份。</p>
+
+      <h4 style="font-size:17px;font-weight:700;color:#074d36;margin:0 0 10px;">🔹 香港（HKD）</h4>
+      <ul style="color:#1f2937;font-size:15px;line-height:1.8;padding-left:20px;margin:0 0 20px;">
+        <li style="margin-bottom:8px;"><strong>通脹率預設 1.5%</strong>：根據香港政府統計處<a href="https://www.censtatd.gov.hk/en/web_table.html?id=510-60001" style="color:#047857;text-decoration:underline;">綜合消費物價指數</a>，2025 年整體按年升幅約 1.4%，國際貨幣基金組織（IMF）2026 年 5 月預測香港 2026 年通脹率約 2.1%。本工具取 1.5% 作為中性偏保守的長期假設。<br/><span style="font-size:13px;color:#6b7280;">來源：<a href="https://www.censtatd.gov.hk/en/scode290.html" style="color:#047857;text-decoration:underline;">政府統計處消費物價指數</a>（2025 年全年 +1.4%）；<a href="https://www.imf.org/zh/news/articles/2026/05/13/mcs-05152026-hong-kong-sar-staff-concluding-statement-of-the-2026-article-iv-mission" style="color:#047857;text-decoration:underline;">IMF 2026 第四條磋商報告</a>。</span></li>
+        <li style="margin-bottom:8px;"><strong>醫療健康通脹率 5%</strong>：本工具對醫療健康類別獨立設定較高通脹率。根據統計處 CPI 分項數據，醫療服務指數近年按年升幅約 1.4%–2.4%，惟全球醫療成本趨勢增速普遍高於整體通脹 2–3 個百分點（參考國際資料）。本工具取 5% 屬偏高假設，以反映退休後醫療開支的結構性上升壓力。<br/><span style="font-size:13px;color:#6b7280;">來源：政府統計處 CPI 分項（醫療服務按年 +1.4% 至 +2.4%，2025–2026 年數據）。</span></li>
+        <li style="margin-bottom:8px;"><strong>六大開支分類預設佔比</strong>：取自政府統計處<a href="https://www.censtatd.gov.hk/en/page_1351.html" style="color:#047857;text-decoration:underline;">2024/25 年住戶開支統計調查</a>（2026 年 6 月 9 日發表，統計期 2024 年 10 月至 2025 年 9 月，約 7,400 個住戶）：</li>
+      </ul>
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:16px 20px;margin:0 0 20px;">
+        <table style="width:100%;border-collapse:collapse;font-size:14px;">
+          <thead>
+            <tr style="border-bottom:2px solid #e5e7eb;">
+              <th style="text-align:left;padding:8px 12px;color:#053d2c;">開支類別</th>
+              <th style="text-align:right;padding:8px 12px;color:#053d2c;">調查所佔比重</th>
+              <th style="text-align:right;padding:8px 12px;color:#053d2c;">工具預設</th>
+              <th style="text-align:left;padding:8px 12px;color:#053d2c;">對應調查分類</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid #f1f1ee;"><td style="padding:8px 12px;">住屋</td><td style="padding:8px 12px;text-align:right;">39.3%</td><td style="padding:8px 12px;text-align:right;font-weight:700;">30%</td><td style="padding:8px 12px;">住屋 + 電力燃氣水</td></tr>
+            <tr style="border-bottom:1px solid #f1f1ee;"><td style="padding:8px 12px;">飲食</td><td style="padding:8px 12px;text-align:right;">24.1%</td><td style="padding:8px 12px;text-align:right;font-weight:700;">20%</td><td style="padding:8px 12px;">食品</td></tr>
+            <tr style="border-bottom:1px solid #f1f1ee;"><td style="padding:8px 12px;">交通</td><td style="padding:8px 12px;text-align:right;">7.6%</td><td style="padding:8px 12px;text-align:right;font-weight:700;">10%</td><td style="padding:8px 12px;">交通</td></tr>
+            <tr style="border-bottom:1px solid #f1f1ee;"><td style="padding:8px 12px;">醫療健康</td><td style="padding:8px 12px;text-align:right;">≈ 5.2%</td><td style="padding:8px 12px;text-align:right;font-weight:700;">15%</td><td style="padding:8px 12px;">醫療服務（含保險）</td></tr>
+            <tr style="border-bottom:1px solid #f1f1ee;"><td style="padding:8px 12px;">休閒娛樂</td><td style="padding:8px 12px;text-align:right;">≈ 5%</td><td style="padding:8px 12px;text-align:right;font-weight:700;">10%</td><td style="padding:8px 12px;">雜項物品 + 耐用物品</td></tr>
+            <tr><td style="padding:8px 12px;">其他</td><td style="padding:8px 12px;text-align:right;">16.9%</td><td style="padding:8px 12px;text-align:right;font-weight:700;">15%</td><td style="padding:8px 12px;">雜項服務</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="color:#6b7280;font-size:13px;line-height:1.7;margin:0 0 24px;">📌 注意：調查中「雜項服務」佔 16.9%，包含保險、教育、金融服務等，本工具歸入「其他」。醫療在調查中實際佔比較低（約 5%），但本工具預設 15% 是考慮到退休後醫療開支通常大幅增加，以較高比重反映現實需求。使用者可自行調整至符合個人情況的數字。</p>
+      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 8px;"><strong>參考開支水平</strong>（2024/25 調查）：</p>
+      <ul style="color:#1f2937;font-size:15px;line-height:1.8;padding-left:20px;margin:0 0 24px;">
+        <li>全部住戶平均每月開支：<strong>HK$32,472</strong>；中位數 <strong>HK$26,000</strong></li>
+        <li>公營房屋住戶平均：HK$16,181；資助房屋：HK$28,932；私人房屋：HK$41,174</li>
+        <li>按地區：香港島 HK$45,334；九龍 HK$28,434；新界 HK$31,024</li>
+      </ul>
+
+      <h4 style="font-size:17px;font-weight:700;color:#074d36;margin:0 0 10px;">🔹 台灣（TWD）</h4>
+      <ul style="color:#1f2937;font-size:15px;line-height:1.8;padding-left:20px;margin:0 0 14px;">
+        <li style="margin-bottom:8px;"><strong>通脹率預設 1.7%</strong>：根據行政院主計總處公布，2025 年（114 年）台灣 CPI 年增率為 1.66%，2026 年 2 月預測 2026 年為 1.68%。<strong style="color:#b45309;">惟 2026 年物價已明顯高於該預測</strong>——2026 年 1–9 月平均 CPI 年增率達 1.94%，9 月單月 2.73%。本工具仍取 1.7% 作為長期中性假設；若你處於通脹上行期，建議自行上調至 2% 以上再計算，結果會更保守。<br/><span style="font-size:13px;color:#6b7280;">來源：<a href="https://eng.dgbas.gov.tw/News_Content.aspx?n=4438&s=235721" style="color:#047857;text-decoration:underline;">主計總處 2025 全年經濟成長概估及 2026 年預測</a>（2026 年 2 月 13 日）；<a href="https://www.stat.gov.tw/" style="color:#047857;text-decoration:underline;">中華民國統計資訊網 物價指數</a>（2026 年 9 月數據）。</span></li>
+        <li style="margin-bottom:8px;"><strong>醫療健康通脹率 5%</strong>：同香港，反映醫療成本結構性上升。</li>
+        <li style="margin-bottom:8px;"><strong>六大開支分類預設佔比</strong>：取自行政院主計總處<a href="https://www.stat.gov.tw/" style="color:#047857;text-decoration:underline;">113 年（2024 年）家庭收支調查</a>：</li>
+      </ul>
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:16px 20px;margin:0 0 20px;">
+        <table style="width:100%;border-collapse:collapse;font-size:14px;">
+          <thead>
+            <tr style="border-bottom:2px solid #e5e7eb;">
+              <th style="text-align:left;padding:8px 12px;color:#053d2c;">開支類別</th>
+              <th style="text-align:right;padding:8px 12px;color:#053d2c;">調查所佔比重</th>
+              <th style="text-align:right;padding:8px 12px;color:#053d2c;">工具預設</th>
+              <th style="text-align:left;padding:8px 12px;color:#053d2c;">對應調查分類</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid #f1f1ee;"><td style="padding:8px 12px;">住屋</td><td style="padding:8px 12px;text-align:right;">24.0%</td><td style="padding:8px 12px;text-align:right;font-weight:700;">30%</td><td style="padding:8px 12px;">住宅服務、水電瓦斯及其他燃料</td></tr>
+            <tr style="border-bottom:1px solid #f1f1ee;"><td style="padding:8px 12px;">飲食</td><td style="padding:8px 12px;text-align:right;">15.3%</td><td style="padding:8px 12px;text-align:right;font-weight:700;">20%</td><td style="padding:8px 12px;">食品、飲料及菸草</td></tr>
+            <tr style="border-bottom:1px solid #f1f1ee;"><td style="padding:8px 12px;">交通</td><td style="padding:8px 12px;text-align:right;">11.5%</td><td style="padding:8px 12px;text-align:right;font-weight:700;">10%</td><td style="padding:8px 12px;">交通及資通訊</td></tr>
+            <tr style="border-bottom:1px solid #f1f1ee;"><td style="padding:8px 12px;">醫療健康</td><td style="padding:8px 12px;text-align:right;">14.8%</td><td style="padding:8px 12px;text-align:right;font-weight:700;">15%</td><td style="padding:8px 12px;">醫療保健</td></tr>
+            <tr style="border-bottom:1px solid #f1f1ee;"><td style="padding:8px 12px;">休閒娛樂</td><td style="padding:8px 12px;text-align:right;">6.3%</td><td style="padding:8px 12px;text-align:right;font-weight:700;">10%</td><td style="padding:8px 12px;">休閒運動及文化教育</td></tr>
+            <tr><td style="padding:8px 12px;">其他</td><td style="padding:8px 12px;text-align:right;">13.7%</td><td style="padding:8px 12px;text-align:right;font-weight:700;">15%</td><td style="padding:8px 12px;">餐廳及住宿 + 雜項</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 8px;"><strong>參考開支水平</strong>（113 年調查）：</p>
+      <ul style="color:#1f2937;font-size:15px;line-height:1.8;padding-left:20px;margin:0 0 8px;">
+        <li>平均每戶全年消費支出：<strong>NT$888,699</strong>（每月約 NT$74,058），平均戶內 2.78 人</li>
+        <li>平均每人每月消費支出：<strong>NT$26,640</strong>（每日約 NT$876）</li>
+        <li>台北市每人每月消費約 NT$34,952，為全台最高</li>
+      </ul>
+      <p style="color:#6b7280;font-size:13px;line-height:1.7;margin:0;"><span style="font-size:13px;color:#6b7280;">來源：<a href="https://www.dgbas.gov.tw/" style="color:#047857;text-decoration:underline;">行政院主計總處 113 年家庭收支調查</a>。</span></p>
+    </div>
+
+    <!-- 3. 三個算例 -->
+    <div style="margin-bottom:36px;">
+      <h3 style="font-size:20px;font-weight:700;color:#047857;margin:0 0 12px;">三、三個算例示範</h3>
+      <p style="color:#4b5563;font-size:15px;line-height:1.8;margin:0 0 20px;">以下用三個不同情境，演示計算機的推算邏輯。</p>
+
+      <!-- 算例一 -->
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:24px;margin:0 0 16px;">
+        <h4 style="font-size:16px;font-weight:700;color:#053d2c;margin:0 0 10px;">算例一：香港 · 40 歲 · 中產生活</h4>
+        <ul style="color:#1f2937;font-size:15px;line-height:1.8;padding-left:20px;margin:0 0 10px;">
+          <li>目前月開銷：HK$15,000</li>
+          <li>年齡 40 歲，預計 65 歲退休 → 距退休 <strong>25 年</strong></li>
+          <li>通脹率：2.0%，生活水平：80%（退休後略減）</li>
+        </ul>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">
+          通脹倍數 ＝（1.02）<sup>25</sup> ≈ 1.6406<br/>
+          退休月開銷 ≈ 15,000 × 0.80 × 1.6406 ≈ <strong>HK$19,687</strong><br/>
+          <span style="color:#6b7280;font-size:14px;">→ 目前等效開支 HK$12,000（扣減生活水平後），但 25 年後需要近 HK$20,000 才維持同等購買力。每月增幅 HK$7,687，相當於今天的 64% 增幅。</span>
+        </p>
+      </div>
+
+      <!-- 算例二 -->
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:24px;margin:0 0 16px;">
+        <h4 style="font-size:16px;font-weight:700;color:#053d2c;margin:0 0 10px;">算例二：台灣 · 50 歲 · 基礎生活</h4>
+        <ul style="color:#1f2937;font-size:15px;line-height:1.8;padding-left:20px;margin:0 0 10px;">
+          <li>目前月開銷：NT$30,000</li>
+          <li>年齡 50 歲，預計 65 歲退休 → 距退休 <strong>15 年</strong></li>
+          <li>通脹率：1.7%，生活水平：80%</li>
+        </ul>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">
+          通脹倍數 ＝（1.017）<sup>15</sup> ≈ 1.2877<br/>
+          退休月開銷 ≈ 30,000 × 0.80 × 1.2877 ≈ <strong>NT$30,905</strong><br/>
+          <span style="color:#6b7280;font-size:14px;">→ 即使消費降至目前 80%，15 年後因通脹仍需要約 NT$31,000。注意：醫療類別會以 5% 獨立計算，實際醫療開支增幅更大。</span>
+        </p>
+      </div>
+
+      <!-- 算例三 -->
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:24px;margin:0 0 0;">
+        <h4 style="font-size:16px;font-weight:700;color:#053d2c;margin:0 0 10px;">算例三：香港 · 40 歲 · 高生活水平</h4>
+        <ul style="color:#1f2937;font-size:15px;line-height:1.8;padding-left:20px;margin:0 0 10px;">
+          <li>目前月開銷：HK$35,000（接近私人房屋住戶平均 HK$41,174）</li>
+          <li>年齡 40 歲，預計 60 歲退休 → 距退休 <strong>20 年</strong></li>
+          <li>通脹率：2.5%，生活水平：100%（維持高品質）</li>
+        </ul>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">
+          通脹倍數 ＝（1.025）<sup>20</sup> ≈ 1.6386<br/>
+          退休月開銷 ≈ 35,000 × 1.00 × 1.6386 ≈ <strong>HK$57,351</strong><br/>
+          <span style="color:#6b7280;font-size:14px;">→ 維持今天的生活水準，20 年後每月需要超過 HK$57,000。增幅 HK$22,351（64%），全由通脹造成。</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- 4. 局限性說明 -->
+    <div style="margin-bottom:36px;">
+      <h3 style="font-size:20px;font-weight:700;color:#047857;margin:0 0 12px;">四、本工具的局限性</h3>
+      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 12px;">這是一部簡化版的退休生活費估算工具，目的是幫你建立初步概念。以下情況本工具<strong>無法完全涵蓋</strong>：</p>
+      <ul style="color:#1f2937;font-size:15px;line-height:1.8;padding-left:20px;margin:0;">
+        <li style="margin-bottom:8px;"><strong>突發醫療支出</strong>：重大疾病、手術、住院的開支可觀且不可預測，尤其是癌症治療、心臟手術等。本工具按固定比率推算醫療通脹，但實際醫療開支可能呈階梯式跳升。</li>
+        <li style="margin-bottom:8px;"><strong>通脹率波動</strong>：實際通脹率會隨經濟周期、政策變化、國際局勢大幅波動。以香港為例，2022 年通脹曾達 1.9%、2025 年僅 1.4%，未來可能更高或更低。本工具假設固定通脹率，僅供長期規劃參考。</li>
+        <li style="margin-bottom:8px;"><strong>投資回報不確定性</strong>：本工具只計算「需要多少錢」，不涉及「如何準備」。退休資產的投資回報、提取策略等需要另一套規劃（建議使用本站的<a href="/retirement-gap.html" style="color:#047857;text-decoration:underline;">退休缺口計算器</a>）。</li>
+        <li style="margin-bottom:8px;"><strong>生活品質的質變</strong>：公式只計算金額，沒有考慮生活品質的結構性變化——例如從自住變為需要安老院舍、從駕駛變為依賴交通服務等，這些質變會大幅改變開支結構。</li>
+        <li><strong>政策變動</strong>：強積金制度、台灣勞保/勞退制度改革、公共醫療資助變化等，都可能直接影響退休收入和開支，這些不在本工具的計算範圍內。</li>
+      </ul>
+    </div>
+
+    <!-- 5. 常見誤區 -->
+    <div style="margin-bottom:36px;">
+      <h3 style="font-size:20px;font-weight:700;color:#047857;margin:0 0 12px;">五、規劃退休生活費的常見誤區</h3>
+
+      <div style="margin-bottom:16px;">
+        <h4 style="font-size:16px;font-weight:700;color:#074d36;margin:0 0 6px;">❌ 誤區一：用今天的物價估算退休開支</h4>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">很多人直覺認為「我現在每月花 2 萬，退休也差不多」。但通脹的複利效果驚人：以年增 2% 計算，30 年後你需要 <strong>HK$18,114</strong> 才能買到今天 HK$10,000 能買到的東西——反過來說，今天的一萬元，30 年後只剩約 <strong>HK$5,521</strong> 的購買力。不把通脹算進去，會嚴重低估所需本金。</p>
+      </div>
+
+      <div style="margin-bottom:16px;">
+        <h4 style="font-size:16px;font-weight:700;color:#074d36;margin:0 0 6px;">❌ 誤區二：忽略醫療通脹高於一般通脹</h4>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">全球醫療成本年增率普遍高於整體 CPI 2–3 個百分點。如果整體通脹 1.5%，醫療可能是 3.5%–5%。以 5% 計算，20 年後醫療開支變為今天的 2.65 倍，而非一般開支的 1.35 倍。退休後醫療開支通常隨年齡上升，這個差距會被放大。</p>
+      </div>
+
+      <div style="margin-bottom:16px;">
+        <h4 style="font-size:16px;font-weight:700;color:#074d36;margin:0 0 6px;">❌ 誤區三：所有類別用同一個通脹率</h4>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">不同開支的通脹率差異很大。以香港為例，2025–2026 年數據顯示：住屋租金 +1.0%–2.8%、醫療服務 +1.4%–2.4%、交通 +1.2%–2.0%。長期而言差異更顯著。全部用同一個數字，會導致部分類別高估、部分低估。</p>
+      </div>
+
+      <div style="margin-bottom:16px;">
+        <h4 style="font-size:16px;font-weight:700;color:#074d36;margin:0 0 6px;">❌ 誤區四：退休後開支一定下降</h4>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">很多人假設退休後「少花很多」。事實是：通勤、午餐等開支確實減少，但醫療開支隨年齡大幅上升、休閒旅遊可能增加。更重要的是，75 歲以後的長期照護費用——以社署 2026 年 4 月起生效的院舍券面值計，護理安老宿位每月 HK$17,015、護理院宿位每月 HK$21,982，而這已是政府補貼後的價格，私營院舍自費通常更高。這一筆在大多數人的退休預算裡被嚴重低估。</p>
+      </div>
+
+      <div>
+        <h4 style="font-size:16px;font-weight:700;color:#074d36;margin:0 0 6px;">❌ 誤區五：只看平均數，不看中位數</h4>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">平均數會被高收入、多人住戶拉高。以香港 2024/25 年數據為例：住戶平均月開支 HK$32,472，但這是所有住戶混在一起的數字——按人均計，每人每月只有 HK$12,201。一個單身住戶和一個四人家庭看到同一個「平均數」，實際需要完全不同。規劃時建議以自己的實際開支為基準，而非直接套用全市平均。</p>
+      </div>
+    </div>
+
+    <!-- 6. 頁尾更新資訊 -->
+    <div style="border-top:1px solid #e5e7eb;padding-top:20px;margin-top:8px;">
+      <p style="color:#6b7280;font-size:13px;line-height:1.7;margin:0;">
+        <strong>最後更新日期</strong>：2026 年 10 月 28 日<br/>
+        <strong>數據版本</strong>：v2.0<br/>
+        <strong>主要數據來源</strong>：<br/>
+         香港：政府統計處 2024/25 年住戶開支統計調查（2026 年 6 月發表）、消費物價指數（2025 年全年 +1.4%）、IMF 2026 年第四條磋商報告（2026 年 5 月）<br/>
+         台灣：行政院主計總處 113 年（2024 年）家庭收支調查、114 年（2025 年）CPI 年增率 1.66%、115 年（2026 年）CPI 預測 1.68%（2026 年 1–9 月實際平均 1.94%）<br/>
+         香港安老院舍：社會福利署「長者院舍照顧服務券計劃」共同付款金額表（2026 年 4 月 1 日生效）<br/>
+        <strong>免責聲明</strong>：本頁面所有數據僅供參考，不構成任何投資或理財建議。實際退休開支因個人情況而異，建議諮詢持牌理財顧問。
+      </p>
+    </div>
+
+  </div>
+</section>
+
 <!-- Footer -->
 <!-- SEO FAQ 內容區塊 -->
 <script type="application/ld+json">
