@@ -31,6 +31,8 @@ featured: false
 
 呢兩個問題，數據答得到一半。另外一半，要靠判斷。
 
+![演唱會現場，觀眾舉起手機記錄舞台（資料圖片）](/assets/images/20261029-90s-hk-retirement-illust-0-concert.jpg)
+
 ![九十年代香港街景](/assets/images/20261029-90s-hk-retirement-cover.jpg)
 
 ## 一、九十年代根本冇強積金
@@ -288,5 +290,7 @@ featured: false
 11. 金管局：2003年6月負資產住宅按揭106,000宗、涉1,650億元、佔所有住宅按揭約22%。[2003年8月14日公布](https://www.news.gov.hk/isd/ebulletin/tc/category/businessandfinance/030814/print/030814tc03006.htm)
 12. 扶貧委員會／政府統計處：長者（65+）貧窮率2019年19.7%、2020年14.5%（政策介入後，計及所有選定措施）。[2020年香港貧窮情況報告](https://www.censtatd.gov.hk/en/data/stat_report/product/B9XX0005/att/B9XX0005C2020AN20C0100.pdf)
 13. 政府新聞公報：2020年派一萬元現金計劃對整體貧窮率的扶貧成效達3.8個百分點。[2021年11月10日新聞公報](https://www.info.gov.hk/gia/general/202111/10/P2021111000604.htm)
+
+14. 配圖：演唱會現場照片來自 [Burst](https://burst.shopify.com/)（Shopify 免費商用圖庫，可作商業用途、無需署名）。
 
 *以上資料截至2026年10月，僅供參考，不構成投資建議。*
