@@ -494,30 +494,195 @@
 
 <!-- SEO FAQ 內容區塊 -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"強積金供款是如何計算的？","acceptedAnswer":{"@type":"Answer","text":"強制性供款由僱主和僱員各自供有關入息的 5%。月薪低於 HK$7,100 的僱員，僱員部分不用供，但僱主仍要供 5%；有關入息上限 HK$30,000，即雙方各自最多供 HK$1,500 一個月。自僱人士同樣按有關入息 5% 供款。"}},{"@type":"Question","name":"這部 MPF 強積金計算機怎樣用？","acceptedAnswer":{"@type":"Answer","text":"只要輸入現年、月薪、預期每年加薪幅度同基金預期回報率，計算機就會複合滾算到退休年齡，顯示強積金累積總額。你可以切換保守、平衡、增長三種基金的預設回報率，即時比較不同選擇的差異。"}},{"@type":"Question","name":"自願性供款值得加嗎？","acceptedAnswer":{"@type":"Answer","text":"強制供款之外，你可以透過可扣稅自願性供款（TVC）額外供款，每年最高 HK$60,000 可作扣稅，而且同樣享複利滾存至退休。想知退休時能多滾多少，把金額輸入計算機一試就知。"}},{"@type":"Question","name":"強積金幾時可以提取？","acceptedAnswer":{"@type":"Answer","text":"正常情況下年滿 65 歲可以提取全部強積金；年滿 60 歲選擇提早退休、永久離開香港、完全喪失行為能力或患有末期疾病，亦可以提早提取。提錢之後，記得用我們的退休生活費計算機看看每月實際可以使多少。"}}]}
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"強積金供款是如何計算的？","acceptedAnswer":{"@type":"Answer","text":"強制性供款由僱主和僱員各自供有關入息的 5%。月薪低於 HK$7,100 的僱員，僱員部分不用供，但僱主仍要供 5%；有關入息上限 HK$30,000，即雙方各自最多供 HK$1,500 一個月。自僱人士同樣按有關入息 5% 供款。"}},{"@type":"Question","name":"MPF 複利滾存點計？","acceptedAnswer":{"@type":"Answer","text":"MPF 每月供款存入帳戶後，按所選基金嘅回報率逐月複利滾存。公式係：未來值 = 月供 × [(1 + 月回報率)^總月數 − 1] ÷ 月回報率。假設月供 HK$2,000、年回報 5%、30 年，累積約 HK$1,664,517，其中投資回報佔 HK$944,517，佔總額 57%。"}},{"@type":"Question","name":"強積金供款上限會調整嗎？","acceptedAnswer":{"@type":"Answer","text":"截至 2026 年 10 月，現行上限維持 HK$30,000。積金局已於 2026 年 3 月 31 日建議將上限升至 HK$40,000、下限升至 HK$10,500，但仍在諮詢階段，尚未生效。正式落實需經立法程序，預計需要數年時間。"}},{"@type":"Question","name":"自願性供款值得加嗎？","acceptedAnswer":{"@type":"Answer","text":"強制供款之外，你可以透過可扣稅自願性供款（TVC）額外供款，每年最高 HK$60,000 可作扣稅，而且同樣享複利滾存至退休。想知退休時能多滾多少，把金額輸入計算機一試就知。"}},{"@type":"Question","name":"強積金幾時可以提取？","acceptedAnswer":{"@type":"Answer","text":"正常情況下年滿 65 歲可以提取全部強積金；年滿 60 歲選擇提早退休、永久離開香港、完全喪失行為能力或患有末期疾病，亦可以提早提取。提錢之後，記得用我們的退休生活費計算機看看每月實際可以使多少。"}}]}
 </script>
 <section style="max-width:1200px;margin:0 auto;padding:56px 24px 8px;">
   <div style="background:#fafaf7;border:1px solid #e5e7eb;border-radius:16px;padding:40px;">
-    <h2 style="font-size:28px;font-weight:800;color:#053d2c;margin:0 0 12px;">MPF 強積金計算機常見問題</h2>
-    <p style="color:#4b5563;font-size:16px;line-height:1.8;margin:0 0 28px;">好多香港打工仔對強積金都一知半解。以下整理了大家最常搜尋的問題，幫你搞懂 MPF 供款同計算邏輯，再用上面的計算機即刻試算你退休時可以累積幾多。</p>
-    <div style="margin-bottom:24px;">
-      <h3 style="font-size:18px;font-weight:700;color:#047857;margin:0 0 8px;">強積金供款是如何計算的？</h3>
-      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">強制性供款由僱主和僱員各自供有關入息的 <strong>5%</strong>。月薪低於 HK$7,100 的僱員，僱員部分不用供，但僱主仍然要供 5%；有關入息上限為 HK$30,000，即雙方各自最多供 HK$1,500 一個月。自僱人士同樣按有關入息 5% 供款。</p>
+
+    <h2 style="font-size:28px;font-weight:800;color:#053d2c;margin:0 0 12px;">計算公式與參數說明</h2>
+    <p style="color:#4b5563;font-size:16px;line-height:1.8;margin:0 0 32px;">呢部 MPF 計算機用咩邏輯計？預設數字從邊度嚟？以下完整拆解供款公式、複利滾存公式、每個參數嘅官方數據來源，以及三個唔同薪金情境嘅算例。</p>
+
+    <!-- 1. 完整計算公式 -->
+    <div style="margin-bottom:36px;">
+      <h3 style="font-size:20px;font-weight:700;color:#047857;margin:0 0 12px;">一、完整計算公式</h3>
+
+      <h4 style="font-size:17px;font-weight:700;color:#074d36;margin:0 0 10px;">🔹 第一步：計算每月供款額</h4>
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:20px 24px;margin:0 0 14px;font-size:16px;line-height:2;">
+        <strong>僱員月供 ＝ 有關入息 × 5%</strong>（受上下限截斷）<br/>
+        <strong>僱主月供 ＝ 有關入息 × 5%</strong>（不受下限限制）
+      </div>
+      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 8px;">「有關入息」嘅截斷規則：</p>
+      <ul style="color:#1f2937;font-size:15px;line-height:1.8;padding-left:20px;margin:0 0 14px;">
+        <li style="margin-bottom:6px;">月薪低於 <strong>HK$7,100</strong>：僱員免供，但僱主仍須供 5%（以實際薪金計）</li>
+        <li style="margin-bottom:6px;">月薪 HK$7,100 至 HK$30,000：雙方各供 5%</li>
+        <li><strong>月薪高於 HK$30,000</strong>：以 HK$30,000 封頂，雙方各供 HK$1,500（即每月供款上限）</li>
+      </ul>
+      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 14px;">留意：<strong>月薪 HK$50,000 嘅打工仔，供款基準都只係 HK$30,000</strong>，多出嚟嘅 HK$20,000 薪金唔使供強積金。呢個上限自 2014 年 6 月調整至今，已經超過 11 年冇變。</p>
+
+      <h4 style="font-size:17px;font-weight:700;color:#074d36;margin:0 0 10px;">🔹 第二步：複利滾存計算</h4>
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:20px 24px;margin:0 0 14px;font-size:16px;line-height:2;">
+        <strong>退休累積總值 ＝ 每月供款 × [（1 ＋ 月回報率）<sup>總月數</sup> − 1] ÷ 月回報率</strong>
+      </div>
+      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 8px;">逐項拆解：</p>
+      <ul style="color:#1f2937;font-size:15px;line-height:1.8;padding-left:20px;margin:0 0 14px;">
+        <li style="margin-bottom:6px;"><strong>每月供款</strong>：僱員供款 ＋ 僱主供款（例如月薪 HK$20,000，每月合共 HK$2,000）</li>
+        <li style="margin-bottom:6px;"><strong>月回報率</strong>：年回報率 ÷ 12。例如年回報 5%，月回報率 ＝ 0.05 ÷ 12 ≈ 0.004167</li>
+        <li style="margin-bottom:6px;"><strong>總月數</strong>：供款年數 × 12。例如 30 年 ＝ 360 個月</li>
+        <li><strong>複利效果</strong>：每個月嘅供款同之前累積嘅回報，都會喺下個月繼續產生回報——即係「利疊利」</li>
+      </ul>
+
+      <h4 style="font-size:17px;font-weight:700;color:#074d36;margin:24px 0 10px;">🔹 第三步：拆分本金同回報</h4>
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:20px 24px;margin:0 0 14px;font-size:16px;line-height:2;">
+        <strong>總供款本金 ＝ 每月供款 × 總月數</strong><br/>
+        <strong>投資回報 ＝ 累積總值 − 總供款本金</strong>
+      </div>
+      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">呢個拆分好重要：好多打工仔以為強積金得返本金咁少，其實長期滾存之下，投資回報往往佔總額一半以上。下面算例會展示。</p>
     </div>
-    <div style="margin-bottom:24px;">
-      <h3 style="font-size:18px;font-weight:700;color:#047857;margin:0 0 8px;">這部 MPF 強積金計算機怎樣用？</h3>
-      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">只要輸入現年、月薪、預期每年加薪幅度同基金預期回報率，計算機就會按複利滾算到退休年齡，顯示你的強積金累積總額。你可以切換保守、平衡、增長三種基金的預設回報率，即時比較不同選擇的差距。想深入了解供款規則，可以參考 <a href="/article/2026-mpf-complete-guide" style="color:#047857;text-decoration:underline;">2026 MPF 強積金完全指南</a>。</p>
+
+    <!-- 2. 每個預設參數的數據來源 -->
+    <div style="margin-bottom:36px;">
+      <h3 style="font-size:20px;font-weight:700;color:#047857;margin:0 0 12px;">二、預設參數的數據來源與年份</h3>
+      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 16px;">以下每個數字都標明咗官方來源同生效日期。</p>
+
+      <ul style="color:#1f2937;font-size:15px;line-height:1.8;padding-left:20px;margin:0 0 20px;">
+        <li style="margin-bottom:10px;"><strong>有關入息下限：HK$7,100/月</strong><br/>
+        <span style="font-size:13px;color:#6b7280;">來源：<a href="https://www.mpfa.org.hk/sc/mpf-system/mandatory-contributions/employees" style="color:#047857;text-decoration:underline;">積金局官方網頁</a>（最後檢視日期：2026 年 8 月 20 日）。此下限自 2014 年 6 月起維持至今。</span></li>
+
+        <li style="margin-bottom:10px;"><strong>有關入息上限：HK$30,000/月</strong><br/>
+        <span style="font-size:13px;color:#6b7280;">來源同上。自 2014 年 6 月調整後未曾更改。積金局 2026 年 3 月 31 日已建議升至 HK$40,000，但仍處諮詢階段，<strong>未生效</strong>。正式落實前，現行 HK$30,000 上限維持不變。<br/>參考：<a href="https://www.setupempf.hk/blog/2026-04-09-mpf-contribution-limit-proposal-2026.html" style="color:#047857;text-decoration:underline;">強積金供款上限 2026 分析</a>。</span></li>
+
+        <li style="margin-bottom:10px;"><strong>供款比率：僱主 5%、僱員 5%</strong><br/>
+        <span style="font-size:13px;color:#6b7280;">來源：《強制性公積金計劃條例》第 6 條。比率自 2000 年強積金制度實施以來未曾調整。</span></li>
+
+        <li style="margin-bottom:10px;"><strong>可扣稅自願性供款（TVC）上限：HK$60,000/年</strong><br/>
+        <span style="font-size:13px;color:#6b7280;">來源：<a href="https://www.mpfa.org.hk/en/mpf-system/voluntary-contributions-or-tax-deductible-voluntary-contributions/tax-deductible-voluntary-contributions" style="color:#047857;text-decoration:underline;">積金局 TVC 專頁</a>（2026 年 6 月 15 日更新）。此上限為 TVC 與合資格延期年金保費的合併上限，自 2019/20 課稅年度起適用。</span></li>
+
+        <li style="margin-bottom:10px;"><strong>計算機預設年回報率：保守 3%、平衡 5%、增長 7%</strong><br/>
+        <span style="font-size:13px;color:#6b7280;">此為假設值，用嚟展示唔同基金類型嘅長線差異。實際回報取決於所選基金嘅歷史表現同市場環境。根據積金局數據，強積金整體平均年回報率約 3%–4%（扣除費用後），但個別基金差異可以好大。</span></li>
+
+        <li style="margin-bottom:10px;"><strong>對沖取消：2025 年 5 月 1 日起生效</strong><br/>
+        <span style="font-size:13px;color:#6b7280;">來源：<a href="https://www.mpfa.org.hk" style="color:#047857;text-decoration:underline;">積金局</a>。僱主唔再可以用僱員嘅強積金對沖遣散費同長期服務金。</span></li>
+      </ul>
     </div>
-    <div style="margin-bottom:24px;">
-      <h3 style="font-size:18px;font-weight:700;color:#047857;margin:0 0 8px;">自願性供款值得加嗎？</h3>
-      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">在強制供款之外，你可以透過<strong>可扣稅自願性供款（TVC）</strong>額外供款，每年最高 HK$60,000 可用作扣稅，而且同樣享複利滾存至退休。想知退休時可以多滾多少，把金額輸入計算機一試就知。</p>
+
+    <!-- 3. 三個算例 -->
+    <div style="margin-bottom:36px;">
+      <h3 style="font-size:20px;font-weight:700;color:#047857;margin:0 0 12px;">三、三個算例：唔同月薪、唔同年資</h3>
+      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 16px;">以下計法假設年回報率 5%（平衡基金長期目標回報），每月供款金額固定不變（唔計加薪），用嚀示範複利效果。</p>
+
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:24px;margin:0 0 20px;">
+        <h4 style="font-size:16px;font-weight:700;color:#053d2c;margin:0 0 12px;">算例一：月薪 HK$20,000 | 年資 30 年（25 歲入職至 55 歲退休）</h4>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 8px;">
+          有關入息 HK$20,000，未觸及上限。<br/>
+          僱員月供：20,000 × 5% ＝ <strong>HK$1,000</strong><br/>
+          僱主月供：20,000 × 5% ＝ <strong>HK$1,000</strong><br/>
+          每月合計供款：<strong>HK$2,000</strong>
+        </p>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 8px;">
+          複利計算：月回報率 ＝ 5% ÷ 12 ＝ 0.004167，總月數 ＝ 360<br/>
+          累積總值 ＝ 2,000 × [（1.004167）<sup>360</sup> − 1] ÷ 0.004167 ＝ <strong>HK$1,664,517</strong>
+        </p>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">
+          其中：總供款本金 HK$720,000（佔 43%）；投資回報 HK$944,517（佔 57%）。<br/>
+          <strong>即係話，近六成嘅退休強積金來自複利回報，唔係你自己供嘅錢。</strong>
+        </p>
+      </div>
+
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:24px;margin:0 0 20px;">
+        <h4 style="font-size:16px;font-weight:700;color:#053d2c;margin:0 0 12px;">算例二：月薪 HK$30,000 | 年資 25 年（30 歲入職至 55 歲退休）</h4>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 8px;">
+          有關入息 HK$30,000，啱啱踩到上限。<br/>
+          僱員月供：30,000 × 5% ＝ <strong>HK$1,500</strong>（上限）<br/>
+          僱主月供：30,000 × 5% ＝ <strong>HK$1,500</strong>（上限）<br/>
+          每月合計供款：<strong>HK$3,000</strong>
+        </p>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 8px;">
+          累積總值 ＝ 3,000 × [（1.004167）<sup>300</sup> − 1] ÷ 0.004167 ＝ <strong>HK$1,786,529</strong>
+        </p>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">
+          其中：總供款本金 HK$900,000（佔 50%）；投資回報 HK$886,529（佔 50%）。<br/>
+          雖然月薪比算例一高 50%，但因為供款封頂 HK$1,500，累積差距主要來自年資差異。
+        </p>
+      </div>
+
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:24px;margin:0 0 20px;">
+        <h4 style="font-size:16px;font-weight:700;color:#053d2c;margin:0 0 12px;">算例三：月薪 HK$50,000 | 年資 35 年（23 歲入職至 58 歲退休）</h4>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 8px;">
+          實際月薪 HK$50,000，但有關入息封頂 HK$30,000。<br/>
+          僱員月供：30,000 × 5% ＝ <strong>HK$1,500</strong>（封頂）<br/>
+          僱主月供：30,000 × 5% ＝ <strong>HK$1,500</strong>（封頂）<br/>
+          每月合計供款：<strong>HK$3,000</strong>（同月薪 HK$30,000 嘅人一模一樣）
+        </p>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 8px;">
+          累積總值 ＝ 3,000 × [（1.004167）<sup>420</sup> − 1] ÷ 0.004167 ＝ <strong>HK$3,408,277</strong>
+        </p>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">
+          其中：總供款本金 HK$1,260,000（佔 37%）；投資回報 HK$2,148,277（佔 63%）。<br/>
+          <strong>呢個例清楚顯示：月薪 HK$50,000 同 HK$30,000 嘅強積金供款完全一樣</strong>——上限制度下，高薪人士嘅強積金替代率偏低，需要額外退休儲備。
+        </p>
+      </div>
+
+      <div style="background:#fffbeb;border-left:3px solid #fbbf24;border-radius:6px;padding:16px 20px;margin:0 0 0px;">
+        <p style="color:#92400e;font-size:14px;line-height:1.7;margin:0;"><strong>保守情境參考</strong>：如果年回報率只有 3%（保守基金），三個算例嘅累積總值分別為 HK$1,165,474、HK$1,338,023 及 HK$2,224,691——回報率差 2 個百分點，30 年後差距可以超過 HK$500,000。</p>
+      </div>
     </div>
-    <div>
-      <h3 style="font-size:18px;font-weight:700;color:#047857;margin:0 0 8px;">強積金幾時可以提取？</h3>
-      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">正常情況下<strong>年滿 65 歲</strong>可以提取全部強積金；年滿 60 歲選擇提早退休、永久離開香港、完全喪失行為能力或患有末期疾病，亦可以提早提取。另外由 2025 年 5 月起，僱主不能再以強積金對沖遣散費同長期服務金，退休保障更完整，詳情可參考 <a href="/article/2026-mpf-offset-abolition-guide" style="color:#047857;text-decoration:underline;">強積金對沖取消全攻略</a>。提錢之後，記得用我們的 <a href="/living-cost.html" style="color:#047857;text-decoration:underline;">退休生活費計算機</a> 看看每月實際可以使多少。</p>
+
+    <!-- 4. 局限性說明 -->
+    <div style="margin-bottom:36px;">
+      <h3 style="font-size:20px;font-weight:700;color:#047857;margin:0 0 12px;">四、本計算機的局限性</h3>
+      <ul style="color:#1f2937;font-size:15px;line-height:1.8;padding-left:20px;margin:0;">
+        <li style="margin-bottom:8px;"><strong>未計加薪</strong>：算例假設薪金不變。實際打工仔會加薪，但供款封頂 HK$1,500 後再加薪都唔會增加供款。月薪一旦超過 HK$30,000，加薪對強積金累積嘅邊際貢獻為零。</li>
+        <li style="margin-bottom:8px;"><strong>投資回報波動</strong>：實際回報每年唔同，有啲年份可能虧損。計算機用固定年化回報率，無法反映市場波動。保守基金回報可能只有 2%–3%，增長基金可能達 6%–8%，但波動都更大。</li>
+        <li style="margin-bottom:8px;"><strong>未計自願性供款（TVC）</strong>：如果你另外做可扣稅自願性供款，實際累積會更多。TVC 每年最高 HK$60,000，同樣享複利滾存。</li>
+        <li style="margin-bottom:8px;"><strong>未計基金收費</strong>：強積金基金有管理費（通常每年 0.75%–1.5%），計算機展示嘅係扣除費用前嘅毛回報。實際淨回報會較低。</li>
+        <li><strong>對沖已取消但歷史影響仍在</strong>：2025 年 5 月 1 日起僱主唔再可以對沖，但之前嘅對沖已經削減咗好多老員工嘅強積金。呢部分損失計算機無法重算。</li>
+        <li><strong>供款上下限可能調整</strong>：積金局已於 2026 年 3 月 31 日建議將上限由 HK$30,000 升至 HK$40,000、下限由 HK$7,100 升至 HK$10,500，目標 2026 年年中向政府提交報告。若落實，月薪 HK$30,001–40,000 的打工仔月供會增加（最高 HK$2,000），但正式生效仍需經立法程序，預計需要數年。</li>
+        <li><strong>提取策略未反映</strong>：退休後可選擇一筆過提取、分期提取或保留在帳戶繼續滾存。提取策略影響稅務、醫療保障資格（如綜援）及長遠資產傳承，需要配合整體退休規劃。</li>
+      </ul>
     </div>
+
+    <!-- 5. 常見誤區 -->
+    <div style="margin-bottom:36px;">
+      <h3 style="font-size:20px;font-weight:700;color:#047857;margin:0 0 12px;">五、5 個常見誤區</h3>
+
+      <div style="margin-bottom:20px;">
+        <h4 style="font-size:16px;font-weight:700;color:#074d36;margin:0 0 6px;">誤區一：「僱主供嘅 5% 唔一定係我嘅」</h4>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">根據《強制性公積金計劃條例》，強制性供款一經存入帳戶，即<strong>全數及立刻歸屬於僱員</strong>。2025 年 5 月對沖取消後，呢筆錢更加唔會被僱主拎走去抵銷遣散費。所以僱主供嘅 5% 係你嘅，唔使懷疑。</p>
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <h4 style="font-size:16px;font-weight:700;color:#074d36;margin:0 0 6px;">誤區二：「強積金回報好低，供咗都白供」</h4>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">根據算例一，30 年供 HK$720,000 本金，5% 回報滾到 HK$1,664,517——<strong>投資回報佔 57%</strong>。問題唔係回報低，而係封頂制度令高薪人士供得太少。月薪 HK$50,000 嘅人同 HK$30,000 嘅人供一模一樣，退休點夠用？所以要靠 TVC 或私人投資補足。</p>
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <h4 style="font-size:16px;font-weight:700;color:#074d36;margin:0 0 6px;">誤區三：「揀保守基金最安全」</h4>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">保守基金（如貨幣市場基金）年回報可能只有 1%–2%，30 年累計差距可以高達數十萬。<strong>年輕人有 30 年以上時間 horizon</strong>，應該承受短期波動換取長期較高回報，揀增長或平衡基金。臨近退休先轉保守。呢個就係「預設投資策略」（DIS）嘅設計邏輯——65 歲前 10 年自動降風險。</p>
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <h4 style="font-size:16px;font-weight:700;color:#074d36;margin:0 0 6px;">誤區四：「保證基金一定賺」</h4>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">保證基金保證嘅係<strong>本金</strong>，唔保證回報。而且保證基金嘅管理費通常較高，長期淨回報可能反而低於非保證嘅指數基金。揀基金時要睇<strong>扣除費用後嘅淨回報</strong>，唔好只看「保證」兩個字。</p>
+      </div>
+
+      <div style="margin-bottom:0px;">
+        <h4 style="font-size:16px;font-weight:700;color:#074d36;margin:0 0 6px;">誤區五：「強積金夠退休」</h4>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">以算例一嚟講，HK$1,664,517 分 20 年提（65 至 85 歲），每月大約 HK$6,935。根據政府統計處數據，香港單身長者每月基本開銷約 HK$4,000–6,000，但住_PRIVATE_ 嘅話（尤其係租樓），隨時要 HK$10,000 以上。用我哋嘅 <a href="/living-cost.html" style="color:#047857;text-decoration:underline;">退休生活費計算機</a> 計吓你實際需要幾多，再決定要唔要加 TVC 或私人投資。</p>
+      </div>
+    </div>
+
+    <!-- 6. 頁尾更新日期 -->
+    <div style="border-top:1px solid #e5e7eb;padding-top:20px;margin-top:20px;">
+      <p style="font-size:13px;color:#6b7280;line-height:1.7;margin:0;">
+        <strong>最後更新日期</strong>：2026 年 10 月 30 日<br/>
+        <strong>數據版本</strong>：供款上下限及比率根據積金局官方網頁（最後檢視 2026/08/20）；TVC 扣稅限額根據積金局 TVC 專頁（2026/06/15 更新）；對沖取消根據積金局公告（2025/05/01 生效）。積金局 2026/03/31 建議調整上限至 HK$40,000 仍處諮詢階段，<strong>未納入計算</strong>。<br/>
+        <strong>官方來源</strong>：<a href="https://www.mpfa.org.hk/sc/mpf-system/mandatory-contributions/employees" style="color:#047857;text-decoration:underline;">積金局 — 僱員供款</a>、<a href="https://www.mpfa.org.hk/en/mpf-system/voluntary-contributions-or-tax-deductible-voluntary-contributions/tax-deductible-voluntary-contributions" style="color:#047857;text-decoration:underline;">積金局 — TVC</a>
+      </p>
+    </div>
+
   </div>
 </section>
+
 
 <footer id="about">
   <div class="container">

@@ -496,30 +496,227 @@
 
 <!-- SEO FAQ 內容區塊 -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"勞退新制的錢怎麼算？","acceptedAnswer":{"@type":"Answer","text":"雇主每個月必須按你月薪的 6% 提繳到你的勞退個人專戶，這筆錢百分之百屬於你，年滿60歲即可請領。你也可以選擇自提 0% 到 6%，自提部分在當年度綜合所得稅中可全額扣除。"}},{"@type":"Question","name":"勞保老年年金月領多少？","acceptedAnswer":{"@type":"Answer","text":"勞保年資滿15年，退休後可以月領老年年金，有A式（平均月投保薪資×年資×0.775%＋3,000元）和B式（平均月投保薪資×年資×1.55%）兩種公式，勞保局會自動擇優發給。年資未滿15年則只能請領老年一次金。"}},{"@type":"Question","name":"勞退自提6%划算嗎？","acceptedAnswer":{"@type":"Answer","text":"自提的金額會直接存入你的勞退專戶，每年按保證收益或實際投資收益計算，且當年度可從綜合所得稅中全額扣除，等於馬上省下對應稅率的稅。想知道自提後專戶累積差多少，直接在計算機調整自提比例即可比較。"}},{"@type":"Question","name":"勞退和勞保年金是同一筆錢嗎？","acceptedAnswer":{"@type":"Answer","text":"不是。勞退是雇主提撥6%的個人專戶儲蓄，勞保年金是社會保險按月給付，兩者分開計算、可以同時領。退休規劃時建議分開試算，再把兩筆加總，評估是否足夠支應退休生活。"}}]}
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"勞退新制的錢怎麼算？","acceptedAnswer":{"@type":"Answer","text":"雇主每個月必須按你月薪的 6% 提繳到你的勞退個人專戶，這筆錢百分之百屬於你，年滿60歲即可請領。你也可以選擇自提 0% 到 6%，自提部分在當年度綜合所得稅中可全額扣除。"}},{"@type":"Question","name":"勞退新制月退休金怎麼算？","acceptedAnswer":{"@type":"Answer","text":"月退休金是將你的個人專戶累積金額（本金＋收益），依請領年齡對應的平均餘命及利率換算成每月固定金額。一次領則是直接領出專戶全部金額。實際金額因人而異，建議使用勞保局官方的月退休金試算工具。"}},{"@type":"Question","name":"勞保老年年金月領多少？","acceptedAnswer":{"@type":"Answer","text":"勞保年資滿15年，退休後可以月領老年年金，有A式（平均月投保薪資×年資×0.775%＋3,000元）和B式（平均月投保薪資×年資×1.55%）兩種公式，勞保局會自動擇優發給。年資未滿15年則只能請領老年一次金。"}},{"@type":"Question","name":"勞退自提6%划算嗎？","acceptedAnswer":{"@type":"Answer","text":"自提的金額會直接存入你的勞退專戶，每年按保證收益或實際投資收益計算，且當年度可從綜合所得稅中全額扣除，等於馬上省下對應稅率的稅。想知道自提後專戶累積差多少，直接在計算機調整自提比例即可比較。"}},{"@type":"Question","name":"勞退和勞保年金是同一筆錢嗎？","acceptedAnswer":{"@type":"Answer","text":"不是。勞退是雇主提撥6%的個人專戶儲蓄，勞保年金是社會保險按月給付，兩者分開計算、可以同時領。退休規劃時建議分開試算，再把兩筆加總，評估是否足夠支應退休生活。"}}]}
 </script>
 <section style="max-width:1200px;margin:0 auto;padding:56px 24px 8px;">
   <div style="background:#fafaf7;border:1px solid #e5e7eb;border-radius:16px;padding:40px;">
-    <h2 style="font-size:28px;font-weight:800;color:#053d2c;margin:0 0 12px;">勞退勞保計算機常見問題</h2>
-    <p style="color:#4b5563;font-size:16px;line-height:1.8;margin:0 0 28px;">台灣勞工退休後有「兩筆錢」：勞退新制專戶和勞保老年年金。很多人搞不清楚差別，以下整理大家最常問的問題，看完再用上面的計算機試算，就知道自己退休每月大概可以領多少。</p>
-    <div style="margin-bottom:24px;">
-      <h3 style="font-size:18px;font-weight:700;color:#047857;margin:0 0 8px;">勞退新制的錢怎麼算？</h3>
-      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">雇主每個月必須按你月薪的 <strong>6%</strong> 提繳到你的勞退個人專戶，這筆錢百分之百屬於你，年滿 60 歲即可請領。你也可以選擇自提 0% 到 6%，自提部分在當年度綜合所得稅中可全額扣除。想了解完整規則，可參考 <a href="/article/2026-labor-pension-guide" style="color:#047857;text-decoration:underline;">台灣勞退新制完整指南</a>。</p>
+
+    <h2 style="font-size:28px;font-weight:800;color:#053d2c;margin:0 0 12px;">計算公式與參數說明</h2>
+    <p style="color:#4b5563;font-size:16px;line-height:1.8;margin:0 0 32px;">這部計算機涵蓋兩套制度：勞退新制（個人專戶）和勞保老年年金（社會保險）。以下逐一拆解兩條計算公式、每個參數的官方數據來源、三組不同情境的算例，以及常見的誤區。</p>
+
+    <!-- 1. 完整計算公式 -->
+    <div style="margin-bottom:36px;">
+      <h3 style="font-size:20px;font-weight:700;color:#047857;margin:0 0 12px;">一、完整計算公式</h3>
+
+      <h4 style="font-size:17px;font-weight:700;color:#074d36;margin:0 0 10px;">🔹 公式 A：勞退新制——個人專戶累積</h4>
+      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 8px;">勞退新制下，雇主每月按你的月薪提撥 <strong>6%</strong> 到你的個人專戶。這筆錢連同投資收益，年滿 60 歲即可請領。</p>
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:20px 24px;margin:0 0 14px;font-size:16px;line-height:2;">
+        <strong>每月提撥額 ＝ 月薪 × 6%</strong>（月薪上限 NT$150,000）<br/>
+        <strong>專戶累積總值 ＝ 月提撥額 × [（1 ＋ 月報酬率）<sup>總月數</sup> − 1] ÷ 月報酬率</strong>
+      </div>
+      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 8px;">逐項說明：</p>
+      <ul style="color:#1f2937;font-size:15px;line-height:1.8;padding-left:20px;margin:0 0 14px;">
+        <li style="margin-bottom:6px;"><strong>月薪</strong>：你的每月工資總額。勞退提撥的月薪上限為 NT$150,000，超過部分不計入。一般受薪階級不會觸及此上限。</li>
+        <li style="margin-bottom:6px;"><strong>6%</strong>：法定最低提撥率，由雇主全額負擔。勞工可選擇額外自提 0%–6%，自提部分可全額列舉扣除所得稅。</li>
+        <li style="margin-bottom:6px;"><strong>月報酬率</strong>：年報酬率 ÷ 12。勞退基金依法享有<strong>保證收益</strong>，不低於當地銀行二年期定期存款利率（2026 年約 1.5%–1.7%）。實際收益依勞動基金運用局公告為準。</li>
+        <li><strong>總月數</strong>：提撥年數 × 12。例如提撥 30 年 ＝ 360 個月。</li>
+      </ul>
+      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 14px;"><strong>月退休金 vs 一次領</strong>：年滿 60 歲請領時，可選擇一次領出全部累積金額，或轉為按月領取「月退休金」。月退休金是將專戶金額依請領年齡對應的平均餘命及利率換算，每月固定發給。實際金額因人而異，建議使用<a href="https://edesk.bli.gov.tw" style="color:#047857;text-decoration:underline;">勞保局 e 化服務系統</a>試算。</p>
+
+      <h4 style="font-size:17px;font-weight:700;color:#074d36;margin:24px 0 10px;">🔹 公式 B：勞保老年年金（年資滿 15 年可月領）</h4>
+      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 8px;">勞保屬於社會保險，退休後按月領取老年年金。有兩種公式，勞保局<strong>自動擇優</strong>發給：</p>
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:20px 24px;margin:0 0 14px;font-size:16px;line-height:2;">
+        <strong>A 式 ＝ 平均月投保薪資 × 保險年資 × 0.775% ＋ NT$3,000</strong><br/>
+        <strong>B 式 ＝ 平均月投保薪資 × 保險年資 × 1.55%</strong>
+      </div>
+      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 8px;">逐項說明：</p>
+      <ul style="color:#1f2937;font-size:15px;line-height:1.8;padding-left:20px;margin:0 0 14px;">
+        <li style="margin-bottom:6px;"><strong>平均月投保薪資</strong>：加保期間最高 60 個月的月投保薪資平均值。未滿 5 年者以實際投保年資計算。</li>
+        <li style="margin-bottom:6px;"><strong>保險年資</strong>：參加勞保的累計年數。換工作不會中斷，年資可以帶著走。</li>
+        <li style="margin-bottom:6px;"><strong>0.775% 與 1.55%</strong>：法定給付率。A 式有 NT$3,000 保底加計金額，對低薪、短年資者較有利；B 式無保底，但給付率更高，對高薪、長年資者較有利。</li>
+        <li style="margin-bottom:6px;"><strong>擇優規則</strong>：勞保局會分別計算 A 式和 B 式，取金額較高的發給。一般來說，年資超過 15 年且平均投保薪資偏高的勞工，B 式通常較高。</li>
+        <li><strong>年資未滿 15 年</strong>：只能請領老年一次金（平均月投保薪資 × 給付月數），不能月領。</li>
+      </ul>
+
+      <h4 style="font-size:17px;font-weight:700;color:#074d36;margin:24px 0 10px;">🔹 法定請領年齡</h4>
+      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 8px;">勞保老年年金的請領年齡已逐步提高到 <strong>65 歲</strong>（民國 115 年 / 2026 年起，出生年次 52 年含以後）。可提前最多 5 年請領，但每提前 1 年減給 4%，最多減 20%。</p>
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:16px 20px;margin:0 0 14px;">
+        <table style="width:100%;border-collapse:collapse;font-size:14px;">
+          <thead>
+            <tr style="border-bottom:2px solid #e5e7eb;">
+              <th style="text-align:left;padding:8px 12px;color:#053d2c;">出生年次</th>
+              <th style="text-align:center;padding:8px 12px;color:#053d2c;">法定請領年齡</th>
+              <th style="text-align:center;padding:8px 12px;color:#053d2c;">可提前減給請領</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid #f1f1ee;"><td style="padding:8px 12px;">46 年（含）以前</td><td style="padding:8px 12px;text-align:center;">60 歲</td><td style="padding:8px 12px;text-align:center;">55–59 歲</td></tr>
+            <tr style="border-bottom:1px solid #f1f1ee;"><td style="padding:8px 12px;">47 年</td><td style="padding:8px 12px;text-align:center;">61 歲</td><td style="padding:8px 12px;text-align:center;">56–60 歲</td></tr>
+            <tr style="border-bottom:1px solid #f1f1ee;"><td style="padding:8px 12px;">48 年</td><td style="padding:8px 12px;text-align:center;">62 歲</td><td style="padding:8px 12px;text-align:center;">57–61 歲</td></tr>
+            <tr style="border-bottom:1px solid #f1f1ee;"><td style="padding:8px 12px;">49 年</td><td style="padding:8px 12px;text-align:center;">63 歲</td><td style="padding:8px 12px;text-align:center;">58–62 歲</td></tr>
+            <tr style="border-bottom:1px solid #f1f1ee;"><td style="padding:8px 12px;">50 年</td><td style="padding:8px 12px;text-align:center;">64 歲</td><td style="padding:8px 12px;text-align:center;">59–63 歲</td></tr>
+            <tr><td style="padding:8px 12px;">51 年（含）以後</td><td style="padding:8px 12px;text-align:center;font-weight:700;">65 歲</td><td style="padding:8px 12px;text-align:center;">60–64 歲</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:13px;color:#6b7280;margin:0;">來源：<a href="https://www.bli.gov.tw" style="color:#047857;text-decoration:underline;">勞保局</a>，老年年金給付請領年齡規定。</p>
     </div>
-    <div style="margin-bottom:24px;">
-      <h3 style="font-size:18px;font-weight:700;color:#047857;margin:0 0 8px;">勞保老年年金月領多少？</h3>
-      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">勞保年資滿 <strong>15 年</strong>，退休後可以月領老年年金，有 A 式（平均月投保薪資 × 年資 × 0.775% ＋ 3,000 元）和 B 式（平均月投保薪資 × 年資 × 1.55%）兩種公式，勞保局會自動擇優發給。年資未滿 15 年則只能請領老年一次金。完整試算範例可參考 <a href="/article/2026-labor-insurance-pension-calculation" style="color:#047857;text-decoration:underline;">台灣勞保年金怎麼算</a>。</p>
+
+    <!-- 2. 每個預設參數的數據來源 -->
+    <div style="margin-bottom:36px;">
+      <h3 style="font-size:20px;font-weight:700;color:#047857;margin:0 0 12px;">二、預設參數的數據來源與年份</h3>
+      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 16px;">以下每個數字都標明了官方來源與生效日期。</p>
+
+      <ul style="color:#1f2937;font-size:15px;line-height:1.8;padding-left:20px;margin:0 0 20px;">
+        <li style="margin-bottom:10px;"><strong>基本工資：NT$29,500/月（2026 年）</strong><br/>
+        <span style="font-size:13px;color:#6b7280;">來源：<a href="https://www.mol.gov.tw" style="color:#047857;text-decoration:underline;">勞動部</a>。2026 年 1 月 1 日起實施。投保薪資分級表起薪同步拉高至 NT$29,500。</span></li>
+
+        <li style="margin-bottom:10px;"><strong>勞保投保薪資分級表最高級距：NT$45,800/月</strong><br/>
+        <span style="font-size:13px;color:#6b7280;">來源：<a href="https://www.bli.gov.tw" style="color:#047857;text-decoration:underline;">勞保局投保薪資分級表</a>（2026 年 1 月 1 日生效）。月薪超過 NT$45,800 者，勞保仍以 NT$45,800 計。注意：健保上限 NT$313,000、勞退上限 NT$150,000，三者不同。</span></li>
+
+        <li style="margin-bottom:10px;"><strong>勞保費率：12.5%（2026 年）</strong><br/>
+        <span style="font-size:13px;color:#6b7280;">含普通事故保險 11.5% ＋ 就業保險 1%。負擔比例：勞工 20%、雇主 70%、政府 10%。來源：PwC Taiwan payroll taxes 報告（2026/08/20 更新）。</span></li>
+
+        <li style="margin-bottom:10px;"><strong>勞退提撥率：6%（雇主法定最低）</strong><br/>
+        <span style="font-size:13px;color:#6b7280;">來源：《勞工退休金條例》第 14 條。雇主負擔部分不得從勞工薪資中扣除。自願提撥部分由勞工自行負擔，可在 0%–6% 範圍內調整。</span></li>
+
+        <li style="margin-bottom:10px;"><strong>勞退月薪上限：NT$150,000</strong><br/>
+        <span style="font-size:13px;color:#6b7280;">來源：PwC Taiwan 報告（2026/08/20 更新）。勞退提撥以 NT$150,000 為上限，超過部分不計入。一般受薪階級不會觸及。</span></li>
+
+        <li style="margin-bottom:10px;"><strong>勞保年金 A 式加計金額：NT$3,000</strong>、<strong>給付率 0.775% / 1.55%</strong><br/>
+        <span style="font-size:13px;color:#6b7280;">來源：《勞工保險條例》第 58 條之 1。此為法定公式，未經修法不會變動。</span></li>
+
+        <li style="margin-bottom:10px;"><strong>勞退基金保證收益：不低於銀行二年期定存利率</strong><br/>
+        <span style="font-size:13px;color:#6b7280;">來源：《勞工退休金條例》第 23 條及勞動部 2026/08/05 公告。2026 年台灣銀行二年期定存利率約 1.5%–1.7%，即勞退基金的年保證收益率下限。實際收益依勞動基金運用局年度公告為準。</span></li>
+
+        <li style="margin-bottom:0px;"><strong>計算機預設年報酬率 4%</strong><br/>
+        <span style="font-size:13px;color:#6b7280;">此為假設值，介於保證收益（約 1.6%）與歷年平均實際收益（約 4%–5%）之間，屬中性偏保守假設。</span></li>
+      </ul>
     </div>
-    <div style="margin-bottom:24px;">
-      <h3 style="font-size:18px;font-weight:700;color:#047857;margin:0 0 8px;">勞退自提 6% 划算嗎？</h3>
-      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">自提的金額會直接存入你的勞退專戶，每年按保證收益或實際投資收益計算，而且<strong>當年度可從綜合所得稅中全額扣除</strong>，等於馬上省下對應稅率的稅。想知道自提後專戶累積差多少，直接在上面的計算機調整自提比例即可比較。</p>
+
+    <!-- 3. 三個算例 -->
+    <div style="margin-bottom:36px;">
+      <h3 style="font-size:20px;font-weight:700;color:#047857;margin:0 0 12px;">三、三個算例：勞退＋勞保一次看</h3>
+      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 16px;">以下算例假設勞退年報酬率 4%，月薪不變。每組算例分別計算勞退專戶累積和勞保老年年金，最後加總為退休每月總收入。</p>
+
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:24px;margin:0 0 20px;">
+        <h4 style="font-size:16px;font-weight:700;color:#053d2c;margin:0 0 12px;">算例一：月薪 NT$30,000 | 年資 20 年 | 平均投保薪資 NT$30,300</h4>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 6px;"><strong>【勞退新制】</strong></p>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 6px;">
+          雇主月提撥：30,000 × 6% ＝ <strong>NT$1,800</strong><br/>
+          累積總值（4% 年報酬、20 年）＝ 1,800 × [（1.003333）<sup>240</sup> − 1] ÷ 0.003333 ＝ <strong>NT$660,194</strong><br/>
+          其中本金 NT$432,000、收益 NT$228,194（佔 35%）
+        </p>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 6px;"><strong>【勞保老年年金】</strong></p>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 6px;">
+          A 式：30,300 × 20 × 0.775% ＋ 3,000 ＝ NT$7,697/月<br/>
+          B 式：30,300 × 20 × 1.55% ＝ NT$9,393/月<br/>
+          擇優 → <strong>B 式 NT$9,393/月</strong>
+        </p>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">
+          <strong>【退休每月總收入】</strong>：勞保年金 NT$9,393 ＋ 勞退月領（專戶 NT$660,194 分 20 年攤）約 NT$2,751 ＝ 約 <strong>NT$12,144/月</strong>
+        </p>
+      </div>
+
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:24px;margin:0 0 20px;">
+        <h4 style="font-size:16px;font-weight:700;color:#053d2c;margin:0 0 12px;">算例二：月薪 NT$45,800 | 年資 30 年 | 平均投保薪資 NT$45,800（勞保最高級距）</h4>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 6px;"><strong>【勞退新制】</strong></p>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 6px;">
+          雇主月提撥：45,800 × 6% ＝ <strong>NT$2,748</strong><br/>
+          累積總值（4% 年報酬、30 年）＝ 2,748 × [（1.003333）<sup>360</sup> − 1] ÷ 0.003333 ＝ <strong>NT$1,907,248</strong><br/>
+          其中本金 NT$989,280、收益 NT$917,968（佔 48%）
+        </p>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 6px;"><strong>【勞保老年年金】</strong></p>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 6px;">
+          A 式：45,800 × 30 × 0.775% ＋ 3,000 ＝ NT$13,648/月<br/>
+          B 式：45,800 × 30 × 1.55% ＝ NT$21,297/月<br/>
+          擇優 → <strong>B 式 NT$21,297/月</strong>
+        </p>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">
+          <strong>【退休每月總收入】</strong>：勞保年金 NT$21,297 ＋ 勞退月領（專戶 NT$1,907,248 分 20 年攤）約 NT$7,947 ＝ 約 <strong>NT$29,244/月</strong>
+        </p>
+      </div>
+
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:24px;margin:0 0 20px;">
+        <h4 style="font-size:16px;font-weight:700;color:#053d2c;margin:0 0 12px;">算例三：月薪 NT$50,000 | 年資 35 年 | 平均投保薪資 NT$45,800（勞保封頂）</h4>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 6px;"><strong>【勞退新制】</strong></p>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 6px;">
+          雇主月提撥：50,000 × 6% ＝ <strong>NT$3,000</strong>（勞退月薪上限 NT$150,000，未觸及）<br/>
+          累積總值（4% 年報酬、35 年）＝ 3,000 × [（1.003333）<sup>420</sup> − 1] ÷ 0.003333 ＝ <strong>NT$2,741,193</strong><br/>
+          其中本金 NT$1,260,000、收益 NT$1,481,193（佔 54%）
+        </p>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 6px;"><strong>【勞保老年年金】</strong></p>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 6px;">
+          注意：月薪 NT$50,000 但勞保投保薪資封頂 NT$45,800<br/>
+          A 式：45,800 × 35 × 0.775% ＋ 3,000 ＝ NT$15,424/月<br/>
+          B 式：45,800 × 35 × 1.55% ＝ NT$24,846/月<br/>
+          擇優 → <strong>B 式 NT$24,846/月</strong>
+        </p>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">
+          <strong>【退休每月總收入】</strong>：勞保年金 NT$24,846 ＋ 勞退月領（專戶 NT$2,741,193 分 20 年攤）約 NT$11,422 ＝ 約 <strong>NT$36,268/月</strong>
+        </p>
+      </div>
+
+      <div style="background:#fffbeb;border-left:3px solid #fbbf24;border-radius:6px;padding:16px 20px;margin:0 0 0px;">
+        <p style="color:#92400e;font-size:14px;line-height:1.7;margin:0;"><strong>重要提醒</strong>：上述勞退月領以「分 20 年攤」粗估，實際金額須依勞保局月退休金公式計算（考慮請領年齡、平均餘命及利率）。三組算例中，年資越長、報酬率差異的複利效果越顯著——算例三的收益佔比高達 54%，比算例一（35%）多了近 20 個百分點。</p>
+      </div>
     </div>
-    <div>
-      <h3 style="font-size:18px;font-weight:700;color:#047857;margin:0 0 8px;">勞退和勞保年金是同一筆錢嗎？</h3>
-      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">不是。勞退是雇主提撥 6% 的個人專戶儲蓄，勞保年金是社會保險按月給付，兩者<strong>分開計算、可以同時領</strong>。退休規劃時建議分開試算，再把兩筆加總，評估是否足夠支應退休生活。至於國民年金跟勞保年金怎麼區分，可參考 <a href="/article/2026-national-pension-vs-labor-insurance" style="color:#047857;text-decoration:underline;">台灣國民年金 vs 勞保年金</a>。</p>
+
+    <!-- 4. 局限性說明 -->
+    <div style="margin-bottom:36px;">
+      <h3 style="font-size:20px;font-weight:700;color:#047857;margin:0 0 12px;">四、本計算機的局限性</h3>
+      <ul style="color:#1f2937;font-size:15px;line-height:1.8;padding-left:20px;margin:0;">
+        <li style="margin-bottom:8px;"><strong>未計加薪</strong>：算例假設月薪不變。實際勞工會調薪，雇主提撥額會跟著增加。但勞保投保薪資有年度上限（NT$45,800），加薪超過上限後，勞保年金的邊際貢獻為零。</li>
+        <li style="margin-bottom:8px;"><strong>未計自願提撥</strong>：如果你自提 6%，勞退專戶的提撥額翻倍（雇主 6% ＋ 自提 6% ＝ 12%），累積金額會大幅增加，且自提部分可全額扣除所得稅。</li>
+        <li style="margin-bottom:8px;"><strong>投資報酬率波動</strong>：實際報酬每年不同。勞退基金有保證收益（不低於銀行二年期定存），但實際收益依市場表現。計算機使用固定 4% 為中性假設。</li>
+        <li style="margin-bottom:8px;"><strong>月退休金計算較複雜</strong>：實際月退休金依請領年齡、平均餘命及公告利率計算，非簡單的「專戶 ÷ 月數」。勞保局提供<a href="https://edesk.bli.gov.tw" style="color:#047857;text-decoration:underline;">線上試算工具</a>，建議以該工具為準。</li>
+        <li style="margin-bottom:8px;"><strong>未計國民年金</strong>：部分勞工可能同時有國保年資，退休後可另外請領國民年金。本計算機未納入。</li>
+        <li><strong>未計通膨影響</strong>：上述金額為名目金額。退休後實際購買力受通膨侵蝕，可用我們的<a href="/living-cost.html" style="color:#047857;text-decoration:underline;">退休生活費計算機</a>估算通膨調整後的真實需求。</li>
+      </ul>
     </div>
+
+    <!-- 5. 常見誤區 -->
+    <div style="margin-bottom:36px;">
+      <h3 style="font-size:20px;font-weight:700;color:#047857;margin:0 0 12px;">五、5 個常見誤區</h3>
+
+      <div style="margin-bottom:20px;">
+        <h4 style="font-size:16px;font-weight:700;color:#074d36;margin:0 0 6px;">誤區一：「勞保年金和勞退是同一筆錢」</h4>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;"><strong>完全不是。</strong>勞退是雇主每月提撥 6% 到你的個人專戶，像存錢筒；勞保年金是社會保險的按月給付，像領薪水。兩套制度<strong>分開計算、可以同時領</strong>。規畫退休時，應該把兩筆錢分開算，再加總看夠不夠用。</p>
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <h4 style="font-size:16px;font-weight:700;color:#074d36;margin:0 0 6px;">誤區二：「雇主提的 6% 要扣我薪水」</h4>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;"><strong>不是。</strong>依《勞工退休金條例》第 14 條，雇主提繳的 6% 是雇主自己的錢，<strong>不得從勞工薪資中扣除</strong>。如果你的薪資單上有「勞退自提」的扣項，那是你自己選擇額外提撥的部分（自願提撥），跟雇主的 6% 是兩回事。雇主的 6% 是法律義務，不能轉嫁給員工。</p>
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <h4 style="font-size:16px;font-weight:700;color:#074d36;margin:0 0 6px;">誤區三：「高薪低報只影響保費，沒差」</h4>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">差很大。投保薪資直接影響三件事：<strong>① 勞保年金給付金額</strong>（平均月投保薪資越低，領得越少）、<strong>② 失業給付</strong>（以投保薪資 60% 計算）、<strong>③ 職災給付</strong>。雇主高薪低報等於偷了你的退休保障。2026 年勞保最高級距 NT$45,800，月薪超過此數者都應以此級距投保。</p>
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <h4 style="font-size:16px;font-weight:700;color:#074d36;margin:0 0 6px;">誤區四：「勞退基金虧了就不用領了」</h4>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">勞退基金依法享有<strong>保證收益</strong>（不低於銀行二年期定存利率），即使市場虧損，你的專戶收益也不會低於此下限。而且提繳本金是確定在的，不會因為市場波動而消失。2026 年 3 月勞保局已確認 114 年（2025 年）基金收益全數分配給勞工。</p>
+      </div>
+
+      <div style="margin-bottom:0px;">
+        <h4 style="font-size:16px;font-weight:700;color:#074d36;margin:0 0 6px;">誤區五：「年資 20 年就夠月領勞保年金了」</h4>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">月領門檻是年資<strong>滿 15 年</strong>，不是 20 年。但注意：年資未滿 15 年只能領一次金。另外，達到請領年齡後如果繼續工作，可以繼續加保累積年資，年資越長、領得越多。算例二（年資 30 年）的勞保年金 NT$21,297，比算例一（年資 20 年）的 NT$9,393 多了超過一倍，就是年資差異的效果。</p>
+      </div>
+    </div>
+
+    <!-- 6. 頁尾更新日期 -->
+    <div style="border-top:1px solid #e5e7eb;padding-top:20px;margin-top:20px;">
+      <p style="font-size:13px;color:#6b7280;line-height:1.7;margin:0;">
+        <strong>最後更新日期</strong>：2026 年 10 月 30 日<br/>
+        <strong>數據版本</strong>：基本工資 NT$29,500（2026/01/01 生效，勞動部公告）；勞保投保薪資上限 NT$45,800（2026 年分級表，勞保局）；勞保費率 12.5%（2026 年，勞動部）；勞退提撥率 6%（《勞工退休金條例》第 14 條）；勞退月薪上限 NT$150,000（PwC Taiwan 2026 報告）；年金給付率 0.775%/1.55% 及加計金額 NT$3,000（《勞工保險條例》第 58 條之 1）；保證收益率（銀行二年期定存利率，約 1.5%–1.7%）。<br/>
+        <strong>官方來源</strong>：<a href="https://www.bli.gov.tw" style="color:#047857;text-decoration:underline;">勞保局</a>、<a href="https://www.mol.gov.tw" style="color:#047857;text-decoration:underline;">勞動部</a>、<a href="https://edesk.bli.gov.tw" style="color:#047857;text-decoration:underline;">勞保局 e 化服務系統</a>
+      </p>
+    </div>
+
   </div>
 </section>
+
 
 <footer id="about">
   <div class="container">
