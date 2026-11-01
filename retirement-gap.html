@@ -494,6 +494,203 @@
   </div>
 </section>
 
+
+<!-- 計算公式與參數說明 -->
+<section style="max-width:1200px;margin:0 auto;padding:56px 24px 8px;">
+  <div style="background:#fafaf7;border:1px solid #e5e7eb;border-radius:16px;padding:40px;">
+
+    <h2 style="font-size:28px;font-weight:800;color:#053d2c;margin:0 0 12px;">計算公式與參數說明</h2>
+    <p style="color:#4b5563;font-size:16px;line-height:1.8;margin:0 0 32px;">這部退休缺口計算機用什麼邏輯推算你需要多少退休金？預設數字從哪裡來？以下完整拆解計算公式、每個參數的官方數據來源，以及三個不同情境的算例。</p>
+
+    <!-- 1. 完整計算公式 -->
+    <div style="margin-bottom:36px;">
+      <h3 style="font-size:20px;font-weight:700;color:#047857;margin:0 0 12px;">一、完整計算公式</h3>
+      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 14px;">計算機分四步推算你的退休金缺口：</p>
+
+      <h4 style="font-size:17px;font-weight:700;color:#074d36;margin:0 0 10px;">🔹 第一步：通脹調整——退休時每月要多少錢？</h4>
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:20px 24px;margin:0 0 14px;font-size:16px;line-height:2;">
+        <strong>退休時名義月收入 ＝ 當前期望月開支 ×（1 ＋ 通脹率）^ 距退休年數</strong>
+      </div>
+      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 14px;">你輸入的「期望退休後月收入」是<strong>今天的購買力</strong>。但退休時物價已經漲了，所以需要按通脹折算到退休那年的名義金額。例如今天每月 HK$20,000、通脹率 2.5%、距退休 35 年——通脹倍數 ＝（1.025）<sup>35</sup> ≈ 2.3732，退休時名義月收入 ≈ 20,000 × 2.3732 ≈ <strong>HK$47,464</strong>。</p>
+
+      <h4 style="font-size:17px;font-weight:700;color:#074d36;margin:0 0 10px;">🔹 第二步：年金現值——退休那天需要準備多少本金？</h4>
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:20px 24px;margin:0 0 14px;font-size:16px;line-height:2;">
+        <strong>退休所需總本金 ＝ 名義月收入 ×「年金現值係數」</strong><br/>
+        <span style="font-size:14px;color:#4b5563;">年金現值係數 ＝ [1 −（1 ＋ 月回報率）<sup>−總月數</sup>] ÷ 月回報率</span>
+      </div>
+      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 14px;">退休後你的本金會繼續投資、每月有回報。這個公式計算的是：按照預設的投資回報率，你需要一次過準備多少本金，才能每月提取固定金額、持續你預期的退休年數（直到本金用完）。</p>
+      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 14px;">例如名義月收入 HK$47,464、年回報率 5%（月回報率 0.4167%）、退休 25 年（300 個月）：年金現值係數 ≈ 171.06，所需總本金 ≈ 47,464 × 171.06 ≈ <strong>HK$8,119,212</strong>。</p>
+
+      <h4 style="font-size:17px;font-weight:700;color:#074d36;margin:0 0 10px;">🔹 第三步：計算缺口——現有儲蓄覆蓋了多少？</h4>
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:20px 24px;margin:0 0 14px;font-size:16px;line-height:2;">
+        <strong>現有儲蓄終值 ＝ 當前儲蓄 ×（1 ＋ 年回報率）^ 距退休年數</strong><br/>
+        <strong>退休金缺口 ＝ 退休所需總本金 − 現有儲蓄終值</strong>
+      </div>
+      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 14px;">你現有的儲蓄在退休前會繼續按投資回報率增長。例如現有 HK$100,000、年回報率 5%、距退休 35 年：終值 ≈ 100,000 ×（1.05）<sup>35</sup> ≈ <strong>HK$551,602</strong>。缺口 ＝ 8,119,212 − 551,602 ＝ <strong>HK$7,567,610</strong>。</p>
+      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 14px;">如果缺口是負數，代表現有儲蓄已經足夠覆蓋退休開支——恭喜你。</p>
+
+      <h4 style="font-size:17px;font-weight:700;color:#074d36;margin:0 0 10px;">🔹 第四步：每月需儲蓄多少——怎樣補上缺口？</h4>
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:20px 24px;margin:0 0 14px;font-size:16px;line-height:2;">
+        <strong>每月儲蓄額 ＝ 缺口 × 月回報率 ÷ [（1 ＋ 月回報率）^ 總月數 − 1]</strong>
+      </div>
+      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 14px;">這就是「年金終值」的逆運算：如果你每月固定存一筆錢、持續到退休，按照預設回報率滾存，要存多少才能在退休那天剛好補上缺口。</p>
+      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 14px;">續上例：缺口 HK$7,567,610、月回報率 0.4167%、距退休 420 個月——每月需儲蓄 ≈ <strong>HK$6,661</strong>。</p>
+
+      <p style="color:#6b7280;font-size:13px;line-height:1.7;margin:0;">📌 上述公式假設投資回報率與通脹率在整個期間不變。實際情況會因市場波動而不同。本計算機不提供投資建議，僅作規劃參考。</p>
+    </div>
+
+    <!-- 2. 每個預設參數的數據來源 -->
+    <div style="margin-bottom:36px;">
+      <h3 style="font-size:20px;font-weight:700;color:#047857;margin:0 0 12px;">二、預設參數的數據來源與年份</h3>
+      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 16px;">計算機的預設值全部取自官方統計或合理假設，以下逐一標明來源。</p>
+
+      <h4 style="font-size:17px;font-weight:700;color:#074d36;margin:0 0 10px;">🔹 通用參數</h4>
+      <ul style="color:#1f2937;font-size:15px;line-height:1.8;padding-left:20px;margin:0 0 20px;">
+        <li style="margin-bottom:8px;"><strong>退休後生活年數（預設 25 年）</strong>：根據香港政府統計處，2024 年香港男性出生時平均預期壽命 82.7 年、女性 88.2 年；根據台灣內政部統計處《112 年（2023 年）簡易生命表》，台灣整體平均壽命 80.23 年，其中男性 76.94 年、女性 83.74 年。以 65 歲退休計，兩地平均餘命大致落在 17 至 24 年之間，視性別與地區而定。本工具取 25 年為偏高假設，確保不會低估所需本金——實際退休年數請根據你的健康狀況與家族壽命調整。<br/><span style="font-size:13px;color:#6b7280;">來源：<a href="https://www.censtatd.gov.hk/en/scode160.html" style="color:#047857;text-decoration:underline;">香港政府統計處《人口》統計</a>（2024 年出生時平均預期壽命）；<a href="https://www.moi.gov.tw/News_Content.aspx?n=4&amp;sms=9009&amp;s=320039" style="color:#047857;text-decoration:underline;">台灣內政部統計處《112 年簡易生命表》</a>。</span></li>
+        <li style="margin-bottom:8px;"><strong>投資回報率（預設 5%）</strong>：本工具不對投資回報做激進假設。5% 年回報率大致對應一個「60% 股票 + 40% 債券」的穩健配置長期平均回報。根據積金局 2026 年 8 月公布，自強積金制度 2000 年實施以來，混合資產基金及股票基金的平均年率化淨回報（已扣除收費及費用）分別為 4.8% 及 5.1%，同期年率化通脹為 1.8%（<a href="https://www.mpfa.org.hk/info-centre/press-releases/20260818" style="color:#047857;text-decoration:underline;">積金局《統計摘要》</a>）。台灣勞退新制個人專戶 2025 年收益率為 15.6%，但歷年平均約 4%–6%（<a href="https://www.bli.gov.tw/" style="color:#047857;text-decoration:underline;">勞動部勞工保險局</a>）。本工具取 5% 作為中性假設。<br/><span style="font-size:13px;color:#6b7280;">注意：實際投資回報不確定，過去表現不代表未來。</span></li>
+      </ul>
+
+      <h4 style="font-size:17px;font-weight:700;color:#074d36;margin:0 0 10px;">🔹 香港（HKD）</h4>
+      <ul style="color:#1f2937;font-size:15px;line-height:1.8;padding-left:20px;margin:0 0 20px;">
+        <li style="margin-bottom:8px;"><strong>通脹率預設 2.5%</strong>：根據香港政府統計處<a href="https://www.censtatd.gov.hk/en/web_table.html?id=510-60001" style="color:#047857;text-decoration:underline;">綜合消費物價指數</a>，2025 年全年按年升幅約 1.4%，IMF 2026 年 5 月預測香港 2026 年通脹率約 2.1%。本工具取 2.5% 略高於近期趨勢，屬於保守假設——因為退休規劃寧可高估通脹、不要低估。<br/><span style="font-size:13px;color:#6b7280;">來源：<a href="https://www.censtatd.gov.hk/en/scode290.html" style="color:#047857;text-decoration:underline;">政府統計處消費物價指數</a>（2025 年全年 +1.4%）；<a href="https://www.imf.org/zh/news/articles/2026/05/13/mcs-05152026-hong-kong-sar-staff-concluding-statement-of-the-2026-article-iv-mission" style="color:#047857;text-decoration:underline;">IMF 2026 第四條磋商報告</a>。</span></li>
+        <li style="margin-bottom:8px;"><strong>強積金（MPF）作為固定現金流</strong>：如果你係香港僱員，退休後可以從 MPF 提取累積權益。截至 2026 年 6 月底，強積金總資產約 <strong>1.67 萬億港元</strong>（創季度新高），以約 497 萬名成員計，平均每人戶口結餘約 <strong>33 萬港元</strong>（<a href="https://www.mpfa.org.hk" style="color:#047857;text-decoration:underline;">積金局</a>）。本計算機的「現有儲蓄」欄可以輸入你的 MPF 戶口結餘，它會自動計入終值。</li>
+      </ul>
+
+      <h4 style="font-size:17px;font-weight:700;color:#074d36;margin:0 0 10px;">🔹 台灣（TWD）</h4>
+      <ul style="color:#1f2937;font-size:15px;line-height:1.8;padding-left:20px;margin:0 0 14px;">
+        <li style="margin-bottom:8px;"><strong>通脹率預設 1.7%</strong>：根據行政院主計總處公布，2025 年（114 年）CPI 年增率 1.66%，2026 年預測 1.68%。惟 2026 年 1–9 月平均 CPI 年增率已達 1.94%，9 月單月 2.73%。本工具取 1.7% 作為長期中性假設；若你處於通脹上行期，建議上調至 2% 以上。<br/><span style="font-size:13px;color:#6b7280;">來源：<a href="https://eng.dgbas.gov.tw/News_Content.aspx?n=4438&s=235721" style="color:#047857;text-decoration:underline;">主計總處 2025 全年經濟成長概估及 2026 年預測</a>（2026 年 2 月 13 日）；<a href="https://www.stat.gov.tw/" style="color:#047857;text-decoration:underline;">中華民國統計資訊網</a>（2026 年 9 月數據）。</span></li>
+        <li style="margin-bottom:8px;"><strong>勞退新制 + 勞保年金作為固定現金流</strong>：台灣勞工退休後有兩筆固定收入來源。勞退新制個人專戶可一次過或月退領取（2025 年收益率 15.6%，歷年平均約 4%–6%）；勞保老年年金依年資與投保薪資計算，年資 30 年者月退約 1.5–2.5 萬元。這些固定現金流可以降低你的實際缺口。本計算機目前將年金收入計入「期望月開支」的扣減——如果你已知每月年金收入，建議將目標月收入設為「開支減年金」的差額，結果會更準確。</li>
+      </ul>
+    </div>
+
+    <!-- 3. 三個算例 -->
+    <div style="margin-bottom:36px;">
+      <h3 style="font-size:20px;font-weight:700;color:#047857;margin:0 0 12px;">三、三個算例示範</h3>
+      <p style="color:#4b5563;font-size:15px;line-height:1.8;margin:0 0 20px;">以下用三個不同情境，演示計算機的推算邏輯。所有數字已驗算。</p>
+
+      <!-- 算例一 -->
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:24px;margin:0 0 16px;">
+        <h4 style="font-size:16px;font-weight:700;color:#053d2c;margin:0 0 10px;">算例一：香港 · 30 歲 · 中產起步</h4>
+        <ul style="color:#1f2937;font-size:15px;line-height:1.8;padding-left:20px;margin:0 0 10px;">
+          <li>期望退休後月收入：HK$20,000（今天的購買力）</li>
+          <li>30 歲，預計 65 歲退休 → 距退休 <strong>35 年</strong></li>
+          <li>投資回報率 5%、通脹率 2.5%、退休生活 25 年</li>
+          <li>現有儲蓄：HK$100,000</li>
+        </ul>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">
+          通脹倍數 ＝（1.025）<sup>35</sup> ≈ 2.3732<br/>
+          退休名義月收入 ≈ 20,000 × 2.3732 ≈ <strong>HK$47,464</strong><br/>
+          年金現值係數（月回報率 0.4167%，300 個月）≈ 171.06<br/>
+          退休所需總本金 ≈ 47,464 × 171.06 ≈ <strong>HK$8,119,212</strong><br/>
+          現有儲蓄終值 ≈ 100,000 ×（1.05）<sup>35</sup> ≈ <strong>HK$551,602</strong><br/>
+          缺口 ≈ 8,119,212 − 551,602 ＝ <strong>HK$7,567,610</strong><br/>
+          每月需儲蓄 ≈ <strong>HK$6,661</strong><br/>
+          <span style="color:#6b7280;font-size:14px;">→ 30 歲的優勢在於時間。雖然缺口超過 750 萬，但每月只需存 6,661 元——相當於月入的三分之一。如果能善用 MPF 自願供款或開支調整，實際壓力會更低。</span>
+        </p>
+      </div>
+
+      <!-- 算例二 -->
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:24px;margin:0 0 16px;">
+        <h4 style="font-size:16px;font-weight:700;color:#053d2c;margin:0 0 10px;">算例二：台灣 · 40 歲 · 基礎規劃</h4>
+        <ul style="color:#1f2937;font-size:15px;line-height:1.8;padding-left:20px;margin:0 0 10px;">
+          <li>期望退休後月收入：NT$25,000（今天的購買力）</li>
+          <li>40 歲，預計 65 歲退休 → 距退休 <strong>25 年</strong></li>
+          <li>投資回報率 4%、通脹率 1.7%、退休生活 22 年</li>
+          <li>現有儲蓄：NT$300,000</li>
+        </ul>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">
+          通脹倍數 ＝（1.017）<sup>25</sup> ≈ 1.5241<br/>
+          退休名義月收入 ≈ 25,000 × 1.5241 ≈ <strong>NT$38,103</strong><br/>
+          年金現值係數（月回報率 0.3333%，264 個月）≈ 175.38<br/>
+          退休所需總本金 ≈ 38,103 × 175.38 ≈ <strong>NT$6,682,686</strong><br/>
+          現有儲蓄終值 ≈ 300,000 ×（1.04）<sup>25</sup> ≈ <strong>NT$799,751</strong><br/>
+          缺口 ≈ 6,682,686 − 799,751 ＝ <strong>NT$5,882,935</strong><br/>
+          每月需儲蓄 ≈ <strong>NT$11,443</strong><br/>
+          <span style="color:#6b7280;font-size:14px;">→ 台灣通脹較低，通脹倍數只有 1.52，比香港算例溫和。但回報率也較低（4% vs 5%），年金現值係數較高。如果加上勞退新制雇主 6% 提撥的累積額，實際缺口會大幅縮小。</span>
+        </p>
+      </div>
+
+      <!-- 算例三 -->
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:24px;margin:0 0 0;">
+        <h4 style="font-size:16px;font-weight:700;color:#053d2c;margin:0 0 10px;">算例三：香港 · 45 歲 · 中年追趕</h4>
+        <ul style="color:#1f2937;font-size:15px;line-height:1.8;padding-left:20px;margin:0 0 10px;">
+          <li>期望退休後月收入：HK$35,000（今天的購買力）</li>
+          <li>45 歲，預計 60 歲退休 → 距退休 <strong>15 年</strong></li>
+          <li>投資回報率 5%、通脹率 2.5%、退休生活 25 年</li>
+          <li>現有儲蓄：HK$500,000</li>
+        </ul>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">
+          通脹倍數 ＝（1.025）<sup>15</sup> ≈ 1.4483<br/>
+          退休名義月收入 ≈ 35,000 × 1.4483 ≈ <strong>HK$50,690</strong><br/>
+          年金現值係數（月回報率 0.4167%，300 個月）≈ 171.06<br/>
+          退休所需總本金 ≈ 50,690 × 171.06 ≈ <strong>HK$8,671,108</strong><br/>
+          現有儲蓄終值 ≈ 500,000 ×（1.05）<sup>15</sup> ≈ <strong>HK$1,039,464</strong><br/>
+          缺口 ≈ 8,671,108 − 1,039,464 ＝ <strong>HK$7,631,644</strong><br/>
+          每月需儲蓄 ≈ <strong>HK$28,552</strong><br/>
+          <span style="color:#6b7280;font-size:14px;">→ 起步晚的代價很清楚：同樣約 760 萬缺口，30 歲時每月只需 6,661 元，45 歲就要 28,552 元——超過 4 倍。這就是為什麼退休規劃「越早越好」。不過，如果能延後退休到 65 歲、或調低生活期望，每月儲蓄壓力會明顯減輕。</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- 4. 局限性說明 -->
+    <div style="margin-bottom:36px;">
+      <h3 style="font-size:20px;font-weight:700;color:#047857;margin:0 0 12px;">四、本工具的局限性</h3>
+      <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0 0 12px;">這部計算機的目的是幫你建立退休缺口的初步概念。以下情況它<strong>無法完全涵蓋</strong>：</p>
+      <ul style="color:#1f2937;font-size:15px;line-height:1.8;padding-left:20px;margin:0;">
+        <li style="margin-bottom:8px;"><strong>固定年金現金流未獨立計算</strong>：本工具沒有把強積金、勞保年金、國民年金等固定收入獨立拆出來計算現值，而是讓用戶自行將「期望月收入」扣減年金後輸入。如果你已知每月將收到的年金金額，建議手動扣減後再計算，結果會更準確。</li>
+        <li style="margin-bottom:8px;"><strong>投資回報率與通脹率假設固定</strong>：實際市場回報會大幅波動。以 MPF 為例，2024 年股票基金回報 19.6%，但最差年份可以虧 30% 以上。本工具用固定回報率，僅供長期規劃參考，不代表任何年份的實際表現。</li>
+        <li style="margin-bottom:8px;"><strong>未考慮突發醫療與長照支出</strong>：重大疾病、手術、長期照護的開支可觀且不可預測。以香港為例，社署 2026 年 4 月起生效的院舍券面值：護理安老宿位每月 HK$17,015、護理院宿位每月 HK$21,982。這些費用通常不在一般退休預算內。</li>
+        <li style="margin-bottom:8px;"><strong>未計及政策變動</strong>：強積金制度、勞保/勞退改革、公共醫療資助變化等，都可能直接影響退休收入和開支。例如台灣勞保破產風險、香港強積金對沖取消（2025 年 11 月生效）等，都無法在計算機中反映。</li>
+        <li><strong>匯率與跨境因素</strong>：如果你計劃退休後移居其他地區，本工具不處理匯率波動或當地生活成本差異。需要用當地的通脹率和貨幣重新計算。</li>
+      </ul>
+    </div>
+
+    <!-- 5. 常見誤區 -->
+    <div style="margin-bottom:36px;">
+      <h3 style="font-size:20px;font-weight:700;color:#047857;margin:0 0 12px;">五、計算退休金缺口的常見誤區</h3>
+
+      <div style="margin-bottom:16px;">
+        <h4 style="font-size:16px;font-weight:700;color:#074d36;margin:0 0 6px;">❌ 誤區一：用今天的金額直接加總</h4>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">「我退休後每月花 2 萬，活 25 年，所以需要 2 萬 × 12 × 25 ＝ 600 萬」——這是<strong>最常見的錯誤</strong>。它假設未來 25 年物價不變。但通脹的複利效果驚人：以年增 2.5% 計算，35 年後你需要 HK$47,464 才能買到今天 HK$20,000 的東西。不把通脹算進去，所需本金會被低估接近一半。</p>
+      </div>
+
+      <div style="margin-bottom:16px;">
+        <h4 style="font-size:16px;font-weight:700;color:#074d36;margin:0 0 6px;">❌ 誤區二：忽略投資回報對本金的支撐</h4>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">另一極端是認為「我需要準備 800 萬現金」。實際上，退休後你的本金仍然在投資、仍然有回報。按照 5% 年回報率，800 萬本金第一年就賺 40 萬——你不需要把所有錢「花掉」，只需要每月提取開支部分。年金現值公式正是用來計算「在持續獲得投資回報的前提下，需要多少本金才能支撐每月提取」。</p>
+      </div>
+
+      <div style="margin-bottom:16px;">
+        <h4 style="font-size:16px;font-weight:700;color:#074d36;margin:0 0 6px;">❌ 誤區三：只看 MPF 或勞退，不看整體缺口</h4>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">很多人查了一下 MPF 戶口，「有 30 萬，夠了」。但 30 萬在退休後按 5% 回報率，每月只能支撐約 HK$1,700 左右（以 25 年計算）。而你退休後每月可能需要 4–5 萬。MPF 和勞退只是退休收入的其中一部分，缺口可能比你想像的大得多。</p>
+      </div>
+
+      <div style="margin-bottom:16px;">
+        <h4 style="font-size:16px;font-weight:700;color:#074d36;margin:0 0 6px;">❌ 誤區四：以為通脹跟自己無關</h4>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">「通脹 2%？感覺沒甚麼啊。」但 2% 通脹的含義是：每 36 年物價翻一倍。如果你 30 歲退休、活到 85 歲，55 年間物價會漲到今天的 <strong>2.96 倍</strong>。今天 HK$100 能買到的東西，到那時候需要 HK$296。這對固定收入的退休人士影響特別大——你的年金不會每年按通脹調整，但超市的標籤會。</p>
+      </div>
+
+      <div>
+        <h4 style="font-size:16px;font-weight:700;color:#074d36;margin:0 0 6px;">❌ 誤區五：以為起步晚就沒救了</h4>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">算例三顯示，45 歲起步每月要存 28,552 元——確實比 30 歲時的 6,661 元高很多。但這不意味著「沒救了」。你可以：①延後退休（60 → 65 歲，少了 5 年提取、多了 5 年滾存）②降低生活期望（月開支 35,000 → 25,000）③提高回報率（需要承擔更多風險）④善用免稅工具（MPF TVC、勞退自提）把實際缺口縮小。40 歲後開始仍然來得及，只是需要更有策略。詳見 <a href="/article/start-at-40" style="color:#047857;text-decoration:underline;">40 歲開始規劃退休</a>。</p>
+      </div>
+    </div>
+
+    <!-- 6. 頁尾更新資訊 -->
+    <div style="border-top:1px solid #e5e7eb;padding-top:20px;margin-top:8px;">
+      <p style="color:#6b7280;font-size:13px;line-height:1.7;margin:0;">
+        <strong>最後更新日期</strong>：2026 年 11 月 1 日<br/>
+        <strong>數據版本</strong>：v1.0<br/>
+        <strong>主要數據來源</strong>：<br/>
+         香港：政府統計處 2024 年人口數據（出生時平均預期壽命 男 82.7 年、女 88.2 年）、綜合消費物價指數（2025 年全年 +1.4%）、IMF 2026 年第四條磋商報告（2026 年 5 月）、積金局《強積金計劃統計摘要》（2026 年 6 月號）<br/>
+         台灣：內政部統計處 112 年簡易生命表（整體平均壽命 80.23 年，男 76.94、女 83.74）、行政院主計總處 CPI 數據（2025 年 +1.66%、2026 年 1–9 月平均 +1.94%）、勞動部勞保局勞退收益率數據（2025 年 15.6%）<br/>
+         安老院舍：社會福利署「長者院舍照顧服務券計劃」共同付款金額表（2026 年 4 月 1 日生效）<br/>
+        <strong>免責聲明</strong>：本頁面所有數據及計算結果僅供參考，不構成任何投資或理財建議。實際退休規劃請諮詢持牌理財顧問。
+      </p>
+    </div>
+
+  </div>
+</section>
+
 <!-- SEO FAQ 內容區塊 -->
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"什麼是退休金缺口？","acceptedAnswer":{"@type":"Answer","text":"退休金缺口就是退休後需要的總本金，減去你已有的儲蓄、強積金或勞退勞保年金預估給付後，中間不足的差額。這個計算機會把通脹和投資回報都算進去，幫你算出缺口大小，以及現在每個月需要額外存多少錢。"}},{"@type":"Question","name":"用退休計算機需要準備哪些資料？","acceptedAnswer":{"@type":"Answer","text":"大約四樣：預計退休年齡、退休後每月預計花費、目前已有的退休儲蓄，以及預期投資回報率。每月花費可以先用我們的退休生活費計算機分類估好，香港用戶選 HKD、台灣用戶選 TWD，計算機會自動換算。"}},{"@type":"Question","name":"通脹對退休金影響多大？","acceptedAnswer":{"@type":"Answer","text":"影響非常大。以每年3%通脹計算，今天每月花2萬元的生活水準，20年後需要約36,000元才買得到同樣的東西。計算機已內建通脹調整，算出的是退休當時幣值的真實需求，而不是今天的數字。"}},{"@type":"Question","name":"算出來缺口很大怎麼辦？","acceptedAnswer":{"@type":"Answer","text":"有三個方向：提高每月儲蓄金額、延後退休年齡讓複利多跑幾年、或提高投資回報率。善用強積金自願供款、勞退自提等免稅工具也有幫助。建議先用4%法則概念抓本金目標，再用本計算機微調你的每月儲蓄計劃。"}}]}

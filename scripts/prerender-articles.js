@@ -199,11 +199,11 @@ function buildPage(a, body) {
   const cover = a.coverImage || a.cover || '';
   const pageTitle = title + ' — Pensionwise 養老智';
 
-  tpl = tpl.replace(/<title id="pageTitle">[^<]*<\/title>/, '<title id="pageTitle">' + escHtml(pageTitle) + '</title>');
-  tpl = tpl.replace(/<meta name="description" content="[^"]*" \/>/, '<meta name="description" content="' + escHtml(desc) + '" />');
-  tpl = tpl.replace(/<link rel="canonical" href="[^"]*" \/>/, '<link rel="canonical" href="' + canonical + '" />');
-  tpl = tpl.replace(/<meta property="og:title" content="[^"]*" \/>/, '<meta property="og:title" content="' + escHtml(pageTitle) + '" />');
-  tpl = tpl.replace(/<meta property="og:description" content="[^"]*" \/>/, '<meta property="og:description" content="' + escHtml(desc) + '" />');
+  tpl = tpl.replace(/<title id="pageTitle">[^<]*<\/title>/, () => '<title id="pageTitle">' + escHtml(pageTitle) + '</title>');
+  tpl = tpl.replace(/<meta name="description" content="[^"]*" \/>/, () => '<meta name="description" content="' + escHtml(desc) + '" />');
+  tpl = tpl.replace(/<link rel="canonical" href="[^"]*" \/>/, () => '<link rel="canonical" href="' + canonical + '" />');
+  tpl = tpl.replace(/<meta property="og:title" content="[^"]*" \/>/, () => '<meta property="og:title" content="' + escHtml(pageTitle) + '" />');
+  tpl = tpl.replace(/<meta property="og:description" content="[^"]*" \/>/, () => '<meta property="og:description" content="' + escHtml(desc) + '" />');
 
   const jsonld = {
     '@context': 'https://schema.org',
@@ -226,12 +226,12 @@ function buildPage(a, body) {
   if (cover) extra += '<meta property="og:image" content="' + SITE + cover + '" />\n';
   extra += '<meta property="og:url" content="' + canonical + '" />\n';
   extra += '<script type="application/ld+json">' + JSON.stringify(jsonld) + '</script>';
-  tpl = tpl.replace(/(<meta property="og:locale" content="zh_Hant" \/>)/, '$1\n' + extra);
+  tpl = tpl.replace(/(<meta property="og:locale" content="zh_Hant" \/>)/, (m) => m + '\n' + extra);
 
   const contentHtml = buildContent(a, body);
   tpl = tpl.replace(
     /<div id="content">\s*<div class="article-loading">載入中⋯<\/div>\s*<\/div>/,
-    '<div id="content">\n' + contentHtml + '\n</div>'
+    () => '<div id="content">\n' + contentHtml + '\n</div>'
   );
   return tpl;
 }
