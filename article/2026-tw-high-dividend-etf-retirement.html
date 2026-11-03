@@ -460,6 +460,12 @@
 })();
 
 (async function() {
+  // 舊版 ?slug= 網址一律導向靜態文章頁，避免同一內容兩個 URL 分散權重
+  var _legacySlug = new URLSearchParams(window.location.search).get('slug');
+  if (_legacySlug && window.location.pathname === '/article.html') {
+    window.location.replace('/article/' + encodeURIComponent(_legacySlug));
+    return;
+  }
   // 預渲染頁已含靜態內容，跳過 SPA 渲染以免覆蓋
   if (document.querySelector('#content .article-hero')) return;
   const params = new URLSearchParams(window.location.search);

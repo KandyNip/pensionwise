@@ -212,7 +212,7 @@ function buildPage(a, body) {
     description: desc,
     image: cover ? SITE + cover : SITE + '/favicon.png',
     datePublished: a.date || '',
-    dateModified: a.date || '',
+    dateModified: a.updated || a.date || '',
     author: { '@type': 'Person', name: a.authorName || 'Pensionwise 編輯部' },
     publisher: {
       '@type': 'Organization',

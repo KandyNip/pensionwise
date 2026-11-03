@@ -141,7 +141,7 @@ MPF呢家嘢，真係唔係「供咗就算」。你花少少時間研究下基�
 **相關文章推薦**：
 - [2026 MPF 強積金完全指南：從供款到退休提取](/article/2026-mpf-complete-guide)
 - [40歲開始規劃退休：還來得及嗎？](/article/start-at-40)
-- [通脹如何吃掉你的退休金](/article/2026-inflation-impact-retirement)
+- [通脹如何吃掉你的退休金](/article/2026-retirement-inflation-purchasing-power)
 
 **實用工具**：
 - [MPF強積金計算器](/mpf.html) — 計算你的MPF累積金額

@@ -303,7 +303,7 @@
 <p><img src="/assets/images/fw-park.jpg" alt="清晨公園裡，長者們打太極、快走、做伸展，保持健康活力" loading="lazy" style="width:100%;border-radius:16px;margin:16px 0;"></p>
 <h2>別忘了三件4%法則沒算進去的事</h2>
 <p><strong>醫療與長照開支</strong>：法則假設支出平平穩穩，但65歲之後，醫療和長照費用往往是階梯式往上跳，這也是壓垮退休組合最常見的突發因素。保持身體健康、預先規劃醫療保障，等於是給提款率加了一層保險。</p>
-<p><strong>高通脹時段</strong>：1970年代、2022至2023年都證明過，物價連續幾年大漲時，「按通脹加發的提款」會在市場最慘的時候加速消耗本金。通脹具體怎麼吃掉你的退休金，這篇<a href="/article/2026-inflation-impact-retirement" target="_blank" rel="noopener" style="color:#047857;">通脹如何吃掉你的退休金</a>講得很完整，建議搭配閱讀。</p>
+<p><strong>高通脹時段</strong>：1970年代、2022至2023年都證明過，物價連續幾年大漲時，「按通脹加發的提款」會在市場最慘的時候加速消耗本金。通脹具體怎麼吃掉你的退休金，這篇<a href="/article/2026-retirement-inflation-purchasing-power" target="_blank" rel="noopener" style="color:#047857;">通脹如何吃掉你的退休金</a>講得很完整，建議搭配閱讀。</p>
 <p><strong>黑天鵝與心態</strong>：法則裡的「成功」，定義只是30年後帳戶還剩1塊錢，不是「過程中帳面腰斬你也照樣睡得著」。帳面跌掉一半還能按表操課，考驗的是心臟，不是算術。所以選提款率之前，先誠實問自己能承受多大的帳面波動。</p>
 <h2>寫在最後：4%是起點，不是答案</h2>
 <p>4%法則不是什麼定律，它是一個用近百年數據撐起來的參考起點。對港台的我們來說，比較穩的做法可以歸納成四句話：<strong>用3%至3.5%抓本金目標、組合全球分散、壓低基金費用、備好現金桶，再依每年組合表現微調提款。</strong></p>
@@ -409,6 +409,12 @@
 })();
 
 (async function() {
+  // 舊版 ?slug= 網址一律導向靜態文章頁，避免同一內容兩個 URL 分散權重
+  var _legacySlug = new URLSearchParams(window.location.search).get('slug');
+  if (_legacySlug && window.location.pathname === '/article.html') {
+    window.location.replace('/article/' + encodeURIComponent(_legacySlug));
+    return;
+  }
   // 預渲染頁已含靜態內容，跳過 SPA 渲染以免覆蓋
   if (document.querySelector('#content .article-hero')) return;
   const params = new URLSearchParams(window.location.search);

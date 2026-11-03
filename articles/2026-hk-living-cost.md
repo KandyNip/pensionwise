@@ -123,7 +123,7 @@ featured: false
 
 香港退休計劃協會嘅研究話，退休人士如果要維持每月HK$20,000嘅基線開支，男性需要儲HK$460萬、女性需要HK$540萬——呢個數對大部分人嚟講都好遙遠。如果你而家40歲仲未開始認真規劃，建議先睇下[40歲開始規劃退休嘅追趕策略](/article/start-at-40)。
 
-但數字只係參考，最緊要係**知道自己嘅生活需要乜嘢**，然後倒返轉計你需要幾多儲備。順帶提醒，通脹會進一步推高未來生活費，可以睇埋[通脹如何蠶食退休金](/article/2026-inflation-impact-retirement)。
+但數字只係參考，最緊要係**知道自己嘅生活需要乜嘢**，然後倒返轉計你需要幾多儲備。順帶提醒，通脹會進一步推高未來生活費，可以睇埋[通脹如何蠶食退休金](/article/2026-retirement-inflation-purchasing-power)。
 
 下一篇我會寫通脹點樣蠶食你嘅退休金——呢個係好多人都忽略嘅隱形殺手。
 
@@ -133,5 +133,5 @@ featured: false
 
 - [2026 MPF 強積金完全指南：從供款到退休提取](/article/2026-mpf-complete-guide)
 - [40歲開始規劃退休：還來得及嗎？](/article/start-at-40)
-- [通脹如何吃掉你的退休金：2026年最被忽視的退休殺手](/article/2026-inflation-impact-retirement)
+- [退休通脹怎麼辦？30年購買力保衛戰](/article/2026-retirement-inflation-purchasing-power)
 - [立即試用退休生活費計算機](/living-cost.html)

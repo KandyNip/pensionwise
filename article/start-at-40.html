@@ -341,7 +341,7 @@
 <h3>錯誤1：以為「太晚了」就放棄</h3>
 <p>40歲不晚。真正晚的是50歲、60歲才開始。40歲還有25年的複利時間，只要行動起來，就能追上。</p>
 <h3>錯誤2：只存定期</h3>
-<p>通脹會吃掉你的錢。每年3%的通脹，25年後HK$100萬的購買力只剩一半。一定要投資，不能只存銀行。更詳細的通脹影響分析，可參考<a href="/article/2026-inflation-impact-retirement" target="_blank" rel="noopener" style="color:#047857;">通脹如何吃掉你的退休金</a>。</p>
+<p>通脹會吃掉你的錢。每年3%的通脹，25年後HK$100萬的購買力只剩一半。一定要投資，不能只存銀行。更詳細的通脹影響分析，可參考<a href="/article/2026-retirement-inflation-purchasing-power" target="_blank" rel="noopener" style="color:#047857;">通脹如何吃掉你的退休金</a>。</p>
 <h3>錯誤3：追逐高回報</h3>
 <p>40歲不是賭博的年紀。不要因為「落後了」就衝進高風險投資（加密貨幣、期貨、槓桿產品）。一旦虧損，你可能沒有時間 recover。</p>
 <h3>錯誤4：忽略醫療保障</h3>
@@ -355,7 +355,7 @@
 <h2>相關文章</h2>
 <ul>
 <li><a href="/article/2026-mpf-complete-guide" target="_blank" rel="noopener" style="color:#047857;">2026 MPF 強積金完全指南：從供款到退休提取</a></li>
-<li><a href="/article/2026-inflation-impact-retirement" target="_blank" rel="noopener" style="color:#047857;">通脹如何吃掉你的退休金：2026年最被忽視的退休殺手</a></li>
+<li><a href="/article/2026-retirement-inflation-purchasing-power" target="_blank" rel="noopener" style="color:#047857;">退休通脹怎麼辦？30年購買力保衛戰</a></li>
 <li><a href="/article/2026-hk-living-cost" target="_blank" rel="noopener" style="color:#047857;">香港退休每月生活費要幾多？2026真實開支拆解</a></li>
 <li><a href="/article/2026-labor-pension-guide" target="_blank" rel="noopener" style="color:#047857;">台灣勞退新制完整指南：雇主提撥6% + 自提免稅</a></li>
 <li><a href="/retirement-gap.html" target="_blank" rel="noopener" style="color:#047857;">立即試用退休缺口計算器</a></li>
@@ -448,6 +448,12 @@
 })();
 
 (async function() {
+  // 舊版 ?slug= 網址一律導向靜態文章頁，避免同一內容兩個 URL 分散權重
+  var _legacySlug = new URLSearchParams(window.location.search).get('slug');
+  if (_legacySlug && window.location.pathname === '/article.html') {
+    window.location.replace('/article/' + encodeURIComponent(_legacySlug));
+    return;
+  }
   // 預渲染頁已含靜態內容，跳過 SPA 渲染以免覆蓋
   if (document.querySelector('#content .article-hero')) return;
   const params = new URLSearchParams(window.location.search);

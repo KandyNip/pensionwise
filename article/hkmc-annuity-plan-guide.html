@@ -373,7 +373,7 @@
 <ul>
 <li><a href="/article/2026-mpf-complete-guide" target="_blank" rel="noopener" style="color:#047857;">2026 MPF 強積金完全指南：從供款到退休提取</a></li>
 <li><a href="/article/2026-mpf-offset-abolition-guide" target="_blank" rel="noopener" style="color:#047857;">強積金對衝取消全攻略</a></li>
-<li><a href="/article/2026-inflation-impact-retirement" target="_blank" rel="noopener" style="color:#047857;">通脹如何吃掉你的退休金</a></li>
+<li><a href="/article/2026-retirement-inflation-purchasing-power" target="_blank" rel="noopener" style="color:#047857;">通脹如何吃掉你的退休金</a></li>
 <li><a href="/article/2026-hk-living-cost" target="_blank" rel="noopener" style="color:#047857;">香港退休每月生活費要幾多？2026真實開支拆解</a></li>
 <li><a href="/article/2026-4-percent-rule-retirement-withdrawal" target="_blank" rel="noopener" style="color:#047857;">退休提款策略：4%法則</a></li>
 <li><a href="/retirement-gap.html" target="_blank" rel="noopener" style="color:#047857;">立即試用退休缺口計算機</a></li>
@@ -466,6 +466,12 @@
 })();
 
 (async function() {
+  // 舊版 ?slug= 網址一律導向靜態文章頁，避免同一內容兩個 URL 分散權重
+  var _legacySlug = new URLSearchParams(window.location.search).get('slug');
+  if (_legacySlug && window.location.pathname === '/article.html') {
+    window.location.replace('/article/' + encodeURIComponent(_legacySlug));
+    return;
+  }
   // 預渲染頁已含靜態內容，跳過 SPA 渲染以免覆蓋
   if (document.querySelector('#content .article-hero')) return;
   const params = new URLSearchParams(window.location.search);

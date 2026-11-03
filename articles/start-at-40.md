@@ -160,7 +160,7 @@ readMinutes: 7
 
 ### 錯誤2：只存定期
 
-通脹會吃掉你的錢。每年3%的通脹，25年後HK$100萬的購買力只剩一半。一定要投資，不能只存銀行。更詳細的通脹影響分析，可參考[通脹如何吃掉你的退休金](/article/2026-inflation-impact-retirement)。
+通脹會吃掉你的錢。每年3%的通脹，25年後HK$100萬的購買力只剩一半。一定要投資，不能只存銀行。更詳細的通脹影響分析，可參考[通脹如何吃掉你的退休金](/article/2026-retirement-inflation-purchasing-power)。
 
 ### 錯誤3：追逐高回報
 
@@ -185,7 +185,7 @@ readMinutes: 7
 ## 相關文章
 
 - [2026 MPF 強積金完全指南：從供款到退休提取](/article/2026-mpf-complete-guide)
-- [通脹如何吃掉你的退休金：2026年最被忽視的退休殺手](/article/2026-inflation-impact-retirement)
+- [退休通脹怎麼辦？30年購買力保衛戰](/article/2026-retirement-inflation-purchasing-power)
 - [香港退休每月生活費要幾多？2026真實開支拆解](/article/2026-hk-living-cost)
 - [台灣勞退新制完整指南：雇主提撥6% + 自提免稅](/article/2026-labor-pension-guide)
 - [立即試用退休缺口計算器](/retirement-gap.html)

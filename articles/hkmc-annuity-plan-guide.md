@@ -212,7 +212,7 @@ HKMC年金嘅核心價值好簡單：**用確定性換安心。** 你放棄咗�
 
 - [2026 MPF 強積金完全指南：從供款到退休提取](/article/2026-mpf-complete-guide)
 - [強積金對衝取消全攻略](/article/2026-mpf-offset-abolition-guide)
-- [通脹如何吃掉你的退休金](/article/2026-inflation-impact-retirement)
+- [通脹如何吃掉你的退休金](/article/2026-retirement-inflation-purchasing-power)
 - [香港退休每月生活費要幾多？2026真實開支拆解](/article/2026-hk-living-cost)
 - [退休提款策略：4%法則](/article/2026-4-percent-rule-retirement-withdrawal)
 - [立即試用退休缺口計算機](/retirement-gap.html)

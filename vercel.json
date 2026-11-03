@@ -6,6 +6,17 @@
   "framework": null,
   "routes": [
     {
+      "src": "/article/2026-inflation-impact-retirement(\\.html)?/?",
+      "status": 301,
+      "headers": {
+        "Location": "/article/2026-retirement-inflation-purchasing-power"
+      }
+    },
+    {
+      "src": "/articles/(.*)",
+      "status": 404
+    },
+    {
       "src": "/article/([^/]+)",
       "dest": "/article/$1.html"
     },

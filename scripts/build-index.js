@@ -83,6 +83,7 @@ try {
         slug: filename.replace(/\.md$/, ''),
         title: data.title || '',
         publishDate: data.publishDate || data.date || '',
+        updated: data.updated || '',
         excerpt: data.excerpt || data.description || '',
         cover: data.cover || data.coverImage || '',
         coverAlt: data.coverAlt || '',

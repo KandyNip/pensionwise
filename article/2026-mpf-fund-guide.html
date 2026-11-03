@@ -311,7 +311,7 @@
 <ul>
 <li><a href="/article/2026-mpf-complete-guide" target="_blank" rel="noopener" style="color:#047857;">2026 MPF 強積金完全指南：從供款到退休提取</a></li>
 <li><a href="/article/start-at-40" target="_blank" rel="noopener" style="color:#047857;">40歲開始規劃退休：還來得及嗎？</a></li>
-<li><a href="/article/2026-inflation-impact-retirement" target="_blank" rel="noopener" style="color:#047857;">通脹如何吃掉你的退休金</a></li>
+<li><a href="/article/2026-retirement-inflation-purchasing-power" target="_blank" rel="noopener" style="color:#047857;">通脹如何吃掉你的退休金</a></li>
 </ul>
 <p><strong>實用工具</strong>：</p>
 <ul>
@@ -406,6 +406,12 @@
 })();
 
 (async function() {
+  // 舊版 ?slug= 網址一律導向靜態文章頁，避免同一內容兩個 URL 分散權重
+  var _legacySlug = new URLSearchParams(window.location.search).get('slug');
+  if (_legacySlug && window.location.pathname === '/article.html') {
+    window.location.replace('/article/' + encodeURIComponent(_legacySlug));
+    return;
+  }
   // 預渲染頁已含靜態內容，跳過 SPA 渲染以免覆蓋
   if (document.querySelector('#content .article-hero')) return;
   const params = new URLSearchParams(window.location.search);
