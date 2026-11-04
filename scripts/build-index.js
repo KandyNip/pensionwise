@@ -146,7 +146,7 @@ try {
   articles.forEach(a => {
     xml += '  <url>\n';
     xml += `    <loc>${BASE_URL}/article/${a.slug}</loc>\n`;
-    xml += `    <lastmod>${a.publishDate || TODAY}</lastmod>\n`;
+    xml += `    <lastmod>${a.updated || a.publishDate || TODAY}</lastmod>\n`;
     xml += `    <changefreq>weekly</changefreq>\n`;
     xml += `    <priority>0.9</priority>\n`;
     xml += '  </url>\n';

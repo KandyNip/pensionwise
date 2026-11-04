@@ -177,7 +177,7 @@ function buildContent(a, body) {
   h += '<span>by <strong>' + escHtml(a.authorName || '編輯部') + '</strong>';
   if (a.authorTitle) h += ' · ' + escHtml(a.authorTitle);
   h += '</span></div>';
-  const dateStr = fmtDate(a.date);
+  const dateStr = fmtDate(a.date || a.publishDate);
   if (dateStr) { h += '<span class="sep"></span><span>' + dateStr + '</span>'; }
   h += '<span class="sep"></span><span>' + countReadMinutes(body) + ' 分鐘閱讀</span>';
   h += '</div></div></div>';
@@ -211,8 +211,8 @@ function buildPage(a, body) {
     headline: title,
     description: desc,
     image: cover ? SITE + cover : SITE + '/favicon.png',
-    datePublished: a.date || '',
-    dateModified: a.updated || a.date || '',
+    datePublished: a.date || a.publishDate || '',
+    dateModified: a.updated || a.date || a.publishDate || '',
     author: { '@type': 'Person', name: a.authorName || 'Pensionwise 編輯部' },
     publisher: {
       '@type': 'Organization',
@@ -264,8 +264,8 @@ function cardHtml(a) {
   const cn = ((a._body || '').match(/[\u4e00-\u9fff]/g) || []).length;
   const mins = Math.max(3, Math.round(cn / 400));
   let dateStr = '';
-  if (a.date) {
-    const d = new Date(a.date);
+  if (a.date || a.publishDate) {
+    const d = new Date(a.date || a.publishDate);
     if (!isNaN(d.getTime())) dateStr = d.getFullYear() + '.' + String(d.getMonth() + 1).padStart(2, '0');
   }
   const rows = [
