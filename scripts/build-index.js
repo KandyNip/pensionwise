@@ -114,21 +114,23 @@ try {
   console.log(`[build-index] 生成 articles.json，共 ${articles.length} 篇文章`);
 
   // 生成 sitemap.xml：靜態頁面 + 文章頁面
+  // mod：該頁最後一次真實修改日。改動頁面內容時順手更新對應日期，
+  // 不要讓 lastmod 每次 build 都變成當天——Google 會因此忽略整個 lastmod。
   const staticPages = [
-    { path: '/', priority: '1.0', changefreq: 'monthly' },
-    { path: '/living-cost.html', priority: '0.8', changefreq: 'monthly' },
-    { path: '/retirement-gap.html', priority: '0.8', changefreq: 'monthly' },
-    { path: '/mpf.html', priority: '0.8', changefreq: 'monthly' },
-    { path: '/labor-pension.html', priority: '0.8', changefreq: 'monthly' },
-    { path: '/articles-hk.html', priority: '0.8', changefreq: 'weekly' },
-    { path: '/articles-tw.html', priority: '0.8', changefreq: 'weekly' },
-    { path: '/articles-general.html', priority: '0.8', changefreq: 'weekly' },
-    { path: '/about.html', priority: '0.5', changefreq: 'yearly' },
-    { path: '/contact.html', priority: '0.4', changefreq: 'yearly' },
-    { path: '/privacy.html', priority: '0.3', changefreq: 'yearly' },
-    { path: '/disclaimer.html', priority: '0.3', changefreq: 'yearly' },
-    { path: '/cookie-policy.html', priority: '0.3', changefreq: 'yearly' },
-    { path: '/terms.html', priority: '0.3', changefreq: 'yearly' },
+    { path: '/', priority: '1.0', changefreq: 'monthly', mod: '2026-11-05' },
+    { path: '/living-cost.html', priority: '0.8', changefreq: 'monthly', mod: '2026-11-05' },
+    { path: '/retirement-gap.html', priority: '0.8', changefreq: 'monthly', mod: '2026-11-05' },
+    { path: '/mpf.html', priority: '0.8', changefreq: 'monthly', mod: '2026-10-30' },
+    { path: '/labor-pension.html', priority: '0.8', changefreq: 'monthly', mod: '2026-10-30' },
+    { path: '/articles-hk.html', priority: '0.8', changefreq: 'weekly', mod: '2026-11-04' },
+    { path: '/articles-tw.html', priority: '0.8', changefreq: 'weekly', mod: '2026-11-04' },
+    { path: '/articles-general.html', priority: '0.8', changefreq: 'weekly', mod: '2026-11-04' },
+    { path: '/about.html', priority: '0.5', changefreq: 'yearly', mod: '2026-10-16' },
+    { path: '/contact.html', priority: '0.4', changefreq: 'yearly', mod: '2026-10-16' },
+    { path: '/privacy.html', priority: '0.3', changefreq: 'yearly', mod: '2026-10-16' },
+    { path: '/disclaimer.html', priority: '0.3', changefreq: 'yearly', mod: '2026-10-16' },
+    { path: '/cookie-policy.html', priority: '0.3', changefreq: 'yearly', mod: '2026-10-16' },
+    { path: '/terms.html', priority: '0.3', changefreq: 'yearly', mod: '2026-10-16' },
   ];
 
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
@@ -137,7 +139,7 @@ try {
   staticPages.forEach(p => {
     xml += '  <url>\n';
     xml += `    <loc>${BASE_URL}${p.path}</loc>\n`;
-    xml += `    <lastmod>${TODAY}</lastmod>\n`;
+    xml += `    <lastmod>${p.mod || TODAY}</lastmod>\n`;
     xml += `    <changefreq>${p.changefreq}</changefreq>\n`;
     xml += `    <priority>${p.priority}</priority>\n`;
     xml += '  </url>\n';
