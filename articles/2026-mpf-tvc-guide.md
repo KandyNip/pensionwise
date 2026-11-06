@@ -12,7 +12,7 @@ regionTag: "HK"
 badge: "香港 · MPF"
 authorName: "Kandy Nip"
 authorSurname: "Nip"
-authorTitle: "PensionWise 編輯部"
+authorTitle: "自由工作者"
 readMinutes: 9
 featured: false
 ---

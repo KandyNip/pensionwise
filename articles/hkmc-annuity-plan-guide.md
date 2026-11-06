@@ -12,7 +12,7 @@ regionTag: "HK"
 badge: "香港 · 年金"
 authorName: "Kandy Nip"
 authorSurname: "Nip"
-authorTitle: "站長"
+authorTitle: "自由工作者"
 readMinutes: 10
 featured: false
 ---

@@ -10,9 +10,9 @@ coverAlt: "一對銀髮夫婦並肩坐在家中，一起看著平板上的退休
 categoryName: 退休理財
 regionTag: 通用
 badge: 通用 · 退休現金流
-authorName: Kandy Nip
-authorSurname: Nip
-authorTitle: PensionWise 編輯部
+authorName: "Kandy Nip"
+authorSurname: "Nip"
+authorTitle: "自由工作者"
 readMinutes: 12
 featured: false
 ---

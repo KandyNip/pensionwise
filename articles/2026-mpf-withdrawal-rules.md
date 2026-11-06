@@ -12,7 +12,7 @@ regionTag: "HK"
 badge: "香港 · MPF"
 authorName: "Kandy Nip"
 authorSurname: "Nip"
-authorTitle: "站長"
+authorTitle: "自由工作者"
 readMinutes: 8
 featured: false
 ---

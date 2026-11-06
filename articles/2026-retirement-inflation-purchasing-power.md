@@ -11,9 +11,9 @@ coverAlt: 一對年長夫婦在街市挑選水果，看著價格標籤若有所�
 categoryName: 退休理財
 regionTag: 通用
 badge: 通用 · 抗通脹
-authorName: Kandy Nip
-authorSurname: Nip
-authorTitle: PensionWise 編輯部
+authorName: "Kandy Nip"
+authorSurname: "Nip"
+authorTitle: "自由工作者"
 readMinutes: 13
 featured: false
 ---

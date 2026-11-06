@@ -10,9 +10,9 @@ coverAlt: "台北街頭退休生活場景"
 categoryName: "台灣 · 勞保年金"
 regionTag: "TW"
 badge: "台灣 · 勞保年金"
-authorName: "Kandy"
+authorName: "Kandy Nip"
 authorSurname: "Nip"
-authorTitle: "PensionWise 編輯部"
+authorTitle: "自由工作者"
 readMinutes: 10
 featured: false
 ---

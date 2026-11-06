@@ -173,8 +173,8 @@ function buildContent(a, body) {
   if (a.badge) h += '<span class="article-badge">' + escHtml(a.badge) + '</span>';
   h += '<h1>' + escHtml(title) + '</h1>';
   h += '<div class="article-meta">';
-  h += '<div class="article-author"><div class="article-author-av">' + escHtml(a.authorSurname || '編') + '</div>';
-  h += '<span>by <strong>' + escHtml(a.authorName || '編輯部') + '</strong>';
+  h += '<div class="article-author"><a href="/author/kandy-nip" class="article-author-av" aria-label="作者頁"><img src="/assets/images/author-kandy-nip.jpg" alt="' + escHtml(a.authorName || 'Kandy Nip') + '" width="32" height="32" loading="lazy" /></a>';
+  h += '<span>by <a href="/author/kandy-nip"><strong>' + escHtml(a.authorName || 'Kandy Nip') + '</strong></a>';
   if (a.authorTitle) h += ' · ' + escHtml(a.authorTitle);
   h += '</span></div>';
   const dateStr = fmtDate(a.date || a.publishDate);
@@ -213,7 +213,15 @@ function buildPage(a, body) {
     image: cover ? SITE + cover : SITE + '/favicon.png',
     datePublished: a.date || a.publishDate || '',
     dateModified: a.updated || a.date || a.publishDate || '',
-    author: { '@type': 'Person', name: a.authorName || 'Pensionwise 編輯部' },
+    author: {
+      '@type': 'Person',
+      name: a.authorName || 'Kandy Nip',
+      url: SITE + '/author/kandy-nip',
+      image: SITE + '/assets/images/author-kandy-nip.jpg',
+      jobTitle: a.authorTitle || '自由工作者',
+      description: '來自香港的自由工作者，因為收入不穩定而開始研究退休規劃，製作 Pensionwise 養老智的退休計算工具與相關文章。',
+      knowsAbout: ['香港強積金 MPF', '台灣勞退新制', '退休金缺口計算', '退休生活費規劃']
+    },
     publisher: {
       '@type': 'Organization',
       name: 'Pensionwise 養老智',

@@ -10,9 +10,9 @@ coverAlt: "香港住宅大廈外牆，陽光照射在密集的樓宇之間"
 categoryName: "香港退休"
 regionTag: "HK"
 badge: "香港 · 安老按揭"
-authorName: Kandy Nip
-authorSurname: Nip
-authorTitle: PensionWise 編輯部
+authorName: "Kandy Nip"
+authorSurname: "Nip"
+authorTitle: "自由工作者"
 readMinutes: 10
 featured: false
 ---

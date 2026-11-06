@@ -10,9 +10,9 @@ coverAlt: "傍晚時分香港中環商業區上班族望向維港天際線"
 categoryName: "香港 · MPF"
 regionTag: "HK"
 badge: "香港 · MPF"
-authorName: "Kandy"
+authorName: "Kandy Nip"
 authorSurname: "Nip"
-authorTitle: "PensionWise 編輯部"
+authorTitle: "自由工作者"
 readMinutes: 10
 featured: false
 ---

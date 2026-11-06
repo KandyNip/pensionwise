@@ -10,9 +10,9 @@ coverAlt: 一位白髮長者提著竹籃，在台灣傳統菜市場攤位前挑�
 categoryName: 台灣退休
 regionTag: TW
 badge: 台灣 · 退休生活
-authorName: Kandy Nip
-authorSurname: Nip
-authorTitle: PensionWise 編輯部
+authorName: "Kandy Nip"
+authorSurname: "Nip"
+authorTitle: "自由工作者"
 readMinutes: 12
 featured: false
 ---

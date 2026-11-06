@@ -10,9 +10,9 @@ coverAlt: "一對白髮夫婦坐在醫院長椅上，手中拿著醫療文件，
 categoryName: 退休理財
 regionTag: 通用
 badge: 通用 · 退休醫療
-authorName: Kandy Nip
-authorSurname: Nip
-authorTitle: PensionWise 編輯部
+authorName: "Kandy Nip"
+authorSurname: "Nip"
+authorTitle: "自由工作者"
 readMinutes: 11
 featured: false
 ---

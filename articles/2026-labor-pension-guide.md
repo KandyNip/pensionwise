@@ -9,7 +9,7 @@ regionTag: "TW"
 categoryName: "台灣退休"
 authorName: "Kandy Nip"
 authorSurname: "Nip"
-authorTitle: "站長"
+authorTitle: "自由工作者"
 readMinutes: 8
 featured: false
 cover: "/assets/images/article-labor-pension-v2.jpg"

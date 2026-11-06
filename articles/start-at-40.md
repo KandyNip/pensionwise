@@ -9,7 +9,7 @@ badge: "通用 · 退休規劃"
 categoryName: "退休規劃"
 authorName: "Kandy Nip"
 authorSurname: "Nip"
-authorTitle: "站長"
+authorTitle: "自由工作者"
 readMinutes: 7
 ---
 

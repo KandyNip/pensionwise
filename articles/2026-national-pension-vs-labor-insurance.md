@@ -10,9 +10,9 @@ coverAlt: "一位中年女性在台北公寓書桌前查看退休金文件"
 categoryName: "退休理財"
 regionTag: TW
 badge: "台灣 · 年金比較"
-authorName: Kandy Nip
-authorSurname: Nip
-authorTitle: PensionWise 編輯部
+authorName: "Kandy Nip"
+authorSurname: "Nip"
+authorTitle: "自由工作者"
 readMinutes: 11
 featured: false
 ---

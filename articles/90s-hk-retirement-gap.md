@@ -10,9 +10,9 @@ coverAlt: "九十年代旺角街頭的霓虹招牌與人潮"
 categoryName: "香港退休"
 regionTag: "HK"
 badge: "香港 · 世代對比"
-authorName: Kandy Nip
-authorSurname: Nip
-authorTitle: PensionWise 編輯部
+authorName: "Kandy Nip"
+authorSurname: "Nip"
+authorTitle: "自由工作者"
 readMinutes: 9
 featured: false
 ---

@@ -11,7 +11,7 @@ regionTag: "TW"
 badge: "台灣 · ETF"
 authorName: "Kandy Nip"
 authorSurname: "Nip"
-authorTitle: "PensionWise 編輯部"
+authorTitle: "自由工作者"
 readMinutes: 10
 featured: false
 ---

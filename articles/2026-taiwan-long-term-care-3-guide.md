@@ -12,7 +12,7 @@ regionTag: "TW"
 badge: "台灣 · 長照3.0"
 authorName: "Kandy Nip"
 authorSurname: "Nip"
-authorTitle: "PensionWise 編輯部"
+authorTitle: "自由工作者"
 readMinutes: 11
 featured: false
 ---

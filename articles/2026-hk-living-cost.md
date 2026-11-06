@@ -10,7 +10,7 @@ badge: "香港 · 生活費"
 categoryName: "香港退休"
 authorName: "Kandy Nip"
 authorSurname: "Nip"
-authorTitle: "站長"
+authorTitle: "自由工作者"
 readMinutes: 6
 featured: false
 ---

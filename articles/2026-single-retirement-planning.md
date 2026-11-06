@@ -12,7 +12,7 @@ regionTag: "通用"
 badge: "通用 · 單身退休"
 authorName: "Kandy Nip"
 authorSurname: "Nip"
-authorTitle: "PensionWise 編輯部"
+authorTitle: "自由工作者"
 readMinutes: 11
 featured: false
 ---

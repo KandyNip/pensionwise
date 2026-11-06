@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="theme-color" content="#047857" />
 <meta name="robots" content="index, follow" />
-<meta name="description" content="關於 Pensionwise 養老智 — 為香港與台灣打工族而做的退休規劃平台。我們的使命、團隊與理念。" />
+<meta name="description" content="Pensionwise 養老智由 Kandy Nip 一個人維護。免費的退休計算工具，數據只用港台官方來源，公式全部公開。這裡說明網站做什麼、為什麼做、內容怎麼來。" />
 <link rel="icon" type="image/png" href="/favicon.png" />
-<title>關於我們 — Pensionwise 養老智</title>
+<title>關於 Pensionwise 養老智 — 誰在做、怎麼做</title>
 <link rel="canonical" href="https://pensionwisetool.com/about.html" />
-<meta property="og:title" content="關於我們 — Pensionwise 養老智" />
-<meta property="og:description" content="關於 Pensionwise 養老智 — 為香港與台灣打工族而做的退休規劃平台。我們的使命、團隊與理念。" />
+<meta property="og:title" content="關於 Pensionwise 養老智 — 誰在做、怎麼做" />
+<meta property="og:description" content="Pensionwise 養老智由 Kandy Nip 一個人維護。免費的退休計算工具，數據只用港台官方來源，公式全部公開。這裡說明網站做什麼、為什麼做、內容怎麼來。" />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="zh_Hant" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -102,6 +102,23 @@
   @media (max-width: 600px) {
     .footer .foot-grid { grid-template-columns: 1fr; gap: 24px; }
   }
+  .author-hero { display: flex; align-items: center; gap: 24px; margin: 32px 0 8px; padding: 24px; background: var(--bg-2); border: 1px solid var(--line); border-radius: 16px; }
+  .author-photo { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; object-position: center; border: 3px solid #fff; box-shadow: 0 4px 16px rgba(5,61,44,.14); flex-shrink: 0; }
+  .author-hero h2 { margin: 0 0 4px; font-size: 20px; }
+  .author-hero p { margin: 0; font-size: 14px; color: var(--ink-3); line-height: 1.6; }
+  .author-hero a { color: var(--green-700); font-weight: 600; text-decoration: none; }
+  .author-hero a:hover { text-decoration: underline; }
+  @media (max-width: 560px) { .author-hero { gap: 16px; padding: 20px; } .author-photo { width: 64px; height: 64px; } }
+
+  @media (max-width: 560px) {
+    .nav { padding: 12px 16px; gap: 8px; }
+    .brand { gap: 6px; min-width: 0; }
+    .brand-logo, .brand-logo img { width: 34px; height: 34px; }
+    .brand-name { font-size: 17px; }
+    .brand-zh { font-size: 9px; letter-spacing: .08em; padding-left: 6px; white-space: nowrap; }
+    .nav-back { padding: 8px 10px; font-size: 13px; white-space: nowrap; flex-shrink: 0; }
+    .nav-back svg { width: 14px; height: 14px; }
+  }
 </style>
 <script>
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -132,30 +149,57 @@
   </nav>
 </div>
 <div class="page-content">
-<div class="eyebrow">關於我們</div>
+<div class="eyebrow">關於</div>
 <h1>Pensionwise 養老智</h1>
-<p>Pensionwise 養老智是一個專為香港與台灣打工族而設的退休規劃平台。我們相信，每個人都值得在退休後過上安心的生活——而好的退休規劃，始於清楚的了解。</p>
+<p>一個專為香港與台灣打工族而做的退休規劃網站。所有工具免費、不用註冊，計算全部在你的瀏覽器完成。</p>
 
-<h2>我們做什麼</h2>
-<p>我們提供完全免費的線上退休計算工具，讓你 3 分鐘內就能看到自己的退休缺口：</p>
+<div class="author-hero">
+  <img src="/assets/images/author-kandy-nip.jpg" alt="Kandy Nip" class="author-photo" width="84" height="84" loading="lazy" />
+  <div>
+    <h2>Kandy Nip</h2>
+    <p>香港自由工作者，這個網站從工具到文章都由我一個人維護。<br/><a href="/author/kandy-nip">看完整的作者介紹 →</a></p>
+  </div>
+</div>
+
+<h2>這裡有什麼</h2>
+<p>四個免費的退休計算工具，讓你 3 分鐘內看到自己的退休缺口：</p>
 <ul>
   <li><strong>退休缺口計算器</strong> — 輸入你的年齡、目標月收入，立即算出退休那一天需要多少錢</li>
   <li><strong>MPF 強積金計算器</strong> — 香港僱員專屬，估算 65 歲提取時的累積金額</li>
   <li><strong>勞退勞保試算器</strong> — 台灣勞工專屬，勞退新制 + 勞保老年年金月領估算</li>
   <li><strong>退休生活費規劃器</strong> — 按通脹推算退休時的真實月開銷</li>
 </ul>
+<p>除了工具，還有按地區分類的退休資訊文章，解釋制度怎麼運作、數字從哪裡來。</p>
 
 <h2>為什麼做這個</h2>
-<p>退休金制度複雜，多數人對「退休到底需要多少錢」毫無概念。市面上既有工具要麼功能太簡單，要麼付費牆太高。我們希望打破這個門檻——讓每個普通人都能用最直覺的方式，看清自己的退休財務狀況。</p>
-<p>所有計算結果都基於公開的制度數據與合理的假設，不涉及任何投資建議或產品推銷。純粹的工具，幫你做出更好的決定。</p>
+<p>我是一名自由工作者，收入不穩定。沒有固定雇主按月幫我供強積金，戶口累積得慢，現金流緊張的時候還可能斷供。這幾年我開始認真算：像我這樣的人，退休那天到底要靠什麼？</p>
+<p>查規定的時候發現，制度本身很複雜，而市面上的計算工具，要麼只給一個很粗的數字，要麼算到一半就要付費。於是我自己做了計算器，放在網上，免費。</p>
+<p>所有計算結果都基於公開的制度數據與明確列出的假設，不涉及任何投資建議或產品推銷。</p>
 
-<h2>我們的原則</h2>
+<h2>內容怎麼來</h2>
+<p>退休規劃牽涉到錢，數字錯了會害人做錯決定。網站上的數據有幾條規矩：</p>
+<ul>
+  <li><strong>只用官方來源</strong> — 香港數字來自主計處、積金局與政府公告；台灣數字來自勞保局、主計總處。每個關鍵數字都標明來源與年份。</li>
+  <li><strong>不估算、不編造</strong> — 查不到官方數據的地方直接說明，不用「大約」「一般來說」填一個看起來合理的數字。</li>
+  <li><strong>公式公開</strong> — 每個計算器用什麼公式、什麼假設，都寫在頁面上，可以自己驗算。</li>
+  <li><strong>錯了就改</strong> — 發現算錯或數據過時，會更正內容並更新頁面日期。</li>
+</ul>
+
+<h2>網站的原則</h2>
 <ul>
   <li><strong>免費</strong> — 所有工具永久免費使用，無需註冊</li>
   <li><strong>透明</strong> — 所有計算公式與假設完全公開</li>
   <li><strong>隱私</strong> — 所有計算在你的瀏覽器完成，數據不會上傳伺服器</li>
   <li><strong>在地</strong> — 專門針對香港強積金與台灣勞退制度設計</li>
+  <li><strong>不導流</strong> — 不賣保險、不賣基金、沒有任何 affiliate 收入，也沒有廣告客戶可以影響內容</li>
 </ul>
+
+<h2>我不是什麼</h2>
+<p>我不是持牌理財顧問，也不是精算師。網站上所有內容僅供參考，不能取代你自己的判斷，也不能取代專業人士的意見。如果你需要針對個人情況的建議，請找持牌顧問。</p>
+
+<p>有問題、發現錯誤，或想問某個制度的細節：<a href="mailto:contact@pensionwisetool.com">contact@pensionwisetool.com</a></p>
+
+<p class="updated">最後更新：2026 年 11 月 6 日</p>
 </div>
 <footer>
   <div class="container">
@@ -214,6 +258,10 @@
     </div>
   </div>
 </footer>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"AboutPage","mainEntity":{"@type":"Organization","name":"Pensionwise 養老智","alternateName":"Pensionwise","url":"https://pensionwisetool.com/","logo":"https://pensionwisetool.com/assets/images/logo-pensionwise.png","description":"為香港與台灣打工族而做的免費退休規劃工具站，提供退休缺口、MPF、勞退勞保與退休生活費計算器。","email":"contact@pensionwisetool.com","founder":{"@type":"Person","name":"Kandy Nip","url":"https://pensionwisetool.com/author/kandy-nip","image":"https://pensionwisetool.com/assets/images/author-kandy-nip.jpg"}}}
+</script>
 
 <!-- Vercel Web Analytics -->
 <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>

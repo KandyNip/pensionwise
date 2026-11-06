@@ -10,9 +10,9 @@ coverAlt: "一對退休夫婦在明亮的家中一起整理財務文件，神情
 categoryName: 退休規劃
 regionTag: 通用
 badge: 通用 · 退休清單
-authorName: Kandy Nip
-authorSurname: Nip
-authorTitle: PensionWise 編輯部
+authorName: "Kandy Nip"
+authorSurname: "Nip"
+authorTitle: "自由工作者"
 readMinutes: 10
 featured: false
 ---

@@ -10,9 +10,9 @@ coverAlt: "黃昏海濱公園，一對退休夫婦并肩散步，溫暖逆光"
 categoryName: "通用 · 退休理財"
 regionTag: "通用"
 badge: "通用 · 退休理財"
-authorName: "Kandy"
+authorName: "Kandy Nip"
 authorSurname: "Nip"
-authorTitle: "PensionWise 編輯部"
+authorTitle: "自由工作者"
 readMinutes: 10
 featured: false
 ---

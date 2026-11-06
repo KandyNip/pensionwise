@@ -21,6 +21,10 @@
       "dest": "/article/$1.html"
     },
     {
+      "src": "/author/([^/]+)",
+      "dest": "/author/$1.html"
+    },
+    {
       "handle": "filesystem"
     },
     {
