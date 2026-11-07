@@ -372,7 +372,7 @@ IFPHK調查有一個值得留意的數字：高達八成受訪退休人士曾到
 
 ### 台灣的讀者也適用嗎？
 
-通脹蠶食購買力的數學邏輯各地相同。台灣 2026 年 9 月 CPI 年增 2.73%，較 8 月的 2.04% 明顯回升，醫療類漲幅同樣高於平均。文中的 5 個保衛策略在台灣同樣適用，對應的工具是勞保年金、勞退專戶與台灣的高股息 ETF。
+通脹蠶食購買力的數學邏輯各地相同。台灣 2026 年 9 月 CPI 年增 2.73%，較 8 月的 2.04% 明顯回升，醫療類漲幅同樣高於平均。文中的 5 個保衛策略在台灣同樣適用，對應的工具是勞保年金、勞退專戶與[台灣的高股息 ETF](/article/2026-tw-high-dividend-etf-retirement)。
 
 ### 資料來源
 1. IFPHK×萬通積金「港澳退休開支指數」2026報告（2026/8/27發布）。[IFPHK新聞稿](https://www.ifphk.org/retirementindex/documents/IFPHK_YFLife_Retirement_Index_Press_Release_2026_HongKong_CT.pdf)
