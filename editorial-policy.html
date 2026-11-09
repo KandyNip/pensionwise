@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#047857" />
+<meta name="robots" content="index, follow" />
+<meta name="description" content="Pensionwise 養老智的編輯政策：文章誰寫、數據從哪來、怎麼核實、發現錯誤怎麼更正、AI 工具怎麼用、廣告與內容如何保持獨立。" />
+<link rel="icon" type="image/png" href="/favicon.png" />
+<title>編輯政策 — Pensionwise 養老智</title>
+<link rel="canonical" href="https://pensionwisetool.com/editorial-policy.html" />
+<meta property="og:title" content="編輯政策 — Pensionwise 養老智" />
+<meta property="og:description" content="Pensionwise 養老智的編輯政策：文章誰寫、數據從哪來、怎麼核實、發現錯誤怎麼更正、AI 工具怎麼用、廣告與內容如何保持獨立。" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="zh_Hant" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" /></noscript>
+<style>
+  :root {
+    --green-900: #053d2c; --green-800: #074d36; --green-700: #047857; --green-600: #0c8551;
+    --green-500: #10b981; --green-100: #d1fae5; --green-50: #ecfdf5;
+    --ink: #0a0a0a; --ink-2: #1f2937; --ink-3: #4b5563; --ink-4: #6b7280; --ink-5: #9ca3af;
+    --line: #e5e7eb; --line-soft: #f1f1ee; --bg: #ffffff; --bg-2: #fafaf7; --bg-3: #f4f4ef;
+    --shadow-sm: 0 1px 2px rgba(10,10,10,.04),0 2px 4px rgba(10,10,10,.04);
+    --shadow-md: 0 2px 4px rgba(10,10,10,.04),0 8px 16px -4px rgba(10,10,10,.08);
+    --shadow-lg: 0 4px 8px -2px rgba(10,10,10,.05),0 16px 32px -8px rgba(10,10,10,.12);
+    --sans: 'Manrope','Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;
+    --radius: 10px; --radius-sm: 6px; --radius-lg: 16px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  .announce { background: var(--green-900); color: #fff; font-size: 13px; text-align: center; padding: 10px 16px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+  .announce-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-500); }
+  .announce a { color: #fff; text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
+
+  .nav-wrap { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.92); backdrop-filter: saturate(180%) blur(12px); -webkit-backdrop-filter: saturate(180%) blur(12px); border-bottom: 1px solid var(--line-soft); }
+  .nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; max-width: 1200px; margin: 0 auto; }
+  .brand { display: flex; align-items: center; gap: 9px; }
+  .brand-logo { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; color: var(--green-700); }
+  .brand-logo img { width: 48px; height: 48px; border-radius: 8px; object-fit: cover; }
+  .brand-name { font-size: 22px; font-weight: 700; letter-spacing: -.02em; color: var(--ink); font-family: 'Manrope',sans-serif; }
+  .brand-zh { font-size: 11px; color: var(--ink-4); font-weight: 500; letter-spacing: .2em; margin-left: 2px; padding-left: 9px; border-left: 1px solid var(--line); }
+  .nav-back { display: inline-flex; align-items: center; gap: 6px; padding: 10px 14px; font-size: 15px; font-weight: 600; color: var(--ink-2); background: none; border: none; border-radius: var(--radius-sm); transition: background .15s; }
+  .nav-back:hover { background: var(--bg-3); }
+  .nav-back svg { width: 16px; height: 16px; }
+
+  .page-content { max-width: 760px; margin: 0 auto; padding: 48px 24px 64px; }
+  .page-content .eyebrow { font-size: 13px; font-weight: 700; color: var(--green-700); letter-spacing: .04em; text-transform: uppercase; margin-bottom: 12px; display: inline-flex; align-items: center; gap: 8px; }
+  .page-content .eyebrow::before { content: ''; width: 24px; height: 2px; background: var(--green-600); }
+  .page-content h1 { font-size: clamp(28px,4vw,38px); line-height: 1.15; letter-spacing: -.02em; font-weight: 800; color: var(--ink); margin-bottom: 20px; }
+  .page-content h2 { font-size: 20px; font-weight: 700; color: var(--ink); margin: 32px 0 10px; }
+  .page-content h3 { font-size: 17px; font-weight: 700; color: var(--ink-2); margin: 24px 0 8px; }
+  .page-content p { color: var(--ink-2); line-height: 1.8; margin-bottom: 14px; }
+  .page-content ul, .page-content ol { margin: 0 0 16px 24px; color: var(--ink-2); }
+  .page-content li { margin-bottom: 6px; line-height: 1.7; }
+  .page-content a { color: var(--green-700); font-weight: 600; }
+  .page-content a:hover { text-decoration: underline; }
+  .page-content .card { background: var(--bg-2); border-radius: var(--radius-lg); padding: 28px; margin: 24px 0; }
+  .page-content .card h3 { margin-top: 0; }
+  .page-content .updated { font-size: 13px; color: var(--ink-5); margin-top: 32px; }
+
+  footer { background: var(--bg-2); border-top: 1px solid var(--line-soft); padding: 56px 0 24px; }
+  .foot-grid { display: grid; grid-template-columns: 1.6fr repeat(4,1fr); gap: 32px; padding-bottom: 32px; border-bottom: 1px solid var(--line); }
+  .foot-brand p { font-size: 14px; color: var(--ink-4); margin-top: 12px; line-height: 1.6; }
+  .foot-brand-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+  .foot-brand .brand-logo { width: auto; height: auto; color: inherit; }
+  .foot-brand .brand-logo img { width: 56px; height: 56px; border-radius: 10px; object-fit: cover; }
+  .foot-social { display: flex; gap: 12px; margin-top: 16px; }
+  .foot-social a { width: 36px; height: 36px; border-radius: 8px; background: var(--bg-3); display: flex; align-items: center; justify-content: center; color: var(--ink-4); transition: background .15s, color .15s; }
+  .foot-social a:hover { background: var(--green-50); color: var(--green-700); }
+  .foot-col h4 { font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 14px; text-transform: uppercase; letter-spacing: .04em; }
+  .foot-col ul { list-style: none; }
+  .foot-col li { margin-bottom: 8px; }
+  .foot-col a { font-size: 14px; color: var(--ink-4); transition: color .15s; }
+  .foot-col a:hover { color: var(--green-700); }
+  .foot-bot { display: flex; align-items: center; justify-content: space-between; padding-top: 20px; font-size: 13px; color: var(--ink-5); }
+  .legal { display: flex; gap: 16px; }
+  .legal a { color: var(--ink-5); transition: color .15s; }
+  .legal a:hover { color: var(--ink-3); }
+  @media (max-width: 768px) {
+    .foot-grid { grid-template-columns: 1fr 1fr; }
+    .foot-brand { grid-column: 1/-1; }
+    .foot-bot { flex-direction: column; gap: 12px; text-align: center; }
+  }
+
+  /* mobile-footer-fix */
+  @media (max-width: 980px) {
+    .footer .foot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 20px; margin-bottom: 32px; }
+    .footer .foot-grid > .foot-col:first-child { grid-column: 1 / -1; }
+    .footer .foot-bot { display: flex; flex-direction: column; gap: 12px; text-align: center; }
+    .footer .foot-bot .legal { flex-wrap: wrap; justify-content: center; }
+    .footer .footer p, .footer p { max-width: 100%; }
+  }
+  @media (max-width: 600px) {
+    .footer .foot-grid { grid-template-columns: 1fr; gap: 24px; }
+  }
+  .author-hero { display: flex; align-items: center; gap: 24px; margin: 32px 0 8px; padding: 24px; background: var(--bg-2); border: 1px solid var(--line); border-radius: 16px; }
+  .author-photo { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; object-position: center; border: 3px solid #fff; box-shadow: 0 4px 16px rgba(5,61,44,.14); flex-shrink: 0; }
+  .author-hero h2 { margin: 0 0 4px; font-size: 20px; }
+  .author-hero p { margin: 0; font-size: 14px; color: var(--ink-3); line-height: 1.6; }
+  .author-hero a { color: var(--green-700); font-weight: 600; text-decoration: none; }
+  .author-hero a:hover { text-decoration: underline; }
+  @media (max-width: 560px) { .author-hero { gap: 16px; padding: 20px; } .author-photo { width: 64px; height: 64px; } }
+
+  @media (max-width: 560px) {
+    .nav { padding: 12px 16px; gap: 8px; }
+    .brand { gap: 6px; min-width: 0; }
+    .brand-logo, .brand-logo img { width: 34px; height: 34px; }
+    .brand-name { font-size: 17px; }
+    .brand-zh { font-size: 9px; letter-spacing: .08em; padding-left: 6px; white-space: nowrap; }
+    .nav-back { padding: 8px 10px; font-size: 13px; white-space: nowrap; flex-shrink: 0; }
+    .nav-back svg { width: 14px; height: 14px; }
+  }
+  @media (max-width: 380px) {
+    .brand-zh { display: none; }
+  }
+</style>
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2396601421108638" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="announce">
+  <span class="announce-dot"></span>
+  <span>退休規劃，從了解開始。</span>
+  <a href="/">使用免費工具</a>
+</div>
+
+<div class="nav-wrap">
+  <nav class="nav">
+    <a href="/" class="brand">
+      <div class="brand-logo">
+        <img src="/assets/images/logo-pensionwise.png" alt="Pensionwise 養老智 Logo" />
+      </div>
+      <span class="brand-name">Pensionwise</span>
+      <span class="brand-zh">養老智</span>
+    </a>
+    <a href="/" class="nav-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      返回首頁
+    </a>
+  </nav>
+</div>
+<div class="page-content">
+<div class="eyebrow">編輯政策</div>
+<h1>編輯政策</h1>
+<p>這個網站上的每一篇文章，數字從哪裡來、誰負責、錯了怎麼改，都寫在這裡。</p>
+
+<h2>誰寫這些文章</h2>
+<p>Pensionwise 養老智由 Kandy Nip 一個人維護，從計算工具到文章都是。我是香港的自由工作者，因為收入不穩定而開始研究退休規劃，這個網站是研究過程的產物。</p>
+<p>我不是持牌理財顧問，不是精算師，也不是保險從業員。我沒有香港保險中介人牌照，所以不會、也不能在網站上推介任何保險產品或收取介紹費。</p>
+
+<h2>只寫這幾類內容</h2>
+<ul>
+  <li>香港強積金（MPF）、香港年金、安老按揭等退休制度的解釋與計算</li>
+  <li>台灣勞保、勞退、國民年金、TISA 等退休制度的解釋與計算</li>
+  <li>退休生活費、退休缺口、提款策略的規劃方法</li>
+  <li>兩地制度對照，以及制度變動的即時解讀</li>
+</ul>
+<p>不寫的：個股與基金推薦、保險產品評比導購、市場漲跌預測、「保證報酬」類內容。這些不在我的能力範圍內，寫了對讀者沒有好處。</p>
+
+<h2>數據來源的規矩</h2>
+<p>退休規劃牽涉到錢，數字錯了會害人做錯決定。所以有幾條硬規矩：</p>
+<ul>
+  <li><strong>只用官方來源</strong> — 香港數字來自主計處、積金局、香港按證保險有限公司、金管局與政府新聞公報；台灣數字來自勞保局、主計總處、勞動部與金管會。每個關鍵數字都標明來源與年份，附上原始連結。</li>
+  <li><strong>查不到就說查不到</strong> — 沒有官方數據的地方直接寫明，不用「大約」「一般來說」填一個看起來合理的數字。</li>
+  <li><strong>公式全部公開</strong> — 每個計算器用什麼公式、什麼假設、什麼上限，都寫在頁面上，你可以自己驗算。</li>
+  <li><strong>草案不等於生效</strong> — 立法中、行政院通過但未經立法院三讀、或政策諮詢階段的金額與優惠，一律標明「草案」「尚未生效」，不寫成已經適用。</li>
+</ul>
+
+<h2>上線前怎麼核實</h2>
+<p>每篇文章發布前會過這幾關：</p>
+<ul>
+  <li>把每個關鍵數字回溯到官方頁面或公告原文，確認年份與口徑一致</li>
+  <li>涉及計算的數字（年金月領、缺口本金、稅額）用程式重算一次，不靠心算</li>
+  <li>站內每一條連結逐個確認目標頁面真實存在，避免出現 404 虛連結</li>
+  <li>繁體用字按地區檢查：台灣主題用台灣國語，香港主題用港式用語，不用簡體字</li>
+  <li>手機三種寬度（390 / 360 / 320px）檢查版面，確認表格不會撐破畫面</li>
+</ul>
+<p>上線之後，還會抽查線上實際顯示的版本，確認沒有因為模板或快取而出現錯誤。</p>
+
+<h2>發現錯誤怎麼更正</h2>
+<p>錯誤一定會發生，重點是怎麼處理。</p>
+<ul>
+  <li><strong>事實錯誤</strong>（數字寫錯、制度理解錯）— 立即更正，並更新頁面底部的「最後更新」日期</li>
+  <li><strong>數據過時</strong>（官方公布新年度數字）— 更新數字與來源，同步改日期</li>
+  <li><strong>讀者指正</strong> — 來信 <a href="mailto:contact@pensionwisetool.com">contact@pensionwisetool.com</a>，通常 2 到 3 個工作天內回覆。指正成立就改，改完告訴你改了哪裡。</li>
+</ul>
+<p>不會默默改掉。重大更正會在文章裡說明原本寫了什麼、為什麼錯。</p>
+
+<h2>廣告與內容怎麼保持獨立</h2>
+<p>網站靠 Google AdSense 廣告維持運作，廣告由 Google 根據頁面主題與瀏覽行為自動投放，我不指定、也不審核具體投放哪一則廣告。</p>
+<p>幾條界線：</p>
+<ul>
+  <li>廣告不會放在正文中間打斷閱讀</li>
+  <li>不賣保險、不賣基金、不代客理財</li>
+  <li>目前沒有任何聯盟連結、推薦碼或導購分潤</li>
+  <li>將來如果有商業合作，會在文章開頭明確標示，不會藏在正文裡</li>
+  <li>廣告收益不會影響文章結論。該說制度不好的地方，照樣說</li>
+</ul>
+
+<h2>AI 工具怎麼用</h2>
+<p>這一點直接講清楚，不迴避。</p>
+<p>本站在資料蒐集整理、初稿撰寫、文字校對與版面檢查上使用 AI 工具輔助。所有數據核實、觀點判斷、內容取捨與最終發布，由作者負責。</p>
+<p>幾條原則：</p>
+<ul>
+  <li>不生成虛構人物、虛構案例或虛構讀者來信。文章裡提到的情境，是依真實制度參數設計的試算，不是編出來的故事</li>
+  <li>不讓 AI 產出未經核實的數字。所有金額、比率、年資門檻都回到官方來源確認</li>
+  <li>文章裡的觀點是作者的真實判斷，不是為了湊字數生成的套話</li>
+</ul>
+
+<h2>最後</h2>
+<p>這個網站的目的很簡單：讓香港和台灣的打工族，在退休這件事上少一點資訊落差。</p>
+<p>如果你發現哪裡寫錯了、數字過時了，或某個制度我理解錯了，歡迎來信。這是我最需要的回饋。</p>
+<p>有問題或想問某個制度的細節：<a href="mailto:contact@pensionwisetool.com">contact@pensionwisetool.com</a></p>
+
+<p class="updated">最後更新：2026 年 11 月 9 日</p>
+</div>
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="foot-brand-header">
+          <div class="brand-logo">
+            <img src="/assets/images/logo-pensionwise.png" alt="Pensionwise 養老智 Logo" />
+          </div>
+          <div class="foot-brand-name">Pensionwise</div>
+          <div class="foot-brand-zh">養老智</div>
+        </div>
+        <p>為香港與台灣打工族而做的退休規劃平台。慢慢算，慢慢存，慢慢過好日子。</p>
+      </div>
+      <div class="foot-col">
+        <h4>計算工具</h4>
+        <ul>
+          <li><a href="/living-cost.html">生活費規劃</a></li>
+          <li><a href="/retirement-gap.html">退休缺口</a></li>
+          <li><a href="/mpf.html">MPF 強積金</a></li>
+          <li><a href="/labor-pension.html">勞退勞保</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>退休資訊</h4>
+        <ul>
+          <li><a href="/articles-hk.html">香港退休</a></li>
+          <li><a href="/articles-tw.html">台灣退休</a></li>
+          <li><a href="/articles-general.html">通用資訊</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>關於</h4>
+        <ul>
+          <li><a href="/about.html">關於我們</a></li>
+          <li><a href="/contact.html">聯絡我們</a></li>
+          <li><a href="/editorial-policy.html">編輯政策</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>法務</h4>
+        <ul>
+          <li><a href="/privacy.html">隱私政策</a></li>
+          <li><a href="/disclaimer.html">免責聲明</a></li>
+          <li><a href="/cookie-policy.html">Cookie 政策</a></li>
+          <li><a href="/terms.html">使用條款</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 Pensionwise 養老智 · All rights reserved.</span>
+      <div class="legal">
+        <a href="/privacy.html">隱私</a>
+        <a href="/terms.html">條款</a>
+        <a href="/disclaimer.html">免責聲明</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"AboutPage","mainEntity":{"@type":"Organization","name":"Pensionwise 養老智","alternateName":"Pensionwise","url":"https://pensionwisetool.com/","logo":"https://pensionwisetool.com/assets/images/logo-pensionwise.png","description":"為香港與台灣打工族而做的免費退休規劃工具站，提供退休缺口、MPF、勞退勞保與退休生活費計算器。","email":"contact@pensionwisetool.com","founder":{"@type":"Person","name":"Kandy Nip","url":"https://pensionwisetool.com/author/kandy-nip","image":"https://pensionwisetool.com/assets/images/author-kandy-nip.jpg"}}}
+</script>
+
+<!-- Vercel Web Analytics -->
+<script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+
+</body>
+</html>
