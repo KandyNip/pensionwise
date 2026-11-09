@@ -151,6 +151,8 @@ featured: false
 
 所以合理的配置是：勞退自提打底（穩、省稅、有保證收益），再搭配基金定投增加彈性（隨時可用，但沒節稅）。關於退休後怎麼規劃現金流，可以參考：[年金險vs自己投資：退休終身現金流該怎麼選？](/article/2026-annuity-vs-self-investment-retirement-cashflow)
 
+還有一條新路值得知道：TISA（台灣個人投資儲蓄帳戶）2025 年 7 月上路，每月 1,000 元起、精選基金免申購手續費，2026 年 10 月行政院剛通過每年 2.4 萬元扣除額的草案。它跟勞退自提差在哪、怎麼開戶、實際能省多少稅，我另寫了一篇：[台灣 TISA 完整教學](/article/taiwan-tisa-retirement-third-pillar)
+
 ![台北街頭上班族](/assets/images/20261016-labor-pension-voluntary-contribution-illust-2.jpg)
 
 ## 常見問題
