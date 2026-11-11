@@ -200,7 +200,7 @@ HKMC由外匯基金全資擁有。講真，香港政府倒閉嘅機會率應該�
 
 2. 如果你仲未搞掂MPF，先睇下[強積金供款與提取規則](/article/2026-mpf-withdrawal-rules)。MPF係你嘅第一支柱，年金係加強版。
 
-3. 了解[對衝取消後對你MPF嘅影響](/article/2026-mpf-offset-abolition-guide)。2025年5月轉制後，你嘅MPF戶口保留得更完整，可能退休時有更多一筆過可以用嚟買年金。
+3. 了解[對沖取消後對你MPF嘅影響](/article/2026-mpf-offset-abolition-guide)。2025年5月轉制後，你嘅MPF戶口保留得更完整，可能退休時有更多一筆過可以用嚟買年金。
 
 4. 記住：年金係退休規劃嘅最後一步。先確保你有足夠儲蓄、足夠應急錢、足夠醫療保障。然後將「用唔完嘅長錢」轉做終身月入。
 
@@ -213,7 +213,7 @@ HKMC年金嘅核心價值好簡單：**用確定性換安心。** 你放棄咗�
 ## 相關文章
 
 - [2026 MPF 強積金完全指南：從供款到退休提取](/article/2026-mpf-complete-guide)
-- [強積金對衝取消全攻略](/article/2026-mpf-offset-abolition-guide)
+- [強積金對沖取消全攻略](/article/2026-mpf-offset-abolition-guide)
 - [通脹如何吃掉你的退休金](/article/2026-retirement-inflation-purchasing-power)
 - [香港退休每月生活費要幾多？2026真實開支拆解](/article/2026-hk-living-cost)
 - [退休提款策略：4%法則](/article/2026-4-percent-rule-retirement-withdrawal)

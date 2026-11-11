@@ -222,7 +222,7 @@ TVC入面嘅錢，可以投資於該強積金計劃提供嘅**任何成分基金
 
 ## 同其他文章嘅關係
 
-TVC係MPF制度嘅一個重要組成部分，特別係喺對衝取消之後（[參閱我們嘅對衝取消攻略](/article/2026-mpf-offset-abolition-guide)），打工仔更應該主動管理自己嘅退休儲蓄。
+TVC係MPF制度嘅一個重要組成部分，特別係喺對沖取消之後（[參閱我們嘅對沖取消攻略](/article/2026-mpf-offset-abolition-guide)），打工仔更應該主動管理自己嘅退休儲蓄。
 
 加上即將落實嘅「全自由行」首階段（預計2026年底實施，涵蓋2025年5月1日或之後入職嘅新聘僱員；次階段涵蓋既有僱員，政府計劃2027年上半年提交修例草案），你對MPF嘅自主權會越來越大——TVC就係其中一個最好嘅起點。
 
@@ -233,7 +233,7 @@ TVC係MPF制度嘅一個重要組成部分，特別係喺對衝取消之後（[�
 ## 相關文章
 
 - [2026 MPF 強積金完全指南：從供款到退休提取](/article/2026-mpf-complete-guide)
-- [強積金對衝取消全攻略：2025年5月生效](/article/2026-mpf-offset-abolition-guide)
+- [強積金對沖取消全攻略：2025年5月生效](/article/2026-mpf-offset-abolition-guide)
 - [香港年金計劃全解析：HKMC年金值唔值得買？](/article/hkmc-annuity-plan-guide)
 - [40歲開始規劃退休：還來得及嗎？](/article/start-at-40)
 - [立即試用退休缺口計算器](/retirement-gap.html)
