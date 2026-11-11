@@ -139,7 +139,7 @@ Bengen 後來在新書《A Richer Retirement》中更新了這個數字：改用
 
 這樣即使股市短期大跌，你至少3到5年不用被迫賣貨。等市場回來再調整。
 
-關於通脹對退休金的具體影響，推薦看這篇：[退休通脹怎麼辦？30年購買力保衛戰](/article/2026-retirement-inflation-purchasing-power)
+關於通脹對退休金的具體影響，推薦看這篇：[退休通脹怎麼辦？5 個對抗通脹心得](/article/2026-retirement-inflation-purchasing-power)
 
 ![公園散步的退休人士](/assets/images/20261027-retirement-first-year-illust-2-retiree-walk.jpg)
 
@@ -220,7 +220,7 @@ Bengen 後來在新書《A Richer Retirement》中更新了這個數字：改用
 ---
 
 ### 相關文章
-- [退休通脹怎麼辦？30年購買力保衛戰](/article/2026-retirement-inflation-purchasing-power)
+- [退休通脹怎麼辦？5 個對抗通脹心得](/article/2026-retirement-inflation-purchasing-power)
 - [年金險vs自己投資：退休終身現金流該怎麼選？](/article/2026-annuity-vs-self-investment-retirement-cashflow)
 - [退休後醫療長照費用要準備多少？](/article/2026-retirement-medical-long-term-care)
 - [單身退休規劃：一個人也要安心的財務、醫療、社交全面準備](/article/2026-single-retirement-planning)

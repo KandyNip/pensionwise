@@ -280,7 +280,7 @@ featured: false
 ### 相關文章
 - [2026勞退自提完整教學：6%自願提繳划算嗎？](/article/2026-labor-pension-voluntary-contribution)
 - [單身退休規劃：一個人也要安心的財務、醫療、社交全面準備](/article/2026-single-retirement-planning)
-- [退休後通脹應對：30年購買力保衛戰](/article/2026-retirement-inflation-purchasing-power)
+- [退休通脹怎麼辦？5 個對抗通脹心得](/article/2026-retirement-inflation-purchasing-power)
 - [立即試用退休缺口計算器](/retirement-gap.html)
 
 ---

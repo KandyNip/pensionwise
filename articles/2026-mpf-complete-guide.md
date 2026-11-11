@@ -152,7 +152,7 @@ MPF不是什麼複雜的東西，但它確實值得你花點時間了解。核�
 ## 相關文章
 
 - [40歲開始規劃退休：還來得及嗎？](/article/start-at-40)
-- [退休通脹怎麼辦？30年購買力保衛戰](/article/2026-retirement-inflation-purchasing-power)
+- [退休通脹怎麼辦？5 個對抗通脹心得](/article/2026-retirement-inflation-purchasing-power)
 - [香港退休每月生活費要幾多？2026真實開支拆解](/article/2026-hk-living-cost)
 - [立即試用 MPF 強積金計算器](/mpf.html)
 

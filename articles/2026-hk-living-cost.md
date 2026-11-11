@@ -133,5 +133,5 @@ featured: false
 
 - [2026 MPF 強積金完全指南：從供款到退休提取](/article/2026-mpf-complete-guide)
 - [40歲開始規劃退休：還來得及嗎？](/article/start-at-40)
-- [退休通脹怎麼辦？30年購買力保衛戰](/article/2026-retirement-inflation-purchasing-power)
+- [退休通脹怎麼辦？5 個對抗通脹心得](/article/2026-retirement-inflation-purchasing-power)
 - [立即試用退休生活費計算機](/living-cost.html)
