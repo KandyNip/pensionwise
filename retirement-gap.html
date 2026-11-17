@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="免費退休計算機：輸入退休年齡、每月花費與現有儲蓄，即時算出所需總本金、退休金缺口與每月該存多少。每月要 2 萬港幣，按 4% 提領率約需 600 萬本金。另附退休後應對通脹的 5 個實際做法。支援 HKD 與 TWD。" />
+<meta name="description" content="2026 免費退休計算機：輸入當前年齡、目標退休年齡、每月開支與現有儲蓄，即時算出退休總本金、退休金缺口及每月要存幾多。先看 30／40／50 歲、60／65 歲退休情境對照，再用 HKD／TWD 計算自己的結果。" />
 <meta name="theme-color" content="#047857" />
 <meta name="robots" content="index, follow" />
-<meta property="og:title" content="退休計算機｜退休金缺口與每月儲蓄金額試算" />
-<meta property="og:description" content="免費退休計算機，算出退休所需總本金與缺口金額，支援 HKD／TWD 貨幣切換。" />
+<meta property="og:title" content="2026 退休計算機｜幾多歲退休要幾多錢？" />
+<meta property="og:description" content="輸入年齡、每月開支與現有儲蓄，即算退休總本金、缺口及每月儲蓄；附 30／40／50 歲情境對照，支援 HKD／TWD。" />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="zh_Hant" />
 <link rel="icon" type="image/png" href="/favicon.png" />
-<title>退休計算機 2026｜免費算退休金缺口、每月要存多少 | Pensionwise 養老智</title>
+<title>2026 退休計算機｜幾多歲退休要幾多錢？缺口及每月儲蓄試算 | Pensionwise 養老智</title>
 <link rel="canonical" href="https://pensionwisetool.com/retirement-gap.html" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -369,8 +369,21 @@
   <div class="container">
     <div class="reveal">
       <div class="section-eyebrow">通用工具 · HKD / TWD</div>
-      <h1>退休計算機：退休那天，<br/>你還<span class="accent">差多少錢</span>？</h1>
-      <p>填寫當前年齡、目標退休月收入、現有儲蓄與預期回報率，即時計算退休時需要的總本金、現有儲蓄終值、缺口金額，以及從現在到退休每月需要儲蓄多少。所有數據僅在你的瀏覽器內計算。</p>
+      <h1>幾多歲退休要幾多錢？<br/>退休計算機即算<span class="accent">缺口與每月儲蓄</span></h1>
+      <p>輸入年齡、退休後每月開支與現有儲蓄，即時算出退休總本金、缺口和每月要存幾多。支援 HKD／TWD，資料只在你的瀏覽器內計算。</p>
+      <div style="margin-top:22px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+        <a href="#calc" class="btn btn-primary btn-lg">立即用退休計算機 →</a>
+        <a href="#retirement-scenarios" style="color:#fff;font-size:15px;font-weight:700;text-decoration:underline;text-underline-offset:4px;">先看年齡對照表</a>
+      </div>
+      <div style="margin-top:26px;max-width:840px;background:rgba(5,42,32,.72);border:1px solid rgba(110,231,183,.38);border-radius:14px;padding:20px 22px;">
+        <p style="color:#fff;font-size:14px;line-height:1.7;margin:0 0 14px;max-width:none;"><strong style="color:#6ee7b7;">預設示例</strong>：30 歲、65 歲退休；今天每月開支 HK$20,000，現有儲蓄 HK$100,000</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;">
+          <div style="background:rgba(255,255,255,.08);border-radius:10px;padding:13px 14px;color:rgba(255,255,255,.78);font-size:12px;">退休時需要的總本金<br/><strong style="display:block;color:#fff;font-size:21px;line-height:1.35;margin-top:4px;">HK$8,119,212</strong></div>
+          <div style="background:rgba(255,255,255,.08);border-radius:10px;padding:13px 14px;color:rgba(255,255,255,.78);font-size:12px;">退休金缺口<br/><strong style="display:block;color:#fff;font-size:21px;line-height:1.35;margin-top:4px;">HK$7,567,610</strong></div>
+          <div style="background:rgba(255,255,255,.08);border-radius:10px;padding:13px 14px;color:rgba(255,255,255,.78);font-size:12px;">每月需儲蓄<br/><strong style="display:block;color:#6ee7b7;font-size:21px;line-height:1.35;margin-top:4px;">HK$6,661</strong></div>
+        </div>
+        <p style="color:rgba(255,255,255,.72);font-size:12px;line-height:1.7;margin:12px 0 0;max-width:none;">假設年回報率 5%、通脹率 2.5%、退休後 25 年；未另扣年金收入。示例結果僅作規劃參考。</p>
+      </div>
     </div>
   </div>
 </section>
@@ -498,6 +511,36 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ===== 幾多歲退休要幾多錢：情境對照 ===== -->
+<section id="retirement-scenarios" style="max-width:1200px;margin:0 auto;padding:56px 24px 8px;scroll-margin-top:100px;">
+  <div class="reveal">
+    <h2 style="font-size:28px;font-weight:800;color:#053d2c;margin:0 0 12px;">幾多歲退休要幾多錢？6 個情境對照</h2>
+    <p style="font-size:16px;color:#4b5563;line-height:1.8;margin:0 0 24px;">以下統一以 HKD、年回報率 5%、通脹率 2.5%、退休後 25 年及現有儲蓄 HK$100,000 計算；每月開支指<strong>今天的購買力</strong>。這些是數學情境，不是官方生活費標準；回報率與通脹率的來源和年份見下方「預設參數的數據來源與年份」。</p>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;min-width:780px;border-collapse:collapse;font-size:15px;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 2px rgba(10,10,10,.04),0 2px 4px rgba(10,10,10,.04);">
+        <thead>
+          <tr style="background:#053d2c;color:#fff;">
+            <th style="padding:13px 16px;text-align:left;font-weight:600;">年齡（現在 → 退休）</th>
+            <th style="padding:13px 16px;text-align:left;font-weight:600;">距離退休</th>
+            <th style="padding:13px 16px;text-align:left;font-weight:600;">今天每月開支</th>
+            <th style="padding:13px 16px;text-align:left;font-weight:600;">退休時所需總本金</th>
+            <th style="padding:13px 16px;text-align:left;font-weight:600;">每月需儲蓄</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid #f1f1ee;"><td style="padding:12px 16px;">30 歲 → 60 歲</td><td style="padding:12px 16px;">30 年</td><td style="padding:12px 16px;">HK$20,000</td><td style="padding:12px 16px;">HK$7,176,200</td><td style="padding:12px 16px;font-weight:700;color:#047857;">HK$8,103</td></tr>
+          <tr style="border-bottom:1px solid #f1f1ee;background:#ecfdf5;"><td style="padding:12px 16px;">30 歲 → 65 歲</td><td style="padding:12px 16px;">35 年</td><td style="padding:12px 16px;">HK$20,000</td><td style="padding:12px 16px;">HK$8,119,212</td><td style="padding:12px 16px;font-weight:700;color:#047857;">HK$6,661</td></tr>
+          <tr style="border-bottom:1px solid #f1f1ee;"><td style="padding:12px 16px;">40 歲 → 60 歲</td><td style="padding:12px 16px;">20 年</td><td style="padding:12px 16px;">HK$20,000</td><td style="padding:12px 16px;">HK$5,606,036</td><td style="padding:12px 16px;font-weight:700;color:#047857;">HK$12,993</td></tr>
+          <tr style="border-bottom:1px solid #f1f1ee;"><td style="padding:12px 16px;">40 歲 → 65 歲</td><td style="padding:12px 16px;">25 年</td><td style="padding:12px 16px;">HK$20,000</td><td style="padding:12px 16px;">HK$6,342,715</td><td style="padding:12px 16px;font-weight:700;color:#047857;">HK$10,082</td></tr>
+          <tr style="border-bottom:1px solid #f1f1ee;"><td style="padding:12px 16px;">40 歲 → 65 歲</td><td style="padding:12px 16px;">25 年</td><td style="padding:12px 16px;">HK$30,000</td><td style="padding:12px 16px;">HK$9,514,073</td><td style="padding:12px 16px;font-weight:700;color:#047857;">HK$15,408</td></tr>
+          <tr><td style="padding:12px 16px;">50 歲 → 65 歲</td><td style="padding:12px 16px;">15 年</td><td style="padding:12px 16px;">HK$20,000</td><td style="padding:12px 16px;">HK$4,954,919</td><td style="padding:12px 16px;font-weight:700;color:#047857;">HK$17,760</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:14px;color:#4b5563;line-height:1.8;margin:18px 0 0;">每月需儲蓄已扣現有儲蓄 HK$100,000 在退休時的終值；總本金則未扣 MPF、勞退或其他年金收入。延後退休會增加通脹年期，同時也增加儲蓄與複利年期，所以不能只看總本金，要連每月儲蓄一併比較。你的實際缺口，請<a href="#calc" style="color:#047857;font-weight:600;text-decoration:underline;">用上方退休計算機</a>輸入自己的數字。</p>
   </div>
 </section>
 
@@ -725,7 +768,7 @@
 
       <div style="margin-bottom:16px;">
         <h4 style="font-size:16px;font-weight:700;color:#074d36;margin:0 0 6px;">❌ 誤區四：以為通脹跟自己無關</h4>
-        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">「通脹 2%？感覺沒甚麼啊。」但 2% 通脹的含義是：每 36 年物價翻一倍。如果你 30 歲退休、活到 85 歲，55 年間物價會漲到今天的 <strong>2.96 倍</strong>。今天 HK$100 能買到的東西，到那時候需要 HK$296。這對固定收入的退休人士影響特別大——你的年金不會每年按通脹調整，但超市的標籤會。</p>
+        <p style="color:#1f2937;font-size:15px;line-height:1.8;margin:0;">「通脹 2%？感覺沒甚麼啊。」但 2% 通脹的含義是：每 36 年物價翻一倍。如果你 30 歲退休、活到 85 歲，55 年間物價會漲到今天的 <strong>2.97 倍</strong>。今天 HK$100 能買到的東西，到那時候需要約 HK$297。這對固定收入的退休人士影響特別大——你的年金不會每年按通脹調整，但超市的標籤會。</p>
       </div>
 
       <div>
@@ -737,7 +780,7 @@
     <!-- 6. 頁尾更新資訊 -->
     <div style="border-top:1px solid #e5e7eb;padding-top:20px;margin-top:8px;">
       <p style="color:#6b7280;font-size:13px;line-height:1.7;margin:0;">
-        <strong>最後更新日期</strong>：2026 年 11 月 1 日<br/>
+        <strong>最後更新日期</strong>：2026 年 11 月 17 日<br/>
         <strong>數據版本</strong>：v1.0<br/>
         <strong>主要數據來源</strong>：<br/>
          香港：政府統計處 2024 年人口數據（出生時平均預期壽命 男 82.7 年、女 88.2 年）、綜合消費物價指數（2025 年全年 +1.4%）、IMF 2026 年第四條磋商報告（2026 年 5 月）、積金局《強積金計劃統計摘要》（2026 年 6 月號）<br/>
