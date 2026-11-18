@@ -3,6 +3,17 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script>
+// 舊版 ?slug= 參數網址立即導向正式文章頁。置於 head 最前同步執行，
+// 讓搜尋引擎在渲染初期即識別重新導向，權重歸到 /article/:slug。
+// 僅在 /article.html 觸發，不影響由本模板產生的 /article/* 正式頁。
+(function () {
+  var s = new URLSearchParams(window.location.search).get('slug');
+  if (s && window.location.pathname === '/article.html') {
+    window.location.replace('/article/' + encodeURIComponent(s));
+  }
+})();
+</script>
 <meta name="robots" content="index, follow" />
 <meta name="description" content="退休對抗通脹怎麼做？2026年9月香港CPI只升1.9%，但醫療衛生服務升11.4%、電力燃氣水升12.9%——退休族實際面對的通脹遠高於官方數字。IFPHK指數顯示退休開支年化超5%，是CPI的三倍。5個可執行做法＋30年購買力實測。" />
 <meta name="theme-color" content="#047857" />

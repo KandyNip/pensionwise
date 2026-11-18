@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
-Disallow: /article.html
 Sitemap: https://pensionwisetool.com/sitemap.xml

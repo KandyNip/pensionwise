@@ -3,6 +3,17 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script>
+// 舊版 ?slug= 參數網址立即導向正式文章頁。置於 head 最前同步執行，
+// 讓搜尋引擎在渲染初期即識別重新導向，權重歸到 /article/:slug。
+// 僅在 /article.html 觸發，不影響由本模板產生的 /article/* 正式頁。
+(function () {
+  var s = new URLSearchParams(window.location.search).get('slug');
+  if (s && window.location.pathname === '/article.html') {
+    window.location.replace('/article/' + encodeURIComponent(s));
+  }
+})();
+</script>
 <meta name="robots" content="index, follow" />
 <meta name="description" content="退休後在台灣一個月要花多少？本文用主計總處2025年家庭收支調查、衛福部長照2.0/3.0、勞保局數據，把雙北與中南部單身、夫婦的食衣住行醫開銷逐項拆開，再用4%法則倒推退休金，並和香港生活費對比。" />
 <meta name="theme-color" content="#047857" />

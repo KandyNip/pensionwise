@@ -3,6 +3,17 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script>
+// 舊版 ?slug= 參數網址立即導向正式文章頁。置於 head 最前同步執行，
+// 讓搜尋引擎在渲染初期即識別重新導向，權重歸到 /article/:slug。
+// 僅在 /article.html 觸發，不影響由本模板產生的 /article/* 正式頁。
+(function () {
+  var s = new URLSearchParams(window.location.search).get('slug');
+  if (s && window.location.pathname === '/article.html') {
+    window.location.replace('/article/' + encodeURIComponent(s));
+  }
+})();
+</script>
 <meta name="robots" content="index, follow" />
 <meta name="description" content="退休後每年該領多少？4%法則源自1998年Trinity Study，宣稱95%成功率維持30年。本文用港股、台股、美股的真實長期回報與港台通脹數據，拆解這條法則在香港、台灣到底適不適用，並介紹3.5%保守版、桶子策略與動態提款等更穩的做法。" />
 <meta name="theme-color" content="#047857" />

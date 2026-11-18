@@ -6,6 +6,13 @@
   "framework": null,
   "routes": [
     {
+      "src": "/index.html",
+      "status": 301,
+      "headers": {
+        "Location": "/"
+      }
+    },
+    {
       "src": "/article/2026-inflation-impact-retirement(\\.html)?/?",
       "status": 301,
       "headers": {
